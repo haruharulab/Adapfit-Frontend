@@ -2,7 +2,7 @@ import styled from "styled-components";
 export const Contain1 = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 100px);
   justify-content: space-around;
   align-items: center;
 `;
