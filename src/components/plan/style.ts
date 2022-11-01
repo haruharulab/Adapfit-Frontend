@@ -13,7 +13,7 @@ export const Contain = styled.div`
 export const CardContain = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 300px;
   height: 250px;
   border-radius: 30px;
   background-color: grey;

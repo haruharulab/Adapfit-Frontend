@@ -13,7 +13,9 @@ export const LogoWrap = styled.div`
   width: 160px;
   margin-left: 30px;
   height: 100px;
-  background-color: red;
+  background-image: url("./logo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 export const MenuWrap = styled.div`
