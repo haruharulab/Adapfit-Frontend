@@ -22,7 +22,7 @@ export const Img = styled.div`
   width: 100%;
   height: 75%;
   border-radius: 30px 30px 0px 0px;
-  background-color: black;
+  background-color: skyblue;
 `;
 export const Content = styled.div`
   width: 100%;

@@ -1,10 +1,10 @@
 import Header from "./header";
 import * as S from "./style";
 
-export default function Notice() {
+export default function ConsultHistory() {
   return (
     <S.Contain>
-      <Header />
+      <Header></Header>
     </S.Contain>
   );
 }
