@@ -4,6 +4,7 @@ export const Headers = styled.header`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
   height: 100px;
   background-color: lightgray;
 `;
@@ -16,14 +17,14 @@ export const LogoWrap = styled.div`
 `;
 
 export const MenuWrap = styled.div`
-  span {
-    float: right;
-    padding-top: 40px;
-    padding-right: 80px;
-    font-weight: bold;
-    font-size: 21px;
-  }
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  font-weight: bold;
+  font-size: 21px;
+  padding-right: 20px;
   a {
     color: black;
+    text-decoration-line: none;
   }
 `;
