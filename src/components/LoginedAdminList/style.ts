@@ -5,5 +5,5 @@ export const Contain = styled.div`
   border: solid gray 1px;
   width: 30%;
   height: 90%;
-  border-radius: 30px;
+  border-radius: 60px;
 `;
