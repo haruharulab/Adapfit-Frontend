@@ -2,7 +2,8 @@ import styled from "styled-components";
 export const Contain = styled.div`
   display: flex;
   width: 80%;
-  height: 80%;
+  margin-top: 50px;
+  margin-bottom: 20px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -12,15 +13,15 @@ export const Contain = styled.div`
 export const CardContain = styled.div`
   display: flex;
   flex-direction: column;
-  width: 28%;
+  width: 250px;
   height: 250px;
-  border-radius: 15px;
+  border-radius: 30px;
   background-color: grey;
 `;
 export const Img = styled.div`
   width: 100%;
   height: 75%;
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 30px 30px 0px 0px;
   background-color: black;
 `;
 export const Content = styled.div`

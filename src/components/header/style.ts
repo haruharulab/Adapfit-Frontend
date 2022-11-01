@@ -23,4 +23,7 @@ export const MenuWrap = styled.div`
     font-weight: bold;
     font-size: 21px;
   }
+  a {
+    color: black;
+  }
 `;
