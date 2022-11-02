@@ -1,32 +1,23 @@
 import styled from "styled-components";
-
-export const Headers = styled.header`
+export const Head = styled.div`
   display: flex;
-  width: 100%;
+  height: 50px;
+  padding: 0 8vw 0 8vw;
   justify-content: space-between;
-  align-items: center;
-  height: 100px;
-  background-color: lightgray;
+  background-color: white;
 `;
 
-export const LogoWrap = styled.div`
-  width: 160px;
-  margin-left: 30px;
-  height: 100px;
-  background-image: url("./logo.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-`;
-
-export const MenuWrap = styled.div`
+export const Logo = styled.img`
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  font-weight: bold;
-  font-size: 21px;
-  padding-right: 20px;
-  a {
-    color: black;
-    text-decoration-line: none;
-  }
+  height: 35px;
+  align-self: center;
+`;
+
+export const Nav = styled.nav`
+  display: flex;
+  align-self: center;
+  font-weight: 550;
+  font-size: 14px;
+  width: 220px;
+  justify-content: space-between;
 `;

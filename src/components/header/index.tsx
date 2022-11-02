@@ -1,22 +1,18 @@
+import React from "react";
 import * as S from "./style";
-import { Link } from "react-router-dom";
-export default function Header() {
+import { NavLink } from "react-router-dom";
+
+export const Header = () => {
   return (
     <>
-      <S.Headers>
-        <S.LogoWrap></S.LogoWrap>
-        <S.MenuWrap>
-          <Link to="/planlist">
-            <span>플랜목록</span>
-          </Link>
-          <Link to="/">
-            <span>챗봇상담</span>
-          </Link>
-          <Link to="/">
-            <span>채용공고</span>
-          </Link>
-        </S.MenuWrap>
-      </S.Headers>
+      <S.Head>
+        <S.Logo alt="logo" src="images/logo.png" />
+        <S.Nav>
+          <NavLink to="/plan">플랜목록</NavLink>
+          <NavLink to="/counsel">챗봇상담</NavLink>
+          <NavLink to="/hire">채용공고</NavLink>
+        </S.Nav>
+      </S.Head>
     </>
   );
-}
+};
