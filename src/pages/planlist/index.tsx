@@ -10,4 +10,3 @@ export const Plan = () => {
     </S.Contain>
   );
 };
-~

@@ -19,7 +19,7 @@ export const Home = () => {
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
-          autoplay={{ delay: 1500 }}
+          autoplay={{ delay: 3000 }}
         >
           <SwiperSlide>
             <S.BannerImg src="images/mainimg.png" className="slider" />
