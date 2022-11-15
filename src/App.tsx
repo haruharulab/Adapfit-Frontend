@@ -1,19 +1,20 @@
-import React from "react";
-import logo from "./logo.svg";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import PlanList from "./pages/planlist";
-import Admin from "./pages/admin";
-import Header from "./components/header";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Plan } from "./pages/planlist";
+import { Admin } from "./pages/admin";
+import { Home } from "./pages/home";
+import { Header } from "./components/header";
+
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Header />
       <Routes>
+        <Route path="*" element={<Home />} />
+        <Route path="/plan" element={<Plan />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/planlist" element={<PlanList />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 

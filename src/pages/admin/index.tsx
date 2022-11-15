@@ -4,7 +4,7 @@ import LoginedAdminList from "../../components/LoginedAdminList";
 import Notice from "../../components/notice";
 import * as S from "./style";
 
-export default function Admin() {
+export const Admin = () => {
   return (
     <S.Contain>
       <S.Contain1>
@@ -19,4 +19,4 @@ export default function Admin() {
       </S.Contain1>
     </S.Contain>
   );
-}
+};
