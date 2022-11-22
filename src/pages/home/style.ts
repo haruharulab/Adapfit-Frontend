@@ -15,15 +15,17 @@ export const Banner = styled.div`
 `;
 
 export const PlanGallery = styled.div`
-  display: flex;
   height: 600px;
-  padding: 0 8vw 0 8vw;
-  justify-content: space-between;
+  margin: 0px 30px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: auto;
 `;
 
 export const PlanList = styled.div`
-  display: flex;
-  width: 27%;
+  display: inline-flex;
+  margin: 0px 20px;
+  width: 300px;
   height: 470px;
   border-radius: 10px;
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
