@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <>
       <S.Head>
-        <S.Logo alt="logo" src="images/logo.png" />
+        <S.Logo alt="logo" src="image/Adapfit_logo.svg" />
         <S.Nav>
           <NavLink to="/plan">플랜목록</NavLink>
           <NavLink to="/counsel">챗봇상담</NavLink>
