@@ -4,6 +4,7 @@ export const Contain = styled.footer`
   width: calc(100% - 80px);
   display: flex;
   gap: 30px;
+  margin-top: 100px;
   .copyright {
     margin-top: 25px;
   }

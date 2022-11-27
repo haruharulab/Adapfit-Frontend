@@ -5,6 +5,7 @@ import { Admin } from "./pages/admin";
 import { Home } from "./pages/home";
 import { Header } from "./components/header";
 import Footer from "./components/footer";
+import Notice from "./pages/notice";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="*" element={<Home />} />
           <Route path="/plan" element={<Plan />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/notice" element={<Notice />} />
         </Routes>
         <Footer />
       </BrowserRouter>
