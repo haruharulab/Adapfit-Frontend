@@ -8,6 +8,7 @@ export const Head = styled.div`
 `;
 
 export const Logo = styled.img`
+  cursor: pointer;
   display: flex;
   height: 35px;
   align-self: center;

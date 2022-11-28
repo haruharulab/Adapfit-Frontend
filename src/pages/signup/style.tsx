@@ -8,7 +8,7 @@ export const Contain = styled.div`
 `;
 export const LoginWrapper = styled.div`
   width: 40%;
-  height: 700px;
+  height: 600px;
   background-color: lightgray;
   border-radius: 60px;
   display: flex;
@@ -22,9 +22,9 @@ export const LoginWrapper = styled.div`
 
 export const Input = styled.textarea`
   width: 60%;
-  height: 60px;
+  height: 50px;
   font-size: 20px;
-  line-height: 60px;
+  line-height: 50px;
   padding-left: 20px;
   resize: none;
 `;
@@ -36,6 +36,7 @@ export const Btn_login = styled.div`
   font-size: 25px;
   text-align: center;
   line-height: 50px;
+  cursor: pointer;
 `;
 
 export const NoneId = styled.div`

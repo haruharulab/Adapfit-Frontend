@@ -41,6 +41,30 @@ export const Home = () => {
           플랜보조설명입니다.
         </S.PlanList>
         <S.PlanList>
+          <S.PlanImg src="images/1.png" />
+          <b>플랜 설명1</b>
+          <br></br>
+          플랜보조설명입니다.
+        </S.PlanList>
+        <S.PlanList>
+          <S.PlanImg src="images/1.png" />
+          <b>플랜 설명1</b>
+          <br></br>
+          플랜보조설명입니다.
+        </S.PlanList>
+        <S.PlanList>
+          <S.PlanImg src="images/1.png" />
+          <b>플랜 설명1</b>
+          <br></br>
+          플랜보조설명입니다.
+        </S.PlanList>
+        <S.PlanList>
+          <S.PlanImg src="images/1.png" />
+          <b>플랜 설명1</b>
+          <br></br>
+          플랜보조설명입니다.
+        </S.PlanList>
+        <S.PlanList>
           <S.PlanImg src="images/2.png" />
           <b>플랜 설명2</b>
           <br></br>
