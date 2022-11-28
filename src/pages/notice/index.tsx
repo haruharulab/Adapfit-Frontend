@@ -1,34 +1,34 @@
 import * as S from "./style";
 const sampleData = [
   {
-    title: "titiletil",
+    title: "제목입니다11",
     writer: "응아니야",
     date: "1월 1일",
   },
   {
-    title: "titiletil",
+    title: "공지사항입니다.",
     writer: "응아니야",
-    date: "1월 1일",
+    date: "2월 13일",
   },
   {
-    title: "titiletil",
+    title: "제목입니다11",
     writer: "응아니야",
-    date: "1월 1일",
+    date: "7월 25일",
   },
   {
-    title: "titiletil",
+    title: "공지사항입니다",
     writer: "응아니야",
-    date: "1월 1일",
+    date: "2월 1일",
   },
   {
-    title: "titiletil",
+    title: "제목입니다11",
     writer: "응아니야",
-    date: "1월 1일",
+    date: "12월 1일",
   },
   {
-    title: "titiletil",
+    title: "공지사항입니다",
     writer: "응아니야",
-    date: "1월 1일",
+    date: "9월 1일",
   },
 ];
 export default function Notice() {
@@ -41,10 +41,10 @@ export default function Notice() {
       {sampleData.map((data) => {
         return (
           <S.NoticeConatiner>
-            <S.Title>{data.title}</S.Title>
+            <S.StyledSpan>{data.title}</S.StyledSpan>
             <S.WriterAndDate>
               <S.Writer>{data.writer}</S.Writer>
-              <S.Date>{data.date}</S.Date>
+              <S.StyledSpan>{data.date}</S.StyledSpan>
             </S.WriterAndDate>
           </S.NoticeConatiner>
         );
