@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
 export const Contain = styled.footer`
+  position: relative;
+  transform: translateY(-100%);
   width: calc(100% - 80px);
   display: flex;
   gap: 30px;
-  margin-top: 100px;
+  border: 1px solid black;
   .copyright {
     margin-top: 25px;
   }
+  height: 265px;
   padding: 0px 40px;
-  padding-bottom: 30px;
   justify-content: space-around;
   flex-wrap: wrap;
 `;

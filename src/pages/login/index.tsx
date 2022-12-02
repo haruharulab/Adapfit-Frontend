@@ -35,7 +35,7 @@ export default function Login() {
       });
   };
   return (
-    <S.Contain>
+    <S.Contain className="bottom-padding">
       <S.LoginWrapper>
         <span>로그인</span>
         <S.Input

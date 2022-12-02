@@ -6,7 +6,7 @@ import * as S from "./style";
 
 export const Admin = () => {
   return (
-    <S.Contain>
+    <S.Contain className="bottom-padding">
       <S.Contain1>
         <LoginedAdminList />
         <S.Contain2>

@@ -11,7 +11,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 export const Home = () => {
   return (
-    <>
+    <div className="bottom-padding">
       <S.Banner>
         <Swiper
           className="banner"
@@ -77,6 +77,6 @@ export const Home = () => {
           플랜보조설명입니다.
         </S.PlanList>
       </S.PlanGallery>
-    </>
+    </div>
   );
 };

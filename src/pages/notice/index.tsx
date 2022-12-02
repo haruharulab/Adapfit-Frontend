@@ -33,7 +33,7 @@ const sampleData = [
 ];
 export default function Notice() {
   return (
-    <S.Contain>
+    <S.Contain className="bottom-padding">
       <S.Header>
         <span>공지사항</span>
         <S.Img src="image/ring.png"></S.Img>
