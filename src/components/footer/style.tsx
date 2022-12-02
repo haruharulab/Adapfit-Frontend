@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Contain = styled.footer`
-  position: relative;
-  transform: translateY(-100%);
   width: calc(100% - 80px);
   display: flex;
   gap: 30px;
@@ -10,8 +8,7 @@ export const Contain = styled.footer`
   .copyright {
     margin-top: 25px;
   }
-  height: 265px;
-  padding: 0px 40px;
+  padding: 30px 40px;
   justify-content: space-around;
   flex-wrap: wrap;
 `;

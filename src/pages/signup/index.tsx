@@ -1,7 +1,7 @@
 import * as S from "./style";
 export default function Signup() {
   return (
-    <S.Contain className="bottom-padding">
+    <S.Contain>
       <S.LoginWrapper>
         <span>회원가입</span>
         <S.Input placeholder="아이디를 입력해주세요"></S.Input>

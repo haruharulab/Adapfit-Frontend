@@ -5,7 +5,7 @@ import React from "react";
 
 export const Plan = () => {
   return (
-    <S.Contain className="bottom-padding">
+    <S.Contain>
       <S.Category>
         <span>카테고리</span>
         <PlanList />
