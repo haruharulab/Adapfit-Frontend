@@ -36,6 +36,7 @@ export const Btn_login = styled.div`
   font-size: 25px;
   text-align: center;
   line-height: 50px;
+  cursor: pointer;
 `;
 
 export const NoneId = styled.div`

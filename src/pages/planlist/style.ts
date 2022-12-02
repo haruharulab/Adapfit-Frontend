@@ -5,3 +5,7 @@ export const Contain = styled.div`
   justify-content: center;
   width: 100%;
 `;
+
+export const Category = styled.div`
+  display: flex;
+`;

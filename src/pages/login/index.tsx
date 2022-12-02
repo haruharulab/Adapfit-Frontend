@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { LOGIN_URL } from "../../constant/url";
 import * as S from "./style";
@@ -20,12 +21,12 @@ export default function Login() {
     axios(config)
       .then(function (response) {
         console.log(response.data.accessToken.value);
-        setCookie("accessToken", response.data.accessToken.value);
-        setCookie("refreshToken", response.data.refreshToken.value);
-        localStorage.setItem("accessToken", response.data.accessToken.value);
-        localStorage.setItem("refreshToken", response.data.refreshToken.value);
-        setIsLogin(true);
-        router.push("/");
+        // setCookie("accessToken", response.data.accessToken.value);
+        // setCookie("refreshToken", response.data.refreshToken.value);
+        // localStorage.setItem("accessToken", response.data.accessToken.value);
+        // localStorage.setItem("refreshToken", response.data.refreshToken.value);
+        // setIsLogin(true);
+        // router.push("/");
       })
       .catch(function (error) {
         console.log(error);
