@@ -7,11 +7,11 @@ export const Plan = () => {
   return (
     <S.Contain>
       <S.Category>
-        <span>카테고리</span>
+        <span>카테고리1</span>
         <PlanList />
       </S.Category>
       <S.Category>
-        <span>카테고리</span>
+        <span>카테고리2</span>
         <PlanList />
       </S.Category>
     </S.Contain>
