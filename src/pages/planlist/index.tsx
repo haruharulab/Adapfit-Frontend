@@ -14,6 +14,18 @@ export const Plan = () => {
         <span>카테고리2</span>
         <PlanList />
       </S.Category>
+      <S.Category>
+        <span>카테고리2</span>
+        <PlanList />
+      </S.Category>
+      <S.Category>
+        <span>카테고리2</span>
+        <PlanList />
+      </S.Category>
+      <S.Category>
+        <span>카테고리2</span>
+        <PlanList />
+      </S.Category>
     </S.Contain>
   );
 };

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 export const Head = styled.div`
   display: flex;
@@ -5,6 +6,11 @@ export const Head = styled.div`
   padding: 0 8vw 0 8vw;
   justify-content: space-between;
   background-color: white;
+`;
+
+export const LogoWrap = styled(Link)`
+  display: flex;
+  align-items: center;
 `;
 
 export const Logo = styled.img`

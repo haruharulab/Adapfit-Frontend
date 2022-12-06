@@ -4,7 +4,7 @@ export const Contain = styled.footer`
   width: calc(100% - 80px);
   display: flex;
   gap: 30px;
-  border: 1px solid black;
+  border-top: 1px solid black;
   .copyright {
     margin-top: 25px;
   }
