@@ -9,6 +9,7 @@ export const Contain = styled.footer`
     margin-top: 25px;
   }
   padding: 30px 40px;
+
   justify-content: space-around;
   flex-wrap: wrap;
 `;
