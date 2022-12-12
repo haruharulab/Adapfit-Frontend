@@ -31,7 +31,6 @@ export const PlanList = styled.div`
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   text-align: center;
   flex-direction: column;
-  font-size: px;
 `;
 
 export const PlanImg = styled.img`
@@ -41,3 +40,27 @@ export const PlanImg = styled.img`
   height: 70%;
   padding-bottom: 20px;
 `;
+export const DownContain = styled.div`
+  text-align: center;
+`
+export const DownBox = styled.div`
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  margin: 20px;
+  height: 150px;
+  border: 2px solid #9B9B9B;
+  border-radius: 10px;
+  span {
+    color: gray;
+    margin-bottom: 50px;
+    margin-left: 15px;
+    font-size: 30px;
+  }
+  img {
+    width: 70px;
+    height: 40px;
+    margin-right: 15px;
+  }
+`
