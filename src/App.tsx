@@ -8,27 +8,25 @@ import Footer from "./components/footer";
 import Notice from "./pages/notice";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
-import channelService from "./components/channel/channelService";
+import Employment from "./pages/employment";
 
 function App() {
-    channelService.boot({
-        "pluginKey": process.env.REACT_APP_CHANNEL_SERVICE_PLUGIN_KEY
-    });
-
-    return (
-        <BrowserRouter>
-            <Header />
-                <Routes>
-                    <Route path="*" element={<Home />} />
-                    <Route path="/plan" element={<Plan />} />
-                    <Route path="/admin" element={<Admin />} />
-                    <Route path="/notice" element={<Notice />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                </Routes>
-            <Footer />
-        </BrowserRouter>
-    );
+  return (
+    <>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="*" element={<Home />} />
+          <Route path="/plan" element={<Plan />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/notice" element={<Notice />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/employment" element={<Employment />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
+  );
 }
-
 export default App;
