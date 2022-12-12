@@ -8,6 +8,7 @@ import Footer from "./components/footer";
 import Notice from "./pages/notice";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+import Employment from "./pages/employment";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/notice" element={<Notice />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/employment" element={<Employment />} />
         </Routes>
         <Footer />
       </BrowserRouter>
