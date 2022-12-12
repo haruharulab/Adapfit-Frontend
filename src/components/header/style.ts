@@ -27,4 +27,7 @@ export const Nav = styled.nav`
   font-size: 14px;
   width: 220px;
   justify-content: space-between;
+  a {
+    color:black;
+  }
 `;

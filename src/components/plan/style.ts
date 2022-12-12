@@ -4,9 +4,6 @@ export const Contain = styled.div`
   white-space: nowrap;
   overflow: auto;
   width: 85%;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const CardContain = styled.div`
