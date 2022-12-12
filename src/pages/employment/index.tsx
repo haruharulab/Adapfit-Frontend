@@ -1,4 +1,5 @@
 import * as S from './style'
+import {Item} from "../../components/employment";
 
 export default function Employment() {
     return (
@@ -10,6 +11,10 @@ export default function Employment() {
                 <span>경력</span>
                 <span>근무지역</span>
             </S.Header>
+            <Item title={"피트니스센터메니저"} jobGroup={"매니저"} career={"1"} employmentArea={"부산"}/>
+            <Item title={"피트니스센터메니저"} jobGroup={"매니저"} career={"1"} employmentArea={"부산"}/>
+            <Item title={"피트니스센터메니저"} jobGroup={"매니저"} career={"1"} employmentArea={"부산"}/>
+
         </S.Contain>
     )
 }

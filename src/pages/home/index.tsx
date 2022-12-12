@@ -11,7 +11,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 export const Home = () => {
   return (
-    <div>
+    <div className="bottom-padding">
       <S.Banner>
         <Swiper
           className="banner"

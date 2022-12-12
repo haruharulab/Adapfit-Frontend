@@ -11,6 +11,7 @@ export const Contain = styled.footer`
   padding: 30px 40px;
   justify-content: space-around;
   flex-wrap: wrap;
+  position: relative;
 `;
 export const Footer_logo = styled.img`
   width: 150px;
