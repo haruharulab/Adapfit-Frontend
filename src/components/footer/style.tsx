@@ -12,6 +12,7 @@ export const Contain = styled.footer`
 
   justify-content: space-around;
   flex-wrap: wrap;
+  position: relative;
 `;
 export const Footer_logo = styled.img`
   width: 150px;
