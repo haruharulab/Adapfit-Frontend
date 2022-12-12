@@ -4,12 +4,11 @@ export const Contain = styled.footer`
   width: calc(100% - 80px);
   display: flex;
   gap: 30px;
-  margin-top: 100px;
+  border-top: 1px solid black;
   .copyright {
     margin-top: 25px;
   }
-  padding: 0px 40px;
-  padding-bottom: 30px;
+  padding: 30px 40px;
   justify-content: space-around;
   flex-wrap: wrap;
 `;

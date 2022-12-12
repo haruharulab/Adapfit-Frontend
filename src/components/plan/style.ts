@@ -1,32 +1,40 @@
 import styled from "styled-components";
 export const Contain = styled.div`
-  display: flex;
-  width: 80%;
-  margin-top: 50px;
-  margin-bottom: 20px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 50px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: auto;
+  width: 85%;
 `;
 
 export const CardContain = styled.div`
-  display: flex;
+  display: inline-flex;
+  position: relative;
   flex-direction: column;
   width: 300px;
   height: 250px;
   border-radius: 30px;
-  background-color: grey;
+  margin: 0px 20px;
+  scrollbar-width: thin;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
 `;
 export const Img = styled.div`
   width: 100%;
-  height: 75%;
-  border-radius: 30px 30px 0px 0px;
-  background-color: skyblue;
+  height: 100%;
+  border-radius: 30px 30px;
+  background-image: url('/image/test.png');
+  background-size: cover;
 `;
 export const Content = styled.div`
   width: 100%;
   height: 25%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-size: 20px;
+  color: white;
+  background-color: #00000055;
+  border-radius: 0px 0px 30px 30px;
 `;
