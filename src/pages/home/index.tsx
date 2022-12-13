@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import * as S from "./style";
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Navigation, Pagination, Autoplay} from "swiper";
@@ -6,9 +6,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { Banner } from "../../types/banner.type";
+import { getBannerList } from "../../apis/banner.api";
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 export const Home = () => {
+    const [bannerList, setBannerList] = useState<Banner[]>([]);
+
+    useEffect(() => {
+        (async () => setBannerList(await getBannerList()))();
+    }, []);
+
     return (
         <div>
             <S.Banner>
@@ -20,18 +28,13 @@ export const Home = () => {
                     pagination={{clickable: true}}
                     autoplay={{delay: 3000}}
                 >
-                    <SwiperSlide>
-                        <S.BannerImg src="images/mainimg.png" className="slider"/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <S.BannerImg src="images/2.png" className="slider"/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <S.BannerImg src="images/3.png" className="slider"/>
-                    </SwiperSlide>
+                    {bannerList.map(banner => (
+                        <SwiperSlide>
+                            <S.BannerImg src={banner.fileUrl} className="slider"/>
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </S.Banner>
-
             <S.PlanGallery>
                 <S.PlanList>
                     <S.PlanImg src="images/1.png"/>
