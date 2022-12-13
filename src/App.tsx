@@ -9,6 +9,7 @@ import Notice from "./pages/notice";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Employment from "./pages/employment";
+import Resume from "./pages/resume";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/employment" element={<Employment />} />
+          <Route path="/resume" element={<Resume />} />
         </Routes>
         <Footer />
       </BrowserRouter>
