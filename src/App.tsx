@@ -9,8 +9,12 @@ import Notice from "./pages/notice";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Employment from "./pages/employment";
+import channelService from "./components/channel/channelService";
 
 function App() {
+  channelService.boot({
+      "pluginKey": process.env.REACT_APP_CHANNEL_SERVICE_PLUGIN_KEY
+  });
   return (
     <>
       <BrowserRouter>

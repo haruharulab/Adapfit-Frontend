@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { HorizontalScrollBar } from "../../components/common/scrollBar/style";
 
 export const BannerImg = styled.img`
   display: flex;
@@ -15,11 +16,12 @@ export const Banner = styled.div`
 `;
 
 export const PlanGallery = styled.div`
-  height: 600px;
-  margin: 0px 30px;
+  height: 500px;
+  padding-left: 30px;
   text-align: center;
   white-space: nowrap;
   overflow: auto;
+  ${HorizontalScrollBar};
 `;
 
 export const PlanList = styled.div`

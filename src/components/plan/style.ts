@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import { HorizontalScrollBar } from "../common/scrollBar/style";
 export const Contain = styled.div`
   text-align: center;
   white-space: nowrap;
   overflow: auto;
-  width: 85%;
+  width: 100%;
+  ${HorizontalScrollBar}
+  overflow: auto;
 `;
 
 export const CardContain = styled.div`
