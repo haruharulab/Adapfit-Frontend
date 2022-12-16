@@ -1,11 +1,26 @@
 import styled from "styled-components";
 import { HorizontalScrollBar } from "../../components/common/scrollBar/style";
 
-export const BannerImg = styled.img`
+export const BannerImgWrap = styled.div`
   display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+`;
+
+export const BannerImg = styled.img`
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  height: 600px;
+  object-fit: cover;
+`;
+
+export const BannerBackgroundImg = styled.img`
   width: 100%;
   height: 600px;
-  padding-bottom: 80px;
+  object-fit: cover;
+  filter: blur(5px);
 `;
 
 export const Banner = styled.div`
@@ -24,24 +39,6 @@ export const PlanGallery = styled.div`
   ${HorizontalScrollBar};
 `;
 
-export const PlanList = styled.div`
-  display: inline-flex;
-  margin: 0px 20px;
-  width: 300px;
-  height: 470px;
-  border-radius: 10px;
-  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  text-align: center;
-  flex-direction: column;
-`;
-
-export const PlanImg = styled.img`
-  display: flex;
-  width: 100%;
-  border-radius: 10px 10px 0 0;
-  height: 70%;
-  padding-bottom: 20px;
-`;
 export const DownContain = styled.div`
   text-align: center;
 `

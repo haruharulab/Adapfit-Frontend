@@ -20,16 +20,19 @@ export const CardContain = styled.div`
   scrollbar-width: thin;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
 `;
-export const Img = styled.div`
+export const Img = styled.div<{
+    img: string
+}>`
   width: 100%;
   height: 100%;
   border-radius: 30px 30px;
-  background-image: url('/image/test.png');
+  background-image: url(${({img}) => img});
   background-size: cover;
+  background-position: center
 `;
 export const Content = styled.div`
   width: 100%;
-  height: 25%;
+  height: 20%;
   position: absolute;
   bottom: 0;
   display: flex;

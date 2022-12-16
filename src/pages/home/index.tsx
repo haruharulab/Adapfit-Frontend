@@ -8,13 +8,18 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Banner } from "../../types/banner.type";
 import { getBannerList } from "../../apis/banner.api";
+import { getPlanList } from "../../apis/plan.api";
+import { Plan } from "../../types/plan.type";
+import PlanList from "../../components/plan/planList";
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 export const Home = () => {
     const [bannerList, setBannerList] = useState<Banner[]>([]);
-
+    const [planList, setPlanList] = useState<Plan[]>([]);
+    
     useEffect(() => {
         (async () => setBannerList(await getBannerList()))();
+        (async () => setPlanList(await getPlanList()))();
     }, []);
 
     return (
@@ -30,54 +35,16 @@ export const Home = () => {
                 >
                     {bannerList.map(banner => (
                         <SwiperSlide>
-                            <S.BannerImg src={banner.fileUrl} className="slider"/>
+                            <S.BannerImgWrap>
+                                <S.BannerImg src={banner.fileUrl} className="slider"/>
+                                <S.BannerBackgroundImg src={banner.fileUrl}/>
+                            </S.BannerImgWrap>
                         </SwiperSlide>
                     ))}
                 </Swiper>
             </S.Banner>
             <S.PlanGallery>
-                <S.PlanList>
-                    <S.PlanImg src="images/1.png"/>
-                    <b>플랜 설명1</b>
-                    <br></br>
-                    플랜보조설명입니다.
-                </S.PlanList>
-                <S.PlanList>
-                    <S.PlanImg src="images/1.png"/>
-                    <b>플랜 설명1</b>
-                    <br></br>
-                    플랜보조설명입니다.
-                </S.PlanList>
-                <S.PlanList>
-                    <S.PlanImg src="images/1.png"/>
-                    <b>플랜 설명1</b>
-                    <br></br>
-                    플랜보조설명입니다.
-                </S.PlanList>
-                <S.PlanList>
-                    <S.PlanImg src="images/1.png"/>
-                    <b>플랜 설명1</b>
-                    <br></br>
-                    플랜보조설명입니다.
-                </S.PlanList>
-                <S.PlanList>
-                    <S.PlanImg src="images/1.png"/>
-                    <b>플랜 설명1</b>
-                    <br></br>
-                    플랜보조설명입니다.
-                </S.PlanList>
-                <S.PlanList>
-                    <S.PlanImg src="images/2.png"/>
-                    <b>플랜 설명2</b>
-                    <br></br>
-                    플랜보조설명입니다.
-                </S.PlanList>
-                <S.PlanList>
-                    <S.PlanImg src="images/3.png"/>
-                    <b>플랜 설명3</b>
-                    <br></br>
-                    플랜보조설명입니다.
-                </S.PlanList>
+                <PlanList planList={planList} />
             </S.PlanGallery>
             <S.DownContain>
                 <S.DownBox>

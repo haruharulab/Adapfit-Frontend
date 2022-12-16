@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
-import { Plan } from "./pages/planlist";
+import { PlanHome } from "./pages/plan";
 import { Admin } from "./pages/admin";
 import { Home } from "./pages/home";
 import { Header } from "./components/header";
@@ -21,7 +21,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="*" element={<Home />} />
-          <Route path="/plan" element={<Plan />} />
+          <Route path="/plan" element={<PlanHome />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/notice" element={<Notice />} />
           <Route path="/login" element={<Login />} />
