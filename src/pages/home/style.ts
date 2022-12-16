@@ -66,3 +66,13 @@ export const DownBox = styled.div`
     margin-right: 15px;
   }
 `
+
+export const Counselor = styled.div`
+  position: fixed;
+  top: 600px;
+  right: 30px;
+  color: gray;
+  .counselor {
+    size: 24;
+  }
+`

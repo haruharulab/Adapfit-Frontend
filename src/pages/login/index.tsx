@@ -37,11 +37,13 @@ export default function Login() {
   return (
     <S.Contain>
       <S.LoginWrapper>
-        <span>로그인</span>
+        <S.Title>로그인</S.Title>
+        <S.Text>아이디</S.Text>
         <S.Input
           placeholder="아이디를 입력해주세요"
           onChange={(e) => setId(e.target.value)}
         ></S.Input>
+        <S.Text>비밀번호</S.Text>
         <S.Input
           placeholder="비밀번호를 입력해주세요"
           onChange={(e) => setPassword(e.target.value)}
