@@ -2,6 +2,7 @@ export interface Plan {
     planId: number;
     title: string;
     content: string;
-    imgUrl: string;
+    thumbnail: string;
+    images: string[];
     writerId: number;
 }

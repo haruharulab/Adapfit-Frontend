@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export const Header = () => (
   <S.Head>
     <S.LogoWrap to='/'>
-      <S.Logo alt="logo" src="image/Adapfit_logo.svg" />
+      <S.Logo alt="logo" src="/image/Adapfit_logo.svg" />
     </S.LogoWrap>
     <S.Nav>
       <NavLink to="/plan">플랜목록</NavLink>

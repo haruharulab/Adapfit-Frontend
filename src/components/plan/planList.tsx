@@ -10,8 +10,8 @@ export default function PlanList({
     planList
 }: PlanProps) {
   return (
-    <S.Contain>{
+    <S.List>{
         planList.map(plan => <PlanCard plan={plan} />)
-    }</S.Contain>
+    }</S.List>
   );
 }

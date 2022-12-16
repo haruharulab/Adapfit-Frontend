@@ -1,24 +1,28 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { HorizontalScrollBar } from "../common/scrollBar/style";
-export const Contain = styled.div`
+import { Shadow } from "../common/shadow/style";
+export const List = styled.div`
+  display: flex;
   text-align: center;
   white-space: nowrap;
   overflow: auto;
-  width: 100%;
+  padding: 25px 50px;
   ${HorizontalScrollBar}
   overflow: auto;
 `;
 
-export const CardContain = styled.div`
+export const CardContain = styled(Link)`
   display: inline-flex;
   position: relative;
   flex-direction: column;
   width: 300px;
+  min-width: 300px;
   height: 250px;
   border-radius: 30px;
   margin: 0px 20px;
   scrollbar-width: thin;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
+  ${Shadow}
 `;
 export const Img = styled.div<{
     img: string
