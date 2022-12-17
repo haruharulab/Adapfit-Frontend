@@ -9,7 +9,7 @@ export const Header = () => (
     <S.Nav>
       <NavLink to="/plan">플랜목록</NavLink>
       <NavLink to="/counsel">챗봇상담</NavLink>
-      <NavLink to="/hire">채용공고</NavLink>
+      <NavLink to="/employment">채용공고</NavLink>
     </S.Nav>
   </S.Head>
 );
