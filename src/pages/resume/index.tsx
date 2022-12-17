@@ -2,6 +2,7 @@ import * as S from "./style";
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 export default function Resume() {
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
@@ -13,6 +14,7 @@ export default function Resume() {
   const fileInputRef2 = useRef<HTMLInputElement>(null);
   const fileInputRef3 = useRef<HTMLInputElement>(null);
   const [IsFilled, setIsFilled] = useState(false);
+  const { id }: any = useParams();
   const check = () => {
     if (Name == "") return false;
     if (Email == "") return false;
@@ -33,6 +35,7 @@ export default function Resume() {
     formData.append("name", Name);
     formData.append("email", Email);
     formData.append("phoneNumber", PhoneNumber);
+    formData.append("recruitmentId", id);
     if (File1 != null) formData.append("resume", File1);
     if (File2 != null) formData.append("portfolio", File2);
     if (File3 != null) formData.append("etc", File3);

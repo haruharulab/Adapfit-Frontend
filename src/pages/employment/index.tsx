@@ -42,7 +42,7 @@ export default function Employment() {
             <option value={""}>채용패턴</option>
             <option value={"INTERN"}>1</option>
             <option value={"2"}>2</option>
-            <option value={"3"}>3</option>
+            <option value={"3 "}>3</option>
           </select>
         </S.Search>
         <span>채용 직군</span>
@@ -51,12 +51,14 @@ export default function Employment() {
       </S.Header>
       {data.map((i: any) => {
         return (
-          <Item
-            title={i.title}
-            jobGroup={i.jobGroup}
-            career={i.career}
-            workingArea={i.workingArea}
-          />
+          <a href={`employment/${i.id}`} style={{ color: "black" }}>
+            <Item
+              title={i.title}
+              jobGroup={i.jobGroup}
+              career={i.career}
+              workingArea={i.workingArea}
+            />
+          </a>
         );
       })}
     </S.Contain>
