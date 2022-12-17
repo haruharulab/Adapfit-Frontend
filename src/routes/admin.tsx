@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import { Admin } from ".";
-import Login from "../login";
-import Notice from "../notice";
-import Signup from "../signup";
+import Notice from "../components/notice";
+import { Admin } from "../pages/admin";
+import Login from "../pages/login";
+import Signup from "../pages/signup";
 
 const AdminPageRoute = () => (
   <RecoilRoot>
