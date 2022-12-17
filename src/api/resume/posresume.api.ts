@@ -1,7 +1,7 @@
 import axios from "axios";
 import { customAxios } from "../../lib/axios/customaxios";
 
-class posresume {
+export default class posresume {
   public async posResume(req: any, file: any) {
     const { data } = await customAxios.post("resume", {
       recruitmentId: req.recruitmentId,

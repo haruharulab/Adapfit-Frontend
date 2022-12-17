@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { TopShadow } from "../common/shadow/style";
-
 export const Contain = styled.footer`
   width: calc(100% - 80px);
   display: flex;

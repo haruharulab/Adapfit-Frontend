@@ -1,7 +1,6 @@
 import * as S from "./style";
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
-import posResume from "../../api/resume/posresume.api";
 import axios from "axios";
 export default function Resume() {
   const [Name, setName] = useState("");

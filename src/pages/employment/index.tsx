@@ -50,16 +50,6 @@ export default function Employment() {
         <span>경력</span>
         <span>근무지역</span>
       </S.Header>
-      {data.map((i: any) => {
-        return (
-          <Item
-            title={i.title}
-            jobGroup={i.jobGroup}
-            carre={i.career}
-            employmentArea={i.employmentArea}
-          />
-        );
-      })}
       <Item
         title={"피트니스센터메니저"}
         jobGroup={"매니저"}

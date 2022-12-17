@@ -6,8 +6,8 @@ function Footer() {
       <Footer_logo src="/image/Adapfit_logo.svg" />
       <Info>
         <p>
-          <span>주소 부산광역시 금정구 금샘로 361 이엔아이빌딩 3층, 4층</span>
-          ㅣ <span>사업자등록번호 465-87-01643</span> ㅣ
+          <span>주소 부산광역시 금정구 금샘로 361 이엔아이빌딩 3층, 4층</span>ㅣ{" "}
+          <span>사업자등록번호 465-87-01643</span> ㅣ
           <span>상호명 (주)하루하루움직임연구소</span> ㅣ
           <span>대표 정고운</span>
         </p>
