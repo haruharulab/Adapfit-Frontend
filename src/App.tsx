@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
-import { Plan } from "./pages/planlist";
+import { PlanHome } from "./pages/plan/index";
 import { Admin } from "./pages/admin";
 import { Home } from "./pages/home";
 import { Header } from "./components/header";
@@ -10,6 +10,7 @@ import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Employment from "./pages/employment";
 import channelService from "./components/channel/channelService";
+import PlanDetail from "./pages/plan/detail/detail";
 
 function App() {
   channelService.boot({
@@ -21,7 +22,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="*" element={<Home />} />
-          <Route path="/plan" element={<Plan />} />
+          <Route path="/plan" element={<PlanHome />} />
+          <Route path="/plan/:id" element={<PlanDetail />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/notice" element={<Notice />} />
           <Route path="/login" element={<Login />} />

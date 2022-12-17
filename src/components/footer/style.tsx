@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import { TopShadow } from "../common/shadow/style";
 
 export const Contain = styled.footer`
   width: calc(100% - 80px);
   display: flex;
   gap: 30px;
-  border-top: 1px solid black;
+  margin-top: 50px;
+  ${TopShadow}
   .copyright {
     margin-top: 25px;
   }
   padding: 30px 40px;
-
   justify-content: space-around;
   flex-wrap: wrap;
   position: relative;

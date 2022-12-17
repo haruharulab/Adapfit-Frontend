@@ -1,9 +1,17 @@
+import { Plan } from "../../types/plan.type";
 import * as S from "./style";
-export default function PlanCard() {
-  return (
-    <S.CardContain>
-      <S.Img />
-      <S.Content>간단한 플랜소개</S.Content>
-    </S.CardContain>
-  );
+
+interface PlanCardProps {
+    plan: Plan
+}
+
+export default function PlanCard({
+    plan
+}: PlanCardProps) {
+    return (
+        <S.CardContain to={`/plan/${plan.planId}`}>
+            <S.Img img={plan.thumbnail} />
+            <S.Content>{plan.title}</S.Content>
+        </S.CardContain>
+    );
 }
