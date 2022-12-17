@@ -10,6 +10,7 @@ import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Employment from "./pages/employment";
 import Resume from "./pages/resume";
+import Detail from "./pages/EmploymentDetail";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/employment" element={<Employment />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="employment/:id" element={<Detail />} />
         </Routes>
         <Footer />
       </BrowserRouter>
