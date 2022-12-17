@@ -18,19 +18,16 @@ export const Header = styled.div`
 `;
 
 export const Search = styled.div`
+  display: flex;
+  justify-content: space-between;
   resize: none;
   width: 45%;
   height: 40px;
   line-height: 40px;
-  padding-left: 10px;
   background-color: white;
   border: 0px;
   select {
     font-size: 1.2rem;
-    width: 25%;
-    height: 100%;
-  }
-  button {
     width: 25%;
     height: 100%;
   }
