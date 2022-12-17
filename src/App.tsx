@@ -11,6 +11,7 @@ import Signup from "./pages/signup";
 import Employment from "./pages/employment";
 import channelService from "./components/channel/channelService";
 import PlanDetail from "./pages/plan/detail/detail";
+import AdminPageRoute from "./pages/admin/route";
 
 function App() {
   channelService.boot({
@@ -24,10 +25,7 @@ function App() {
           <Route path="*" element={<Home />} />
           <Route path="/plan" element={<PlanHome />} />
           <Route path="/plan/:id" element={<PlanDetail />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/notice" element={<Notice />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/admin/*" element={<AdminPageRoute />} />
           <Route path="/employment" element={<Employment />} />
         </Routes>
         <Footer />
