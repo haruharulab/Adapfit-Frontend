@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 export const Contain = styled.div`
   width: 100%;
@@ -6,15 +7,15 @@ export const Contain = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const LoginWrapper = styled.div`
-  width: 27%;
+export const LoginForm = styled.form`
+  width: 100%;
+  max-width: 450px;
   box-sizing: border-box;
-  height: 320px;
   background-color: #ffffff;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 20px;
   span {
     font-size: 30px;
   }
@@ -22,11 +23,14 @@ export const LoginWrapper = styled.div`
   padding: 20px 50px;
 `;
 
-export const Input = styled.textarea`
+export const InputWrap = styled.div`
+    width: 100%;
+`;
+
+export const Input = styled.input`
+  margin-top: 5px;
   width: 100%;
-  height: 45px;
-  line-height: 45px;
-  padding-left: 15px;
+  padding: 15px;
   box-sizing: border-box;
   resize: none;
   background-color: #fff7ea;
@@ -34,17 +38,18 @@ export const Input = styled.textarea`
   border-radius: 10px;
   font-size: 15px;
   ::placeholder {
-    color: #adadad;
+      color: #adadad;
   }
 `;
-export const Btn_login = styled.div`
+
+export const LoginButton = styled.button`
   width: 100%;
-  height: 45px;
+  border: none;
+  padding: 13px;
   border-radius: 10px;
   background-color: #f2640b;
-  font-size: 15px;
+  font-size: 17px;
   text-align: center;
-  line-height: 45px;
   color: white;
   cursor: pointer;
 `;
@@ -62,7 +67,8 @@ export const Title = styled.div`
   font-size: 23px;
 `;
 
-export const NoneId = styled.div`
+export const NoneId = styled(Link)`
   font-size: 15px;
+  color: gray;
   cursor: pointer;
 `;
