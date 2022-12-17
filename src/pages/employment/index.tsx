@@ -51,12 +51,14 @@ export default function Employment() {
       </S.Header>
       {data.map((i: any) => {
         return (
-          <Item
-            title={i.title}
-            jobGroup={i.jobGroup}
-            career={i.career}
-            workingArea={i.workingArea}
-          />
+          <a href={`employment/${i.id}`} style={{ color: "black" }}>
+            <Item
+              title={i.title}
+              jobGroup={i.jobGroup}
+              career={i.career}
+              workingArea={i.workingArea}
+            />
+          </a>
         );
       })}
     </S.Contain>
