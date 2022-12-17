@@ -10,7 +10,7 @@ import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Employment from "./pages/employment";
 import channelService from "./components/channel/channelService";
-import { PlanDetail } from "./pages/plan/detail";
+import PlanDetail from "./pages/plan/detail/detail";
 
 function App() {
   channelService.boot({
