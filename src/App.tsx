@@ -30,7 +30,7 @@ function App() {
           <Route path="/admin/*" element={<AdminPageRoute />} />
           <Route path="/employment" element={<Employment />} />
           <Route path="/employment/:id" element={<Detail />} />
-          <Route path="resume:id" element={<Resume />} />
+          <Route path="/resume/:id" element={<Resume />} />
         </Routes>
         <Footer />
       </BrowserRouter>
