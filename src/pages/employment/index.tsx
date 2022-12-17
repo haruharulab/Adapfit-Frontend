@@ -19,6 +19,7 @@ export default function Employment() {
       employmentPattern: employmentPattern,
     };
     const temp = await getrecuritmentApi.getRecuritment(req);
+    console.log(data);
     setData(temp);
   };
   return (
@@ -27,8 +28,9 @@ export default function Employment() {
       <S.Header>
         <S.Search>
           <select onChange={(e) => setJobGroup(e.target.value)}>
+            recruitment?jobGroup=CX&career=0&employmentPattern=INTERN
             <option value={""}>채용직군</option>
-            <option value={"1"}>1</option>
+            <option value={"CX"}>1</option>
             <option value={"2"}>2</option>
             <option value={"3"}>3</option>
           </select>
@@ -40,7 +42,7 @@ export default function Employment() {
           </select>
           <select onChange={(e) => setEmploymentPattern(e.target.value)}>
             <option value={""}>채용직군</option>
-            <option value={"1"}>1</option>
+            <option value={"INTERN"}>1</option>
             <option value={"2"}>2</option>
             <option value={"3"}>3</option>
           </select>
@@ -50,6 +52,16 @@ export default function Employment() {
         <span>경력</span>
         <span>근무지역</span>
       </S.Header>
+      {data.map((i: any) => {
+        return (
+          <Item
+            title={i.title}
+            jobGroup={i.jobGroup}
+            carre={i.career}
+            employmentArea={i.employmentArea}
+          />
+        );
+      })}
       <Item
         title={"피트니스센터메니저"}
         jobGroup={"매니저"}
