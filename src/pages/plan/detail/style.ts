@@ -59,6 +59,7 @@ export const PlanConsultButton = styled.button`
   font-size: 17px;
   color: white;
   background-color: #f2640b;
+  cursor: pointer;
 `
 
 export const PlanImageList = styled.ul`

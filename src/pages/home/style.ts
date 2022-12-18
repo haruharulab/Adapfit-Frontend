@@ -24,14 +24,14 @@ export const BannerImg = styled.img`
   max-width: 100%;
   height: 100%;
   object-fit: cover;
-  `;
+`;
 
 export const BannerBackgroundImg = styled.img`
   width: 100%;
   height: 100%;
   transform: scale(1.02);
   object-fit: cover;
-  filter: blur(5px);
+  filter: blur(10px);
 `;
 
 export const Banner = styled.div`
