@@ -23,8 +23,8 @@ export default function Employment() {
   }, [jobGroup, career, employmentPattern]);
   return (
     <S.Contain>
-      <h2>지금 채용 중인 포지션이에요!</h2>
       <S.Header>
+        <S.Title>지금 채용 중인 포지션이에요!</S.Title>
         <S.Search>
           <select onChange={(e) => setJobGroup(e.target.value)}>
             <option value={""}>채용직군</option>
@@ -45,9 +45,6 @@ export default function Employment() {
             <option value={"3 "}>3</option>
           </select>
         </S.Search>
-        <span>채용 직군</span>
-        <span>경력</span>
-        <span>근무지역</span>
       </S.Header>
       {data.map((i: any) => {
         return (

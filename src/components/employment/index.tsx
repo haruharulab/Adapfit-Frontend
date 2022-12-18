@@ -5,7 +5,7 @@ export function Item(props: any) {
       <S.Name>{props.title}</S.Name>
       <span>{props.jobGroup}</span>
       <span>{props.career}</span>
-      <span>{props.workingArea}</span>
+      <span className="pattern">{props.workingArea}</span>
     </S.Contain>
   );
 }
