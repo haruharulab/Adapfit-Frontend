@@ -1,33 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
-export const Head = styled.div`
+import { Container } from "../common/container/style";
+
+export const Header = styled.header`
+  width: 100%;
   display: flex;
-  height: 50px;
-  padding: 0 8vw 0 8vw;
-  justify-content: space-between;
+  justify-content: center;
   background-color: white;
 `;
 
-export const LogoWrap = styled(Link)`
+export const HeaderContainer = styled.div`
+  ${Container}
+  width: 100%;
   display: flex;
-  align-items: center;
-`;
-
-export const Logo = styled.img`
-  cursor: pointer;
-  display: flex;
-  height: 35px;
-  align-self: center;
+  justify-content: space-between;
+  padding: 12px 10px;
 `;
 
 export const Nav = styled.nav`
   display: flex;
   align-self: center;
   font-weight: 550;
-  font-size: 14px;
-  width: 220px;
-  justify-content: space-between;
+  font-size: 17px;
   a {
     color:black;
+    padding: 10px 15px;
   }
 `;
+
+export const AccentLink = styled(NavLink)`
+  background-color: #f2640b;
+  border-radius: 10px;
+  color: white !important;
+`;
+
+export const LogoWrap = styled(Link)`
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+`;
+
+export const Logo = styled.img`
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  align-self: center;
+`;
+

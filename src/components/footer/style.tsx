@@ -1,20 +1,30 @@
 import styled from "styled-components";
+import { Container } from "../common/container/style";
 import { TopShadow } from "../common/shadow/style";
+
 export const Contain = styled.footer`
   width: calc(100% - 80px);
   display: flex;
-  gap: 30px;
+  justify-content: center;
   margin-top: 50px;
   ${TopShadow}
   .copyright {
     margin-top: 25px;
   }
   padding: 30px 40px;
+`;
+
+export const ContentWrap = styled.div`
+  ${Container}
+  max-width: 1320px;
+  display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  position: relative;
+  gap: 30px;
 `;
+
 export const Footer_logo = styled.img`
+  margin-top: 10px;
   width: 150px;
   height: 50px;
 `;

@@ -44,7 +44,8 @@ export const Home = () => {
                 </Swiper>
             </S.Banner>
             <S.PlanGallery>
-                <PlanList planList={planList} />
+                <PlanList planList={planList.filter((_, i) => i < 3)} />
+                <S.PlanDetailLink to='/plan'>플랜 더보기</S.PlanDetailLink>
             </S.PlanGallery>
             <S.DownContain>
                 <S.DownBox>

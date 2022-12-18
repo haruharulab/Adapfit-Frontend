@@ -1,9 +1,5 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-.notosanskr * {
-  font-family: "Noto Sans KR", sans-serif;
-}
-
 #root,
 html,
 body {

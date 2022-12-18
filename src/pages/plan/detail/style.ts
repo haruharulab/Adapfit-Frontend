@@ -41,7 +41,7 @@ export const PlanCategory = styled.div`
 
 export const PlanContent = styled.div`
   flex: auto;
-  white-space: pre;
+  white-space: pre-wrap;
   word-break: break-all;
   margin-top: 40px;
   background-color: white;

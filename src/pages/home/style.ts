@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Container } from "../../components/common/container/style";
 import { HorizontalScrollBar } from "../../components/common/scrollBar/style";
 import { Shadow } from "../../components/common/shadow/style";
 
@@ -43,14 +45,32 @@ export const Banner = styled.div`
 `;
 
 export const PlanGallery = styled.div`
-  height: 400px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: auto;
-  ${HorizontalScrollBar};
+  ${Container}
+  display: flex;
+  justify-content: center;
+  position: relative;
+  & > div {
+    padding: 10px;
+  }
+`;
+
+export const PlanDetailLink = styled(Link)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 125px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 18px;
+  background-color: #f7f8faee;
+  box-shadow: -5px 0px 30px 30px #f7f8faee;
 `;
 
 export const DownContain = styled.div`
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;

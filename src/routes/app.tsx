@@ -23,7 +23,7 @@ const AppPageRoute = () => {
                 <Route path="/plan/:id" element={<PlanDetail />} />
                 <Route path="/employment" element={<Employment />} />
                 <Route path="/employment/:id" element={<Detail />} />
-                <Route path="resume" element={<Resume />} />
+                <Route path="/resume/:id" element={<Resume />} />
             </Routes>
             <Footer />
         </>
