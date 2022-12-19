@@ -67,7 +67,14 @@ export const Title = styled.div`
   font-size: 23px;
 `;
 
-export const NoneId = styled(Link)`
+export const LinkWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const TextLink = styled(Link)`
   font-size: 15px;
   color: gray;
   cursor: pointer;

@@ -66,6 +66,10 @@ const SuperAdminLogin = () => {
                     />
                 </S.InputWrap>
                 <S.LoginButton>로그인</S.LoginButton>
+                <S.LinkWrap>
+                    <S.TextLink to='/admin/login'>일반관리자 로그인</S.TextLink>
+                    <S.TextLink to='/'>홈으로</S.TextLink>
+                </S.LinkWrap>
             </S.LoginForm>
         </S.Contain>
     );

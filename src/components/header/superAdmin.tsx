@@ -35,7 +35,7 @@ const SuperAdminHeader = () => {
         </S.LogoWrap>
         <S.Nav>
           <NavLink to="/admin/manage">관리자계정 관리</NavLink>
-          <S.AccentLink to="/admin/login">일반관리자 로그인</S.AccentLink>
+          <S.AccentLink to="/admin/login">일반관리자 페이지</S.AccentLink>
         </S.Nav>
       </S.HeaderContainer>
     </S.Header>
