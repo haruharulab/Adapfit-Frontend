@@ -6,9 +6,12 @@ export const getPlan = async (id: number): Promise<Plan> => {
 };
 
 export const getPlanList = async (): Promise<Plan[]> => {
-    return (await customAxios.get("plan")).data;
-}
+  return (await customAxios.get("plan")).data;
+};
 
 export const getPlanCategoryList = async (): Promise<PlanCategory[]> => {
-    return (await customAxios.get("category")).data;
-}
+  return (await customAxios.get("category")).data;
+};
+export const deletePlan = async (id: number) => {
+  return await customAxios.delete(`plan/${id}`);
+};

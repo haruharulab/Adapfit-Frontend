@@ -6,6 +6,7 @@ import { RecoilRoot } from "recoil";
 import AdminLogin from "./pages/admin/login";
 import SuperAdminLogin from "./pages/superAdmin/login";
 import AdminPageRoute from "./routes/admin";
+import { PlanHome } from "./pages/admin/plan";
 
 const App = () => (
   <RecoilRoot>
