@@ -22,8 +22,9 @@ interface Ajax {
     url: string,
     method: HttpMethod,
     payload?: any,
-    headers?: any
-    noToken?: boolean
+    headers?: any,
+    noToken?: boolean,
+    errorCallback?: (data: AxiosError | void) => boolean | void
 }
 
 export const useAjax = () => {
@@ -36,19 +37,20 @@ export const useAjax = () => {
         method,
         payload,
         headers = {},
-        noToken
+        noToken,
+        errorCallback
     }: Ajax):Promise<[T, false] | [void, AxiosError | true]> => {
-        if (!noToken) {
+        if (!noToken && token.accessToken) {
             headers.Authorization = token.accessToken;
         }
     
         try {
             const rawRes = await ((): AxiosPromise<T> => {
                 switch (method) {
-                    case HttpMethod.GET: return instance.get(url, headers);
-                    case HttpMethod.POST: return instance.post(url, payload, headers);
-                    case HttpMethod.PUT: return instance.put(url, payload, headers);
-                    case HttpMethod.DELETE: return instance.delete(url, headers);
+                    case HttpMethod.GET: return instance.get(url, {headers});
+                    case HttpMethod.POST: return instance.post(url, payload, {headers});
+                    case HttpMethod.PUT: return instance.put(url, payload, {headers});
+                    case HttpMethod.DELETE: return instance.delete(url, {headers});
                 }
             })();
             return [rawRes.data, false];
@@ -94,11 +96,11 @@ export const useAjax = () => {
             }
 
             if (err.response.data?.message) {
-                alert(err.response.data?.message);
+                !(errorCallback && errorCallback()) && alert(err.response.data?.message);
             } else if (err.response.data?.error) {
-                alert(err.response.data?.error);
+                !(errorCallback && errorCallback()) && alert(err.response.data?.error);
             } else {
-                alert(`HTTP ERROR ${err.response.status}`);
+                !(errorCallback && errorCallback()) && alert(`HTTP ERROR ${err.response.status}`);
             }
             return [, true];
         }

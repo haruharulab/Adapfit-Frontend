@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import channelService from "../components/channel/channelService";
 import Footer from "../components/footer";
@@ -11,10 +12,16 @@ import Resume from "../pages/resume";
 import useAnalytics from "../utils/useAnalytics";
 
 const AppPageRoute = () => {
-    channelService.boot({
-        pluginKey: process.env.REACT_APP_CHANNEL_SERVICE_PLUGIN_KEY,
-    });
     useAnalytics();
+    
+    useEffect(() => {
+        channelService.boot({
+            pluginKey: process.env.REACT_APP_CHANNEL_SERVICE_PLUGIN_KEY,
+        });
+        return () => {
+            channelService.shutdown();
+        }
+    }, []);
 
     return (
         <>

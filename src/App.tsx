@@ -1,16 +1,20 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/login";
 import SuperAdminPageRoute from "./routes/superAdmin";
 import AppPageRoute from "./routes/app";
 import { RecoilRoot } from "recoil";
+import AdminLogin from "./pages/admin/login";
+import SuperAdminLogin from "./pages/superAdmin/login";
+import AdminPageRoute from "./routes/admin";
 
 const App = () => (
   <RecoilRoot>
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<AppPageRoute />} />
-        <Route path="/superadmin/login" element={<Login />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/*" element={<AdminPageRoute />} />
+        <Route path="/superadmin/login" element={<SuperAdminLogin />} />
         <Route path="/superadmin/*" element={<SuperAdminPageRoute />} />
       </Routes>
     </BrowserRouter>

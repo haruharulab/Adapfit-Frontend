@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { TokenRes, tokenState, userState } from "../../store/user.store";
-import { SuperAdmin } from "../../types/user.type";
-import { HttpMethod, useAjax } from "../../utils/ajax";
+import { TokenRes, tokenState, userState } from "../../../store/user.store";
+import { SuperAdmin } from "../../../types/user.type";
+import { HttpMethod, useAjax } from "../../../utils/ajax";
 import * as S from "./style";
 
-export default function Login() {
+const AdminLogin = () => {
     const {ajax} = useAjax();
+    const navigate = useNavigate();
     const setToken = useSetRecoilState(tokenState);
     const setUser = useSetRecoilState(userState);
     const [id, setId] = useState('');
@@ -14,7 +16,7 @@ export default function Login() {
 
     const login = async () => {
         const [token, tokenError] = await ajax<TokenRes>({
-            url: 'super/auth/token',
+            url: 'auth/token',
             method: HttpMethod.POST,
             payload: {
                 authId: id,
@@ -27,10 +29,15 @@ export default function Login() {
 
         const [user, userError] = await ajax<SuperAdmin>({
             url: 'user',
-            method: HttpMethod.GET
+            method: HttpMethod.GET,
+            headers: {
+                Authorization: token.accessToken
+            },
+            noToken: true
         });
         if (userError) return;
         setUser(user);
+        navigate('/admin');
     };
 
     return (
@@ -41,7 +48,7 @@ export default function Login() {
                     login();
                 }}
             >
-                <S.Title>슈퍼관리자 로그인</S.Title>
+                <S.Title>관리자 로그인</S.Title>
                 <S.InputWrap>
                     <S.Text>아이디</S.Text>
                     <S.Input
@@ -63,3 +70,5 @@ export default function Login() {
         </S.Contain>
     );
 }
+
+export default AdminLogin;

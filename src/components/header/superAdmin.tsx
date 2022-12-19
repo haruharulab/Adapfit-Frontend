@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { HttpMethod, useAjax } from "../../utils/ajax";
 import { Admin, Authority, SuperAdmin } from "../../types/user.type";
 
-const AdminHeader = () => {
+const SuperAdminHeader = () => {
   const {ajax} = useAjax();
   const navigate = useNavigate();
   const [user, setUser] = useRecoilState(userState);
@@ -17,14 +17,13 @@ const AdminHeader = () => {
 
   const getLoginInfo = async () => {
     const [user, error] = await ajax<SuperAdmin | Admin>({
-      url: 'user',
+      url: 'super',
       method: HttpMethod.GET,
       errorCallback() {
         return true;
       }
     });
-    if (error || user.authority === Authority.SUPER_ADMIN) return navigate('/superadmin');
-    if (error || user.authority !== Authority.ADMIN) return navigate('/admin/login');
+    if (error || user.authority !== Authority.SUPER_ADMIN) return navigate('/superadmin/login');
     setUser(user);
   }
 
@@ -35,14 +34,12 @@ const AdminHeader = () => {
           <S.Logo alt="logo" src="/image/Adapfit_logo.svg" />
         </S.LogoWrap>
         <S.Nav>
-          <NavLink to="/admin/manage">플랜관리</NavLink>
-          <NavLink to="/admin/banner">배너관리</NavLink>
-          <NavLink to="/admin/employment">채용관리</NavLink>
-          <S.AccentLink to="/superadmin">슈퍼관리자 페이지</S.AccentLink>
+          <NavLink to="/admin/manage">관리자계정 관리</NavLink>
+          <S.AccentLink to="/admin/login">일반관리자 로그인</S.AccentLink>
         </S.Nav>
       </S.HeaderContainer>
     </S.Header>
   );
 }
 
-export default AdminHeader;
+export default SuperAdminHeader;

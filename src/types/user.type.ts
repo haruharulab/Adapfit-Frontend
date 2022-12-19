@@ -19,8 +19,10 @@ export interface Admin {
 }
 
 export interface SuperAdmin {
-    userId: number,
+    superAdminId: number,
     email: string,
     phoneNumber: number,
-    authority: Authority.SUPER_ADMIN
+    authority: Authority.SUPER_ADMIN,
+    createdAt: string,
+    nickname: string
 }

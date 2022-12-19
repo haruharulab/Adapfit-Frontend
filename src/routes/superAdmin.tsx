@@ -1,12 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import { RecoilRoot } from "recoil";
-import AdminHeader from "../components/header/admin";
+import SuperAdminHeader from "../components/header/superAdmin";
 import Notice from "../components/notice";
 import SuperAdminDashboard from "../pages/superAdmin";
 
 const SuperAdminPageRoute = () => (
   <>
-    <AdminHeader />
+    <SuperAdminHeader />
     <Routes>
       <Route path="/" element={<SuperAdminDashboard />} />
       <Route path="notice" element={<Notice />} />

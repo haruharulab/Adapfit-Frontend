@@ -28,7 +28,7 @@ function Footer() {
               <img src="/image/facebook_logo.png" />
               <img src="/image/youtube_logo.png" />
             </S.Sns>
-            <S.AdminLink to='/superadmin'>관리자 페이지</S.AdminLink>
+            <S.AdminLink to='/admin'>관리자 페이지</S.AdminLink>
         </S.Wrap>
       </S.ContentWrap>
     </S.Contain>
