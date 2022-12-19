@@ -24,6 +24,15 @@ export const BannerImgWrap = styled.div`
   width: 300px;
   height: 300px;
   display: flex;
+  label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    color: gray;
+    font-weight: bold;
+  }
 `;
 
 export const BannerImg = styled.img`
@@ -44,3 +53,33 @@ export const BannerDeleteButton = styled.button`
   font-size: 20px;
   background-color: #FFFFFF88;
 `;
+
+export const BannerLinkInput = styled.input`
+  position: absolute;
+  top: calc(50% - 25px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  width: 230px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  background-color: #ffffff88;
+  backdrop-filter: blur(10px);
+`
+
+export const BannerAddButton = styled.button`
+  position: absolute;
+  top: calc(50% + 25px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 17px;
+  color: white;
+  background-color: #f2640b;
+  cursor: pointer;
+`

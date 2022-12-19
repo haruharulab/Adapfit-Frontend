@@ -11,7 +11,7 @@ export const HomeWrap = styled.div`
   text-align: center;
 `;
 
-export const BannerImgWrap = styled.div`
+export const BannerImgLink = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
