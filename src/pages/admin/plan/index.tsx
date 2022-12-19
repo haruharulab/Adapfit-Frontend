@@ -37,6 +37,7 @@ export const PlanHome = () => {
         <div onClick={() => setRemoveMode(!removeMode)}>
           {removeMode ? "확인" : "삭제"}
         </div>
+        <div>추가</div>
         <select onChange={(e) => setNowCategory(Number(e.target.value))}>
           <option value={-1}>카테고리</option>;
           {categoryList.map((category) => {
