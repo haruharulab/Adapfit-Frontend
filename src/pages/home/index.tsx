@@ -59,18 +59,18 @@ export const Home = () => {
             </S.PlanGallery>
             <S.PlanDetailLink to='/plan'>플랜 더보기</S.PlanDetailLink>
             <S.DownContain>
-                <S.DownBox>
+                <S.DownloadLink target='_blank' href="https://apps.apple.com/us/app/%EC%96%B4%EB%8C%91%ED%95%8F/id1618654622?l=ko">
                     <span>
                         IOS 다운로드
                     </span>
                     <img src='/image/ios.png'/>
-                </S.DownBox>
-                <S.DownBox>
+                </S.DownloadLink>
+                <S.DownloadLink target='_blank' href="https://play.google.com/store/apps/details?id=kr.adapfit.app">
                     <span>
                         안드로이드 다운로드
                     </span>
                     <img src='/image/android.png'/>
-                </S.DownBox>
+                </S.DownloadLink>
             </S.DownContain>
         </S.HomeWrap>
     );

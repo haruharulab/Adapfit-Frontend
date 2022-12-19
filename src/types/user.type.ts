@@ -1,3 +1,5 @@
+import { Plan } from "./plan.type";
+
 export enum Authority {
     NO_LOGIN = 'NO_LOGIN',
     ADMIN = 'ADMIN',
@@ -12,5 +14,13 @@ export interface Admin {
     userId: number,
     email: string,
     phoneNumber: number,
-    authority: Authority.ADMIN
+    authority: Authority.ADMIN,
+    plans: Plan[]
+}
+
+export interface SuperAdmin {
+    userId: number,
+    email: string,
+    phoneNumber: number,
+    authority: Authority.SUPER_ADMIN
 }

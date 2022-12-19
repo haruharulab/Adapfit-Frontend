@@ -1,16 +1,20 @@
-import axios from "axios";
 import { useState } from "react";
-import { LOGIN_URL } from "../../constant/url";
-import { TokenRes } from "../../store/user.store";
+import { useSetRecoilState } from "recoil";
+import { TokenRes, tokenState, userState } from "../../store/user.store";
+import { SuperAdmin } from "../../types/user.type";
 import { HttpMethod, useAjax } from "../../utils/ajax";
 import * as S from "./style";
+
 export default function Login() {
     const {ajax} = useAjax();
-    const [id, setId] = useState("");
-    const [password, setPassword] = useState("");
+    const setToken = useSetRecoilState(tokenState);
+    const setUser = useSetRecoilState(userState);
+    const [id, setId] = useState('');
+    const [password, setPassword] = useState('');
+
     const login = async () => {
-        const [data, error] = await ajax<TokenRes>({
-            url: 'auth/token',
+        const [token, tokenError] = await ajax<TokenRes>({
+            url: 'super/auth/token',
             method: HttpMethod.POST,
             payload: {
                 authId: id,
@@ -18,8 +22,15 @@ export default function Login() {
             },
             noToken: true
         });
-        if (error) return;
-        console.log(data);
+        if (tokenError) return;
+        setToken(token);
+
+        const [user, userError] = await ajax<SuperAdmin>({
+            url: 'user',
+            method: HttpMethod.GET
+        });
+        if (userError) return;
+        setUser(user);
     };
 
     return (
@@ -30,7 +41,7 @@ export default function Login() {
                     login();
                 }}
             >
-                <S.Title>로그인</S.Title>
+                <S.Title>슈퍼관리자 로그인</S.Title>
                 <S.InputWrap>
                     <S.Text>아이디</S.Text>
                     <S.Input
@@ -48,7 +59,6 @@ export default function Login() {
                     />
                 </S.InputWrap>
                 <S.LoginButton>로그인</S.LoginButton>
-                <S.NoneId to={'/admin/signup'}>계정이 없으신가요?</S.NoneId>
             </S.LoginForm>
         </S.Contain>
     );

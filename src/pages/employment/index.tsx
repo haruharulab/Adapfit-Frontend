@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 import getrecuritmentApi from "../../api/recruitment/getrecuritment.api";
 
 export default function Employment() {
-  const [jobGroup, setJobGroup] = useState("");
+  const [position, setJobGroup] = useState("");
   const [career, setCareer] = useState("");
   const [employmentPattern, setEmploymentPattern] = useState("");
   const [data, setData] = useState<any>([]);
   const getData = async () => {
     const req = {
-      jobGroup: jobGroup,
+      position,
       career: career,
-      employmentPattern: employmentPattern,
+      employmentPattern,
     };
     const temp = await getrecuritmentApi.getRecuritment(req);
     console.log(temp);
@@ -20,7 +20,7 @@ export default function Employment() {
   };
   useEffect(() => {
     getData();
-  }, [jobGroup, career, employmentPattern]);
+  }, [position, career, employmentPattern]);
   return (
     <S.Contain>
       <S.Header>
@@ -51,7 +51,7 @@ export default function Employment() {
           <a href={`employment/${i.id}`} style={{ color: "black" }}>
             <Item
               title={i.title}
-              jobGroup={i.jobGroup}
+              position={i.position}
               career={i.career}
               workingArea={i.workingArea}
             />

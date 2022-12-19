@@ -1,11 +1,11 @@
-import { Contain, ContentWrap, Footer_logo, Info, Sns } from "./style";
+import * as S from "./style";
 
 function Footer() {
   return (
-    <Contain>
-      <ContentWrap>
-        <Footer_logo src="/image/Adapfit_logo.svg" />
-        <Info>
+    <S.Contain>
+      <S.ContentWrap>
+        <S.Footer_logo src="/image/Adapfit_logo.svg" />
+        <S.Info>
           <p>
             <span>주소 부산광역시 금정구 금샘로 361 이엔아이빌딩 3층, 4층</span>ㅣ{" "}
             <span>사업자등록번호 465-87-01643</span> ㅣ
@@ -21,14 +21,17 @@ function Footer() {
           <p className="copyright">
             Copyright 2020. adapfit. All right reserved.
           </p>
-        </Info>
-        <Sns>
-          <img src="/image/instargram_logo.png" />
-          <img src="/image/facebook_logo.png" />
-          <img src="/image/youtube_logo.png" />
-        </Sns>
-      </ContentWrap>
-    </Contain>
+        </S.Info>
+        <S.Wrap>
+            <S.Sns>
+              <img src="/image/instargram_logo.png" />
+              <img src="/image/facebook_logo.png" />
+              <img src="/image/youtube_logo.png" />
+            </S.Sns>
+            <S.AdminLink to='/superadmin'>관리자 페이지</S.AdminLink>
+        </S.Wrap>
+      </S.ContentWrap>
+    </S.Contain>
   );
 }
 

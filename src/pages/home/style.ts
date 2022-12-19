@@ -93,7 +93,7 @@ export const DownContain = styled.div`
       flex-direction: column;
   }
 `
-export const DownBox = styled.div`
+export const DownloadLink = styled.a`
   display: inline-flex;
   justify-content: space-between;
   align-items: center;

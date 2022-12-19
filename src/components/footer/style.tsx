@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container } from "../common/container/style";
 import { TopShadow } from "../common/shadow/style";
@@ -40,6 +41,14 @@ export const Info = styled.div`
   }
 `;
 
+export const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+`;
+
 export const Sns = styled.div`
   display: flex;
   justify-content: end;
@@ -48,4 +57,12 @@ export const Sns = styled.div`
     width: 33px;
     height: 33px;
   }
+`;
+
+export const AdminLink = styled(Link)`
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #f2640b;
 `;

@@ -4,19 +4,11 @@ import LoginedAdminList from "../../components/LoginedAdminList";
 import Notice from "../../components/notice";
 import * as S from "./style";
 
-export const Admin = () => {
+const SuperAdminDashboard = () => {
   return (
     <S.Contain>
-      <S.Contain1>
-        <LoginedAdminList />
-        <S.Contain2>
-          <Notice />
-          <S.Contain3>
-            <ConsultHistory />
-            <HireHistory />
-          </S.Contain3>
-        </S.Contain2>
-      </S.Contain1>
     </S.Contain>
   );
 };
+
+export default SuperAdminDashboard;
