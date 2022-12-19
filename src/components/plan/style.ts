@@ -24,15 +24,27 @@ export const CardContain = styled(Link)`
   scrollbar-width: thin;
   ${Shadow}
 `;
+export const RemoveCardContain = styled.div`
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+  width: 300px;
+  min-width: 300px;
+  height: 250px;
+  border-radius: 20px;
+  margin: 0px 20px;
+  scrollbar-width: thin;
+  ${Shadow}
+`;
 export const Img = styled.div<{
-    img: string
+  img: string;
 }>`
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  background-image: url(${({img}) => img});
+  background-image: url(${({ img }) => img});
   background-size: cover;
-  background-position: center
+  background-position: center;
 `;
 export const Content = styled.div`
   width: 100%;
@@ -47,4 +59,15 @@ export const Content = styled.div`
   color: white;
   background-color: #00000055;
   border-radius: 0px 0px 20px 20px;
+`;
+
+export const Remove = styled.div`
+  text-align: right;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(248, 247, 216, 0.7);
+  border-radius: 20px;
+  left: 0px;
+  top: 0px;
 `;

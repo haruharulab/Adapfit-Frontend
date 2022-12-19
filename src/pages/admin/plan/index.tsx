@@ -5,11 +5,14 @@ import { Plan, PlanCategory } from "../../../types/plan.type";
 import { getPlanList } from "../../../apis/plan.api";
 import PlanCard from "../../../components/plan/card";
 import { getCategoryList } from "../../../apis/category.api";
+import AdminPlanCard from "../../../components/plan/adminPlanCard";
+import RemovePlanCard from "../../../components/plan/adminPlanCard";
 export const PlanHome = () => {
   const [planList, setPlanList] = useState<Plan[]>([]);
   const [showedPlanlist, setShowedPlanList] = useState<Plan[]>([]);
   const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
   const [nowCategory, setNowCategory] = useState<Number>(-1);
+  const [removeMode, setRemoveMode] = useState<boolean>(false);
   useEffect(() => {
     (async () => {
       const data = await getPlanList();
@@ -20,28 +23,32 @@ export const PlanHome = () => {
     })();
   }, []);
   useEffect(() => {
-    if (nowCategory > 0) {
+    if (nowCategory == -1) {
+      setShowedPlanList(planList);
+    } else if (nowCategory != -1) {
       setShowedPlanList(
         planList.filter((plan) => plan.category.categoryId == nowCategory)
       );
-    } else {
-      setShowedPlanList(planList);
     }
-  }, [nowCategory, planList]);
+  }, [nowCategory]);
   return (
     <S.Contain>
       <S.Header>
+        <div onClick={() => setRemoveMode(!removeMode)}>
+          {removeMode ? "확인" : "삭제"}
+        </div>
+        <div>추가</div>
         <select onChange={(e) => setNowCategory(Number(e.target.value))}>
-          <option value={0}>카테고리</option>;
+          <option value={-1}>카테고리</option>;
           {categoryList.map((category) => {
             return <option value={category.categoryId}>{category.name}</option>;
           })}
         </select>
       </S.Header>
       <S.Plan>
-        {showedPlanlist.map((plan) => (
-          <PlanCard plan={plan} />
-        ))}
+        {showedPlanlist.map((plan) =>
+          removeMode ? <RemovePlanCard plan={plan} /> : <PlanCard plan={plan} />
+        )}
       </S.Plan>
     </S.Contain>
   );
