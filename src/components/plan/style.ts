@@ -24,7 +24,7 @@ export const CardContain = styled(Link)`
   scrollbar-width: thin;
   ${Shadow}
 `;
-export const RemoveCardContain = styled.div`
+export const ManageCardContain = styled.div`
   display: inline-flex;
   position: relative;
   flex-direction: column;
@@ -62,12 +62,21 @@ export const Content = styled.div`
 `;
 
 export const Remove = styled.div`
-  text-align: right;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(248, 247, 216, 0.7);
-  border-radius: 20px;
   left: 0px;
   top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000066;
+  color: white;
+  font-size: 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .25s;
+  &:hover {
+    background-color: #000000AA;
+  }
 `;

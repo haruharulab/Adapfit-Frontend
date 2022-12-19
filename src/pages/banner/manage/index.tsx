@@ -56,6 +56,8 @@ const BannerManage = () => {
       payload
     });
     if (error) return;
+    setNewBannerFile(null);
+    setNewBannerLink('');
     getBannerList();
   }
 

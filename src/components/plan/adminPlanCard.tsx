@@ -3,26 +3,23 @@ import { Plan } from "../../types/plan.type";
 import * as S from "./style";
 
 interface PlanCardProps {
-  plan: Plan;
+  plan: Plan,
+  removeMode: boolean,
+  deletePlan: (id: number) => void
 }
 
-export default function RemovePlanCard({ plan }: PlanCardProps) {
+export default function ManagePlanCard({
+    plan,
+    removeMode,
+    deletePlan
+}: PlanCardProps) {
   return (
-    <S.RemoveCardContain>
+    <S.ManageCardContain>
       <S.Img img={plan.thumbnail} />
       <S.Content>{plan.title}</S.Content>
-      <S.Remove>
-        <div
-          onClick={() => {
-            (async () => {
-              await deletePlan(plan.planId);
-              alert(plan.planId);
-            })();
-          }}
-        >
-          삭제
-        </div>
-      </S.Remove>
-    </S.RemoveCardContain>
+      {
+        removeMode && <S.Remove><div onClick={() => deletePlan(plan.planId)}>플랜 삭제</div></S.Remove>
+      }
+    </S.ManageCardContain>
   );
 }

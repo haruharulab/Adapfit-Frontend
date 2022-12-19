@@ -24,6 +24,7 @@ export const BannerImgWrap = styled.div`
   width: 300px;
   height: 300px;
   display: flex;
+  cursor: pointer;
   label {
     width: 100%;
     display: flex;
@@ -32,13 +33,26 @@ export const BannerImgWrap = styled.div`
     font-size: 80px;
     color: gray;
     font-weight: bold;
+    cursor: pointer;
+    background-color: #FFF;
+    transition: all .25s;
+    border-radius: 15px;
+    &:hover {
+      filter: brightness(.7);
+    }
   }
 `;
 
 export const BannerImg = styled.img`
-    width: 100%;
-    object-fit: cover;
-    border-radius: 15px;
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  background-color: #FFF;
+  transition: all .25s;
+  &:hover {
+    filter: brightness(.7);
+  }
 `;
 
 export const BannerDeleteButton = styled.button`
@@ -52,6 +66,11 @@ export const BannerDeleteButton = styled.button`
   font-weight: bold;
   font-size: 20px;
   background-color: #FFFFFF88;
+  cursor: pointer;
+  transition: all .25s;
+  &:hover {
+    background-color: #FFFFFF44;
+  }
 `;
 
 export const BannerLinkInput = styled.input`
