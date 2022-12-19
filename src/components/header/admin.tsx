@@ -23,8 +23,8 @@ const AdminHeader = () => {
         return true;
       }
     });
-    if (error || user.authority === Authority.SUPER_ADMIN) return navigate('/superadmin');
-    if (error || user.authority !== Authority.ADMIN) return navigate('/admin/login');
+    if (error) return navigate('/admin/login');
+    if (user.authority === Authority.SUPER_ADMIN) return navigate('/superadmin');
     setUser(user);
   }
 
