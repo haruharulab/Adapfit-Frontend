@@ -1,3 +1,7 @@
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container } from "../../components/common/container/style";
@@ -19,6 +23,28 @@ export const BannerImgWrap = styled.div`
   position: relative;
   overflow: hidden;
   user-select: none;
+`;
+
+const Arrow = styled(IoIosArrowDropleftCircle)`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+`;
+
+const RArrow = styled(IoIosArrowDroprightCircle)`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+`;
+
+export const LeftArrow = styled(Arrow)`
+  left: 50px;
+`;
+
+export const RightArrow = styled(RArrow)`
+  right: 50px;
 `;
 
 export const BannerImg = styled.img`
@@ -45,6 +71,16 @@ export const Banner = styled.div`
   @media screen and (max-width: 960px) {
     height: 30vh;
   }
+  .swiper-button-next {
+    &::after {
+      display: none;
+    }
+  }
+  .swiper-button-prev {
+    &::after {
+      display: none;
+    }
+  }
 `;
 
 export const IntroduceWrap = styled.div`
@@ -59,11 +95,11 @@ export const IntroduceWrap = styled.div`
     margin-top: 100px;
     width: 100%;
   }
-  `;
+`;
 
 export const Adapfit = styled.h3`
   color: #ff5a28;
-  `;
+`;
 
 export const PlanGallery = styled.div`
   margin: 150px 0 30px;
@@ -90,9 +126,9 @@ export const DownContain = styled.div`
   gap: 50px;
   text-align: center;
   @media screen and (max-width: 960px) {
-      flex-direction: column;
+    flex-direction: column;
   }
-`
+`;
 export const DownloadLink = styled.a`
   display: inline-flex;
   justify-content: space-between;
@@ -110,8 +146,8 @@ export const DownloadLink = styled.a`
     width: 70px;
     height: auto;
   }
-  transition: background-color .25s;
-  background-color: #FFF;
+  transition: background-color 0.25s;
+  background-color: #fff;
   cursor: pointer;
   &:hover {
     background-color: #00000022;
@@ -119,13 +155,13 @@ export const DownloadLink = styled.a`
   @media screen and (max-width: 450px) {
     width: 250px;
     span {
-        font-size: 20px;
+      font-size: 20px;
     }
     img {
       width: 60px;
     }
   }
-`
+`;
 
 export const Counselor = styled.div`
   position: fixed;
@@ -135,4 +171,4 @@ export const Counselor = styled.div`
   .counselor {
     size: 24;
   }
-`
+`;
