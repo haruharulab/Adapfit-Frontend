@@ -49,7 +49,8 @@ export default function Resume() {
       <h1>지원서 작성</h1>
       <span>지원자 정보</span>
       이름
-      <S.TextArea
+      <S.EmailArea
+        type={"email"}
         placeholder={"이름을 입려해주세요"}
         onChange={(e) => setName(e.target.value)}
       />

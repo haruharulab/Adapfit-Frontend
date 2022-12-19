@@ -24,7 +24,7 @@ export const Nav = styled.nav`
   font-weight: 550;
   font-size: 17px;
   a {
-    color:black;
+    color: black;
     padding: 10px 15px;
   }
 `;
@@ -47,4 +47,3 @@ export const Logo = styled.img`
   height: 40px;
   align-self: center;
 `;
-
