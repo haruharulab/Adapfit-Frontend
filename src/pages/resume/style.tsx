@@ -23,7 +23,23 @@ export const TextArea = styled.textarea`
   margin-bottom: 20px;
   resize: none;
 `;
-
+export const EmailArea = styled.input`
+  width: calc(100% - 10px);
+  background-color: white;
+  padding-left: 10px;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  &:valid {
+    border-color: green;
+  }
+  &:invalid {
+    border-color: red;
+  }
+`;
 export const FileInput = styled.div`
   width: calc(100% - 10px);
   background-color: white;
