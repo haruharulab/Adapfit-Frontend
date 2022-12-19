@@ -29,15 +29,39 @@ export const InfoBox = styled.div`
 `;
 export const SubmitBtn = styled.div`
   cursor: pointer;
-  width: 400px;
   height: 45px;
   line-height: 45px;
   text-align: center;
   font-size: 20px;
   color: white;
-  background-color: #f2640b;
+  background-color: #d9d9d9;
   width: 400px;
   border-radius: 10px;
   margin: 50px auto;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  background: lightgrey;
+  transform: perspective(1px) translateZ(0);
+  transition: color 0.3s;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: #f2640b;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-out;
+  }
+  &:hover {
+    color: white;
+    border-radius: 10px;
+    &::before {
+      border-radius: 10px;
+      transform: scaleX(1);
+    }
+  }
 `;

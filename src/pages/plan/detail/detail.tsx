@@ -25,7 +25,9 @@ const PlanDetail = () => {
     plan && (
       <S.Wrap>
         <S.PlanInfoWrap>
-          <S.PlanInfoImage src={plan.thumbnail} />
+          <S.PlanInfoImageWrap>
+            <S.PlanInfoImage src={plan.thumbnail} />
+          </S.PlanInfoImageWrap>
           <S.PlanInfo>
             <S.PlanTitle>{plan.title}</S.PlanTitle>
             <S.PlanCategory>{plan.category.name}</S.PlanCategory>
@@ -36,7 +38,7 @@ const PlanDetail = () => {
         <S.PlanImageList>
           {plan.images.map((item) => (
             <S.PlanImageItem>
-              <img src={item.image} alt="플랜 설명 이미지" />
+              <img src={item.imageUrl} alt="플랜 설명 이미지" />
             </S.PlanImageItem>
           ))}
         </S.PlanImageList>

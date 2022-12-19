@@ -20,19 +20,19 @@ export const PlanHome = () => {
     })();
   }, []);
   useEffect(() => {
-    if (nowCategory == -1) {
-      setShowedPlanList(planList);
-    } else if (nowCategory != -1) {
+    if (nowCategory > 0) {
       setShowedPlanList(
         planList.filter((plan) => plan.category.categoryId == nowCategory)
       );
+    } else {
+      setShowedPlanList(planList);
     }
-  }, [nowCategory]);
+  }, [nowCategory, planList]);
   return (
     <S.Contain>
       <S.Header>
         <select onChange={(e) => setNowCategory(Number(e.target.value))}>
-          <option value={-1}>카테고리</option>;
+          <option value={0}>카테고리</option>;
           {categoryList.map((category) => {
             return <option value={category.categoryId}>{category.name}</option>;
           })}

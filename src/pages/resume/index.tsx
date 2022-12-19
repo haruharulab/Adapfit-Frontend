@@ -2,6 +2,7 @@ import * as S from "./style";
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { AiFillFileZip } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 export default function Resume() {
   const [Name, setName] = useState("");
@@ -49,34 +50,36 @@ export default function Resume() {
       <h1>지원서 작성</h1>
       <span>지원자 정보</span>
       이름
-      <S.EmailArea
-        type={"email"}
-        placeholder={"이름을 입려해주세요"}
+      <S.TextArea
+        placeholder={"이름을 입력해주세요"}
         onChange={(e) => setName(e.target.value)}
       />
       이메일
       <S.TextArea
-        placeholder={"이메일을 입려해주세요"}
+        placeholder={"이메일을 입력해주세요"}
         onChange={(e) => setEmail(e.target.value)}
       />
       전화번호
       <S.TextArea
-        placeholder={"전화번호를 입려해주세요"}
+        placeholder={"전화번호를 입력해주세요"}
         onChange={(e) => setPhoneNumber(e.target.value)}
       />
       <span>제출 서류</span>
       이력서
       <S.FileInput onClick={() => fileInputRef1.current?.click()}>
+        <AiFillFileZip className="file" />
         {File1 != null ? "이력서 첨부 완료!" : "이력서를 첨부해주세요"}
       </S.FileInput>
       포트폴리오
       <S.FileInput onClick={() => fileInputRef2.current?.click()}>
+        <AiFillFileZip className="file" />
         {File2 != null
           ? "포트폴리오 첨부 완료!"
           : "자신의 포트폴리오를 첨부해주세요\n"}
       </S.FileInput>
       기타
       <S.FileInput onClick={() => fileInputRef3.current?.click()}>
+        <AiFillFileZip className="file" />
         {File3 != null
           ? "기타 제출사항 첨부 완료!"
           : "기타 제출사항이 있으면 첨부해주세요"}

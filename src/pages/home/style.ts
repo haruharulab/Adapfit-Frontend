@@ -1,5 +1,9 @@
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Container } from "../../components/common/container/style";
 import { Shadow } from "../../components/common/shadow/style";
 
@@ -7,7 +11,7 @@ export const HomeWrap = styled.div`
   text-align: center;
 `;
 
-export const BannerImgWrap = styled.div`
+export const BannerImgLink = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +23,25 @@ export const BannerImgWrap = styled.div`
   position: relative;
   overflow: hidden;
   user-select: none;
+`;
+
+const Arrow = css`
+  position: absolute;
+  top: 50%;
+  /* color: rgba(255, 255, 255, 0.6); */
+  z-index: 2;
+`;
+
+export const LeftArrow = styled(IoIosArrowDropleftCircle)`
+  transform: translateY(-50%);
+  left: 50px;
+  ${Arrow}
+`;
+
+export const RightArrow = styled(IoIosArrowDroprightCircle)`
+  transform: translateY(-50%);
+  right: 50px;
+  ${Arrow}
 `;
 
 export const BannerImg = styled.img`
@@ -42,8 +65,31 @@ export const Banner = styled.div`
   width: 100%;
   height: 60vh;
   padding-bottom: 80px;
+  position: relative;
   @media screen and (max-width: 960px) {
     height: 30vh;
+  }
+  .swiper-button-next {
+    &::after {
+      margin-right: 50px;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 50%;
+      color: black;
+      background-color: #ffffff88;
+    }
+  }
+  .swiper-button-prev {
+    &::after {
+      margin-left: 50px;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 50%;
+      color: black;
+      background-color: #ffffff88;
+    }
   }
 `;
 
@@ -59,11 +105,11 @@ export const IntroduceWrap = styled.div`
     margin-top: 100px;
     width: 100%;
   }
-  `;
+`;
 
 export const Adapfit = styled.h3`
   color: #ff5a28;
-  `;
+`;
 
 export const PlanGallery = styled.div`
   margin: 150px 0 30px;
@@ -90,9 +136,9 @@ export const DownContain = styled.div`
   gap: 50px;
   text-align: center;
   @media screen and (max-width: 960px) {
-      flex-direction: column;
+    flex-direction: column;
   }
-`
+`;
 export const DownloadLink = styled.a`
   display: inline-flex;
   justify-content: space-between;
@@ -110,8 +156,8 @@ export const DownloadLink = styled.a`
     width: 70px;
     height: auto;
   }
-  transition: background-color .25s;
-  background-color: #FFF;
+  transition: background-color 0.25s;
+  background-color: #fff;
   cursor: pointer;
   &:hover {
     background-color: #00000022;
@@ -119,13 +165,13 @@ export const DownloadLink = styled.a`
   @media screen and (max-width: 450px) {
     width: 250px;
     span {
-        font-size: 20px;
+      font-size: 20px;
     }
     img {
       width: 60px;
     }
   }
-`
+`;
 
 export const Counselor = styled.div`
   position: fixed;
@@ -135,4 +181,4 @@ export const Counselor = styled.div`
   .counselor {
     size: 24;
   }
-`
+`;
