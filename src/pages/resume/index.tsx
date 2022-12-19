@@ -50,14 +50,8 @@ export default function Resume() {
       <h1>지원서 작성</h1>
       <span>지원자 정보</span>
       이름
-<<<<<<< Updated upstream
-      <S.EmailArea
-        type={"email"}
-        placeholder={"이름을 입려해주세요"}
-=======
       <S.TextArea
         placeholder={"이름을 입력해주세요"}
->>>>>>> Stashed changes
         onChange={(e) => setName(e.target.value)}
       />
       이메일

@@ -3,7 +3,7 @@ import {
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Container } from "../../components/common/container/style";
 import { Shadow } from "../../components/common/shadow/style";
 
@@ -25,26 +25,23 @@ export const BannerImgWrap = styled.div`
   user-select: none;
 `;
 
-const Arrow = styled(IoIosArrowDropleftCircle)`
+const Arrow = css`
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.6);
+  /* color: rgba(255, 255, 255, 0.6); */
+  z-index: 2;
 `;
 
-const RArrow = styled(IoIosArrowDroprightCircle)`
-  position: absolute;
-  top: 50%;
+export const LeftArrow = styled(IoIosArrowDropleftCircle)`
   transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.6);
-`;
-
-export const LeftArrow = styled(Arrow)`
   left: 50px;
+  ${Arrow}
 `;
 
-export const RightArrow = styled(RArrow)`
+export const RightArrow = styled(IoIosArrowDroprightCircle)`
+  transform: translateY(-50%);
   right: 50px;
+  ${Arrow}
 `;
 
 export const BannerImg = styled.img`
@@ -68,17 +65,30 @@ export const Banner = styled.div`
   width: 100%;
   height: 60vh;
   padding-bottom: 80px;
+  position: relative;
   @media screen and (max-width: 960px) {
     height: 30vh;
   }
   .swiper-button-next {
     &::after {
-      display: none;
+      margin-right: 50px;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 50%;
+      color: black;
+      background-color: #ffffff88;
     }
   }
   .swiper-button-prev {
     &::after {
-      display: none;
+      margin-left: 50px;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 50%;
+      color: black;
+      background-color: #ffffff88;
     }
   }
 `;

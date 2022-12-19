@@ -11,15 +11,21 @@ export const PlanInfoWrap = styled.div`
   justify-content: center;
   padding: 20px;
   gap: 20px;
-  max-height: 500px;
+  height: 500px;
   @media screen and (max-width: 800px) {
     flex-direction: column;
   }
 `;
 
-export const PlanInfoImage = styled.img`
+export const PlanInfoImageWrap = styled.div`
   flex: 1.5;
-  max-height: 500px;
+  display: flex;
+  align-items: center;
+`;
+
+export const PlanInfoImage = styled.img`
+  width: 100%;
+  max-height: 100%;
   border-radius: 20px;
 `;
 
