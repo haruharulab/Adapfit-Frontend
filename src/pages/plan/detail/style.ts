@@ -9,6 +9,8 @@ export const Wrap = styled.div`
 export const PlanInfoWrap = styled.div`
   display: flex;
   justify-content: center;
+  padding: 20px;
+  gap: 20px;
   @media screen and (max-width: 800px) {
     flex-direction: column;
   }
@@ -17,13 +19,13 @@ export const PlanInfoWrap = styled.div`
 export const PlanInfoImage = styled.img`
   flex: 1.5;
   max-height: 500px;
+  border-radius: 20px;
 `;
 
 export const PlanInfo = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   justify-content: left;
 `
 

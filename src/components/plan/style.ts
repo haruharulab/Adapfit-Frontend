@@ -19,7 +19,7 @@ export const CardContain = styled(Link)`
   width: 300px;
   min-width: 300px;
   height: 250px;
-  border-radius: 30px;
+  border-radius: 20px;
   margin: 0px 20px;
   scrollbar-width: thin;
   ${Shadow}
@@ -29,7 +29,7 @@ export const Img = styled.div<{
 }>`
   width: 100%;
   height: 100%;
-  border-radius: 30px 30px;
+  border-radius: 20px;
   background-image: url(${({img}) => img});
   background-size: cover;
   background-position: center
@@ -46,5 +46,5 @@ export const Content = styled.div`
   font-size: 20px;
   color: white;
   background-color: #00000055;
-  border-radius: 0px 0px 30px 30px;
+  border-radius: 0px 0px 20px 20px;
 `;

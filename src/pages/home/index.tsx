@@ -23,7 +23,7 @@ export const Home = () => {
     }, []);
 
     return (
-        <div>
+        <S.HomeWrap>
             <S.Banner>
                 <Swiper
                     className="banner"
@@ -43,10 +43,21 @@ export const Home = () => {
                     ))}
                 </Swiper>
             </S.Banner>
+            <S.IntroduceWrap>
+                <h3>
+                    특별한 당신을 위한
+                    <br />
+                    특별한 운동,
+                </h3>
+                <S.Adapfit>
+                    어댑핏!
+                </S.Adapfit>
+                <img src='/image/adapfit_introduce.png' alt="" />
+            </S.IntroduceWrap>
             <S.PlanGallery>
-                <PlanList planList={planList.filter((_, i) => i < 3)} />
-                <S.PlanDetailLink to='/plan'>플랜 더보기</S.PlanDetailLink>
+                <PlanList planList={planList} />
             </S.PlanGallery>
+            <S.PlanDetailLink to='/plan'>플랜 더보기</S.PlanDetailLink>
             <S.DownContain>
                 <S.DownBox>
                     <span>
@@ -61,6 +72,6 @@ export const Home = () => {
                     <img src='/image/android.png'/>
                 </S.DownBox>
             </S.DownContain>
-        </div>
+        </S.HomeWrap>
     );
 };

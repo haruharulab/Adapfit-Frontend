@@ -20,6 +20,7 @@ export const HeaderContainer = styled.div`
 export const Nav = styled.nav`
   display: flex;
   align-self: center;
+  gap: 10px;
   font-weight: 550;
   font-size: 17px;
   a {

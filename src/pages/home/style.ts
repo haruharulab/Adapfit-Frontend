@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container } from "../../components/common/container/style";
-import { HorizontalScrollBar } from "../../components/common/scrollBar/style";
 import { Shadow } from "../../components/common/shadow/style";
+
+export const HomeWrap = styled.div`
+  text-align: center;
+`;
 
 export const BannerImgWrap = styled.div`
   display: flex;
@@ -44,29 +47,39 @@ export const Banner = styled.div`
   }
 `;
 
-export const PlanGallery = styled.div`
+export const IntroduceWrap = styled.div`
+  text-align: center;
   ${Container}
+  width: 100%;
+  h3 {
+    font-size: 46px;
+    font-weight: bold;
+  }
+  img {
+    margin-top: 100px;
+    width: 100%;
+  }
+  `;
+
+export const Adapfit = styled.h3`
+  color: #ff5a28;
+  `;
+
+export const PlanGallery = styled.div`
+  margin: 150px 0 30px;
+  max-width: 100%;
   display: flex;
   justify-content: center;
-  position: relative;
-  & > div {
-    padding: 10px;
-  }
 `;
 
 export const PlanDetailLink = styled(Link)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 125px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 18px;
-  background-color: #f7f8faee;
-  box-shadow: -5px 0px 30px 30px #f7f8faee;
+  margin-top: 30px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  background-color: #f2640b;
 `;
 
 export const DownContain = styled.div`
