@@ -8,11 +8,13 @@ import { Home } from "../pages/home";
 import PlanDetail from "../pages/plan/detail/detail";
 import { PlanHome } from "../pages/plan/index";
 import Resume from "../pages/resume";
+import useAnalytics from "../utils/useAnalytics";
 
 const AppPageRoute = () => {
     channelService.boot({
         pluginKey: process.env.REACT_APP_CHANNEL_SERVICE_PLUGIN_KEY,
     });
+    useAnalytics();
 
     return (
         <>
