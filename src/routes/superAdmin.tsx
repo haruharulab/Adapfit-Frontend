@@ -12,7 +12,7 @@ const SuperAdminPageRoute = () => (
       <Route path="/" element={<AdminList />} />
       <Route path="notice" element={<Notice />} />
       <Route path="adminlist" element={<AdminList />} />
-      <Route path="adminmodify/:id" element={<Modify />} />
+      <Route path="adminmodify/:userId" element={<Modify />} />
     </Routes>
   </>
 );

@@ -43,7 +43,7 @@ export const Input = styled.input`
   }
 `;
 
-export const ModifyButton = styled.button`
+export const ModifyButton = styled.div`
   width: 100%;
   border: none;
   padding: 13px;
