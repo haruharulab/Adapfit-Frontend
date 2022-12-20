@@ -20,18 +20,6 @@ const AdminDashboard = () => {
 
   const getResumeList = async () => {
     const [data, error] = await ajax<Resume[]>({
-<<<<<<< Updated upstream
-      url: 'resume',
-      method: HttpMethod.GET
-    });
-    if (error) return;
-    setResumeList(data);
-  }
-  
-  return (
-    user.authority === Authority.ADMIN
-    ? <S.Contain>
-=======
       url: "resume",
       method: HttpMethod.GET,
       errorCallback() {
@@ -44,7 +32,6 @@ const AdminDashboard = () => {
 
   return user.authority === Authority.ADMIN ? (
     <S.Contain>
->>>>>>> Stashed changes
       <S.LeftWrap>
         <S.NoticeWrap>
           <div>

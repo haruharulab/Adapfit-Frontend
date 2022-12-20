@@ -18,12 +18,13 @@ export const PlanInfoWrap = styled.div`
 `;
 
 export const PlanInfoImageWrap = styled.div`
+  position: relative;
   flex: 1.5;
   display: flex;
   align-items: center;
 `;
 
-export const PlanInfoImageEdit = styled.div`
+export const PlanInfoImageEdit = styled.label`
   opacity: 0;
   position: absolute;
   left: 0px;
@@ -109,6 +110,7 @@ margin-top: 50px;
 `;
 
 export const PlanImageItem = styled.li`
+  position: relative;
   display: flex;
   justify-content: center;
   list-style: none;
