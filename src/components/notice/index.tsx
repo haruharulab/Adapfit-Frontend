@@ -1,34 +1,35 @@
 import * as S from "./style";
 import { BsBellFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const sampleData = [
   {
-    title: "제목입니다11",
-    writer: "응아니야",
-    date: "1월 1일",
+    title: "8월 20일 홈페이지 업데이트 공고",
+    writer: "매니저",
+    date: "8월 13일",
   },
   {
     title: "공지사항입니다.",
-    writer: "응아니야",
+    writer: "매니저",
     date: "2월 13일",
   },
   {
-    title: "제목입니다11",
-    writer: "응아니야",
+    title: "8월 20일 홈페이지 업데이트 공고",
+    writer: "매니저",
     date: "7월 25일",
   },
   {
     title: "공지사항입니다",
-    writer: "응아니야",
+    writer: "매니저",
     date: "2월 1일",
   },
   {
-    title: "제목입니다11",
-    writer: "응아니야",
+    title: "8월 20일 홈페이지 업데이트 공고",
+    writer: "매니저",
     date: "12월 1일",
   },
   {
     title: "공지사항입니다",
-    writer: "응아니야",
+    writer: "매니저",
     date: "9월 1일",
   },
 ];
@@ -42,7 +43,9 @@ export default function Notice() {
       {sampleData.map((data) => {
         return (
           <S.NoticeConatiner>
-            <S.Writer>{data.title}</S.Writer>
+            <a href={`noticedetail`} style={{ color: "black" }}>
+              <S.Writer>{data.title}</S.Writer>{" "}
+            </a>
             <S.WriterAndDate>
               <S.StyledSpan>{data.writer}</S.StyledSpan>
               <S.StyledSpan>{data.date}</S.StyledSpan>

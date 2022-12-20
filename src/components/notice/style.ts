@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import { FiArrowLeft } from "react-icons/fi";
 
+export const Arrow = styled(FiArrowLeft)`
+  height: 40px;
+`;
 export const Contain = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,7 +28,7 @@ export const StyledSpan = styled.span`
   font-size: 17px;
 `;
 export const Writer = styled(StyledSpan)`
-  font-weight: 600;
+  font-weight: 500;
 `;
 export const WriterAndDate = styled.div`
   display: flex;
