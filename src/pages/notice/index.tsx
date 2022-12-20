@@ -35,7 +35,7 @@ export default function Notice() {
   return (
     <S.Contain>
       <S.Header>
-        <span>공지사항</span>
+        <S.Title>공지사항</S.Title>
         <S.Img src="image/ring.png"></S.Img>
       </S.Header>
       {sampleData.map((data) => {

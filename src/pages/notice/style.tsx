@@ -31,10 +31,12 @@ export const Header = styled.div`
   height: 50px;
   align-items: center;
   width: calc(100%-50px);
-  span {
-    font-size: 20px;
-  }
 `;
 export const Img = styled.img`
   width: 30px;
+`;
+
+export const Title = styled.div`
+  font-weight: 700;
+  font-size: 24px;
 `;
