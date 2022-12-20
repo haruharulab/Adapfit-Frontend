@@ -41,18 +41,30 @@ export const NoticeWrap = styled.div`
   flex: auto;
   background-color: white;
   border-radius: 10px;
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const EmploymentWrap = styled.div`
   flex: auto;
   background-color: white;
   border-radius: 10px;
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const AdminInfoWrap = styled.div`
   flex: auto;
   background-color: white;
   border-radius: 10px;
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const BannerWrap = styled.div`

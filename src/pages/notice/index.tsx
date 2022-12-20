@@ -1,33 +1,34 @@
 import * as S from "./style";
+import { Link } from "react-router-dom";
 const sampleData = [
   {
-    title: "제목입니다11",
-    writer: "응아니야",
-    date: "1월 1일",
+    title: "8월 20일 홈페이지 업데이트 공고",
+    writer: "매니저",
+    date: "8월 13일",
   },
   {
     title: "공지사항입니다.",
-    writer: "응아니야",
+    writer: "매니저",
     date: "2월 13일",
   },
   {
-    title: "제목입니다11",
-    writer: "응아니야",
+    title: "8월 20일 홈페이지 업데이트 공고",
+    writer: "매니저",
     date: "7월 25일",
   },
   {
     title: "공지사항입니다",
-    writer: "응아니야",
+    writer: "매니저",
     date: "2월 1일",
   },
   {
-    title: "제목입니다11",
-    writer: "응아니야",
+    title: "8월 20일 홈페이지 업데이트 공고",
+    writer: "매니저",
     date: "12월 1일",
   },
   {
     title: "공지사항입니다",
-    writer: "응아니야",
+    writer: "매니저",
     date: "9월 1일",
   },
 ];
@@ -35,7 +36,7 @@ export default function Notice() {
   return (
     <S.Contain>
       <S.Header>
-        <span>공지사항</span>
+        <S.Title>공지사항</S.Title>
         <S.Img src="image/ring.png"></S.Img>
       </S.Header>
       {sampleData.map((data) => {

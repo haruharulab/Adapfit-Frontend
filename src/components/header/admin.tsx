@@ -47,6 +47,7 @@ const AdminHeader = () => {
           <NavLink to="/admin/plan">플랜관리</NavLink>
           <NavLink to="/admin/banner">배너관리</NavLink>
           <NavLink to="/admin/employment">채용관리</NavLink>
+          <NavLink to="/admin">대시보드</NavLink>
           <S.AccentLink to="/superadmin/login">슈퍼관리자 페이지</S.AccentLink>
         </S.Nav>
       </S.HeaderContainer>

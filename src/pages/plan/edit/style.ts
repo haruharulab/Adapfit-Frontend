@@ -4,6 +4,7 @@ import { ScrollBar } from "../../../components/common/scrollBar/style";
 
 export const Wrap = styled.div`
   ${Container}
+  padding-bottom: 20px;
 `;
 
 export const PlanInfoWrap = styled.div`
@@ -18,12 +19,13 @@ export const PlanInfoWrap = styled.div`
 `;
 
 export const PlanInfoImageWrap = styled.div`
+  position: relative;
   flex: 1.5;
   display: flex;
   align-items: center;
 `;
 
-export const PlanInfoImageEdit = styled.div`
+export const EditPlanInfoImage = styled.label`
   opacity: 0;
   position: absolute;
   left: 0px;
@@ -41,6 +43,23 @@ export const PlanInfoImageEdit = styled.div`
   transition: all .25s;
   &:hover {
     background-color: #000000AA;
+    opacity: 1;
+  }
+`;
+
+export const AddPlanInfoImage = styled.label`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .25s;
+  &:hover {
+    background-color: #888888;
     opacity: 1;
   }
 `;
@@ -109,6 +128,7 @@ margin-top: 50px;
 `;
 
 export const PlanImageItem = styled.li`
+  position: relative;
   display: flex;
   justify-content: center;
   list-style: none;
