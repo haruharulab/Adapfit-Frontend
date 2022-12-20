@@ -10,7 +10,7 @@ import ManagePlanCard from "../../../components/plan/adminPlanCard";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 
 export const PlanHome = () => {
-  const {ajax} = useAjax();
+  const { ajax } = useAjax();
   const [planList, setPlanList] = useState<Plan[]>([]);
   const [showedPlanlist, setShowedPlanList] = useState<Plan[]>([]);
   const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
@@ -39,16 +39,16 @@ export const PlanHome = () => {
   }, [categoryList, planList, nowCategory]);
 
   const deletePlan = async (id: number) => {
-    if (!window.confirm('정말 삭제하시겠습니까?')) return;
+    if (!window.confirm("정말 삭제하시겠습니까?")) return;
     const [, error] = await ajax({
       url: `plan/${id}`,
-      method: HttpMethod.DELETE
+      method: HttpMethod.DELETE,
     });
     if (error) return;
 
     const data = await getPlanList();
     setPlanList(data);
-  }
+  };
 
   return (
     <S.Contain>
@@ -65,13 +65,13 @@ export const PlanHome = () => {
         </select>
       </S.Header>
       <S.Plan>
-        {showedPlanlist.map((plan) =>
+        {showedPlanlist.map((plan) => (
           <ManagePlanCard
             plan={plan}
             removeMode={removeMode}
             deletePlan={deletePlan}
           />
-        )}
+        ))}
       </S.Plan>
     </S.Contain>
   );
