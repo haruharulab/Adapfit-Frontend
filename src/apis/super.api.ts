@@ -17,3 +17,6 @@ export const getUser = async (): Promise<Admin[]> => {
 export const putAdmin = async (id: any, data: putData) => {
   await customAxios.post(`super/${id}`, data);
 };
+export const getAdmin = async (id: any) => {
+  return (await customAxios.get(`super/${id}`)).data;
+};

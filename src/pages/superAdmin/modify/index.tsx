@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { putAdmin } from "../../../apis/super.api";
+import { getAdmin, putAdmin } from "../../../apis/super.api";
 import * as S from "./style";
 const Modify = () => {
   const { userId } = useParams();
@@ -19,6 +19,8 @@ const Modify = () => {
       phoneNumber: "21301032",
       nickname: "afds",
     };
+    const data2 = getAdmin(userId);
+    console.log(data2);
     setId(data.id);
     setPassword(data.password);
     setEmail(data.email);
