@@ -6,6 +6,7 @@ interface AdminItemProps extends Admin {
 }
 
 export function AdminItem({
+  userId,
   authId,
   nickname,
   email,
@@ -17,7 +18,9 @@ export function AdminItem({
     <S.Contain>
       <S.Name>
         <div onClick={() => deleteAdmin(authId)}>삭제</div>
-        <div onClick={() => deleteAdmin(authId)}>수정</div>
+        <a href={`adminmodify/${userId}`}>
+          <div>수정</div>
+        </a>
         {nickname}
       </S.Name>
       <S.Info>{email}</S.Info>

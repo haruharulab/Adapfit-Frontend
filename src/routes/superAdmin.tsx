@@ -3,7 +3,7 @@ import SuperAdminHeader from "../components/header/superAdmin";
 import Notice from "../components/notice";
 import SuperAdminDashboard from "../pages/superAdmin";
 import AdminList from "../pages/superAdmin/adminlist";
-import Modify from "../pages/superAdmin/adminlist/modify";
+import Modify from "../pages/superAdmin/modify";
 
 const SuperAdminPageRoute = () => (
   <>
