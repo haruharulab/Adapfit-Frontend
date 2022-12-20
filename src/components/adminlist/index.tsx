@@ -11,7 +11,7 @@ export function AdminItem({
   nickname,
   email,
   phoneNumber,
-  centerInfo,
+  authority,
   deleteAdmin,
 }: AdminItemProps) {
   return (
@@ -24,7 +24,7 @@ export function AdminItem({
         {nickname}
       </S.Name>
       <S.Info>{email}</S.Info>
-      <S.Info>{centerInfo}</S.Info>
+      <S.Info>{authority}</S.Info>
       <S.Info>{phoneNumber}</S.Info>
     </S.Contain>
   );
