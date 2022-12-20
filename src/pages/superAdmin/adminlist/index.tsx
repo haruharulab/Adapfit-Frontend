@@ -1,19 +1,19 @@
 import * as S from "./style";
 import { useEffect, useState } from "react";
-import AdminItem from "../../../components/adminlist";
 import { Admin } from "../../../types/user.type";
 import { getUser } from "../../../apis/super.api";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
+import { AdminItem } from "../../../components/adminlist";
 
 export default function AdminList() {
-  const {ajax} = useAjax();
+  const { ajax } = useAjax();
   const [adminList, setAdminList] = useState<Admin[]>([]);
 
   useEffect(() => {
     (async () => {
       const [data, error] = await ajax<Admin[]>({
-        url: 'super/all',
-        method: HttpMethod.GET
+        url: "super/all",
+        method: HttpMethod.GET,
       });
       if (error) return;
       setAdminList(data);
@@ -29,7 +29,9 @@ export default function AdminList() {
         <span>소속</span>
         <span>연락처</span>
       </S.Header>
-      {adminList.map(admin => <AdminItem {...admin} />)}
+      {adminList.map((admin) => (
+        <AdminItem {...admin} />
+      ))}
     </S.Contain>
   );
 }
