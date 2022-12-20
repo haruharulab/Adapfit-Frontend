@@ -19,7 +19,7 @@ export function AdminItem({
       <S.Name>
         <div onClick={() => deleteAdmin(authId)}>삭제</div>
         <a href={`/superadmin/adminmodify/${userId}`}>
-          <div>수정</div>
+          <div>수정 </div>
         </a>
         {nickname}
       </S.Name>
