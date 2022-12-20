@@ -11,7 +11,7 @@ export function AdminItem({
   nickname,
   email,
   phoneNumber,
-  centerInfo,
+  authority,
   deleteAdmin,
 }: AdminItemProps) {
   return (
@@ -19,12 +19,12 @@ export function AdminItem({
       <S.Name>
         <div onClick={() => deleteAdmin(authId)}>삭제</div>
         <a href={`/superadmin/adminmodify/${userId}`}>
-          <div>수정</div>
+          <div>수정 </div>
         </a>
         {nickname}
       </S.Name>
       <S.Info>{email}</S.Info>
-      <S.Info>{centerInfo}</S.Info>
+      <S.Info>{authority}</S.Info>
       <S.Info>{phoneNumber}</S.Info>
     </S.Contain>
   );
