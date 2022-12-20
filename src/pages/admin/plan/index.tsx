@@ -1,13 +1,11 @@
-import PlanList from "../../../components/plan/planList";
 import * as S from "./style";
 import { useEffect, useState } from "react";
 import { Plan, PlanCategory } from "../../../types/plan.type";
 import { getPlanList } from "../../../apis/plan.api";
-import PlanCard from "../../../components/plan/card";
 import { getCategoryList } from "../../../apis/category.api";
-import AdminPlanCard from "../../../components/plan/adminPlanCard";
 import ManagePlanCard from "../../../components/plan/adminPlanCard";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
+import { Link } from "react-router-dom";
 
 export const PlanHome = () => {
   const { ajax } = useAjax();
@@ -56,7 +54,9 @@ export const PlanHome = () => {
         <div onClick={() => setRemoveMode(!removeMode)}>
           {removeMode ? "확인" : "삭제"}
         </div>
-        <div>추가</div>
+        <Link to='/admin/plan/create'>
+            <div>추가</div>
+        </Link>
         <select onChange={(e) => setNowCategory(Number(e.target.value))}>
           <option value={-1}>카테고리</option>;
           {categoryList.map((category) => {

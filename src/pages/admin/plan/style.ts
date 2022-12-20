@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Shadow } from "../../../components/common/shadow/style";
 export const Contain = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,9 +11,9 @@ export const Header = styled.div`
   justify-content: end;
   gap: 10px;
   select {
-    width: 80px;
+    width: 100px;
+    padding: 5px 10px;
     margin-right: 20px;
-    height: 30px;
     background-color: #000000;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.53);
@@ -22,11 +23,11 @@ export const Header = styled.div`
     text-align: center;
     line-height: 30px;
     cursor: pointer;
-    padding: 0px 10px;
+    padding: 5px 20px;
     height: 30px;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.53);
-    color: white;
+    background-color: white;
+    color: black;
   }
 `;
 

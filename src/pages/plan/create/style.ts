@@ -111,7 +111,7 @@ export const PlanContentTextArea = styled.textarea`
   ${ScrollBar}
 `
 
-export const PlanEditButton = styled.button`
+export const CreatePlanButton = styled.button`
   margin-top: 20px;
   width: 100%;
   border: none;

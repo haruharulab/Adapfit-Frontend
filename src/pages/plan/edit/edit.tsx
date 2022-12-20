@@ -32,6 +32,9 @@ const PlanEdit = () => {
   }, [planId]);
 
   const updatePlan = async () => {
+    if (!planCategoryId) return alert('플랜 카테고리를 선택해주세요');
+    if (imageList.length < 1) return alert('플랜 이미지는 1개 이상이여야 합니다');
+
     const payload = new FormData();
     payload.append('req', new Blob([JSON.stringify({
       title: planTitle,
@@ -119,15 +122,20 @@ const PlanEdit = () => {
               style={{display: 'none'}}
             />
           </S.PlanInfoImageWrap>
-          <S.PlanInfo>
+          <S.PlanInfo onSubmit={e => {
+            e.preventDefault();
+            updatePlan();
+          }}>
             <S.PlanTitleInput
               placeholder='플랜 제목 입력'
               onChange={(e) => setPlanTitle(e.target.value)}
               value={planTitle}
+              required
             />
             <S.PlanCategorySelect
               onChange={(e) => setPlanCategoryId(Number(e.target.value))}
               value={planCategoryId}
+              required
             >
               <option value={0}>플랜 카테고리 선택</option>
             {
@@ -139,8 +147,9 @@ const PlanEdit = () => {
               placeholder='플랜 정보 입력'
               onChange={(e) => setPlanContent(e.target.value)}
               value={planContent}
+              required
             />
-            <S.PlanEditButton onClick={updatePlan}>플랜 수정</S.PlanEditButton>
+            <S.PlanEditButton type="submit">플랜 수정</S.PlanEditButton>
           </S.PlanInfo>
         </S.PlanInfoWrap>
         <S.PlanImageList>

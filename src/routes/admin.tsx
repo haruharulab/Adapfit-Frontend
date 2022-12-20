@@ -6,6 +6,7 @@ import { PlanHome } from "../pages/admin/plan";
 import BannerManage from "../pages/banner/manage";
 import PlanEdit from "../pages/plan/edit/edit";
 import NoticeDetail from "../components/noticedetail";
+import CreatePlan from "../pages/plan/create/create";
 const AdminPageRoute = () => (
   <>
     <AdminHeader />
@@ -15,6 +16,7 @@ const AdminPageRoute = () => (
       <Route path="/notice:id" element={<NoticeDetail />} />
       <Route path="/noticedetail" element={<NoticeDetail />} />
       <Route path="/plan/:id" element={<PlanEdit />} />
+      <Route path="/plan/create" element={<CreatePlan />} />
       <Route path="/plan" element={<PlanHome />} />
       <Route path="/banner" element={<BannerManage />} />
     </Routes>
