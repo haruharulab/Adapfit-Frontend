@@ -8,7 +8,8 @@ export const Contain = styled.div`
 `;
 export const Header = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
   ${Container}
   width: 100%;
   max-width: 1240px;
@@ -21,11 +22,17 @@ export const Header = styled.div`
     color: white;
     font-size: 16px;
   }
+  h2 {
+    margin-left: 20px;
+    font-size: 36px;
+    font-weight: bold;
+  }
 `;
 
 export const Plan = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  ${Container}
+  max-width: 1400px;
 `;

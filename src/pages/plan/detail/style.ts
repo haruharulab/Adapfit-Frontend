@@ -14,6 +14,7 @@ export const PlanInfoWrap = styled.div`
   height: 500px;
   @media screen and (max-width: 800px) {
     flex-direction: column;
+    height: auto;
   }
 `;
 
@@ -57,6 +58,10 @@ export const PlanContent = styled.div`
   border-radius: 15px;
   padding: 10px;
   ${ScrollBar}
+  @media screen and (max-width: 800px) {
+    margin-top: 20px;
+    max-height: 200px;
+  }
 `
 
 export const PlanConsultButton = styled.button`
@@ -72,7 +77,9 @@ export const PlanConsultButton = styled.button`
 `
 
 export const PlanImageList = styled.ul`
-margin-top: 50px;
+  ${Container}
+  margin-top: 50px;
+  max-width: 900px;
 `;
 
 export const PlanImageItem = styled.li`

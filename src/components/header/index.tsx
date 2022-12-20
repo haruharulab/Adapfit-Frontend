@@ -8,7 +8,7 @@ export const Header = () => (
         <S.Logo alt="logo" src="/image/Adapfit_logo.svg" />
       </S.LogoWrap>
       <S.Nav>
-        <NavLink to="/plan">플랜목록</NavLink>
+        <NavLink to="/plan">플랜 목록</NavLink>
         <NavLink to="/counsel">챗봇상담</NavLink>
         <S.AccentLink to="/employment">채용공고</S.AccentLink>
       </S.Nav>

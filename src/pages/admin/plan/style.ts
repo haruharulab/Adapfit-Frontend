@@ -9,11 +9,21 @@ export const Contain = styled.div`
 `;
 export const Header = styled.div`
   display: flex;
-  justify-content: end;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
   ${Container}
   width: 100%;
   max-width: 1240px;
+  h2 {
+    margin-left: 20px;
+    font-size: 36px;
+    font-weight: bold;
+  }
+`;
+
+export const MenuWrap = styled.div`
+  display: flex;
+  gap: 10px;
   select {
     padding: 5px 5px 5px 10px;
     margin-right: 20px;
@@ -39,5 +49,6 @@ export const Plan = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  ${Container}
+  max-width: 1400px;
 `;

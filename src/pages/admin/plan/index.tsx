@@ -51,18 +51,21 @@ export const PlanHome = () => {
   return (
     <S.Contain>
       <S.Header>
-        <div onClick={() => setRemoveMode(!removeMode)}>
-          {removeMode ? "확인" : "삭제"}
-        </div>
-        <Link to='/admin/plan/create'>
-            <div>추가</div>
-        </Link>
-        <select onChange={(e) => setNowCategory(Number(e.target.value))}>
-          <option value={-1}>전체 플랜</option>;
-          {categoryList.map((category) => {
-            return <option value={category.categoryId}>{category.name}</option>;
-          })}
-        </select>
+        <h2>플랜 관리</h2>
+        <S.MenuWrap>
+          <div onClick={() => setRemoveMode(!removeMode)}>
+            {removeMode ? "확인" : "삭제"}
+          </div>
+          <Link to='/admin/plan/create'>
+              <div>추가</div>
+          </Link>
+          <select onChange={(e) => setNowCategory(Number(e.target.value))}>
+            <option value={-1}>전체 플랜</option>;
+            {categoryList.map((category) => {
+              return <option value={category.categoryId}>{category.name}</option>;
+            })}
+          </select>
+        </S.MenuWrap>
       </S.Header>
       <S.Plan>
         {showedPlanlist.map((plan) => (

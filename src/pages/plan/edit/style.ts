@@ -15,6 +15,7 @@ export const PlanInfoWrap = styled.div`
   height: 500px;
   @media screen and (max-width: 800px) {
     flex-direction: column;
+    height: auto;
   }
 `;
 
@@ -90,12 +91,13 @@ export const PlanCategorySelect = styled.select`
   margin-top: 10px;
   align-self: flex-start;
   background-color: white;
-  text-align: center;
+  text-align: left;
+  padding: 5px 10px;
   color: #494949;
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  `;
+`;
 
 export const PlanContentTextArea = styled.textarea`
   flex: auto;
@@ -109,6 +111,10 @@ export const PlanContentTextArea = styled.textarea`
   padding: 10px;
   resize: none;
   ${ScrollBar}
+  @media screen and (max-width: 800px) {
+    margin-top: 20px;
+    max-height: 200px;
+  }
 `
 
 export const PlanEditButton = styled.button`
@@ -124,7 +130,9 @@ export const PlanEditButton = styled.button`
 `
 
 export const PlanImageList = styled.ul`
-margin-top: 50px;
+  ${Container}
+  margin-top: 50px;
+  max-width: 900px;
 `;
 
 export const PlanImageItem = styled.li`

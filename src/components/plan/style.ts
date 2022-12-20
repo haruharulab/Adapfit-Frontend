@@ -20,7 +20,7 @@ export const CardContain = styled(Link)`
   min-width: 300px;
   height: 250px;
   border-radius: 20px;
-  margin: 0px 20px;
+  margin: 20px;
   scrollbar-width: thin;
   ${Shadow}
 `;

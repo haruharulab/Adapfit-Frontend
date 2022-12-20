@@ -31,6 +31,7 @@ export const PlanHome = () => {
   return (
     <S.Contain>
       <S.Header>
+        <h2>플랜 목록</h2>
         <select onChange={(e) => setNowCategory(Number(e.target.value))}>
           <option value={0}>전체 플랜</option>;
           {categoryList.map((category) => {
@@ -39,7 +40,7 @@ export const PlanHome = () => {
         </select>
       </S.Header>
       <S.Plan>
-        {showedPlanlist.map((plan) => (
+        {showedPlanlist.map(plan => (
           <PlanCard plan={plan} />
         ))}
       </S.Plan>
