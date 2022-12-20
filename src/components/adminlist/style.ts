@@ -19,6 +19,8 @@ export const Info = styled.div`
   height: 100%;
 `;
 export const Name = styled.div`
+  display: flex;
+  gap: 20px;
   margin-left: 10px;
   width: 45%;
 `;

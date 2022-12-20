@@ -12,6 +12,7 @@ export interface NoLoginUser {
 
 export interface Admin {
   userId: number;
+  authId: string;
   email: string;
   phoneNumber: number;
   nickname: string;
