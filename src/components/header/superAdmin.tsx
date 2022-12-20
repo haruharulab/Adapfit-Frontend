@@ -34,8 +34,8 @@ const SuperAdminHeader = () => {
           <S.Logo alt="logo" src="/image/Adapfit_logo.svg" />
         </S.LogoWrap>
         <S.Nav>
-          <NavLink to="/superadmin/adminlist">관리자계정 관리</NavLink>
-          <NavLink to="/superadmin">대시보드</NavLink>
+          <NavLink to="/superadmin">관리자계정 관리</NavLink>
+          <NavLink to="/superadmin/notice">공지사항 관리</NavLink>
           <S.AccentLink to="/admin/login">일반관리자 페이지</S.AccentLink>
         </S.Nav>
       </S.HeaderContainer>

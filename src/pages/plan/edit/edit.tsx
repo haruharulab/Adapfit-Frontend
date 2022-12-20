@@ -44,7 +44,7 @@ const PlanEdit = () => {
     if (thumbnailFile) {
       payload.append('thumbnail', thumbnailFile);
     }
-    imageList.map(image => editImage(image))
+    imageList.map(image => convertImage(image))
       .forEach(image => {
         if (!image) return;
         payload.append('images', image);
@@ -66,27 +66,41 @@ const PlanEdit = () => {
   }
 
   const imageEditInputHandler = (e: ChangeEvent<HTMLInputElement>, i: number) => {
-    const planImage = imageList[i];
-    if (!('imageId' in planImage)) return;
-    const imageId = planImage.imageId;
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (!file) return;
+
+    const newPlanImage: PlanImage = {
+      imageFile: file,
+    }
+    const planImage = imageList[i];
+    if ('imageId' in planImage) {
+      newPlanImage.imageId = planImage.imageId;
+    };
 
     setImageList(prev => [
       ...prev.slice(0, i),
-      {
-        imageFile: file,
-        imageId
-      },
+      newPlanImage,
       ...prev.slice(i + 1)
     ]);
   }
 
-  const editImage = (image: PlanImage) => {
-    if (!image.imageFile || !image.imageId) return;
+  const imageAddInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return;
+
+    setImageList(prev => [
+      ...prev,
+      {
+        imageFile: file
+      }
+    ]);
+  }
+
+  const convertImage = (image: PlanImage) => {
+    if (!image.imageFile) return;
     const fileName = image.imageFile?.name;
-    const fileExt = fileName?.split('.')[fileName?.split('.').length - 1];
-    return new File([image.imageFile], `${image.imageId}.${fileExt}`, {
+    console.log(`${image.imageId? image.imageId + '.': ''}${fileName}`)
+    return new File([image.imageFile], `${image.imageId? image.imageId + '.': ''}${fileName}`, {
       type: image.imageFile?.type
     });
   }
@@ -97,7 +111,7 @@ const PlanEdit = () => {
         <S.PlanInfoWrap>
           <S.PlanInfoImageWrap>
             <S.PlanInfoImage src={thumbnailFile? URL.createObjectURL(thumbnailFile): plan.thumbnail} />
-            <S.PlanInfoImageEdit htmlFor='thumbnail_upload'>썸네일 수정</S.PlanInfoImageEdit>
+            <S.EditPlanInfoImage htmlFor='thumbnail_upload'>썸네일 수정</S.EditPlanInfoImage>
             <input
               type='file'
               id='thumbnail_upload'
@@ -133,7 +147,7 @@ const PlanEdit = () => {
           {imageList.map((item, i) => (
             <S.PlanImageItem>
               <img src={item.imageFile? URL.createObjectURL(item.imageFile): item.imageUrl} alt="플랜 설명 이미지" />
-              <S.PlanInfoImageEdit htmlFor={`plan_image_upload_${i}`}>이미지 수정</S.PlanInfoImageEdit>
+              <S.EditPlanInfoImage htmlFor={`plan_image_upload_${i}`}>이미지 수정</S.EditPlanInfoImage>
               <input
                 type='file'
                 id={`plan_image_upload_${i}`}
@@ -142,6 +156,15 @@ const PlanEdit = () => {
               />
             </S.PlanImageItem>
           ))}
+          <S.AddPlanInfoImage htmlFor='plan_image_upload'>
+            이미지 추가
+            <input
+              type='file'
+              id={`plan_image_upload`}
+              onChange={e => imageAddInputHandler(e)}
+              style={{display: 'none'}}
+            />
+          </S.AddPlanInfoImage>
         </S.PlanImageList>
       </S.Wrap>
     )

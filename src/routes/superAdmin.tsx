@@ -8,9 +8,8 @@ const SuperAdminPageRoute = () => (
   <>
     <SuperAdminHeader />
     <Routes>
-      <Route path="/" element={<SuperAdminDashboard />} />
+      <Route path="/" element={<AdminList />} />
       <Route path="notice" element={<Notice />} />
-      <Route path="adminlist" element={<AdminList />} />
     </Routes>
   </>
 );
