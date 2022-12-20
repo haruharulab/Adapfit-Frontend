@@ -24,17 +24,17 @@ function Footer() {
         </S.Info>
         <S.Wrap>
           <S.Sns>
-            <a href="https://www.instagram.com/adapfit_official/">
+            <a target='_blank' href="https://www.instagram.com/adapfit_official/">
               <img src="/image/instargram_logo.png" />
             </a>
-            <a href=" https://www.facebook.com/adapfit.kr/?hc_ref=ARS6rMKDg-MIqCdcSz9GLZdXnHKdoGMC_i6yrlJrFUTE4OBfLfLtwX2JTKfoKtjzxU0&ref=nf_target">
+            <a target='_blank' href="https://www.facebook.com/adapfit.kr">
               <img src="/image/facebook_logo.png" />
             </a>
-            <a href="https://www.youtube.com/@adapfit">
+            <a target='_blank' href="https://www.youtube.com/@adapfit">
               <img src="/image/youtube_logo.png" />
             </a>
           </S.Sns>
-          <S.AdminLink to="/admin">관리자 페이지</S.AdminLink>
+          <S.AdminLink to='/admin'>관리자 페이지</S.AdminLink>
         </S.Wrap>
       </S.ContentWrap>
     </S.Contain>

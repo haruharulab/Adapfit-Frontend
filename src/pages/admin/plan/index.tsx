@@ -58,7 +58,7 @@ export const PlanHome = () => {
             <div>추가</div>
         </Link>
         <select onChange={(e) => setNowCategory(Number(e.target.value))}>
-          <option value={-1}>카테고리</option>;
+          <option value={-1}>전체 플랜</option>;
           {categoryList.map((category) => {
             return <option value={category.categoryId}>{category.name}</option>;
           })}

@@ -1,14 +1,26 @@
 import styled from "styled-components";
+import { Container } from "../../../components/common/container/style";
 import { HorizontalScrollBar } from "../../../components/common/scrollBar/style";
 
 export const BannerPageWrap = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
   padding: 10px;
   margin-top: 100px;
+  ${Container}
+  h2 {
+    margin-top: 50px;
+    align-self: flex-start;
+    font-size: 36px;
+    font-weight: bold;
+  }
 `;
 
 export const BannerListWrap = styled.div`
+  width: 100%;
   display: flex;
   gap: 20px;
   padding: 20px;

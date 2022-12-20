@@ -63,6 +63,7 @@ const BannerManage = () => {
 
   return (
     <S.BannerPageWrap>
+      <h2>배너 관리</h2>
       <S.BannerListWrap>
         {bannerList.map(banner => (
           <S.BannerImgWrap>

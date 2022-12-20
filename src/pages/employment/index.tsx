@@ -2,6 +2,7 @@ import * as S from "./style";
 import { Item } from "../../components/employment";
 import { useEffect, useState } from "react";
 import getrecuritmentApi from "../../api/recruitment/getrecuritment.api";
+import { Link } from "react-router-dom";
 
 export default function Employment() {
   const [position, setJobGroup] = useState("");
@@ -40,24 +41,22 @@ export default function Employment() {
           </select>
           <select onChange={(e) => setEmploymentPattern(e.target.value)}>
             <option value={""}>채용패턴</option>
-            <option value={"INTERN"}>1</option>
+            <option value={"INTERN"}>인턴</option>
             <option value={"2"}>2</option>
             <option value={"3 "}>3</option>
           </select>
         </S.Search>
       </S.Header>
-      {data.map((i: any) => {
-        return (
-          <a href={`employment/${i.id}`} style={{ color: "black" }}>
-            <Item
-              title={i.title}
-              position={i.position}
-              career={i.career}
-              workingArea={i.workingArea}
-            />
-          </a>
-        );
-      })}
+      {data.map((i: any) => (
+        <Link to={`/employment/${i.id}`} style={{ color: "black" }}>
+          <Item
+            title={i.title}
+            position={i.position}
+            career={i.career}
+            workingArea={i.workingArea}
+          />
+        </Link>
+      ))}
     </S.Contain>
   );
 }

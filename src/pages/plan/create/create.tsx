@@ -76,8 +76,11 @@ const CreatePlan = () => {
     <S.Wrap>
       <S.PlanInfoWrap>
         <S.PlanInfoImageWrap>
-          {thumbnailFile && <S.PlanInfoImage src={URL.createObjectURL(thumbnailFile)} />}
-          <S.EditPlanInfoImage htmlFor='thumbnail_upload'>{thumbnailFile ?'썸네일 수정': '썸네일 넣기'}</S.EditPlanInfoImage>
+          {thumbnailFile && <>
+            <S.PlanInfoImage src={URL.createObjectURL(thumbnailFile)} />
+            <S.EditPlanInfoImage htmlFor='thumbnail_upload'>썸네일 수정</S.EditPlanInfoImage>
+          </>}
+          {!thumbnailFile && <S.AddPlanInfoImage htmlFor='thumbnail_upload'>썸네일 넣기</S.AddPlanInfoImage>}
           <input
             type='file'
             id='thumbnail_upload'
@@ -128,7 +131,7 @@ const CreatePlan = () => {
             />
           </S.PlanImageItem>
         ))}
-        <S.AddPlanInfoImage htmlFor='plan_image_upload'>
+        <S.AddPlanImage htmlFor='plan_image_upload'>
           이미지 추가
           <input
             type='file'
@@ -136,7 +139,7 @@ const CreatePlan = () => {
             onChange={e => imageAddInputHandler(e)}
             style={{display: 'none'}}
           />
-        </S.AddPlanInfoImage>
+        </S.AddPlanImage>
       </S.PlanImageList>
     </S.Wrap>
   )

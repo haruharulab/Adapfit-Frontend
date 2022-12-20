@@ -48,6 +48,26 @@ export const EditPlanInfoImage = styled.label`
 `;
 
 export const AddPlanInfoImage = styled.label`
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #BBB;
+  color: white;
+  font-size: 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .25s;
+  &:hover {
+    background-color: #000000AA;
+  }
+`;
+
+export const AddPlanImage = styled.label`
   width: 100%;
   height: 100px;
   display: flex;

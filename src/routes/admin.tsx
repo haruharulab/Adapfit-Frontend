@@ -6,11 +6,8 @@ import { PlanHome } from "../pages/admin/plan";
 import BannerManage from "../pages/banner/manage";
 import PlanEdit from "../pages/plan/edit/edit";
 import NoticeDetail from "../components/noticedetail";
-<<<<<<< Updated upstream
 import CreatePlan from "../pages/plan/create/create";
-=======
 import ManageEmployment from "../pages/employment/manage";
->>>>>>> Stashed changes
 const AdminPageRoute = () => (
   <>
     <AdminHeader />

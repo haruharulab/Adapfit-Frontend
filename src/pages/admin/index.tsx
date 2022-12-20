@@ -21,10 +21,7 @@ const AdminDashboard = () => {
   const getResumeList = async () => {
     const [data, error] = await ajax<Resume[]>({
       url: "resume",
-      method: HttpMethod.GET,
-      errorCallback() {
-        return true;
-      },
+      method: HttpMethod.GET
     });
     if (error) return;
     setResumeList(data);

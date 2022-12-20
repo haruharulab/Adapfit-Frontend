@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Container } from "../../../components/common/container/style";
 export const Contain = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,14 +9,17 @@ export const Contain = styled.div`
 export const Header = styled.div`
   display: flex;
   justify-content: end;
+  ${Container}
+  width: 100%;
+  max-width: 1240px;
   select {
-    width: 80px;
+    padding: 5px 5px 5px 10px;
     margin-right: 20px;
-    height: 30px;
     background-color: #000000;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.53);
     color: white;
+    font-size: 16px;
   }
 `;
 

@@ -70,9 +70,12 @@ export const useAjax = () => {
                     method: HttpMethod.PUT,
                     url: 'auth/refresh',
                     headers: {
-                        'X-Refresh-Token': token.refreshToken
+                        'Refresh-Token': token.refreshToken
                     },
-                    noToken: true
+                    noToken: true,
+                    errorCallback() {
+                        return true;
+                    },
                 });
                 if (newTokenError) {
                     resetUser();
