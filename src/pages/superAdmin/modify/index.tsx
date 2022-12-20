@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { putAdmin } from "../../../apis/super.api";
 import * as S from "./style";
 const Modify = () => {
   const { userId } = useParams();
@@ -25,7 +26,25 @@ const Modify = () => {
     setPhoneNumber(data.phoneNumber);
     setNickname(data.nickname);
   }, []);
-  const Submit = async () => {};
+
+  type putData = {
+    authId: string;
+    password: string;
+    email: string;
+    nickname: string;
+    phoneNumber: string;
+    centerInfo: string;
+  };
+  const submit = async () => {
+    await putAdmin(userId, {
+      authId: id,
+      password: password,
+      email: email,
+      nickname: nickname,
+      phoneNumber: phoneNumber,
+      centerInfo: centerInfo,
+    });
+  };
   return (
     <S.Contain>
       <S.Form>
@@ -69,7 +88,7 @@ const Modify = () => {
             onChange={(e) => setCenterInfo(e.target.value)}
           />
         </S.InputWrap>
-        <S.ModifyButton>수정</S.ModifyButton>
+        <S.ModifyButton onClick={() => submit()}>수정</S.ModifyButton>
       </S.Form>
     </S.Contain>
   );
