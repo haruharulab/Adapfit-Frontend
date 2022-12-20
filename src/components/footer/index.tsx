@@ -7,8 +7,8 @@ function Footer() {
         <S.Footer_logo src="/image/Adapfit_logo.svg" />
         <S.Info>
           <p>
-            <span>주소 부산광역시 금정구 금샘로 361 이엔아이빌딩 3층, 4층</span>ㅣ{" "}
-            <span>사업자등록번호 465-87-01643</span> ㅣ
+            <span>주소 부산광역시 금정구 금샘로 361 이엔아이빌딩 3층, 4층</span>
+            ㅣ <span>사업자등록번호 465-87-01643</span> ㅣ
             <span>상호명 (주)하루하루움직임연구소</span> ㅣ
             <span>대표 정고운</span>
           </p>
@@ -23,12 +23,18 @@ function Footer() {
           </p>
         </S.Info>
         <S.Wrap>
-            <S.Sns>
+          <S.Sns>
+            <a href="https://www.instagram.com/adapfit_official/">
               <img src="/image/instargram_logo.png" />
+            </a>
+            <a href=" https://www.facebook.com/adapfit.kr/?hc_ref=ARS6rMKDg-MIqCdcSz9GLZdXnHKdoGMC_i6yrlJrFUTE4OBfLfLtwX2JTKfoKtjzxU0&ref=nf_target">
               <img src="/image/facebook_logo.png" />
+            </a>
+            <a href="https://www.youtube.com/@adapfit">
               <img src="/image/youtube_logo.png" />
-            </S.Sns>
-            <S.AdminLink to='/admin'>관리자 페이지</S.AdminLink>
+            </a>
+          </S.Sns>
+          <S.AdminLink to="/admin">관리자 페이지</S.AdminLink>
         </S.Wrap>
       </S.ContentWrap>
     </S.Contain>
