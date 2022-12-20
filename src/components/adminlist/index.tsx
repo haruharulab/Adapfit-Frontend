@@ -18,7 +18,7 @@ export function AdminItem({
     <S.Contain>
       <S.Name>
         <div onClick={() => deleteAdmin(authId)}>삭제</div>
-        <a href={`adminmodify/${userId}`}>
+        <a href={`/superadmin/adminmodify/${userId}`}>
           <div>수정</div>
         </a>
         {nickname}
