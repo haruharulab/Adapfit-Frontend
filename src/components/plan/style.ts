@@ -80,3 +80,25 @@ export const Remove = styled.div`
     background-color: #000000AA;
   }
 `;
+
+export const Edit = styled(Link)`
+  opacity: 0;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000066;
+  color: white;
+  font-size: 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .25s;
+  &:hover {
+    background-color: #000000AA;
+    opacity: 1;
+  }
+`;

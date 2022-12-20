@@ -23,6 +23,28 @@ export const PlanInfoImageWrap = styled.div`
   align-items: center;
 `;
 
+export const PlanInfoImageEdit = styled.div`
+  opacity: 0;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000066;
+  color: white;
+  font-size: 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .25s;
+  &:hover {
+    background-color: #000000AA;
+    opacity: 1;
+  }
+`;
+
 export const PlanInfoImage = styled.img`
   width: 100%;
   max-height: 100%;

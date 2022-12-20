@@ -34,7 +34,8 @@ const PlanEdit = () => {
       method: HttpMethod.PUT,
       payload: {
         title: planTitle,
-        content: planContent
+        content: planContent,
+        categoryId: planCategoryId
       }
     });
     if (error) return;
@@ -47,6 +48,7 @@ const PlanEdit = () => {
         <S.PlanInfoWrap>
           <S.PlanInfoImageWrap>
             <S.PlanInfoImage src={plan.thumbnail} />
+            <S.PlanInfoImageEdit />
           </S.PlanInfoImageWrap>
           <S.PlanInfo>
             <S.PlanTitleInput

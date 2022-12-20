@@ -16,15 +16,24 @@ const AdminHeader = () => {
   }, []);
 
   const getLoginInfo = async () => {
-    const [user, error] = await ajax<SuperAdmin | Admin>({
+    const [user, error] = await ajax<Admin>({
       url: 'user',
       method: HttpMethod.GET,
       errorCallback() {
         return true;
       }
     });
-    if (error) return navigate('/admin/login');
-    if (user.authority === Authority.SUPER_ADMIN) return navigate('/superadmin');
+    if (error) {
+        const [user, error] = await ajax<SuperAdmin>({
+            url: 'super',
+            method: HttpMethod.GET,
+            errorCallback() {
+                return true;
+            }
+        });
+        if (error) return navigate('/admin/login');
+        return navigate('/superadmin');
+    }
     setUser(user);
   }
 

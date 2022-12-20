@@ -17,9 +17,8 @@ export default function ManagePlanCard({
     <S.ManageCardContain>
       <S.Img img={plan.thumbnail} />
       <S.Content>{plan.title}</S.Content>
-      {
-        removeMode && <S.Remove><div onClick={() => deletePlan(plan.planId)}>플랜 삭제</div></S.Remove>
-      }
+      {!removeMode && <S.Edit to={`/admin/plan/${plan.planId}`}><div>플랜 수정</div></S.Edit>}
+      {removeMode && <S.Remove><div onClick={() => deletePlan(plan.planId)}>플랜 삭제</div></S.Remove>}
     </S.ManageCardContain>
   );
 }

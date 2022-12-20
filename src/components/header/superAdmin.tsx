@@ -16,7 +16,7 @@ const SuperAdminHeader = () => {
   }, []);
 
   const getLoginInfo = async () => {
-    const [user, error] = await ajax<SuperAdmin | Admin>({
+    const [user, error] = await ajax<SuperAdmin>({
       url: 'super',
       method: HttpMethod.GET,
       errorCallback() {
@@ -34,7 +34,7 @@ const SuperAdminHeader = () => {
           <S.Logo alt="logo" src="/image/Adapfit_logo.svg" />
         </S.LogoWrap>
         <S.Nav>
-          <NavLink to="/admin/manage">관리자계정 관리</NavLink>
+          <NavLink to="/superadmin/adminlist">관리자계정 관리</NavLink>
           <S.AccentLink to="/admin/login">일반관리자 페이지</S.AccentLink>
         </S.Nav>
       </S.HeaderContainer>

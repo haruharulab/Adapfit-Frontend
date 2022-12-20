@@ -12,22 +12,19 @@ const AdminDashboard = () => {
   const [resumeList, setResumeList] = useState<Resume[]>([]);
 
   useEffect(() => {
+    if (user.authority !== Authority.ADMIN) return;
     getResumeList();
-  }, []);
+  }, [user]);
 
   const getResumeList = async () => {
     const [data, error] = await ajax<Resume[]>({
       url: 'resume',
-      method: HttpMethod.GET,
-      errorCallback() {
-        return true;
-      }
+      method: HttpMethod.GET
     });
     if (error) return;
     setResumeList(data);
   }
   
-
   return (
     user.authority === Authority.ADMIN
     ? <S.Contain>
