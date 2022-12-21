@@ -4,6 +4,7 @@ import {
 } from "react-icons/io";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { Button, ButtonStyle } from "../../components/common/button/style";
 import { Container } from "../../components/common/container/style";
 import { Shadow } from "../../components/common/shadow/style";
 
@@ -120,20 +121,15 @@ export const Adapfit = styled.h3`
 `;
 
 export const PlanGallery = styled.div`
-  margin: 150px 0 30px;
+  margin: 30px 0;
   max-width: 100%;
   display: flex;
   justify-content: center;
 `;
 
 export const PlanDetailLink = styled(Link)`
-  margin-top: 30px;
-  text-align: center;
-  color: white;
-  font-size: 20px;
-  padding: 15px 25px;
-  border-radius: 10px;
-  background-color: #f2640b;
+  margin-top: 20px;
+  ${ButtonStyle}
 `;
 
 export const DownContain = styled.div`

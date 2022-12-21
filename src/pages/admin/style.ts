@@ -10,7 +10,7 @@ export const Contain = styled.div`
   gap: 20px;
   padding: 10px;
   width: 100%;
-  height: calc(100% - 100px);
+  height: 100%;
   & > div {
     gap: 20px;
   }

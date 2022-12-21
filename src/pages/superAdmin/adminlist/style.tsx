@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AccentButton, Button } from "../../../components/common/button/style";
+import { AccentButton } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
 import { Input } from "../../../components/common/input/style";
 

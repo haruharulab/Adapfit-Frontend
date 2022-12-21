@@ -5,11 +5,13 @@ import { Plan, PlanCategory } from "../../../types/plan.type";
 import { getPlanList } from "../../../apis/plan.api";
 import PlanCard from "../../../components/plan/card";
 import { getCategoryList } from "../../../apis/category.api";
+import { AccentText } from "../../../components/common/text/style";
 export const PlanHome = () => {
   const [planList, setPlanList] = useState<Plan[]>([]);
   const [showedPlanlist, setShowedPlanList] = useState<Plan[]>([]);
   const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
-  const [nowCategory, setNowCategory] = useState<Number>(-1);
+  const [nowCategory, setNowCategory] = useState<Number>(0);
+
   useEffect(() => {
     (async () => {
       const data = await getPlanList();
@@ -19,6 +21,7 @@ export const PlanHome = () => {
       setCategoryList(category);
     })();
   }, []);
+
   useEffect(() => {
     if (nowCategory > 0) {
       setShowedPlanList(
@@ -28,12 +31,16 @@ export const PlanHome = () => {
       setShowedPlanList(planList);
     }
   }, [nowCategory, planList]);
+
   return (
     <S.Contain>
       <S.Header>
-        <h2>플랜 목록</h2>
+        <h2>
+            <AccentText>맞춤 플랜을 </AccentText>
+            찾아보세요!
+        </h2>
         <select onChange={(e) => setNowCategory(Number(e.target.value))}>
-          <option value={0}>전체 플랜</option>;
+          <option value={0}>전체 플랜</option>
           {categoryList.map(category => 
             <option value={category.categoryId}>{category.name}</option>
           )}

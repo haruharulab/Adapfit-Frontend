@@ -1,41 +1,27 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { HorizontalScrollBar } from "../common/scrollBar/style";
 import { Shadow } from "../common/shadow/style";
+
 export const List = styled.div`
   display: flex;
   text-align: center;
   white-space: nowrap;
-  overflow: auto;
   padding: 25px 50px;
-  ${HorizontalScrollBar}
-  overflow: auto;
+  overflow: hidden;
 `;
 
 export const CardContain = styled(Link)`
   display: inline-flex;
   position: relative;
   flex-direction: column;
-  width: 300px;
-  min-width: 300px;
-  height: 250px;
+  width: 400px;
+  min-width: 400px;
+  height: 300px;
   border-radius: 20px;
   margin: 20px;
-  scrollbar-width: thin;
   ${Shadow}
 `;
-export const ManageCardContain = styled.div`
-  display: inline-flex;
-  position: relative;
-  flex-direction: column;
-  width: 300px;
-  min-width: 300px;
-  height: 250px;
-  border-radius: 20px;
-  margin: 0px 20px;
-  scrollbar-width: thin;
-  ${Shadow}
-`;
+
 export const Img = styled.div<{
   img: string;
 }>`
@@ -48,17 +34,29 @@ export const Img = styled.div<{
 `;
 export const Content = styled.div`
   width: 100%;
-  height: 20%;
+  height: 30%;
   position: absolute;
   bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 20px;
-  color: white;
-  background-color: #00000055;
+  color: black;
+  background-color: white;
   border-radius: 0px 0px 20px 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 25px;
+  gap: 2px;
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  p {
+    font-size: 14px;
+    color: gray
+  }
 `;
 
 export const Remove = styled.div`

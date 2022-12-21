@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { Container } from "../../../components/common/container/style";
+
 export const Contain = styled.div`
   display: flex;
   flex-direction: column;
   gap: 29px;
   margin-top: 30px;
 `;
+
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;

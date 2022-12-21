@@ -9,7 +9,10 @@ export default function PlanCard({ plan }: PlanCardProps) {
   return (
     <S.CardContain to={`/plan/${plan.planId}`}>
       <S.Img img={plan.thumbnail} />
-      <S.Content>{plan.title}</S.Content>
+      <S.Content>
+        <h4>{plan.title}</h4>
+        <p>{plan.category.name}</p>
+      </S.Content>
     </S.CardContain>
   );
 }

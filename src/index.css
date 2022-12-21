@@ -2,8 +2,7 @@
 
 #root,
 html,
-body,
-main {
+body {
   width: 100%;
   height: 100%;
 }
@@ -32,10 +31,6 @@ body::-webkit-scrollbar-thumb {
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
-}
-
-main {
-    padding-top: 65px;
 }
 
 a {

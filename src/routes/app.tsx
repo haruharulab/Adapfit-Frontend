@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import channelService from "../components/channel/channelService";
+import { Main } from "../components/common/main/style";
 import Footer from "../components/footer";
 import { Header } from "../components/header";
 import Employment from "../pages/employment";
@@ -9,9 +11,11 @@ import { Home } from "../pages/home";
 import PlanDetail from "../pages/plan/detail/detail";
 import { PlanHome } from "../pages/plan/index";
 import Resume from "../pages/resume";
+import { footerHeightState } from "../store/common.store";
 import useAnalytics from "../utils/useAnalytics";
 
 const AppPageRoute = () => {
+  const footerHeight = useRecoilValue(footerHeightState);
   useAnalytics();
   
   useEffect(() => {
@@ -26,7 +30,7 @@ const AppPageRoute = () => {
   return (
     <>
       <Header />
-      <main>
+      <Main height={footerHeight}>
         <Routes>
           <Route path="*" element={<Home />} />
           <Route path="/plan" element={<PlanHome />} />
@@ -36,7 +40,7 @@ const AppPageRoute = () => {
           <Route path="/resume/:id" element={<Resume />} />
         </Routes>
         <Footer />
-      </main>
+      </Main>
     </>
   );
 }

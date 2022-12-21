@@ -1,8 +1,24 @@
+import { createRef, useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+import { footerHeightState } from "../../store/common.store";
 import * as S from "./style";
 
-function Footer() {
+const Footer = () => {
+  const setFooterHeight = useSetRecoilState(footerHeightState);
+  const ref = createRef<HTMLElement>();
+
+  useEffect(() => updateFooterHeight(), []);
+  window.addEventListener('resize', () => updateFooterHeight());
+
+  const updateFooterHeight = () => {
+    const height = ref.current?.clientHeight ?? 0;
+    console.log(height)
+    if (height < 1) return;
+    setFooterHeight(height);
+  }
+
   return (
-    <S.Contain>
+    <S.Contain ref={ref}>
       <S.ContentWrap>
         <S.Footer_logo src="/image/Adapfit_logo.svg" />
         <S.Info>

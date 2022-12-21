@@ -11,6 +11,7 @@ import { getBannerList } from "../../apis/banner.api";
 import { getPlanList } from "../../apis/plan.api";
 import { Plan } from "../../types/plan.type";
 import PlanList from "../../components/plan/planList";
+import { Button } from "../../components/common/button/style";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
@@ -27,12 +28,10 @@ export const Home = () => {
     <S.HomeWrap>
       <S.Banner>
         <Swiper
-          className="banner"
-          spaceBetween={50}
-          slidesPerView={1}
           navigation
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 3000 }}
+          pagination={{clickable: true}}
+          autoplay={{delay: 3000}}
+          loop={true}
         >
           {bannerList.map((banner) => (
             <SwiperSlide>
@@ -53,10 +52,15 @@ export const Home = () => {
         <S.Adapfit>어댑핏!</S.Adapfit>
         <img src="/image/adapfit_introduce.png" alt="" />
       </S.IntroduceWrap>
+      <S.IntroduceWrap>
+        <h3>
+          당신을 위한 플랜들을<br />알아보세요
+        </h3>
+        <S.PlanDetailLink to="/plan">플랜 더보기</S.PlanDetailLink>
+      </S.IntroduceWrap>
       <S.PlanGallery>
         <PlanList planList={planList} />
       </S.PlanGallery>
-      <S.PlanDetailLink to="/plan">플랜 더보기</S.PlanDetailLink>
       <S.DownContain>
         <S.DownloadLink
           target="_blank"

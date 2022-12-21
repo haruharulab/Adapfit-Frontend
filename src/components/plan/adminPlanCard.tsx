@@ -14,11 +14,14 @@ export default function ManagePlanCard({
     deletePlan
 }: PlanCardProps) {
   return (
-    <S.ManageCardContain>
+    <S.CardContain as='div'>
       <S.Img img={plan.thumbnail} />
-      <S.Content>{plan.title}</S.Content>
+      <S.Content>
+        <h4>{plan.title}</h4>
+        <p>{plan.category.name}</p>
+      </S.Content>
       {!removeMode && <S.Edit to={`/admin/plan/${plan.planId}`}>플랜 수정</S.Edit>}
       {removeMode && <S.Remove onClick={() => deletePlan(plan.planId)}>플랜 삭제</S.Remove>}
-    </S.ManageCardContain>
+    </S.CardContain>
   );
 }

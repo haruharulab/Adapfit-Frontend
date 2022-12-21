@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Container } from "../common/container/style";
 
 export const Contain = styled.footer`
+  position: absolute;
+  bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
