@@ -1,3 +1,5 @@
+import { BsChevronDown } from "react-icons/bs";
+import { FiChevronDown } from "react-icons/fi";
 import styled from "styled-components";
 import { Shadow } from "../shadow/style";
 
@@ -22,15 +24,26 @@ export const DropdownMenu = styled.div`
   }
 `;
 
-export const Title = styled.span`
+export const DropdownTitle = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 5px;
   position: relative;
-  font-weight: bold;
-  padding: 12px 16px;
+  padding: 10px 16px;
+  background-color: white;
+  border-radius: 8px;
   cursor: pointer;
+  ${Shadow}
+`;
+
+export const DropdownMark = styled(FiChevronDown)`
+  width: 25px;
+  height: 25px;
 `;
 
 export const DropdownContent = styled.ul`
-  position:  absolute;
+  padding-top: 3px;
+  position: absolute;
   z-index: 1;
   width: 120px;
   transform: translate(-50%, -15px);
@@ -41,8 +54,7 @@ export const DropdownContent = styled.ul`
   font-size: 16px;
   font-weight: bold;
   word-break: keep-all;
-  border-radius: 5px;
-  background-color: white;
+  border-radius: 8px;
   transition: all .25s;
   display: flex;
   flex-direction: column;
@@ -53,22 +65,19 @@ export const Option = styled.li`
   width: 100%;
   cursor: pointer;
   transition: .25s;
-  border-radius: 5px;
+  background-color: white;
   &:hover {
     background-color: #CCC;
+  }
+  &:first-child {
+    border-radius: 5px 5px 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+  &:first-child:last-child {
+    border-radius: 5px;
   }
   list-style: none;
   padding: 7px 0;
 `;
-
-// .meatballs_menu .title {
-//   font-size: 1.7rem;
-//   letter-spacing: -.3rem;
-//   padding: 0 1rem 0 .75rem;
-//   border-radius: .5rem;
-//   background-color: var(--level-3);
-// }
-
-// .meatballs_menu .dropdown_content .option {
-//   width: 16rem;
-// }

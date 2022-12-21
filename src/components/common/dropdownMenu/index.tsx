@@ -8,15 +8,17 @@ export interface DropdownMenuOption {
 
 interface DropdownMenuProps {
     title: string | ReactNode,
-    menus: DropdownMenuOption[]
+    menus: DropdownMenuOption[],
+    mark?: boolean
 }
 
 export const DropdownMenu = ({
     title,
     menus,
+    mark
 }: DropdownMenuProps) => (
     <S.DropdownMenu>
-        <S.Title>{title}</S.Title>
+        <S.DropdownTitle>{title}{mark && <S.DropdownMark />}</S.DropdownTitle>
         <S.DropdownContent>
             {menus.map(menu => (
                 <S.Option key={menu.text} onClick={menu.callback}>

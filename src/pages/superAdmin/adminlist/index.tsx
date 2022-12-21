@@ -39,7 +39,7 @@ export default function AdminList() {
 
   return (
     <S.Contain>
-        <AdminManageModal loadAdminList={loadAdminList} />
+      <AdminManageModal loadAdminList={loadAdminList} />
       <S.Header>
         <h2>관리자 정보</h2>
         <div>

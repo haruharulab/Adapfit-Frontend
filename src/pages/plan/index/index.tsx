@@ -6,11 +6,16 @@ import { getPlanList } from "../../../apis/plan.api";
 import PlanCard from "../../../components/plan/card";
 import { getCategoryList } from "../../../apis/category.api";
 import { AccentText } from "../../../components/common/text/style";
+import { DropdownMenu } from "../../../components/common/dropdownMenu";
+
 export const PlanHome = () => {
   const [planList, setPlanList] = useState<Plan[]>([]);
   const [showedPlanlist, setShowedPlanList] = useState<Plan[]>([]);
   const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
-  const [nowCategory, setNowCategory] = useState<Number>(0);
+  const [currentCategory, setCurrentCategory] = useState<PlanCategory>({
+    categoryId: 0,
+    name: '전체 플랜'
+  });
 
   useEffect(() => {
     (async () => {
@@ -18,34 +23,48 @@ export const PlanHome = () => {
       const category = await getCategoryList();
       setPlanList(data);
       setShowedPlanList(data);
-      setCategoryList(category);
+      setCategoryList([
+        {
+          categoryId: 0,
+          name: '전체 플랜'
+        },
+        ...category
+      ]);
     })();
   }, []);
 
   useEffect(() => {
-    if (nowCategory > 0) {
+    if (currentCategory.categoryId > 0) {
       setShowedPlanList(
-        planList.filter((plan) => plan.category.categoryId == nowCategory)
+        planList.filter((plan) => plan.category.categoryId === currentCategory.categoryId)
       );
     } else {
       setShowedPlanList(planList);
     }
-  }, [nowCategory, planList]);
+  }, [currentCategory.categoryId, planList]);
 
   return (
     <S.Contain>
       <S.Header>
         <h2>
-            <AccentText>맞춤 플랜을 </AccentText>
-            찾아보세요!
+          <AccentText>맞춤 플랜을 </AccentText>
+          찾아보세요!
         </h2>
-        <select onChange={(e) => setNowCategory(Number(e.target.value))}>
-          <option value={0}>전체 플랜</option>
-          {categoryList.map(category => 
-            <option value={category.categoryId}>{category.name}</option>
-          )}
-        </select>
       </S.Header>
+      <S.MenuWrap>
+        <DropdownMenu
+          title={currentCategory.name}
+          mark={true}
+          menus={[
+            ...categoryList.map(category => ({
+              text: category.name,
+              callback() {
+                setCurrentCategory(category)
+              }
+            }))
+          ]}
+        />
+      </S.MenuWrap>
       <S.Plan>
         {showedPlanlist.map(plan => (
           <PlanCard plan={plan} />
