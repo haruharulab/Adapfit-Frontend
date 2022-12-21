@@ -11,17 +11,19 @@ import ManageEmployment from "../pages/employment/manage";
 const AdminPageRoute = () => (
   <>
     <AdminHeader />
-    <Routes>
-      <Route path="/" element={<AdminDashboard />} />
-      <Route path="/notice" element={<Notice />} />
-      <Route path="/notice:id" element={<NoticeDetail />} />
-      <Route path="/noticedetail" element={<NoticeDetail />} />
-      <Route path="/plan/:id" element={<PlanEdit />} />
-      <Route path="/plan/create" element={<CreatePlan />} />
-      <Route path="/plan" element={<PlanHome />} />
-      <Route path="/banner" element={<BannerManage />} />
-      <Route path="/employment" element={<ManageEmployment />} />
-    </Routes>
+    <main>
+      <Routes>
+        <Route path="/" element={<AdminDashboard />} />
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/notice:id" element={<NoticeDetail />} />
+        <Route path="/noticedetail" element={<NoticeDetail />} />
+        <Route path="/plan/:id" element={<PlanEdit />} />
+        <Route path="/plan/create" element={<CreatePlan />} />
+        <Route path="/plan" element={<PlanHome />} />
+        <Route path="/banner" element={<BannerManage />} />
+        <Route path="/employment" element={<ManageEmployment />} />
+      </Routes>
+    </main>
   </>
 );
 

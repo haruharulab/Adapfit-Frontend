@@ -12,31 +12,33 @@ import Resume from "../pages/resume";
 import useAnalytics from "../utils/useAnalytics";
 
 const AppPageRoute = () => {
-    useAnalytics();
-    
-    useEffect(() => {
-        channelService.boot({
-            pluginKey: process.env.REACT_APP_CHANNEL_SERVICE_PLUGIN_KEY,
-        });
-        return () => {
-            channelService.shutdown();
-        }
-    }, []);
+  useAnalytics();
+  
+  useEffect(() => {
+    channelService.boot({
+      pluginKey: process.env.REACT_APP_CHANNEL_SERVICE_PLUGIN_KEY,
+    });
+    return () => {
+      channelService.shutdown();
+    }
+  }, []);
 
-    return (
-        <>
-            <Header />
-            <Routes>
-                <Route path="*" element={<Home />} />
-                <Route path="/plan" element={<PlanHome />} />
-                <Route path="/plan/:id" element={<PlanDetail />} />
-                <Route path="/employment" element={<Employment />} />
-                <Route path="/employment/:id" element={<Detail />} />
-                <Route path="/resume/:id" element={<Resume />} />
-            </Routes>
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="*" element={<Home />} />
+          <Route path="/plan" element={<PlanHome />} />
+          <Route path="/plan/:id" element={<PlanDetail />} />
+          <Route path="/employment" element={<Employment />} />
+          <Route path="/employment/:id" element={<Detail />} />
+          <Route path="/resume/:id" element={<Resume />} />
+        </Routes>
+        <Footer />
+      </main>
+    </>
+  );
 }
 
 export default AppPageRoute;

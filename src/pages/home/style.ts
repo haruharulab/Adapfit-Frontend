@@ -25,7 +25,6 @@ export const BannerImgLink = styled.a`
 const Arrow = css`
   position: absolute;
   top: 50%;
-  /* color: rgba(255, 255, 255, 0.6); */
   z-index: 2;
 `;
 
@@ -60,8 +59,7 @@ export const BannerBackgroundImg = styled.img`
 export const Banner = styled.div`
   display: flex;
   width: 100%;
-  height: 60vh;
-  padding-bottom: 80px;
+  height: calc(100vh - 65px);
   position: relative;
   @media screen and (max-width: 960px) {
     height: 40vh;
@@ -75,6 +73,10 @@ export const Banner = styled.div`
       border-radius: 50%;
       color: black;
       background-color: #ffffff88;
+      @media screen and (max-width: 960px) {
+        font-size: 20px;
+        padding: 10px 15px;
+      }
     }
   }
   .swiper-button-prev {
@@ -86,6 +88,10 @@ export const Banner = styled.div`
       border-radius: 50%;
       color: black;
       background-color: #ffffff88;
+      @media screen and (max-width: 960px) {
+        font-size: 20px;
+        padding: 10px 15px;
+      }
     }
   }
 `;
@@ -95,6 +101,7 @@ export const IntroduceWrap = styled.div`
   ${Container}
   width: 100%;
   max-width: 900px;
+  margin-top: 100px;
   h3 {
     font-size: 46px;
     font-weight: bold;

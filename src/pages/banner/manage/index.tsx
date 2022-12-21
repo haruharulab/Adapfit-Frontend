@@ -68,14 +68,6 @@ const BannerManage = () => {
     <S.BannerPageWrap>
       <h2>배너 관리</h2>
       <S.BannerListWrap>
-        {bannerList.map(banner => (
-          <S.BannerImgWrap>
-            <S.BannerImg src={banner.fileUrl} />
-            <S.BannerDeleteButton
-              onClick={() => deleteBanner(banner.id)}
-            >×</S.BannerDeleteButton>
-          </S.BannerImgWrap>
-        ))}
         <S.BannerImgWrap>
           <label htmlFor='banner_upload'>{
               newBannerFile
@@ -101,6 +93,14 @@ const BannerManage = () => {
             </>
           }
         </S.BannerImgWrap>
+        {bannerList.map(banner => (
+          <S.BannerImgWrap>
+            <S.BannerImg src={banner.fileUrl} />
+            <S.BannerDeleteButton
+              onClick={() => deleteBanner(banner.id)}
+            >×</S.BannerDeleteButton>
+          </S.BannerImgWrap>
+        ))}
       </S.BannerListWrap>
     </S.BannerPageWrap>
   );

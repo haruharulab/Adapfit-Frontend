@@ -6,6 +6,7 @@ import { getCategoryList } from "../../../apis/category.api";
 import ManagePlanCard from "../../../components/plan/adminPlanCard";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { Link } from "react-router-dom";
+import { Button } from "../../../components/common/button/style";
 
 export const PlanHome = () => {
   const { ajax } = useAjax();
@@ -53,11 +54,11 @@ export const PlanHome = () => {
       <S.Header>
         <h2>플랜 관리</h2>
         <S.MenuWrap>
-          <div onClick={() => setRemoveMode(!removeMode)}>
+          <Button onClick={() => setRemoveMode(!removeMode)}>
             {removeMode ? "확인" : "삭제"}
-          </div>
+          </Button>
           <Link to='/admin/plan/create'>
-              <div>추가</div>
+              <Button>추가</Button>
           </Link>
           <select onChange={(e) => setNowCategory(Number(e.target.value))}>
             <option value={-1}>전체 플랜</option>;

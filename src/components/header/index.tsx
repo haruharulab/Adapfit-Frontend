@@ -10,7 +10,7 @@ export const Header = () => (
       <S.Nav>
         <NavLink to="/plan">플랜 목록</NavLink>
         <NavLink to="/counsel">챗봇상담</NavLink>
-        <S.AccentLink to="/employment">채용공고</S.AccentLink>
+        <NavLink to="/employment">채용공고</NavLink>
       </S.Nav>
     </S.HeaderContainer>
   </S.Header>

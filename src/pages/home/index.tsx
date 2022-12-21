@@ -26,8 +26,6 @@ export const Home = () => {
   return (
     <S.HomeWrap>
       <S.Banner>
-        {/* <S.LeftArrow className="prev" size="40" />
-        <S.RightArrow className="next" size="40" /> */}
         <Swiper
           className="banner"
           spaceBetween={50}

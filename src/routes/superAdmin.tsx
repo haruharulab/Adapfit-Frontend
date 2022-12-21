@@ -7,12 +7,14 @@ import Modify from "../pages/superAdmin/modify";
 const SuperAdminPageRoute = () => (
   <>
     <SuperAdminHeader />
-    <Routes>
-      <Route path="/" element={<AdminList />} />
-      <Route path="notice" element={<Notice />} />
-      <Route path="admin" element={<AdminList />} />
-      <Route path="admin/:userId" element={<Modify />} />
-    </Routes>
+    <main>
+      <Routes>
+        <Route path="/" element={<AdminList />} />
+        <Route path="notice" element={<Notice />} />
+        <Route path="admin" element={<AdminList />} />
+        <Route path="admin/:userId" element={<Modify />} />
+      </Routes>
+    </main>
   </>
 );
 

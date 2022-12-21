@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { Container } from "../common/container/style";
 
 export const Header = styled.header`
+  position: fixed;
+  top: 0;
+  z-index: 100;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -11,6 +14,7 @@ export const Header = styled.header`
 
 export const HeaderContainer = styled.div`
   ${Container}
+  max-width: 1100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -22,7 +26,7 @@ export const Nav = styled.nav`
   align-self: center;
   gap: 10px;
   font-weight: 550;
-  font-size: 17px;
+  font-size: 15px;
   a {
     color: black;
     padding: 10px 15px;
