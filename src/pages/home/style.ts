@@ -97,9 +97,13 @@ export const IntroduceWrap = styled.div`
   text-align: center;
   ${Container}
   width: 100%;
+  max-width: 900px;
   h3 {
     font-size: 46px;
     font-weight: bold;
+    @media screen and (max-width: 600px) {
+        font-size: 34px;
+    }
   }
   img {
     margin-top: 100px;

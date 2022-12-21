@@ -34,9 +34,9 @@ export const PlanHome = () => {
         <h2>플랜 목록</h2>
         <select onChange={(e) => setNowCategory(Number(e.target.value))}>
           <option value={0}>전체 플랜</option>;
-          {categoryList.map((category) => {
-            return <option value={category.categoryId}>{category.name}</option>;
-          })}
+          {categoryList.map(category => 
+            <option value={category.categoryId}>{category.name}</option>
+          )}
         </select>
       </S.Header>
       <S.Plan>

@@ -19,7 +19,7 @@ function Footer() {
             <span>이메일 help@adapfit.kr</span>
           </p>
           <p className="copyright">
-            Copyright 2020. adapfit. All right reserved.
+            Copyright 2022. adapfit. All right reserved.
           </p>
         </S.Info>
         <S.Wrap>

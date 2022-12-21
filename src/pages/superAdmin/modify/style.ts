@@ -28,21 +28,6 @@ export const InputWrap = styled.div`
   width: 100%;
 `;
 
-export const Input = styled.input`
-  margin-top: 5px;
-  width: 100%;
-  padding: 15px;
-  box-sizing: border-box;
-  resize: none;
-  background-color: #fff7ea;
-  border: 0;
-  border-radius: 10px;
-  font-size: 15px;
-  ::placeholder {
-    color: #adadad;
-  }
-`;
-
 export const ModifyButton = styled.div`
   width: 100%;
   border: none;

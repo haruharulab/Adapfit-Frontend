@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAdmin, putAdmin } from "../../../apis/super.api";
+import { Input } from "../../../components/common/input/style";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import * as S from "./style";
 const Modify = () => {
@@ -44,25 +45,25 @@ const Modify = () => {
         <S.Title>수정</S.Title>
         <S.InputWrap>
           <S.Text>아이디</S.Text>
-          <S.Input defaultValue={id} onChange={(e) => setId(e.target.value)} />
+          <Input defaultValue={id} onChange={(e) => setId(e.target.value)} />
         </S.InputWrap>
         <S.InputWrap>
           <S.Text>이메일</S.Text>
-          <S.Input
+          <Input
             defaultValue={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </S.InputWrap>
         <S.InputWrap>
           <S.Text>닉네임</S.Text>
-          <S.Input
+          <Input
             defaultValue={nickname}
             onChange={(e) => setNickname(e.target.value)}
           />
         </S.InputWrap>
         <S.InputWrap>
           <S.Text>전화번호</S.Text>
-          <S.Input
+          <Input
             defaultValue={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />

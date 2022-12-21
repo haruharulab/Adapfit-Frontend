@@ -8,11 +8,11 @@ export const Contain = styled.footer`
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  ${TopShadow}
   .copyright {
     margin-top: 25px;
   }
   padding: 30px 40px;
+  background-color: white;
 `;
 
 export const ContentWrap = styled.div`
