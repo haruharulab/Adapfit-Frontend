@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-  margin-top: 10px;
   width: 100%;
-  padding: 15px;
+  padding: 13px;
   transition: box-shadow .25s;
   border: none;
   outline: none;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #f6f6f6;
   font-size: 15px;
   &:focus {

@@ -6,7 +6,7 @@ class getrecruitment {
     const { data } = await customAxios.get(
       `recruitment?position=${req.position}&career=${req.career}&employmentPattern=${req.employmentPattern}`
     );
-    return data;
+    return data.data;
   }
 }
 

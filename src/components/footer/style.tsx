@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container } from "../common/container/style";
-import { TopShadow } from "../common/shadow/style";
 
 export const Contain = styled.footer`
-  width: calc(100% - 80px);
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 50px;

@@ -19,12 +19,15 @@ const AdminDashboard = () => {
   }, [user]);
 
   const getResumeList = async () => {
-    const [data, error] = await ajax<Resume[]>({
+    const [data, error] = await ajax<{
+        count: number,
+        data: Resume[]
+    }>({
       url: "resume",
       method: HttpMethod.GET
     });
     if (error) return;
-    setResumeList(data);
+    setResumeList(data.data);
   };
 
   return user.authority === Authority.ADMIN ? (

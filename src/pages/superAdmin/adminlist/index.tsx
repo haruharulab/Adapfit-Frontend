@@ -20,27 +20,21 @@ export default function AdminList() {
       count: number,
       data: Admin[]
     }>({
-      url: "super/all",
+      url: 'super/all',
       method: HttpMethod.GET,
     });
     if (error) return;
     setAdminList(data.data);
   }
 
-  const deleteAdmin = async (id: string) => {
-    if (!window.confirm("정말 삭제하시겠습니까?")) return;
+  const deleteAdmin = async (id: number) => {
+    if (!window.confirm('정말 삭제하시겠습니까?')) return;
     const [, deleteError] = await ajax({
       url: `super/${id}`,
       method: HttpMethod.DELETE,
     });
     if (deleteError) return;
-
-    const [data, loadError] = await ajax<Admin[]>({
-      url: 'super/all',
-      method: HttpMethod.GET,
-    });
-    if (loadError) return;
-    setAdminList(data);
+    loadAdminList();
   };
 
   return (

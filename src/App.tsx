@@ -7,9 +7,11 @@ import AdminLogin from "./pages/admin/login";
 import SuperAdminLogin from "./pages/superAdmin/login";
 import AdminPageRoute from "./routes/admin";
 import { PlanHome } from "./pages/admin/plan";
+import ModalDim from "./components/common/modal/modalDim";
 
 const App = () => (
   <RecoilRoot>
+    <ModalDim />
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<AppPageRoute />} />

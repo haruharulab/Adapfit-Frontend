@@ -19,12 +19,15 @@ const BannerManage = () => {
   }, []);
 
   const getBannerList = async () => {
-    const [data, error] = await ajax<Banner[]>({
+    const [data, error] = await ajax<{
+        count: number,
+        data: Banner[]
+    }>({
       url: 'banner',
       method: HttpMethod.GET
     });
     if (error) return;
-    setBannerList(data);
+    setBannerList(data.data);
   }
   
   const deleteBanner = async (id: number) => {

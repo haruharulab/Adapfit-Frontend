@@ -16,10 +16,7 @@ export const BannerImgLink = styled.a`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60vh;
-  @media screen and (max-width: 960px) {
-    height: 30vh;
-  }
+  height: 100%;
   position: relative;
   overflow: hidden;
   user-select: none;
@@ -67,7 +64,7 @@ export const Banner = styled.div`
   padding-bottom: 80px;
   position: relative;
   @media screen and (max-width: 960px) {
-    height: 30vh;
+    height: 40vh;
   }
   .swiper-button-next {
     &::after {

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Shadow } from "../shadow/style";
 
 export const DropdownMenu = styled.div`
-  z-index: 10;
   position: relative;
   display: inline-block;
   color: black;
@@ -31,12 +30,13 @@ export const Title = styled.span`
 `;
 
 export const DropdownContent = styled.ul`
+  position:  absolute;
+  z-index: 1;
   width: 120px;
   transform: translate(-50%, -15px);
   left: 50%;
   opacity: 0;
   pointer-events: none;
-  position:  absolute;
   text-align: center;
   font-size: 16px;
   font-weight: bold;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { AccentButton, Button } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
+import { Input } from "../../../components/common/input/style";
 
 export const Header = styled.div`
   width: 100%;
@@ -16,25 +17,18 @@ export const Header = styled.div`
   }
   div {
     display: flex;
+    align-items: center;
     gap: 10px;
   }
 `;
 
-export const Search = styled.input`
-  flex: auto;
+export const Search = styled(Input)`
   max-width: 300px;
-  padding: 10px;
   background-color: white;
-  border: 0;
-  border-radius: 10px;
-  select {
-    font-size: 1.2rem;
-    width: 25%;
-    height: 100%;
-  }
 `;
 
 export const Create = styled(AccentButton)`
+  white-space: nowrap;
 `;
 
 export const MenuWrap = styled.div`

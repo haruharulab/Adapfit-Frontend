@@ -3,6 +3,17 @@ import { ScrollBar } from "../scrollBar/style";
 import { Shadow } from "../shadow/style";
 
 export const Dim = styled.div`
+  pointer-events: all;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000033;
 `;
 
 export const ModalWrap = styled.div`
@@ -14,7 +25,7 @@ export const ModalWrap = styled.div`
   position: absolute;
   font-weight: bold;
   word-break: keep-all;
-  padding: 15px 10px 10px;
+  padding: 15px 15px 15px;
   border-radius: 20px;
   ${Shadow}
   background-color: white;
@@ -67,5 +78,8 @@ export const ModalContent = styled.div`
   overflow-y: auto;
   form {
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 `;
