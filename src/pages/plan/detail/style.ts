@@ -1,85 +1,66 @@
 import styled from "styled-components";
+import { AccentButton } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
 import { ScrollBar } from "../../../components/common/scrollBar/style";
+import { AccentText } from "../../../components/common/text/style";
 
 export const Wrap = styled.div`
   ${Container}
 `;
 
-export const PlanInfoWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  gap: 20px;
-  height: 500px;
-  @media screen and (max-width: 800px) {
-    flex-direction: column;
-    height: auto;
-  }
-`;
-
-export const PlanInfoImageWrap = styled.div`
-  flex: 1.5;
-  display: flex;
-  align-items: center;
-`;
-
 export const PlanInfoImage = styled.img`
   width: 100%;
-  max-height: 100%;
-  border-radius: 20px;
+  object-fit: cover;
 `;
 
 export const PlanInfo = styled.div`
+  ${Container}
+  max-width: 900px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding-top: 75px;
+  hr {
+    margin: 65px 0 75px;
+  }
 `
 
 export const PlanTitle = styled.h2`
-  margin-top: 20px;
   font-weight: bold;
   font-size: 30px;
 `
 
-export const PlanCategory = styled.div`
-  margin-top: 10px;
-  padding: 0 5px;
-  color: gray;
-  `
+export const PlanCategory = styled(AccentText)`
+  font-weight: bold;
+`
 
 export const PlanContent = styled.div`
   flex: auto;
   white-space: pre-wrap;
   word-break: break-all;
-  margin-top: 40px;
-  background-color: white;
   border-radius: 15px;
-  padding: 10px;
+  padding-top: 10px;
   ${ScrollBar}
-  @media screen and (max-width: 800px) {
-    margin-top: 20px;
-    max-height: 200px;
-  }
 `
 
-export const PlanConsultButton = styled.button`
-  margin-top: 20px;
+export const PlanConsultButton = styled(AccentButton)`
+  margin-top: 50px;
   width: 100%;
-  border: none;
-  border-radius: 10px;
-  padding: 13px;
-  font-size: 17px;
-  color: white;
-  background-color: #f2640b;
-  cursor: pointer;
+  max-width: 225px;
+  align-self: center;
+  padding: 8px;
+  font-size: 19px;
 `
 
 export const PlanImageList = styled.ul`
-  ${Container}
-  margin-top: 50px;
   max-width: 900px;
+  margin: 0 auto;
+  hr {
+    margin: 100px 0 50px;
+  }
 `;
 
 export const PlanImageItem = styled.li`
@@ -88,5 +69,32 @@ export const PlanImageItem = styled.li`
   list-style: none;
   img {
     max-width: 100%;
+  }
+`;
+
+export const PlanBottomWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 0 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  @media screen and (max-width: 760px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  ${PlanConsultButton} {
+    margin: 0;
+  }
+`;
+
+export const PlanShareWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  svg {
+    width: 30px;
+    height: 30px;
   }
 `;

@@ -3,6 +3,7 @@ import { Plan } from "../../../types/plan.type";
 import { getPlan } from "../../../apis/plan.api";
 import { useParams } from "react-router-dom";
 import * as S from "./style";
+import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
 
 const PlanDetail = () => {
   const param = useParams();
@@ -24,24 +25,29 @@ const PlanDetail = () => {
   return (
     plan && (
       <S.Wrap>
-        <S.PlanInfoWrap>
-          <S.PlanInfoImageWrap>
-            <S.PlanInfoImage src={plan.thumbnail} />
-          </S.PlanInfoImageWrap>
-          <S.PlanInfo>
-            <S.PlanTitle>{plan.title}</S.PlanTitle>
-            <S.PlanCategory>{plan.category.name}</S.PlanCategory>
-            <S.PlanContent>{plan.content}</S.PlanContent>
-            <S.PlanConsultButton onClick={startConsult}>1 대 1 상담하기</S.PlanConsultButton>
-          </S.PlanInfo>
-        </S.PlanInfoWrap>
+        <S.PlanInfoImage src={plan.thumbnail} />
+        <S.PlanInfo>
+          <S.PlanCategory>{plan.category.name}</S.PlanCategory>
+          <S.PlanTitle>{plan.title}</S.PlanTitle>
+          <S.PlanContent>{plan.content}</S.PlanContent>
+          <hr />
+        </S.PlanInfo>
         <S.PlanImageList>
           {plan.images.map((item) => (
             <S.PlanImageItem>
               <img src={item.imageUrl} alt="플랜 설명 이미지" />
             </S.PlanImageItem>
           ))}
+          <hr />
         </S.PlanImageList>
+        <S.PlanBottomWrap>
+          <S.PlanShareWrap>
+            <BsFacebook />
+            <BsLinkedin />
+            <BsTwitter />
+          </S.PlanShareWrap>
+          <S.PlanConsultButton onClick={startConsult}>상담하러 가기</S.PlanConsultButton>
+        </S.PlanBottomWrap>
       </S.Wrap>
     )
   );
