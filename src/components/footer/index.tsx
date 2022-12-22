@@ -12,7 +12,6 @@ const Footer = () => {
 
   const updateFooterHeight = () => {
     const height = ref.current?.clientHeight ?? 0;
-    console.log(height)
     if (height < 1) return;
     setFooterHeight(height);
   }

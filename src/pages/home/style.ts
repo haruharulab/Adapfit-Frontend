@@ -4,8 +4,7 @@ import {
 } from "react-icons/io";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { Button, ButtonStyle } from "../../components/common/button/style";
-import { Container } from "../../components/common/container/style";
+import { ButtonStyle } from "../../components/common/button/style";
 import { Shadow } from "../../components/common/shadow/style";
 
 export const HomeWrap = styled.div`
@@ -42,19 +41,9 @@ export const RightArrow = styled(IoIosArrowDroprightCircle)`
 `;
 
 export const BannerImg = styled.img`
-  position: absolute;
-  z-index: 1;
-  max-width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-export const BannerBackgroundImg = styled.img`
   width: 100%;
   height: 100%;
-  transform: scale(1.02);
   object-fit: cover;
-  filter: blur(10px);
 `;
 
 export const Banner = styled.div`
@@ -99,16 +88,16 @@ export const Banner = styled.div`
 
 export const IntroduceWrap = styled.div`
   text-align: center;
-  ${Container}
   width: 100%;
   max-width: 900px;
-  margin-top: 100px;
+  margin: 100px auto;
   h3 {
     font-size: 46px;
     font-weight: bold;
     @media screen and (max-width: 600px) {
-        font-size: 34px;
+      font-size: 34px;
     }
+    
   }
   img {
     margin-top: 100px;
@@ -118,13 +107,6 @@ export const IntroduceWrap = styled.div`
 
 export const Adapfit = styled.h3`
   color: #ff5a28;
-`;
-
-export const PlanGallery = styled.div`
-  margin: 30px 0;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
 `;
 
 export const PlanDetailLink = styled(Link)`

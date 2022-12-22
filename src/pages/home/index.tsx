@@ -10,8 +10,8 @@ import { Banner } from "../../types/banner.type";
 import { getBannerList } from "../../apis/banner.api";
 import { getPlanList } from "../../apis/plan.api";
 import { Plan } from "../../types/plan.type";
-import PlanList from "../../components/plan/planList";
-import { Button } from "../../components/common/button/style";
+import { AccentText } from "../../components/common/text/style";
+import PlanGallery from "./plan/planGallery";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
@@ -37,7 +37,6 @@ export const Home = () => {
             <SwiperSlide>
               <S.BannerImgLink target={banner.link? '_blank': ''} href={banner.link || '#'}>
                 <S.BannerImg src={banner.fileUrl} className="slider" />
-                <S.BannerBackgroundImg src={banner.fileUrl} />
               </S.BannerImgLink>
             </SwiperSlide>
           ))}
@@ -45,22 +44,14 @@ export const Home = () => {
       </S.Banner>
       <S.IntroduceWrap>
         <h3>
-          특별한 당신을 위한
-          <br />
-          특별한 운동,
+          어댑핏&nbsp;
+          <AccentText>맞춤플랜</AccentText>
+          의 특별한 시스템
         </h3>
-        <S.Adapfit>어댑핏!</S.Adapfit>
-        <img src="/image/adapfit_introduce.png" alt="" />
+        <br />
+        <p>저렴한 가격으로 자유롭게 수강이 가능한 어댑핏 맞춤 플랜을 이용해보세요!</p>
       </S.IntroduceWrap>
-      <S.IntroduceWrap>
-        <h3>
-          당신을 위한 플랜들을<br />알아보세요
-        </h3>
-        <S.PlanDetailLink to="/plan">플랜 더보기</S.PlanDetailLink>
-      </S.IntroduceWrap>
-      <S.PlanGallery>
-        <PlanList planList={planList} />
-      </S.PlanGallery>
+      <PlanGallery planList={planList} />
       <S.DownContain>
         <S.DownloadLink
           target="_blank"
