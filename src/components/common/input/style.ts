@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Shadow } from "../shadow/style";
 
 export const Input = styled.input`
   width: 100%;
@@ -12,4 +13,5 @@ export const Input = styled.input`
   &:focus {
     box-shadow: 0 0 0 2.5px #f2640b inset;
   }
+  ${Shadow}
 `;

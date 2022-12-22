@@ -7,19 +7,29 @@ import ManagePlanCard from "../../../components/plan/adminPlanCard";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/common/button/style";
+import { DropdownMenu } from "../../../components/common/dropdownMenu";
 
 export const PlanHome = () => {
   const { ajax } = useAjax();
   const [planList, setPlanList] = useState<Plan[]>([]);
   const [showedPlanlist, setShowedPlanList] = useState<Plan[]>([]);
   const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
-  const [nowCategory, setNowCategory] = useState<Number>(-1);
+  const [currentCategory, setCurrentCategory] = useState<PlanCategory>({
+    categoryId: 0,
+    name: '전체 플랜'
+  });
   const [removeMode, setRemoveMode] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
       const category = await getCategoryList();
-      setCategoryList(category);
+      setCategoryList([
+        {
+          categoryId: 0,
+          name: '전체 플랜'
+        },
+        ...category
+      ]);
     })();
     (async () => {
       const data = await getPlanList();
@@ -28,14 +38,14 @@ export const PlanHome = () => {
   }, []);
 
   useEffect(() => {
-    if (nowCategory == -1) {
-      setShowedPlanList(planList);
-    } else if (nowCategory != -1) {
+    if (currentCategory.categoryId > 0) {
       setShowedPlanList(
-        planList.filter((plan) => plan.category.categoryId == nowCategory)
+        planList.filter((plan) => plan.category.categoryId === currentCategory.categoryId)
       );
+    } else {
+      setShowedPlanList(planList);
     }
-  }, [categoryList, planList, nowCategory]);
+  }, [currentCategory.categoryId, planList]);
 
   const deletePlan = async (id: number) => {
     if (!window.confirm("정말 삭제하시겠습니까?")) return;
@@ -60,12 +70,18 @@ export const PlanHome = () => {
           <Link to='/admin/plan/create'>
               <Button>추가</Button>
           </Link>
-          <select onChange={(e) => setNowCategory(Number(e.target.value))}>
-            <option value={-1}>전체 플랜</option>;
-            {categoryList.map((category) => {
-              return <option value={category.categoryId}>{category.name}</option>;
-            })}
-          </select>
+          <DropdownMenu
+            title={currentCategory.name}
+            mark={true}
+            menus={[
+              ...categoryList.map(category => ({
+                text: category.name,
+                callback() {
+                  setCurrentCategory(category)
+                }
+              }))
+            ]}
+          />
         </S.MenuWrap>
       </S.Header>
       <S.Plan>

@@ -1,150 +1,145 @@
 import styled from "styled-components";
+import { AccentButton } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
-import { ScrollBar } from "../../../components/common/scrollBar/style";
+import { Input } from "../../../components/common/input/style";
 
 export const Wrap = styled.div`
-  ${Container}
-  padding-bottom: 20px;
-`;
-
-export const PlanInfoWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  gap: 20px;
-  height: 500px;
-  @media screen and (max-width: 800px) {
-    flex-direction: column;
-  }
 `;
 
 export const PlanInfoImageWrap = styled.div`
   position: relative;
-  flex: 1.5;
-  display: flex;
-  align-items: center;
-`;
-
-export const EditPlanInfoImage = styled.label`
-  opacity: 0;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #00000066;
-  color: white;
-  font-size: 24px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all .25s;
-  &:hover {
-    background-color: #000000AA;
-    opacity: 1;
-  }
-`;
-
-export const AddPlanInfoImage = styled.label`
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #BBB;
-  color: white;
-  font-size: 24px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all .25s;
-  &:hover {
-    background-color: #000000AA;
-  }
-`;
-
-export const AddPlanImage = styled.label`
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all .25s;
-  &:hover {
-    background-color: #888888;
-    opacity: 1;
-  }
+  height: 70vh;
 `;
 
 export const PlanInfoImage = styled.img`
   width: 100%;
-  max-height: 100%;
-  border-radius: 20px;
+  height: 70vh;
+  object-fit: cover;
 `;
 
-export const PlanInfo = styled.form`
+export const PlanInfo = styled.div`
+  ${Container}
+  max-width: 900px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding-top: 75px;
+  hr {
+    margin: 65px 0 75px;
+  }
 `
 
-export const PlanTitleInput = styled.input`
-  margin-top: 20px;
+export const PlanCategorySelect = styled.select`
+  background-color: white;
+  text-align: left;
+  padding: 5px 10px;
+  color: #494949;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+`;
+
+export const PlanTitleInput = styled(Input)`
+  width: auto;
+  background-color: white;
   font-weight: bold;
   font-size: 30px;
+  text-align: center;
   border: none;
   border-radius: 10px;
   padding: 5px;
 `
 
-export const PlanCategorySelect = styled.select`
-  margin-top: 10px;
-  align-self: flex-start;
+export const PlanContentTextArea = styled(Input)`
   background-color: white;
-  text-align: center;
-  color: #494949;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  `;
-
-export const PlanContentTextArea = styled.textarea`
-  flex: auto;
+  width: 100%;
+  min-height: 100px;
   white-space: pre-wrap;
   word-break: break-all;
-  margin-top: 40px;
   font-size: 16px;
   background-color: white;
   border: none;
   border-radius: 15px;
   padding: 10px;
   resize: none;
-  ${ScrollBar}
 `
 
-export const CreatePlanButton = styled.button`
-  margin-top: 20px;
+export const EditPlanInfoImage = styled.label`
+  opacity: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
-  border: none;
-  border-radius: 10px;
-  padding: 13px;
-  font-size: 17px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
-  background-color: #f2640b;
+  font-size: 30px;
+  font-weight: bold;
   cursor: pointer;
+  transition: all .25s;
+  &:hover {
+    background-color: #00000066;
+    opacity: 1;
+  }
+`;
+
+export const AddPlanInfoImage = styled.label`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .25s;
+  background-color: #CCC;
+  &:hover {
+    background-color: #888888;
+    opacity: 1;
+  }
+`;
+
+export const AddPlanImage = styled.label`
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .25s;
+  background-color: #CCC;
+  &:hover {
+    background-color: #888888;
+    opacity: 1;
+  }
+`;
+
+export const CreatePlanButton = styled(AccentButton)`
+  margin-top: 50px;
+  width: 100%;
+  max-width: 225px;
+  align-self: center;
+  padding: 8px;
+  font-size: 19px;
 `
 
 export const PlanImageList = styled.ul`
-margin-top: 50px;
+  max-width: 900px;
+  margin: 0 auto;
+  hr {
+    margin: 100px 0 50px;
+  }
 `;
 
 export const PlanImageItem = styled.li`

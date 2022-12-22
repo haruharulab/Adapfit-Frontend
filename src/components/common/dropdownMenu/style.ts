@@ -37,8 +37,8 @@ export const DropdownTitle = styled.span`
 `;
 
 export const DropdownMark = styled(FiChevronDown)`
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
 `;
 
 export const DropdownContent = styled.ul`

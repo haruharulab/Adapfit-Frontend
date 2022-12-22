@@ -97,7 +97,7 @@ export const Remove = styled.div`
   cursor: pointer;
   transition: all .25s;
   &:hover {
-    background-color: #000000AA;
+    background-color: #00000044;
   }
 `;
 
@@ -111,14 +111,13 @@ export const Edit = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #00000066;
   color: white;
   font-size: 24px;
   border-radius: 20px;
   cursor: pointer;
   transition: all .25s;
   &:hover {
-    background-color: #000000AA;
+    background-color: #00000044;
     opacity: 1;
   }
 `;

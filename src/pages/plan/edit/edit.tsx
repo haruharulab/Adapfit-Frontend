@@ -4,6 +4,7 @@ import { getPlan, getPlanCategoryList } from "../../../apis/plan.api";
 import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./style";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
+import { DropdownMenu } from "../../../components/common/dropdownMenu";
 
 const PlanEdit = () => {
   const param = useParams();
@@ -14,7 +15,10 @@ const PlanEdit = () => {
   const [planCategoryList, setPlanCategoryList] = useState<PlanCategory[]>([]);
   const [planTitle, setPlanTitle] = useState<string>('');
   const [planContent, setPlanContent] = useState<string>('');
-  const [planCategoryId, setPlanCategoryId] = useState<number>(0);
+  const [planCategory, setPlanCategory] = useState<PlanCategory>({
+    categoryId: 0,
+    name: '카테고리 선택'
+  });
   const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
   const [imageList, setImageList] = useState<(PlanImage)[]>([]);
 
@@ -25,21 +29,21 @@ const PlanEdit = () => {
       setPlan(planInfo);
       setPlanTitle(planInfo.title);
       setPlanContent(planInfo.content);
-      setPlanCategoryId(planInfo.category.categoryId);
+      setPlanCategory(planInfo.category);
       setImageList(planInfo.images);
     })();
     (async () => setPlanCategoryList(await getPlanCategoryList()))();
   }, [planId]);
 
   const updatePlan = async () => {
-    if (!planCategoryId) return alert('플랜 카테고리를 선택해주세요');
+    if (!planCategory.categoryId) return alert('플랜 카테고리를 선택해주세요');
     if (imageList.length < 1) return alert('플랜 이미지는 1개 이상이여야 합니다');
 
     const payload = new FormData();
     payload.append('req', new Blob([JSON.stringify({
       title: planTitle,
       content: planContent,
-      categoryId: planCategoryId
+      categoryId: planCategory.categoryId
     })], {
       type: 'application/json'
     }));
@@ -111,47 +115,48 @@ const PlanEdit = () => {
   return (
     plan && (
       <S.Wrap>
-        <S.PlanInfoWrap>
-          <S.PlanInfoImageWrap>
-            <S.PlanInfoImage src={thumbnailFile? URL.createObjectURL(thumbnailFile): plan.thumbnail} />
-            <S.EditPlanInfoImage htmlFor='thumbnail_upload'>썸네일 수정</S.EditPlanInfoImage>
-            <input
-              type='file'
-              id='thumbnail_upload'
-              onChange={e => thumbnailInputHandler(e)}
-              style={{display: 'none'}}
-            />
-          </S.PlanInfoImageWrap>
+        <S.PlanInfoImageWrap>
+          <S.PlanInfoImage src={thumbnailFile? URL.createObjectURL(thumbnailFile): plan.thumbnail} />
+          <S.EditPlanInfoImage htmlFor='thumbnail_upload'>썸네일 수정</S.EditPlanInfoImage>
+          <input
+            type='file'
+            id='thumbnail_upload'
+            onChange={e => thumbnailInputHandler(e)}
+            style={{display: 'none'}}
+          />
+        </S.PlanInfoImageWrap>
           <S.PlanInfo onSubmit={e => {
             e.preventDefault();
             updatePlan();
           }}>
+            <DropdownMenu
+              title={planCategory.name}
+              mark={true}
+              menus={[
+                ...planCategoryList.map(category => ({
+                  text: category.name,
+                  callback() {
+                    setPlanCategory(category);
+                  }
+                }))
+              ]}
+            />
             <S.PlanTitleInput
               placeholder='플랜 제목 입력'
               onChange={(e) => setPlanTitle(e.target.value)}
               value={planTitle}
               required
             />
-            <S.PlanCategorySelect
-              onChange={(e) => setPlanCategoryId(Number(e.target.value))}
-              value={planCategoryId}
-              required
-            >
-              <option value={0}>플랜 카테고리 선택</option>
-            {
-              planCategoryList.map(item => (
-                <option value={item.categoryId}>{item.name}</option>
-              ))
-            }</S.PlanCategorySelect>
             <S.PlanContentTextArea
+              as='textarea'
               placeholder='플랜 정보 입력'
               onChange={(e) => setPlanContent(e.target.value)}
               value={planContent}
               required
             />
             <S.PlanEditButton type="submit">플랜 수정</S.PlanEditButton>
+            <hr />
           </S.PlanInfo>
-        </S.PlanInfoWrap>
         <S.PlanImageList>
           {imageList.map((item, i) => (
             <S.PlanImageItem>
@@ -165,7 +170,7 @@ const PlanEdit = () => {
               />
             </S.PlanImageItem>
           ))}
-          <S.AddPlanInfoImage htmlFor='plan_image_upload'>
+          <S.AddPlanImage htmlFor='plan_image_upload'>
             이미지 추가
             <input
               type='file'
@@ -173,7 +178,7 @@ const PlanEdit = () => {
               onChange={e => imageAddInputHandler(e)}
               style={{display: 'none'}}
             />
-          </S.AddPlanInfoImage>
+          </S.AddPlanImage>
         </S.PlanImageList>
       </S.Wrap>
     )
