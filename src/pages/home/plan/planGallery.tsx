@@ -2,34 +2,39 @@ import * as S from "./planGalleryStyle";
 import { Plan } from "../../../types/plan.type";
 import HomePlanCard from "./planCard";
 import { useEffect, useState } from "react";
+import { Autoplay, FreeMode } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface PlanGalleryProps {
   planList: Plan[]
 }
 
 const CARD_ELEMENT_WIDTH = 180;
-const CARD_ELEMENT_GAP_WIDTH = 30;
+const CARD_ELEMENT_GAP_WIDTH = 50;
 
 const PlanGallery = ({
   planList
 }: PlanGalleryProps) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [cardListLength, setCardListLength] = useState<number>(0);
   const [showCardList, setShowCardList] = useState<Plan[]>([]);
 
   useEffect(() => updateWindowWidth(), []);
   window.addEventListener('resize', () => updateWindowWidth());
 
   const updateWindowWidth = () => {
-    setWindowWidth(window.innerWidth);
+    windowWidth !== window.innerWidth && setWindowWidth(window.innerWidth);
   }
 
   const calcCardListLength = () => {
     if (!planList.length) return;
 
     const cardListLength = Math.ceil(windowWidth / (CARD_ELEMENT_WIDTH + CARD_ELEMENT_GAP_WIDTH));
-    const tempCardList: Plan[] = [];
-    for (let i=0; i<cardListLength; i++) {
-      tempCardList.push(planList[i % planList.length]);
+    setCardListLength(cardListLength);
+    
+    let tempCardList: Plan[] = [];
+    for (let i=0; i<(cardListLength / planList.length); i++) {
+      tempCardList = tempCardList.concat(planList);
     }
     setShowCardList(tempCardList);
   }
@@ -40,9 +45,26 @@ const PlanGallery = ({
 
 
   return (
-    <S.PlanGallery>{
-      showCardList.map(plan => <HomePlanCard plan={plan} />)
-    }</S.PlanGallery>
+    <S.PlanGallery>
+      <Swiper
+        slidesPerView={cardListLength}
+        freeMode={true}
+        loop={true}
+        autoplay={{
+          delay: 1,
+          disableOnInteraction: false
+        }}
+        speed={1000}
+        grabCursor={true}
+        modules={[FreeMode, Autoplay]}
+      >{
+        showCardList.map(plan => 
+          <SwiperSlide className="home-plan-card">
+            <HomePlanCard plan={plan} />
+          </SwiperSlide>
+        )
+      }</Swiper>
+    </S.PlanGallery>
   );
 }
 

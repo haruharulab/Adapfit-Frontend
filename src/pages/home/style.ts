@@ -91,6 +91,7 @@ export const IntroduceWrap = styled.div`
   width: 100%;
   max-width: 900px;
   margin: 100px auto;
+  padding: 0 10px;
   h3 {
     font-size: 46px;
     font-weight: bold;
