@@ -5,11 +5,11 @@ import { ScrollBar } from "../../../components/common/scrollBar/style";
 import { AccentText } from "../../../components/common/text/style";
 
 export const Wrap = styled.div`
-  ${Container}
 `;
 
 export const PlanInfoImage = styled.img`
   width: 100%;
+  height: 70vh;
   object-fit: cover;
 `;
 

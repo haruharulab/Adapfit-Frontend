@@ -9,6 +9,12 @@ import { Shadow } from "../../components/common/shadow/style";
 
 export const HomeWrap = styled.div`
   text-align: center;
+  p {
+    font-weight: bold;
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+    }
+  }
 `;
 
 export const BannerImgLink = styled.a`
@@ -49,6 +55,7 @@ export const BannerImg = styled.img`
 export const Banner = styled.div`
   display: flex;
   width: 100%;
+  min-height: 400px;
   height: calc(100vh - 65px);
   position: relative;
   @media screen and (max-width: 960px) {
@@ -86,86 +93,77 @@ export const Banner = styled.div`
   }
 `;
 
+export const IntroduceText = styled.h3`
+  font-size: 46px;
+  font-weight: bold;
+  @media screen and (max-width: 600px) {
+    font-size: 26px;
+  }
+`;
+
 export const IntroduceWrap = styled.div`
   text-align: center;
   width: 100%;
   max-width: 900px;
   margin: 100px auto;
   padding: 0 10px;
-  h3 {
-    font-size: 46px;
-    font-weight: bold;
-    @media screen and (max-width: 600px) {
-      font-size: 34px;
-    }
-    
-  }
   img {
     margin-top: 100px;
     width: 100%;
   }
 `;
 
-export const Adapfit = styled.h3`
-  color: #ff5a28;
-`;
-
-export const PlanDetailLink = styled(Link)`
-  margin-top: 20px;
-  ${ButtonStyle}
-`;
-
-export const DownContain = styled.div`
-  margin-top: 100px;
+export const IntroduceImageWrap = styled.div`
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  margin: 100px auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
-  text-align: center;
-  @media screen and (max-width: 960px) {
-    flex-direction: column;
-  }
-`;
-export const DownloadLink = styled.a`
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 350px;
-  height: 100px;
-  padding: 0 40px;
-  border-radius: 10px;
-  ${Shadow}
-  span {
-    color: gray;
-    font-size: 25px;
-  }
+  color: white;
+  background-image: url('/image/home/introduce_1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   img {
-    width: 70px;
-    height: auto;
-  }
-  transition: background-color 0.25s;
-  background-color: #fff;
-  cursor: pointer;
-  &:hover {
-    background-color: #00000022;
-  }
-  @media screen and (max-width: 450px) {
-    width: 250px;
-    span {
-      font-size: 20px;
-    }
-    img {
-      width: 60px;
-    }
+    margin-top: 100px;
+    width: 100%;
   }
 `;
 
-export const Counselor = styled.div`
-  position: fixed;
-  top: 600px;
-  right: 30px;
-  color: gray;
-  .counselor {
-    size: 24;
+export const DownloadWrap = styled.div`
+  position: absolute;
+  bottom: 75px;
+  right: 100px;
+  display: flex;
+  gap: 20px;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    right: 50%;
+    transform: translateX(50%);
+  }
+`;
+
+export const DownloadLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 200px;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  background: none;
+  transition: background-color 0.25s;
+  border: solid 2px white;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: black;
   }
 `;

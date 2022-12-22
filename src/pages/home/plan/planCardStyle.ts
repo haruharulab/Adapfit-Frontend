@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AccentShadow, Shadow } from "../../../components/common/shadow/style";
 
-export const HomePlanCardContain = styled.div`
+export const HomePlanCardLink = styled(Link)`
+  display: inline-block;
   width: 180px;
   min-width: 180px;
   height: 245px;
+  cursor: pointer;
   ${AccentShadow}
   div {
     position: relative;
@@ -18,6 +21,10 @@ export const HomePlanCardContain = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
+    transition: transform .25s;
+  }
+  &:hover img {
+    transform: scale(1.05);
   }
   p {
     position: absolute;

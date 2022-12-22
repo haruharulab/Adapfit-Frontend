@@ -16,11 +16,12 @@ const PlanGallery = ({
   planList
 }: PlanGalleryProps) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [cardListLength, setCardListLength] = useState<number>(0);
   const [showCardList, setShowCardList] = useState<Plan[]>([]);
 
-  useEffect(() => updateWindowWidth(), []);
-  window.addEventListener('resize', () => updateWindowWidth());
+  useEffect(() => {
+    updateWindowWidth();
+    window.addEventListener('resize', () => updateWindowWidth());
+  }, []);
 
   const updateWindowWidth = () => {
     windowWidth !== window.innerWidth && setWindowWidth(window.innerWidth);
@@ -30,8 +31,6 @@ const PlanGallery = ({
     if (!planList.length) return;
 
     const cardListLength = Math.ceil(windowWidth / (CARD_ELEMENT_WIDTH + CARD_ELEMENT_GAP_WIDTH));
-    setCardListLength(cardListLength);
-    
     let tempCardList: Plan[] = [];
     for (let i=0; i<(cardListLength / planList.length); i++) {
       tempCardList = tempCardList.concat(planList);
@@ -43,19 +42,20 @@ const PlanGallery = ({
     calcCardListLength();
   }, [windowWidth, planList]);
 
-
   return (
     <S.PlanGallery>
       <Swiper
-        slidesPerView={cardListLength}
-        freeMode={true}
-        loop={true}
+        spaceBetween={CARD_ELEMENT_GAP_WIDTH}
+        width={CARD_ELEMENT_WIDTH}
+        freeMode
+        loop
+        loopedSlides={showCardList.length}
         autoplay={{
           delay: 1,
           disableOnInteraction: false
         }}
-        speed={1000}
-        grabCursor={true}
+        speed={2000}
+        grabCursor
         modules={[FreeMode, Autoplay]}
       >{
         showCardList.map(plan => 
