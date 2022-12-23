@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { AccentButton } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
 import { Input } from "../../../components/common/input/style";
-import { ScrollBar } from "../../../components/common/scrollBar/style";
 
 export const Wrap = styled.div`
+  padding-bottom: 100px;
 `;
 
 export const PlanInfoImageWrap = styled.div`
@@ -20,7 +20,7 @@ export const PlanInfoImage = styled.img`
   object-fit: cover;
 `;
 
-export const PlanInfo = styled.div`
+export const PlanInfo = styled.form`
   ${Container}
   max-width: 900px;
   flex: 1;
@@ -57,18 +57,26 @@ export const PlanTitleInput = styled(Input)`
   padding: 5px;
 `
 
-export const PlanContentTextArea = styled(Input)`
+export const PlanSubTitleInput = styled(Input)`
+  width: auto;
+  background-color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+`;
+
+export const EditorWrap = styled.div`
+  margin-top: 50px;
   background-color: white;
   width: 100%;
-  min-height: 100px;
-  white-space: pre-wrap;
-  word-break: break-all;
   font-size: 16px;
   background-color: white;
   border: none;
   border-radius: 15px;
   padding: 10px;
-  resize: none;
 `
 
 export const EditPlanInfoImage = styled.label`
@@ -107,25 +115,6 @@ export const AddPlanInfoImage = styled.label`
   }
 `;
 
-export const AddPlanImage = styled.label`
-  width: 100%;
-  height: 150px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all .25s;
-  background-color: #CCC;
-  &:hover {
-    background-color: #888888;
-    opacity: 1;
-  }
-`;
-
 export const PlanEditButton = styled(AccentButton)`
   margin-top: 50px;
   width: 100%;
@@ -134,21 +123,3 @@ export const PlanEditButton = styled(AccentButton)`
   padding: 8px;
   font-size: 19px;
 `
-
-export const PlanImageList = styled.ul`
-  max-width: 900px;
-  margin: 0 auto;
-  hr {
-    margin: 100px 0 50px;
-  }
-`;
-
-export const PlanImageItem = styled.li`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  img {
-    max-width: 100%;
-  }
-`;

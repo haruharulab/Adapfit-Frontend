@@ -74,7 +74,7 @@ export const EditorWrap = styled.div`
   background-color: white;
   border: none;
   border-radius: 15px;
-  padding: 10px
+  padding: 10px;
 `
 
 export const EditPlanInfoImage = styled.label`
