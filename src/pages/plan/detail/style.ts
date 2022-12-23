@@ -37,13 +37,8 @@ export const PlanCategory = styled(AccentText)`
   font-weight: bold;
 `
 
-export const PlanContent = styled.div`
-  flex: auto;
-  white-space: pre-wrap;
-  word-break: break-all;
-  border-radius: 15px;
+export const PlanSubTitle = styled.div`
   padding-top: 10px;
-  ${ScrollBar}
 `
 
 export const PlanConsultButton = styled(AccentButton)`
@@ -55,9 +50,13 @@ export const PlanConsultButton = styled(AccentButton)`
   font-size: 19px;
 `
 
-export const PlanImageList = styled.ul`
+export const PlanContent = styled.ul`
   max-width: 900px;
   margin: 0 auto;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
   hr {
     margin: 100px 0 50px;
   }

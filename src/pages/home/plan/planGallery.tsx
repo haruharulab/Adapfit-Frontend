@@ -54,7 +54,7 @@ const PlanGallery = ({
           delay: 1,
           disableOnInteraction: false
         }}
-        speed={2000}
+        speed={3000}
         grabCursor
         modules={[FreeMode, Autoplay]}
       >{

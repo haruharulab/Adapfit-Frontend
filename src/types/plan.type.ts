@@ -1,6 +1,7 @@
 export interface Plan {
   planId: number,
   title: string,
+  subTitle: string,
   content: string,
   thumbnail: string,
   images: PlanImage[],

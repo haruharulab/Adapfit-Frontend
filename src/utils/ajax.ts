@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosPromise } from "axios";
+import axios, { AxiosError, AxiosPromise, AxiosRequestConfig } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useResetRecoilState } from "recoil";
 import { TokenRes, tokenState, userState } from "../store/user.store";
@@ -24,6 +24,7 @@ interface Ajax {
     payload?: any,
     headers?: any,
     noToken?: boolean,
+    config?: AxiosRequestConfig,
     errorCallback?: (data: AxiosError | void) => boolean | void
 }
 
@@ -37,6 +38,7 @@ export const useAjax = () => {
         method,
         payload,
         headers = {},
+        config,
         noToken,
         errorCallback
     }: Ajax):Promise<[T, false] | [void, AxiosError | true]> => {
@@ -47,10 +49,10 @@ export const useAjax = () => {
         try {
             const rawRes = await ((): AxiosPromise<T> => {
                 switch (method) {
-                    case HttpMethod.GET: return instance.get(url, {headers});
-                    case HttpMethod.POST: return instance.post(url, payload, {headers});
-                    case HttpMethod.PUT: return instance.put(url, payload, {headers});
-                    case HttpMethod.DELETE: return instance.delete(url, {headers});
+                    case HttpMethod.GET: return instance.get(url, {...config, headers});
+                    case HttpMethod.POST: return instance.post(url, payload, {...config, headers});
+                    case HttpMethod.PUT: return instance.put(url, payload, {...config, headers});
+                    case HttpMethod.DELETE: return instance.delete(url, {...config, headers});
                 }
             })();
             return [rawRes.data, false];

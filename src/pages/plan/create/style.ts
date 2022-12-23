@@ -4,6 +4,7 @@ import { Container } from "../../../components/common/container/style";
 import { Input } from "../../../components/common/input/style";
 
 export const Wrap = styled.div`
+  padding-bottom: 100px;
 `;
 
 export const PlanInfoImageWrap = styled.div`
@@ -17,7 +18,7 @@ export const PlanInfoImage = styled.img`
   object-fit: cover;
 `;
 
-export const PlanInfo = styled.div`
+export const PlanInfo = styled.form`
   ${Container}
   max-width: 900px;
   flex: 1;
@@ -52,20 +53,28 @@ export const PlanTitleInput = styled(Input)`
   border: none;
   border-radius: 10px;
   padding: 5px;
-`
+`;
 
-export const PlanContentTextArea = styled(Input)`
+export const PlanSubTitleInput = styled(Input)`
+  width: auto;
+  background-color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+`;
+
+export const EditorWrap = styled.div`
+  margin-top: 50px;
   background-color: white;
   width: 100%;
-  min-height: 100px;
-  white-space: pre-wrap;
-  word-break: break-all;
   font-size: 16px;
   background-color: white;
   border: none;
   border-radius: 15px;
-  padding: 10px;
-  resize: none;
+  padding: 10px
 `
 
 export const EditPlanInfoImage = styled.label`

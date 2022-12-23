@@ -5,39 +5,39 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { DropdownMenu } from "../../../components/common/dropdownMenu";
+import { Editor } from "@tinymce/tinymce-react";
 
 const CreatePlan = () => {
   const navigate = useNavigate();
   const {ajax} = useAjax();
-  const [planCategoryList, setPlanCategoryList] = useState<PlanCategory[]>([]);
-  const [planTitle, setPlanTitle] = useState<string>('');
-  const [planContent, setPlanContent] = useState<string>('');
-  const [planCategory, setPlanCategory] = useState<PlanCategory>({
+  const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
+  const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [title, setTitle] = useState<string>('');
+  const [subTitle, setSubTitle] = useState<string>('');
+  const [content, setContent] = useState<string>('');
+  const [category, setCategory] = useState<PlanCategory>({
     categoryId: 0,
     name: '카테고리 선택'
   });
-  const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
-  const [imageList, setImageList] = useState<(File)[]>([]);
 
   useEffect(() => {
-    (async () => setPlanCategoryList(await getPlanCategoryList()))();
+    (async () => setCategoryList(await getPlanCategoryList()))();
   }, []);
 
   const updatePlan = async () => {
-    if (!thumbnailFile) return alert('썸네일 이미지를 등록해주세요');
-    if (!planCategory.categoryId) return alert('플랜 카테고리를 선택해주세요');
-    if (imageList.length < 1) return alert('플랜 이미지는 1개 이상이여야 합니다');
+    if (!thumbnail) return alert('썸네일 이미지를 등록해주세요');
+    if (!category.categoryId) return alert('플랜 카테고리를 선택해주세요');
 
     const payload = new FormData();
     payload.append('req', new Blob([JSON.stringify({
-      title: planTitle,
-      content: planContent,
-      categoryId: planCategory.categoryId
+      title,
+      subTitle,
+      content,
+      categoryId: category.categoryId
     })], {
       type: 'application/json'
     }));
-    payload.append('thumbnail', thumbnailFile);
-    imageList.forEach(image => payload.append('images', image));
+    payload.append('thumbnail', thumbnail);
 
     const [, error] = await ajax({
       url: 'plan/',
@@ -48,106 +48,109 @@ const CreatePlan = () => {
     navigate('/admin/plan');
   }
 
-  const thumbnailInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+  const thumbnailInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
     if (!file) return;
-    setThumbnailFile(file);
+    setThumbnail(file);
   }
 
-  const imageEditInputHandler = (e: ChangeEvent<HTMLInputElement>, i: number) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setImageList(prev => [
-      ...prev.slice(0, i),
-      file,
-      ...prev.slice(i + 1)
-    ]);
-  }
-
-  const imageAddInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return;
-
-    setImageList(prev => [
-      ...prev,
-      file
-    ]);
+  const imagesUploadHandler = async (blobInfo: any): Promise<string> => {
+    return new Promise(async (resolve, reject) => {
+      let payload = new FormData();
+      payload.append('image', blobInfo.blob());
+      
+      const [imageUrl, uploadError] = await ajax<string>({
+        method: HttpMethod.POST,
+        payload,
+        url: 'image',
+        config:{
+            timeout: 0
+        },
+        errorCallback:(data) => {
+            if (!data) return reject({message: '알 수 없는 에러가 발생하였습니다', remove: true});
+            reject({message: data.message, remove: true});
+        }
+      });
+      if (uploadError) return;
+      resolve(imageUrl);
+    });
   }
 
   return (
-    
     <S.Wrap>
       <S.PlanInfoImageWrap>
-        {thumbnailFile && <>
-          <S.PlanInfoImage src={URL.createObjectURL(thumbnailFile)} />
+        {thumbnail && <>
+          <S.PlanInfoImage src={URL.createObjectURL(thumbnail)} />
           <S.EditPlanInfoImage htmlFor='thumbnail_upload'>썸네일 수정</S.EditPlanInfoImage>
         </>}
-        {!thumbnailFile && <S.AddPlanInfoImage htmlFor='thumbnail_upload'>썸네일 넣기</S.AddPlanInfoImage>}
+        {!thumbnail && <S.AddPlanInfoImage htmlFor='thumbnail_upload'>썸네일 넣기</S.AddPlanInfoImage>}
         <input
           type='file'
           id='thumbnail_upload'
-          onChange={e => thumbnailInputHandler(e)}
+          onChange={event => thumbnailInputHandler(event)}
           style={{display: 'none'}}
         />
       </S.PlanInfoImageWrap>
-      <S.PlanInfo onSubmit={e => {
-        e.preventDefault();
+      <S.PlanInfo onSubmit={event => {
+        event.preventDefault();
         updatePlan();
       }}>
         <DropdownMenu
-          title={planCategory.name}
+          title={category.name}
           mark={true}
           menus={[
-            ...planCategoryList.map(category => ({
+            ...categoryList.map(category => ({
               text: category.name,
               callback() {
-                setPlanCategory(category);
+                setCategory(category);
               }
             }))
           ]}
         />
         <S.PlanTitleInput
           placeholder='플랜 제목 입력'
-          onChange={(e) => setPlanTitle(e.target.value)}
-          value={planTitle}
+          onChange={event => setTitle(event.target.value)}
+          value={title}
           required
         />
-        <S.PlanContentTextArea
-          as='textarea'
-          placeholder='플랜 정보 입력'
-          onChange={(e) => setPlanContent(e.target.value)}
-          value={planContent}
+        <S.PlanSubTitleInput
+          placeholder='플랜 부제목 입력'
+          onChange={event => setSubTitle(event.target.value)}
+          value={subTitle}
           required
         />
-        <S.CreatePlanButton type="submit">플랜 만들기</S.CreatePlanButton>
-        <hr />
-      </S.PlanInfo>
-      <S.PlanImageList>
-        {imageList.map((file, i) => (
-          <S.PlanImageItem>
-            <img src={URL.createObjectURL(file)} alt="플랜 설명 이미지" />
-            <S.EditPlanInfoImage htmlFor={`plan_image_upload_${i}`}>이미지 수정</S.EditPlanInfoImage>
-            <input
-              type='file'
-              id={`plan_image_upload_${i}`}
-              onChange={e => imageEditInputHandler(e, i)}
-              style={{display: 'none'}}
-            />
-          </S.PlanImageItem>
-        ))}
-        <S.AddPlanImage htmlFor='plan_image_upload'>
-          이미지 추가
-          <input
-            type='file'
-            id={`plan_image_upload`}
-            onChange={e => imageAddInputHandler(e)}
-            style={{display: 'none'}}
+        <S.EditorWrap>
+          <Editor
+            tinymceScriptSrc={process.env.NODE_ENV === 'development'? undefined: '/lib/tinymce/tinymce.min.js'}
+            init={{
+              promotion: false,
+              language: 'ko_KR',
+              height: '100%',
+              menubar: true,
+              mobile: {
+                menubar: true,
+              },
+              plugins: [
+                'code','autolink','lists','link','image','charmap','preview','anchor','searchreplace','visualblocks','media','table','wordcount','autoresize'
+              ],
+              toolbar: 'undo redo codesample | bold italic | alignleft alignright aligncenter alignjustify | emoticon image media | preview code',
+              relative_urls: false,
+              convert_urls: false,
+              images_upload_handler: imagesUploadHandler,
+              init_instance_callback: (editor) => {
+                const css = document.createElement('style');
+                css.innerHTML = 'img{max-width:100%;height:auto}';
+                editor.contentDocument.head.appendChild(css);
+              }
+            }}
+            value={content}
+            onEditorChange={setContent}
           />
-        </S.AddPlanImage>
-      </S.PlanImageList>
+        </S.EditorWrap>
+        <S.CreatePlanButton type="submit">플랜 만들기</S.CreatePlanButton>
+      </S.PlanInfo>
     </S.Wrap>
-  )
+  );
 };
 
 export default CreatePlan;

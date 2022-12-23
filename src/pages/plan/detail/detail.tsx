@@ -29,17 +29,13 @@ const PlanDetail = () => {
         <S.PlanInfo>
           <S.PlanCategory>{plan.category.name}</S.PlanCategory>
           <S.PlanTitle>{plan.title}</S.PlanTitle>
-          <S.PlanContent>{plan.content}</S.PlanContent>
+          <S.PlanSubTitle>{plan.subTitle}</S.PlanSubTitle>
           <hr />
         </S.PlanInfo>
-        <S.PlanImageList>
-          {plan.images.map((item) => (
-            <S.PlanImageItem>
-              <img src={item.imageUrl} alt="플랜 설명 이미지" />
-            </S.PlanImageItem>
-          ))}
+        <S.PlanContent>
+          <div dangerouslySetInnerHTML={{__html: plan.content}}></div>
           <hr />
-        </S.PlanImageList>
+        </S.PlanContent>
         <S.PlanBottomWrap>
           <S.PlanShareWrap>
             <BsFacebook />
