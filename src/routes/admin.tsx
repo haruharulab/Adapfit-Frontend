@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import AdminHeader from "../components/header/admin";
 import Notice from "../components/notice";
 import AdminDashboard from "../pages/admin";
 import { PlanHome } from "../pages/admin/plan";
@@ -10,9 +9,9 @@ import CreatePlan from "../pages/plan/create/create";
 import ManageEmployment from "../pages/employment/manage";
 import { Main } from "../components/common/main/style";
 import AdminSideBar from "../components/common/sidebar/adminSideBar";
+
 const AdminPageRoute = () => (
   <>
-    {/* <AdminHeader /> */}
     <AdminSideBar />
     <Main>
       <Routes>

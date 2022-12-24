@@ -4,8 +4,9 @@ import { useRecoilState } from "recoil";
 import { HttpMethod, useAjax } from '../../../utils/ajax';
 import { useModal } from '../../../utils/modal';
 import { userState } from '../../../store/user.store';
-import LoginModal from '../login/login';
-import { FaUserAlt } from 'react-icons/fa';
+import LoginModal from '../login';
+import { FaBullhorn, FaThList, FaUserAlt, FaUsers } from 'react-icons/fa';
+import { MdSpaceDashboard, MdViewCarousel } from 'react-icons/md';
 import { Admin, Authority, SuperAdmin } from '../../../types/user.type';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,45 +45,63 @@ const AdminSideBar = () => {
 
   const LoginMenu = () => (
     <S.SideBarItem onClick={() => openModal('adminLogin')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
+      <S.SideBarItemIcon>
+        <FaUserAlt size={22} color='white' />
+      </S.SideBarItemIcon>
       <S.SideBarItemContent>로그인</S.SideBarItemContent>
     </S.SideBarItem>
   );
 
   const AdminMenu = () => (<>
     <S.SideBarItem onClick={() => navigate('/admin')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
+      <S.SideBarItemIcon>        
+        <MdSpaceDashboard size={26} color='white' />
+      </S.SideBarItemIcon>
       <S.SideBarItemContent>대시보드</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/plan')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
+      <S.SideBarItemIcon>
+        <FaThList size={20} color='white' />
+      </S.SideBarItemIcon>
       <S.SideBarItemContent>플랜 관리</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/banner')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
+      <S.SideBarItemIcon>
+        <MdViewCarousel size={30} color='white' />
+      </S.SideBarItemIcon>
       <S.SideBarItemContent>배너 관리</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/employment')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
-      <S.SideBarItemContent>채용 관리</S.SideBarItemContent>
-    </S.SideBarItem>
     <S.SideBarItem onClick={() => openModal('superAdminLogin')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
+      <S.SideBarItemIcon>  
+        <FaUserAlt size={22} color='white' />
+      </S.SideBarItemIcon>
       <S.SideBarItemContent>슈퍼관리자로 전환</S.SideBarItemContent>
     </S.SideBarItem>
   </>);
 
   const SuperAdminMenu = () => (<>
     <S.SideBarItem onClick={() => navigate('/admin/adminlist')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
+      <S.SideBarItemIcon>
+        <FaUserAlt size={22} color='white' />
+      </S.SideBarItemIcon>
       <S.SideBarItemContent>관리자계정 관리</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/notice')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
+      <S.SideBarItemIcon>  
+        <FaBullhorn size={22} color='white' />
+      </S.SideBarItemIcon>
       <S.SideBarItemContent>공지사항 관리</S.SideBarItemContent>
     </S.SideBarItem>
+    <S.SideBarItem onClick={() => navigate('/admin/employment')}>
+      <S.SideBarItemIcon>
+        <FaUsers size={22} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>채용 관리</S.SideBarItemContent>
+    </S.SideBarItem>
     <S.SideBarItem onClick={() => openModal('adminLogin')}>
-      <S.SideBarItemIcon><FaUserAlt color='white' /></S.SideBarItemIcon>
+      <S.SideBarItemIcon>
+        <FaUserAlt size={22} color='white' />
+      </S.SideBarItemIcon>
       <S.SideBarItemContent>일반관리자로 전환</S.SideBarItemContent>
     </S.SideBarItem>
   </>);

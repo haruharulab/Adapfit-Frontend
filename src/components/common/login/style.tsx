@@ -7,14 +7,14 @@ export const LoginForm = styled.form`
   gap: 20px !important;
 `;
 
-export const LinkWrap = styled.div`
+export const MenuWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 40px;
 `;
 
-export const TextLink = styled(Link)`
+export const MenuText = styled.span`
   font-size: 15px;
   color: gray;
   cursor: pointer;

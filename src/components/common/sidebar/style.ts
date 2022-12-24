@@ -46,6 +46,7 @@ export const SideBarHeader = styled.div`
   ${Logo} {
     width: 100px;
     margin-top: 10px;
+    margin-left: 5px;
     cursor: pointer;
   }
   p {
@@ -63,8 +64,8 @@ export const SideBarItem = styled.li`
   display: flex;
   align-items: center;
   width: 270px;
-  padding: 0 10px;
-  gap: 10px;
+  padding: 10px 20px;
+  gap: 15px;
   border-radius: 10px;
   cursor: pointer;
   transition: .25s;
@@ -73,17 +74,16 @@ export const SideBarItem = styled.li`
   }
 `;
 
-
 export const SideBarItemIcon = styled.div`
-  padding: 12px;
-  svg {
-    width: 24px;
-    height: 24px;
-  }
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SideBarItemContent = styled.div`
-  font-size: 18px;
+  font-size: 17px;
 `;
 
 export const SideBarContentWrap = styled.ul`

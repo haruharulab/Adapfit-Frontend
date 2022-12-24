@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { TokenRes, tokenState, userState } from "../../../../store/user.store";
-import { Admin, SuperAdmin } from "../../../../types/user.type";
-import { HttpMethod, useAjax } from "../../../../utils/ajax";
-import { useModal } from "../../../../utils/modal";
-import { FormSubmitButton } from "../../button/style";
-import { Input } from "../../input/style";
-import Modal from "../../modal/modal";
+import { TokenRes, tokenState, userState } from "../../../store/user.store";
+import { Admin, SuperAdmin } from "../../../types/user.type";
+import { HttpMethod, useAjax } from "../../../utils/ajax";
+import { useModal } from "../../../utils/modal";
+import { FormSubmitButton } from "../button/style";
+import { Input } from "../input/style";
+import Modal from "../modal/modal";
 import * as S from "./style";
 
 const LoginModal = () => (
@@ -70,10 +70,16 @@ const SuperAdminLoginModal = () => {
           type='password'
         />
         <FormSubmitButton>로그인</FormSubmitButton>
-        <S.LinkWrap>
-          <S.TextLink to='/'>홈으로</S.TextLink>
-          <S.TextLink as='span' onClick={() => {openModal('adminLogin');closeModal('superAdminLogin');}}>일반관리자</S.TextLink>
-        </S.LinkWrap>
+        <S.MenuWrap>
+          <S.MenuText
+            onClick={() => {
+              openModal('adminLogin');
+              closeModal('superAdminLogin');
+            }}
+          >
+            일반관리자 로그인
+          </S.MenuText>
+        </S.MenuWrap>
       </S.LoginForm>
     </Modal>
   );
@@ -131,10 +137,16 @@ const AdminLoginModal = () => {
           type='password'
         />
         <FormSubmitButton type='submit'>로그인</FormSubmitButton>
-        <S.LinkWrap>
-          <S.TextLink to='/'>홈으로</S.TextLink>
-          <S.TextLink as='span' onClick={() => {openModal('superAdminLogin');closeModal('adminLogin');}}>슈퍼관리자</S.TextLink>
-        </S.LinkWrap>
+        <S.MenuWrap>
+        <S.MenuText
+            onClick={() => {
+              openModal('superAdminLogin');
+              closeModal('adminLogin');
+            }}
+          >
+            슈퍼관리자 로그인
+          </S.MenuText>
+        </S.MenuWrap>
       </S.LoginForm>
     </Modal>
   );
