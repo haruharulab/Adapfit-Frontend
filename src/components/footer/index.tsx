@@ -7,8 +7,10 @@ const Footer = () => {
   const setFooterHeight = useSetRecoilState(footerHeightState);
   const ref = createRef<HTMLElement>();
 
-  useEffect(() => updateFooterHeight(), []);
-  window.addEventListener('resize', () => updateFooterHeight());
+  useEffect(() => {
+    updateFooterHeight();
+    window.addEventListener('resize', () => updateFooterHeight());
+  }, []);
 
   const updateFooterHeight = () => {
     const height = ref.current?.clientHeight ?? 0;

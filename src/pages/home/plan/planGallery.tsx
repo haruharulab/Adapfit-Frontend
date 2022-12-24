@@ -1,8 +1,8 @@
 import * as S from "./planGalleryStyle";
 import { Plan } from "../../../types/plan.type";
 import HomePlanCard from "./planCard";
-import { useEffect, useState } from "react";
-import { Autoplay, FreeMode } from "swiper";
+import { useEffect, useRef, useState } from "react";
+import SwiperCore, { Autoplay, FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 interface PlanGalleryProps {
@@ -17,6 +17,7 @@ const PlanGallery = ({
 }: PlanGalleryProps) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showCardList, setShowCardList] = useState<Plan[]>([]);
+  const swiperRef = useRef<SwiperCore>();
 
   useEffect(() => {
     updateWindowWidth();
@@ -43,8 +44,12 @@ const PlanGallery = ({
   }, [windowWidth, planList]);
 
   return (
-    <S.PlanGallery>
+    <S.PlanGallery
+      onMouseOver={() => swiperRef.current?.autoplay.stop()}
+      onMouseOut={() => swiperRef.current?.autoplay.start()}
+    >
       <Swiper
+        onInit={Swiper => swiperRef.current = Swiper}
         spaceBetween={CARD_ELEMENT_GAP_WIDTH}
         width={CARD_ELEMENT_WIDTH}
         freeMode
@@ -52,7 +57,9 @@ const PlanGallery = ({
         loopedSlides={showCardList.length}
         autoplay={{
           delay: 1,
-          disableOnInteraction: false
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+          waitForTransition: false
         }}
         speed={3000}
         grabCursor

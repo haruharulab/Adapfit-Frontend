@@ -105,7 +105,7 @@ export const IntroduceWrap = styled.div`
   text-align: center;
   width: 100%;
   max-width: 900px;
-  margin: 100px auto;
+  margin: 100px auto 70px auto;
   padding: 0 10px;
   img {
     margin-top: 100px;

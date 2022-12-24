@@ -9,12 +9,12 @@ export const Header = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: #FFFFFFDD;
 `;
 
 export const HeaderContainer = styled.div`
   ${Container}
-  max-width: 1100px;
+  max-width: 1300px;
   width: 100%;
   display: flex;
   justify-content: space-between;

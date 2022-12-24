@@ -7,3 +7,9 @@ export interface Recruitment {
     employmentPattern: string,
     workingArea: string
 }
+
+export interface RecruitmentInfo {
+  positionList: string[],
+  careerList: string[],
+  patternList: string[]
+}

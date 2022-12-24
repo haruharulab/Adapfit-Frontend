@@ -1,11 +1,18 @@
+import { Recruitment } from "../../types/recruitment.type";
 import * as S from "./style";
-export function Item(props: any) {
-  return (
-    <S.Contain>
-      <S.Name>{props.title}</S.Name>
-      <span>{props.jobGroup}</span>
-      <span>{props.career}</span>
-      <span className="pattern">{props.workingArea}</span>
-    </S.Contain>
-  );
+
+interface RecruitmentItemProps {
+  recruitment: Recruitment
 }
+
+const RecruitmentItem = ({
+  recruitment
+}: RecruitmentItemProps) => (
+  <S.Wrap to={`/employment/${recruitment.id}`}>
+    <S.Name>{recruitment.title}</S.Name>
+    <span>{recruitment.jobGroup}</span>
+    <span>{recruitment.career}</span>
+  </S.Wrap>
+);
+
+export default RecruitmentItem;

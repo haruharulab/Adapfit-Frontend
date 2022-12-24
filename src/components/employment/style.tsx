@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Contain = styled.div`
+export const Wrap = styled(Link)`
   width: 100%;
   background-color: white;
   display: flex;

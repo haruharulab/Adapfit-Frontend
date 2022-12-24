@@ -1,62 +1,99 @@
 import * as S from "./style";
-import { Item } from "../../components/employment";
 import { useEffect, useState } from "react";
-import getrecuritmentApi from "../../api/recruitment/getrecuritment.api";
-import { Link } from "react-router-dom";
+import { Recruitment, RecruitmentInfo } from "../../types/recruitment.type";
+import { HttpMethod, useAjax } from "../../utils/ajax";
+import RecruitmentItem from "../../components/employment";
+import { DropdownMenu } from "../../components/common/dropdownMenu";
 
-export default function Employment() {
-  const [position, setJobGroup] = useState("");
-  const [career, setCareer] = useState("");
-  const [employmentPattern, setEmploymentPattern] = useState("");
-  const [data, setData] = useState<any>([]);
-  const getData = async () => {
-    const req = {
-      position,
-      career: career,
-      employmentPattern,
-    };
-    const temp = await getrecuritmentApi.getRecuritment(req);
-    console.log(temp);
-    setData(temp);
-  };
+const Employment = () => {
+  const {ajax} = useAjax();
+  const [position, setPosttion] = useState('직군 선택');
+  const [career, setCareer] = useState('경력 선택');
+  const [pattern, setPattern] = useState('채용패턴 선택');
+  const [recruitmentList, setRecruitmentList] = useState<Recruitment[]>([]);
+  const [recruitmentInfo, setRecruitmentInfo] = useState<RecruitmentInfo>({
+    positionList: ['모든 직군'],
+    careerList: ['모든 경력'],
+    patternList: ['모든 채용패턴']
+  });
+
   useEffect(() => {
-    getData();
-  }, [position, career, employmentPattern]);
+    getRecruitmentInfo();
+  }, []);
+
+  useEffect(() => {
+    getRecruitmentList();
+  }, [position, career, pattern]);
+
+  const getRecruitmentList = async () => {
+    const [data, error] = await ajax<{
+      count: number,
+      data: Recruitment[]
+    }>({
+      url: 'recruitment',
+      method: HttpMethod.GET,
+      config: {
+        params: {
+          position,
+          career,
+          employmentPattern: pattern
+        }
+      }
+    });
+    if (error) return;
+    setRecruitmentList(data.data);
+  }
+  
+  const getRecruitmentInfo = async () => {
+    const [data, error] = await ajax<RecruitmentInfo>({
+      url: 'recruitment/info',
+      method: HttpMethod.GET
+    });
+    if (error) return;
+    data.positionList = ['모든 직군'].concat(data.positionList);
+    data.careerList = ['모든 경력'].concat(data.careerList);
+    data.patternList = ['모든 채용패턴'].concat(data.patternList);
+    setRecruitmentInfo(data);
+  }
+
   return (
     <S.Contain>
       <S.Header>
         <S.Title>지금 채용 중인 포지션이에요!</S.Title>
-        <S.Search>
-          <select onChange={(e) => setJobGroup(e.target.value)}>
-            <option value={""}>채용직군</option>
-            <option value={"CX"}>CX</option>
-            <option value={"DEVELOPER"}>DEVELOPER</option>
-            <option value={"3"}>3</option>
-          </select>
-          <select onChange={(e) => setCareer(e.target.value)}>
-            <option value={""}>경력</option>
-            <option value={"1"}>1</option>
-            <option value={"2"}>2</option>
-            <option value={"3"}>3</option>
-          </select>
-          <select onChange={(e) => setEmploymentPattern(e.target.value)}>
-            <option value={""}>채용패턴</option>
-            <option value={"INTERN"}>인턴</option>
-            <option value={"2"}>2</option>
-            <option value={"3 "}>3</option>
-          </select>
-        </S.Search>
       </S.Header>
-      {data.map((i: any) => (
-        <Link to={`/employment/${i.id}`} style={{ color: "black" }}>
-          <Item
-            title={i.title}
-            position={i.position}
-            career={i.career}
-            workingArea={i.workingArea}
-          />
-        </Link>
-      ))}
+      <S.MenuWrap>
+        <S.SearchBox placeholder="검색" />
+        <DropdownMenu
+          title={position}
+          menus={
+            recruitmentInfo.positionList.map(position => ({
+              text: position,
+              callback: () => setPosttion(position)
+            }))
+          }
+        />
+        <DropdownMenu
+          title={career}
+          menus={
+            recruitmentInfo.careerList.map(career => ({
+              text: career,
+              callback: () => setCareer(career)
+            }))
+          }
+        />
+        <DropdownMenu
+          title={pattern}
+          menus={
+            recruitmentInfo.patternList.map(pattern => ({
+              text: pattern,
+              callback: () => setPosttion(pattern)
+            }))
+          }
+        />
+      </S.MenuWrap>
+      {recruitmentList.map(recruitment => <RecruitmentItem recruitment={recruitment} />)}
     </S.Contain>
   );
 }
+
+export default Employment;

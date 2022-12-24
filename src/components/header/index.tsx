@@ -9,8 +9,8 @@ export const Header = () => (
       </S.LogoWrap>
       <S.Nav>
         <NavLink to="/plan">플랜 목록</NavLink>
-        <NavLink to="/counsel">챗봇상담</NavLink>
-        <NavLink to="/employment">채용공고</NavLink>
+        <a target='_blank' href="https://pf.kakao.com/_xisniK/chat">상담</a>
+        <NavLink to="/employment">인재영입</NavLink>
       </S.Nav>
     </S.HeaderContainer>
   </S.Header>

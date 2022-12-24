@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { HomePlanCardLink } from "./planCardStyle";
 
 export const PlanGallery = styled.div`
-  margin: 100px 0 150px;
+  margin: 70px 0 150px;
   width: 100%;
   .swiper-free-mode > .swiper-wrapper {
     transition-timing-function : linear;
