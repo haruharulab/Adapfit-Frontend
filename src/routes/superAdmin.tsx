@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import LoginModal from "../components/common/login/login";
 import { Main } from "../components/common/main/style";
+import AdminSideBar from "../components/common/sidebar/adminSideBar";
 import SuperAdminHeader from "../components/header/superAdmin";
 import Notice from "../components/notice";
 import AdminList from "../pages/superAdmin/adminlist";
@@ -9,7 +9,7 @@ import Modify from "../pages/superAdmin/modify";
 const SuperAdminPageRoute = () => (
   <>
     <SuperAdminHeader />
-    <LoginModal />
+    <AdminSideBar />
     <Main>
       <Routes>
         <Route path="/" element={<AdminList />} />

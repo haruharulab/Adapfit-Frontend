@@ -114,7 +114,7 @@ const AdminLoginModal = () => {
   };
 
   return (
-    <Modal id='adminLogin' title='관리자 로그인'>
+    <Modal id='adminLogin' title='일반관리자 로그인'>
       <S.LoginForm onSubmit={event => {
         event.preventDefault();
         login();
