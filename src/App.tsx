@@ -4,7 +4,7 @@ import SuperAdminPageRoute from "./routes/superAdmin";
 import AppPageRoute from "./routes/app";
 import { RecoilRoot } from "recoil";
 import AdminLogin from "./pages/admin/login";
-import SuperAdminLogin from "./pages/superAdmin/login";
+import SuperAdminLogin from "./components/common/login/login";
 import AdminPageRoute from "./routes/admin";
 import { PlanHome } from "./pages/admin/plan";
 import ModalDim from "./components/common/modal/modalDim";

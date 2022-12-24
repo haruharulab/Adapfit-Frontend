@@ -86,7 +86,7 @@ const Employment = () => {
           menus={
             recruitmentInfo.patternList.map(pattern => ({
               text: pattern,
-              callback: () => setPosttion(pattern)
+              callback: () => setPattern(pattern)
             }))
           }
         />

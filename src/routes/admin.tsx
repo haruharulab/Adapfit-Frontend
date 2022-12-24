@@ -9,9 +9,11 @@ import NoticeDetail from "../components/noticedetail";
 import CreatePlan from "../pages/plan/create/create";
 import ManageEmployment from "../pages/employment/manage";
 import { Main } from "../components/common/main/style";
+import LoginModal from "../components/common/login/login";
 const AdminPageRoute = () => (
   <>
     <AdminHeader />
+    <LoginModal />
     <Main>
       <Routes>
         <Route path="/" element={<AdminDashboard />} />

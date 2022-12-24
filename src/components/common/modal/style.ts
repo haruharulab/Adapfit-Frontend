@@ -25,7 +25,8 @@ export const ModalWrap = styled.div`
   position: absolute;
   font-weight: bold;
   word-break: keep-all;
-  padding: 15px 15px 15px;
+  padding: 25px;
+  padding-top: 15px;
   border-radius: 20px;
   ${Shadow}
   background-color: white;
@@ -50,7 +51,7 @@ export const ModalWrap = styled.div`
 export const ModalTitle = styled.p`
   margin: 0 50px;
   text-align: center;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
 `;
 

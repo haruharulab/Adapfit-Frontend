@@ -1,15 +1,17 @@
 import * as S from "./style";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { userState } from "../../store/user.store";
 import { useEffect } from "react";
 import { HttpMethod, useAjax } from "../../utils/ajax";
-import { Admin, Authority, SuperAdmin } from "../../types/user.type";
+import { Admin, SuperAdmin } from "../../types/user.type";
+import { useModal } from "../../utils/modal";
 
 const AdminHeader = () => {
   const {ajax} = useAjax();
+  const {openModal, closeModal} = useModal();
   const navigate = useNavigate();
-  const [user, setUser] = useRecoilState(userState);
+  const setUser = useSetRecoilState(userState);
 
   useEffect(() => {
     getLoginInfo();
@@ -31,8 +33,8 @@ const AdminHeader = () => {
                 return true;
             }
         });
-        if (error) return navigate('/admin/login');
-        return navigate('/superadmin');
+        if (error) return openModal('adminLogin');
+        return openModal('superAdminLogin');
     }
     setUser(user);
   }
@@ -48,7 +50,7 @@ const AdminHeader = () => {
           <NavLink to="/admin/banner">배너 관리</NavLink>
           <NavLink to="/admin/employment">채용 관리</NavLink>
           <NavLink to="/admin">대시보드</NavLink>
-          <S.AccentLink to="/superadmin/login">슈퍼관리자 페이지</S.AccentLink>
+          <S.AccentLink to="/superadmin">슈퍼관리자 페이지</S.AccentLink>
         </S.Nav>
       </S.HeaderContainer>
     </S.Header>
