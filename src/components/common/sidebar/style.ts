@@ -3,10 +3,11 @@ import { ScrollBar } from "../scrollBar/style";
 import { AccentShadow } from "../shadow/style";
 
 export const SideBar = styled.div<{isOpen: boolean}>`
-  position: fixed;
+  position: ${({isOpen}) => isOpen? 'relative': 'fixed'};
+  @media screen and (max-width: 850px) {
+    position: fixed;
+  }
   z-index: 2;
-  top: 0;
-  left: 0;
   transform: translateX(${({isOpen}) => isOpen? '0%': '-100%'});
   height: 100%;
   display: flex;
@@ -16,7 +17,6 @@ export const SideBar = styled.div<{isOpen: boolean}>`
   background-color: #353455;
   transition: .25s;
   ${AccentShadow};
-
 `;
 
 export const SideBarOnOff = styled.button`

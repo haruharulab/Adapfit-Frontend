@@ -1,5 +1,17 @@
 import styled from "styled-components";
 import { Container } from "../../components/common/container/style";
+import { Main } from "../../components/common/main/style";
+import { ScrollBar } from "../../components/common/scrollBar/style";
+
+export const AdminPageWrap = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  ${Main} {
+    flex: auto;
+    ${ScrollBar}
+  }
+`;
 
 export const Contain = styled.div`
   ${Container}

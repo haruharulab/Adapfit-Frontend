@@ -9,9 +9,10 @@ import CreatePlan from "../pages/plan/create/create";
 import ManageEmployment from "../pages/employment/manage";
 import { Main } from "../components/common/main/style";
 import AdminSideBar from "../components/common/sidebar/adminSideBar";
+import { AdminPageWrap } from "../pages/admin/style";
 
 const AdminPageRoute = () => (
-  <>
+  <AdminPageWrap>
     <AdminSideBar />
     <Main>
       <Routes>
@@ -26,7 +27,7 @@ const AdminPageRoute = () => (
         <Route path="/employment" element={<ManageEmployment />} />
       </Routes>
     </Main>
-  </>
+  </AdminPageWrap>
 );
 
 export default AdminPageRoute;

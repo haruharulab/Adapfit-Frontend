@@ -2,10 +2,7 @@ import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
-import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { ButtonStyle } from "../../components/common/button/style";
-import { Shadow } from "../../components/common/shadow/style";
 
 export const HomeWrap = styled.div`
   text-align: center;
