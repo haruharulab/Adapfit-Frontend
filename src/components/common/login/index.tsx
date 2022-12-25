@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { TokenRes, tokenState, userState } from "../../../store/user.store";
 import { Admin, SuperAdmin } from "../../../types/user.type";
@@ -19,6 +20,7 @@ const LoginModal = () => (
 const SuperAdminLoginModal = () => {
   const {ajax} = useAjax();
   const {openModal, closeModal} = useModal();
+  const navigate = useNavigate();
   const setToken = useSetRecoilState(tokenState);
   const setUser = useSetRecoilState(userState);
   const [id, setId] = useState("");
@@ -46,6 +48,7 @@ const SuperAdminLoginModal = () => {
       noToken: true,
     });
     if (userError) return;
+    navigate('/admin');
     setUser(user);
     closeModal('superAdminLogin');
   };
@@ -88,6 +91,7 @@ const SuperAdminLoginModal = () => {
 const AdminLoginModal = () => {
   const {ajax} = useAjax();
   const {openModal, closeModal} = useModal();
+  const navigate = useNavigate();
   const setToken = useSetRecoilState(tokenState);
   const setUser = useSetRecoilState(userState);
   const [id, setId] = useState("");
@@ -115,6 +119,7 @@ const AdminLoginModal = () => {
       noToken: true,
     });
     if (userError) return;
+    navigate('/admin');
     setUser(user);
     closeModal('adminLogin');
   };

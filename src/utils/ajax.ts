@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosPromise, AxiosRequestConfig } from "axios";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import { TokenRes, tokenState, userState } from "../store/user.store";
-import { Admin, Authority, NoLoginUser, SuperAdmin } from "../types/user.type";
+import { Authority, UserType } from "../types/user.type";
 import { useModal } from "./modal";
 
 const instance = axios.create({
@@ -30,7 +30,7 @@ interface Ajax {
 }
 
 const showLoginBox = (
-  user: (NoLoginUser | Admin | SuperAdmin),
+  user: UserType,
   openModal: (key: string, closeable?: boolean) => void
 ) => {
   if (user.authority === Authority.ROOT) {

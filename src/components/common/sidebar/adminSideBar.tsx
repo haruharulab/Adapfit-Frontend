@@ -30,15 +30,15 @@ const AdminSideBar = () => {
       }
     });
     if (error) {
-        const [superAdmin, error] = await ajax<SuperAdmin>({
-            url: 'super',
-            method: HttpMethod.GET,
-            errorCallback() {
-                return true;
-            }
-        });
-        if (error) return openModal('adminLogin');
-        return setUser(superAdmin);
+      const [superAdmin, error] = await ajax<SuperAdmin>({
+        url: 'super',
+        method: HttpMethod.GET,
+        errorCallback() {
+            return true;
+        }
+      });
+      if (error) return setUser({authority: Authority.NO_LOGIN});
+      return setUser(superAdmin);
     }
     setUser(admin);
   }
@@ -53,7 +53,7 @@ const AdminSideBar = () => {
   );
 
   const AdminMenu = () => (<>
-    <S.SideBarItem onClick={() => navigate('/admin')}>
+    <S.SideBarItem onClick={() => navigate('/admin/dashboard')}>
       <S.SideBarItemIcon>        
         <MdSpaceDashboard size={26} color='white' />
       </S.SideBarItemIcon>
@@ -70,6 +70,12 @@ const AdminSideBar = () => {
         <MdViewCarousel size={30} color='white' />
       </S.SideBarItemIcon>
       <S.SideBarItemContent>배너 관리</S.SideBarItemContent>
+    </S.SideBarItem>
+    <S.SideBarItem onClick={() => navigate('/admin/notice')}>
+      <S.SideBarItemIcon>  
+        <FaBullhorn size={22} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>공지사항</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={() => openModal('superAdminLogin')}>
       <S.SideBarItemIcon>  
@@ -118,19 +124,18 @@ const AdminSideBar = () => {
           onClick={() => navigate('/')}
         />
         <p>{
-          user.authority !== Authority.NO_LOGIN
+          user.authority === Authority.ROOT || user.authority === Authority.ADMIN
           ? `${user.nickname}님 반갑습니다.`
           :'로그인해주세요.'
         }</p>
         <hr />
       </S.SideBarHeader>
       <S.SideBarContentWrap>{
-        user.authority === Authority.NO_LOGIN
-        ? <LoginMenu />
-        : user.authority === Authority.ADMIN
+        user.authority === Authority.ADMIN
         ? <AdminMenu />
         : user.authority === Authority.ROOT
-        && <SuperAdminMenu />
+        ? <SuperAdminMenu />
+        : <LoginMenu />
       }</S.SideBarContentWrap>
       <LoginModal />
     </S.SideBar>

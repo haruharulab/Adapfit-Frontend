@@ -1,11 +1,11 @@
 import { atom } from "recoil";
-import { Admin, Authority, NoLoginUser, SuperAdmin } from "../types/user.type";
+import { Admin, Authority, LoadingUser, NoLoginUser, SuperAdmin, UserType } from "../types/user.type";
 import { localStorageEffect, LocalStorageType } from "../utils/localStorage";
 
-export const userState = atom<NoLoginUser | Admin | SuperAdmin>({
+export const userState = atom<UserType>({
   key: "user",
   default: {
-    authority: Authority.NO_LOGIN,
+    authority: Authority.LOADING,
   },
 });
 

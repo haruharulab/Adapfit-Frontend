@@ -1,8 +1,20 @@
 import * as S from "./style";
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-export default function NoticeDetail() {
+import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../store/user.store";
+import { useModal } from "../../utils/modal";
+import { useEffect } from "react";
+import { Authority } from "../../types/user.type";
+
+const NoticeDetail = () => {
+  const user = useRecoilValue(userState);
+  const {openModal} = useModal();
   const { id } = useParams();
+  
+  useEffect(() => {
+    if (user.authority === Authority.LOADING) return;
+    if (user.authority !== Authority.ROOT && user.authority !== Authority.ADMIN) return openModal('adminLogin');
+  }, [user]);
 
   return (
     <S.Contain>
@@ -26,3 +38,5 @@ export default function NoticeDetail() {
     </S.Contain>
   );
 }
+
+export default NoticeDetail;

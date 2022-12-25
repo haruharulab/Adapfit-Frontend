@@ -1,20 +1,25 @@
 import * as S from "./style";
 import { useEffect, useState } from "react";
-import { Admin } from "../../../types/user.type";
+import { Admin, Authority } from "../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { AdminItem } from "../../../components/adminlist";
 import AdminManageModal from "./modal";
 import { useModal } from "../../../utils/modal";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../../store/user.store";
 
-export default function AdminList() {
+const AdminList = () => {
+  const user = useRecoilValue(userState);
   const {ajax} = useAjax();
   const {openModal} = useModal();
   const [selectAdmin, setSelectAdmin] = useState<Admin | null>(null);
   const [adminList, setAdminList] = useState<Admin[]>([]);
 
   useEffect(() => {
+    if (user.authority === Authority.LOADING) return;
+    if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
     loadAdminList();
-  }, []);
+  }, [user]);
 
   const loadAdminList = async () => {
     const [data, error] = await ajax<{
@@ -38,7 +43,8 @@ export default function AdminList() {
     loadAdminList();
   };
 
-  return (
+  return (<>{
+    user.authority === Authority.ROOT &&
     <S.Contain>
       <AdminManageModal selectAdmin={selectAdmin} loadAdminList={loadAdminList} />
       <S.Header>
@@ -62,5 +68,7 @@ export default function AdminList() {
         />
       ))}
     </S.Contain>
-  );
+  }</>);
 }
+
+export default AdminList;

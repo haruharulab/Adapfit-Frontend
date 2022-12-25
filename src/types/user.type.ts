@@ -1,9 +1,16 @@
 import { Plan } from "./plan.type";
 
 export enum Authority {
+  LOADING = "LOADING",
   NO_LOGIN = "NO_LOGIN",
   ADMIN = "ADMIN",
   ROOT = "ROOT",
+}
+
+export type UserType = LoadingUser | NoLoginUser | Admin | SuperAdmin;
+
+export interface LoadingUser {
+  authority: Authority.LOADING;
 }
 
 export interface NoLoginUser {

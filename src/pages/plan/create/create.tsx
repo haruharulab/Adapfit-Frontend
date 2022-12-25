@@ -6,8 +6,14 @@ import * as S from "./style";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { DropdownMenu } from "../../../components/common/dropdownMenu";
 import { Editor } from "@tinymce/tinymce-react";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../../store/user.store";
+import { useModal } from "../../../utils/modal";
+import { Authority } from "../../../types/user.type";
 
 const CreatePlan = () => {
+  const user = useRecoilValue(userState);
+  const {openModal} = useModal();
   const navigate = useNavigate();
   const {ajax} = useAjax();
   const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
@@ -19,10 +25,13 @@ const CreatePlan = () => {
     categoryId: 0,
     name: '카테고리 선택'
   });
-
+  
   useEffect(() => {
+    if (user.authority === Authority.LOADING) return;
+    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+
     (async () => setCategoryList(await getPlanCategoryList()))();
-  }, []);
+  }, [user]);
 
   const updatePlan = async () => {
     if (!thumbnail) return alert('썸네일 이미지를 등록해주세요');

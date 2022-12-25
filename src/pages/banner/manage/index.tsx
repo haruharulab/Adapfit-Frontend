@@ -2,21 +2,24 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../store/user.store";
 import { Banner } from "../../../types/banner.type";
-import { Resume } from "../../../types/resume.type";
 import { Authority } from "../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
+import { useModal } from "../../../utils/modal";
 import * as S from "./style";
 
 const BannerManage = () => {
   const user = useRecoilValue(userState);
+  const {openModal} = useModal();
   const {ajax} = useAjax();
   const [bannerList, setBannerList] = useState<Banner[]>([]);
   const [newBannerFile, setNewBannerFile] = useState<File | null>(null);
   const [newBannerLink, setNewBannerLink] = useState<string>('');
-
+  
   useEffect(() => {
+    if (user.authority === Authority.LOADING) return;
+    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
     getBannerList();
-  }, []);
+  }, [user]);
 
   const getBannerList = async () => {
     const [data, error] = await ajax<{

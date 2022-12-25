@@ -1,58 +1,21 @@
-import * as S from "./style";
-import { BsBellFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
-const sampleData = [
-  {
-    title: "8월 20일 홈페이지 업데이트 공고",
-    writer: "매니저",
-    date: "8월 13일",
-  },
-  {
-    title: "공지사항입니다.",
-    writer: "매니저",
-    date: "2월 13일",
-  },
-  {
-    title: "8월 20일 홈페이지 업데이트 공고",
-    writer: "매니저",
-    date: "7월 25일",
-  },
-  {
-    title: "공지사항입니다",
-    writer: "매니저",
-    date: "2월 1일",
-  },
-  {
-    title: "8월 20일 홈페이지 업데이트 공고",
-    writer: "매니저",
-    date: "12월 1일",
-  },
-  {
-    title: "공지사항입니다",
-    writer: "매니저",
-    date: "9월 1일",
-  },
-];
-export default function Notice() {
+import { useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../store/user.store";
+import { Authority } from "../../types/user.type";
+import { useModal } from "../../utils/modal";
+
+const Notice = () => {
+  const user = useRecoilValue(userState);
+  const {openModal} = useModal();
+
+  useEffect(() => {
+    if (user.authority === Authority.LOADING) return;
+    if (user.authority !== Authority.ROOT && user.authority !== Authority.ADMIN) return openModal('adminLogin');
+  }, [user]);
+
   return (
-    <S.Contain>
-      <S.Header>
-        <S.Title>공지사항</S.Title>
-        <BsBellFill size={20} />
-      </S.Header>
-      {sampleData.map((data) => {
-        return (
-          <S.NoticeConatiner>
-            <a href={`noticedetail`} style={{ color: "black" }}>
-              <S.Writer>{data.title}</S.Writer>{" "}
-            </a>
-            <S.WriterAndDate>
-              <S.StyledSpan>{data.writer}</S.StyledSpan>
-              <S.StyledSpan>{data.date}</S.StyledSpan>
-            </S.WriterAndDate>
-          </S.NoticeConatiner>
-        );
-      })}
-    </S.Contain>
+    <></>
   );
 }
+
+export default Notice;

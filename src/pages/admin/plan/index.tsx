@@ -8,8 +8,14 @@ import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/common/button/style";
 import { DropdownMenu } from "../../../components/common/dropdownMenu";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../../store/user.store";
+import { useModal } from "../../../utils/modal";
+import { Authority } from "../../../types/user.type";
 
 export const PlanHome = () => {
+  const user = useRecoilValue(userState);
+  const {openModal} = useModal();
   const { ajax } = useAjax();
   const [planList, setPlanList] = useState<Plan[]>([]);
   const [showedPlanlist, setShowedPlanList] = useState<Plan[]>([]);
@@ -19,8 +25,11 @@ export const PlanHome = () => {
     name: '전체 플랜'
   });
   const [removeMode, setRemoveMode] = useState<boolean>(false);
-
+  
   useEffect(() => {
+    if (user.authority === Authority.LOADING) return;
+    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+
     (async () => {
       const category = await getCategoryList();
       setCategoryList([
@@ -35,7 +44,7 @@ export const PlanHome = () => {
       const data = await getPlanList();
       setPlanList(data);
     })();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (currentCategory.categoryId > 0) {

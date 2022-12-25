@@ -6,8 +6,14 @@ import * as S from "./style";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { DropdownMenu } from "../../../components/common/dropdownMenu";
 import { Editor } from "@tinymce/tinymce-react";
+import { Authority } from "../../../types/user.type";
+import { useRecoilValue } from "recoil";
+import { useModal } from "../../../utils/modal";
+import { userState } from "../../../store/user.store";
 
 const PlanEdit = () => {
+  const user = useRecoilValue(userState);
+  const {openModal} = useModal();
   const param = useParams();
   const planId = Number(param.id);
   const navigate = useNavigate();
@@ -22,8 +28,11 @@ const PlanEdit = () => {
     categoryId: 0,
     name: '카테고리 선택'
   });
-
+  
   useEffect(() => {
+    if (user.authority === Authority.LOADING) return;
+    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+
     if (!planId) return;
     (async () => {
       const planInfo = await getPlan(planId);
@@ -33,7 +42,7 @@ const PlanEdit = () => {
       setCategory(planInfo.category);
     })();
     (async () => setPlanCategoryList(await getPlanCategoryList()))();
-  }, [planId]);
+  }, [user, planId]);
 
   const updatePlan = async () => {
     if (!category.categoryId) return alert('플랜 카테고리를 선택해주세요');
