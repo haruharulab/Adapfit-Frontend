@@ -17,6 +17,7 @@ const AdminManageModal = ({
 }: AdminManageModalProps) => (<>
   <CreateAdminModal loadAdminList={loadAdminList} />
   <UpdateAdminModal selectAdmin={selectAdmin} loadAdminList={loadAdminList} />
+  <UpdateAdminPwModal selectAdmin={selectAdmin} loadAdminList={loadAdminList} />
 </>);
 
 interface CreateAdminModalProps {
@@ -66,13 +67,13 @@ const CreateAdminModal = ({
           required
         />
         <Input
-          type="text"
+          type="password"
           onChange={e => setPassword(e.target.value)}
           placeholder='비밀번호'
           required
         />
         <Input
-          type="text"
+          type="password"
           onChange={e => setPasswordCheck(e.target.value)}
           placeholder='비밀번호 확인'
           required
@@ -117,7 +118,7 @@ const UpdateAdminModal = ({
   const [email, setEmail] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
 
-  const createAdmin = async () => {
+  const updateAdmin = async () => {
     if (!selectAdmin) return alert('선택된 어드민이 없습니다');
     const [, error] = await ajax({
       url: `super/${selectAdmin.userId}`,
@@ -148,7 +149,7 @@ const UpdateAdminModal = ({
     >
       <form onSubmit={e => {
         e.preventDefault();
-        createAdmin();
+        updateAdmin();
       }}>
         <div>
           <span>아이디</span>
@@ -191,6 +192,62 @@ const UpdateAdminModal = ({
           />
         </div>
         <FormSubmitButton>관리자 정보 수정</FormSubmitButton>
+      </form>
+    </Modal>
+  );
+}
+
+interface UpdateAdminPwModalProps {
+  selectAdmin: Admin | null,
+  loadAdminList: () => void
+}
+
+const UpdateAdminPwModal = ({
+  selectAdmin,
+  loadAdminList
+}: UpdateAdminPwModalProps) => {
+  const {ajax} = useAjax();
+  const {closeModal} = useModal();
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [validatePassword, setValidatePassword] = useState<string>('');
+
+  const updateAdminPw = async () => {
+    if (!selectAdmin) return alert('선택된 어드민이 없습니다');
+    const [, error] = await ajax({
+      url: `super/pw/${selectAdmin.userId}`,
+      method: HttpMethod.PUT,
+      payload: {
+        newPassword,
+        validatePassword
+      }
+    });
+    if (error) return;
+    closeModal('updateAdminPw');
+    loadAdminList();
+  }
+
+  return (
+    <Modal
+      id='updateAdminPw'
+      title="관리자 비밀번호 변경"
+    >
+      <form onSubmit={e => {
+        e.preventDefault();
+        updateAdminPw();
+      }}>
+        <Input
+          type="password"
+          onChange={e => setNewPassword(e.target.value)}
+          placeholder='새 비밀번호'
+          required
+        />
+        <Input
+          type="password"
+          onChange={e => setValidatePassword(e.target.value)}
+          placeholder='새 비밀번호 확인'
+          required
+        />
+        <FormSubmitButton>관리자 비밀번호 변경</FormSubmitButton>
       </form>
     </Modal>
   );

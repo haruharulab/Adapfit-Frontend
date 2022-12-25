@@ -29,7 +29,7 @@ export default function AdminList() {
   }
 
   const deleteAdmin = async (id: number) => {
-    if (!window.confirm('정말 삭제하시겠습니까?')) return;
+    if (!window.confirm('정말 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다!')) return;
     const [, deleteError] = await ajax({
       url: `super/${id}`,
       method: HttpMethod.DELETE

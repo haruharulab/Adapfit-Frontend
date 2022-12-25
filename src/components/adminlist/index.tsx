@@ -18,10 +18,9 @@ export function AdminItem({
   setSelectAdmin,
   openModal
 }: AdminItemProps) {
-  const navigate = useNavigate();
   const dropdownMenus: DropdownMenuOption[] = [
     {text: '정보 수정', callback: () => {setSelectAdmin(admin);openModal('updateAdmin')}},
-    {text: '비밀번호 변경', callback: () => {setSelectAdmin(admin);openModal('updatePwAdmin')}},
+    {text: '비밀번호 변경', callback: () => {setSelectAdmin(admin);openModal('updateAdminPw')}},
     {text: '삭제', callback: () => deleteAdmin(admin.userId)}
   ];
 
