@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { DropdownMenu, DropdownTitle } from "../common/dropdownMenu/style";
 
-export const Contain = styled.div`
+export const Item = styled.div`
   display: flex;
   align-items: center;
   border-radius: 5px;
-  padding: 10px 30px;
+  padding: 10px 10px 10px 30px;
   margin: 5px 0;
   color: white;
   background-color: #4f4e6b;
@@ -18,31 +18,22 @@ export const Contain = styled.div`
   }
 `;
 
-export const InfoWrap = styled.div`
-  flex: 1;
-  max-width: 500px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  span {
-    flex: 1;
-    overflow: hidden;
-    word-wrap: break-word;
-    text-align: left;
-  }
+export const ItemHeader = styled(Item)`
+  color: black;
+  background-color: white;
 `;
 
-export const DetailInfoWrap = styled.div`
+export const InfoWrap = styled.div`
   flex: 1;
-  max-width: 500px;
+  max-width: calc(100% - 44px);
   display: flex;
   align-items: center;
   gap: 10px;
   span {
     flex: 1;
     overflow: hidden;
-    word-wrap: break-word;
-    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `;
 
@@ -50,5 +41,8 @@ export const Email = styled.a`
   flex: 1;
   color: white;
   text-decoration: underline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   cursor: pointer;
 `;

@@ -8,6 +8,7 @@ import { useModal } from "../../../utils/modal";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../store/user.store";
 import { AccentButton } from "../../../components/common/button/style";
+import AdminInfoHeader from "../../../components/adminlist/header";
 
 const AdminList = () => {
   const user = useRecoilValue(userState);
@@ -69,14 +70,18 @@ const AdminList = () => {
         <S.SearchBox onChange={event => setSearchQuery(event.target.value)} placeholder="관리자 ID 또는 닉네임으로 검색" />
         <AccentButton onClick={() => openModal('createAdmin')}>관리자 생성</AccentButton>
       </S.MenuWrap>
-      {showAdminList.map(admin => (
-        <AdminItem
-          admin={admin}
-          deleteAdmin={deleteAdmin}
-          setSelectAdmin={setSelectAdmin}
-          openModal={openModal}
-        />
-      ))}
+      <S.ItemWrap>
+        <AdminInfoHeader />
+        <hr />
+        {showAdminList.map(admin => (
+          <AdminItem
+            admin={admin}
+            deleteAdmin={deleteAdmin}
+            setSelectAdmin={setSelectAdmin}
+            openModal={openModal}
+          />
+        ))}
+      </S.ItemWrap>
     </S.Contain>
   }</>);
 }

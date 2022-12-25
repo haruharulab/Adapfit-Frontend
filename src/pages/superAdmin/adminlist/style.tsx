@@ -5,6 +5,7 @@ import { Input } from "../../../components/common/input/style";
 export const Header = styled.div`
   font-weight: 700;
   font-size: 30px;
+  padding: 0 10px;
 `;
 
 export const MenuWrap = styled.div`
@@ -40,4 +41,10 @@ export const Contain = styled.div`
   ${Container}
   margin: 30px auto;
   padding: 0 10px;
+`;
+
+export const ItemWrap = styled.div`
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
 `;

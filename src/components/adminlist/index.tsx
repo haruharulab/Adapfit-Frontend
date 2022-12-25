@@ -24,17 +24,15 @@ const AdminItem = ({
   ];
 
   return (
-    <S.Contain>
+    <S.Item>
       <S.InfoWrap>
         <span>{admin.authId}</span>
         <span>{admin.nickname}</span>
-      </S.InfoWrap>
-      <S.DetailInfoWrap>
         <S.Email href={`mailto:${admin.email}`}>{admin.email}</S.Email>
         <span>{admin.phoneNumber}</span>
-      </S.DetailInfoWrap>
+      </S.InfoWrap>
       <DropdownMenu title={<AiFillSetting size={24} color='white' />} menus={dropdownMenus} />
-    </S.Contain>
+    </S.Item>
   );
 }
 
