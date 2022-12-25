@@ -27,7 +27,7 @@ export const ModalWrap = styled.div`
   word-break: keep-all;
   padding: 25px;
   padding-top: 15px;
-  border-radius: 20px;
+  border-radius: 10px;
   ${Shadow}
   background-color: white;
   z-index: 101;

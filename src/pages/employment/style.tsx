@@ -14,7 +14,7 @@ export const Contain = styled.div`
 
 export const Title = styled.div`
   font-weight: 700;
-  font-size: 24px;
+  font-size: 30px;
 `;
 export const Header = styled.div`
   width: 100%;

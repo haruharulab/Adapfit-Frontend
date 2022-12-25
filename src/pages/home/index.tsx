@@ -15,7 +15,6 @@ import PlanGallery from "./plan/planGallery";
 import { RiAppStoreFill, RiGooglePlayFill } from "react-icons/ri";
 
 export const Home = () => {
-  SwiperCore.use([Autoplay]);
   const [bannerList, setBannerList] = useState<Banner[]>([]);
   const [planList, setPlanList] = useState<Plan[]>([]);
 
@@ -27,8 +26,6 @@ export const Home = () => {
   return (
     <S.HomeWrap>
       <S.Banner>
-        {
-        planList.length > 0 &&
         <Swiper
           loop
           autoplay={{
@@ -40,7 +37,7 @@ export const Home = () => {
             type: 'progressbar',
             clickable: true,
           }}
-          modules={[Pagination, Navigation]}
+          modules={[Pagination, Navigation, Autoplay]}
         >
           {bannerList.map((banner) => (
             <SwiperSlide>
@@ -50,7 +47,6 @@ export const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        }
       </S.Banner>
       <S.IntroduceWrap>
         <S.IntroduceText>

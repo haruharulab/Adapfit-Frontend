@@ -7,9 +7,9 @@ import { DropdownMenu } from "../../components/common/dropdownMenu";
 
 const Employment = () => {
   const {ajax} = useAjax();
-  const [position, setPosttion] = useState('직군 선택');
-  const [career, setCareer] = useState('경력 선택');
-  const [pattern, setPattern] = useState('채용패턴 선택');
+  const [position, setPosttion] = useState('모든 직군');
+  const [career, setCareer] = useState('모든 경력');
+  const [pattern, setPattern] = useState('모든 채용패턴');
   const [recruitmentList, setRecruitmentList] = useState<Recruitment[]>([]);
   const [recruitmentInfo, setRecruitmentInfo] = useState<RecruitmentInfo>({
     positionList: ['모든 직군'],
@@ -34,11 +34,12 @@ const Employment = () => {
       method: HttpMethod.GET,
       config: {
         params: {
-          position,
-          career,
-          employmentPattern: pattern
+          position: position === '모든 직군'? '': position,
+          career: career === '모든 경력'? '': career,
+          employmentPattern: pattern === '모든 채용패턴'? '': pattern
         }
-      }
+      },
+      noToken: true
     });
     if (error) return;
     setRecruitmentList(data.data);
@@ -47,7 +48,8 @@ const Employment = () => {
   const getRecruitmentInfo = async () => {
     const [data, error] = await ajax<RecruitmentInfo>({
       url: 'recruitment/info',
-      method: HttpMethod.GET
+      method: HttpMethod.GET,
+      noToken: true
     });
     if (error) return;
     data.positionList = ['모든 직군'].concat(data.positionList);

@@ -1,3 +1,4 @@
+import { AiFillSetting } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Admin } from "../../types/user.type";
 import { DropdownMenu, DropdownMenuOption } from "../common/dropdownMenu";
@@ -25,13 +26,11 @@ export function AdminItem({
 
   return (
     <S.Contain>
-      <S.Name>
-        <DropdownMenu title='관리' menus={dropdownMenus} />
-        {nickname}
-      </S.Name>
+      <S.Name>{nickname}</S.Name>
       <S.Info>{email}</S.Info>
       <S.Info>{authority}</S.Info>
       <S.Info>{phoneNumber}</S.Info>
+      <DropdownMenu title={<AiFillSetting size={24} />} menus={dropdownMenus} />
     </S.Contain>
   );
 }

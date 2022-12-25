@@ -33,7 +33,7 @@ const showLoginBox = (
   user: (NoLoginUser | Admin | SuperAdmin),
   openModal: (key: string, closeable?: boolean) => void
 ) => {
-  if (user.authority === Authority.SUPER_ADMIN) {
+  if (user.authority === Authority.ROOT) {
     return openModal('superAdminLogin')
   }
   openModal('adminLogin');

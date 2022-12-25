@@ -3,7 +3,7 @@ import { Plan } from "./plan.type";
 export enum Authority {
   NO_LOGIN = "NO_LOGIN",
   ADMIN = "ADMIN",
-  SUPER_ADMIN = "SUPER_ADMIN",
+  ROOT = "ROOT",
 }
 
 export interface NoLoginUser {
@@ -25,7 +25,7 @@ export interface SuperAdmin {
   superAdminId: number;
   email: string;
   phoneNumber: number;
-  authority: Authority.SUPER_ADMIN;
+  authority: Authority.ROOT;
   createdAt: string;
   nickname: string;
 }

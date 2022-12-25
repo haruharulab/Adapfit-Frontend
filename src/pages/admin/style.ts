@@ -9,6 +9,7 @@ export const AdminPageWrap = styled.div`
   height: 100%;
   ${Main} {
     flex: auto;
+    padding: 0;
     ${ScrollBar}
   }
 `;

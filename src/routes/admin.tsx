@@ -10,6 +10,7 @@ import ManageEmployment from "../pages/employment/manage";
 import { Main } from "../components/common/main/style";
 import AdminSideBar from "../components/common/sidebar/adminSideBar";
 import { AdminPageWrap } from "../pages/admin/style";
+import AdminList from "../pages/superAdmin/adminlist";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
@@ -25,6 +26,7 @@ const AdminPageRoute = () => (
         <Route path="/plan" element={<PlanHome />} />
         <Route path="/banner" element={<BannerManage />} />
         <Route path="/employment" element={<ManageEmployment />} />
+        <Route path="/adminlist" element={<AdminList />} />
       </Routes>
     </Main>
   </AdminPageWrap>

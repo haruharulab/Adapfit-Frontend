@@ -6,7 +6,7 @@ export const ButtonStyle = css`
   padding: 10px 20px;
   font-size: 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   color: black;
   cursor: pointer;

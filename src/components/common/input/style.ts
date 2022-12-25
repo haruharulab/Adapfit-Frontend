@@ -7,7 +7,7 @@ export const Input = styled.input`
   transition: box-shadow .25s;
   border: none;
   outline: none;
-  border-radius: 8px;
+  border-radius: 5px;
   background-color: #f0f0f0;
   font-size: 15px;
   &:focus {

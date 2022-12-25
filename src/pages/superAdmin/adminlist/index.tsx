@@ -31,7 +31,7 @@ export default function AdminList() {
     if (!window.confirm('정말 삭제하시겠습니까?')) return;
     const [, deleteError] = await ajax({
       url: `super/${id}`,
-      method: HttpMethod.DELETE,
+      method: HttpMethod.DELETE
     });
     if (deleteError) return;
     loadAdminList();

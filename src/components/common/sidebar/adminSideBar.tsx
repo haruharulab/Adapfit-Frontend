@@ -129,7 +129,7 @@ const AdminSideBar = () => {
         ? <LoginMenu />
         : user.authority === Authority.ADMIN
         ? <AdminMenu />
-        : user.authority === Authority.SUPER_ADMIN
+        : user.authority === Authority.ROOT
         && <SuperAdminMenu />
       }</S.SideBarContentWrap>
       <LoginModal />

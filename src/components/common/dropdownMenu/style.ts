@@ -31,7 +31,7 @@ export const DropdownTitle = styled.span`
   position: relative;
   padding: 10px 16px;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
   ${Shadow}
 `;
@@ -54,7 +54,7 @@ export const DropdownContent = styled.ul`
   font-size: 16px;
   font-weight: bold;
   word-break: keep-all;
-  border-radius: 8px;
+  border-radius: 5px;
   transition: all .25s;
   display: flex;
   flex-direction: column;
