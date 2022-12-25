@@ -12,25 +12,9 @@ export const Contain = styled.div`
   }
 `;
 
-export const Title = styled.div`
+export const Header = styled.div`
   font-weight: 700;
   font-size: 30px;
-`;
-export const Header = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  span {
-    background-color: #f2f2f2;
-    width: 15%;
-    text-align: center;
-    line-height: 40px;
-  }
-  * {
-    border-radius: 10px;
-  }
 `;
 
 export const MenuWrap = styled.div`

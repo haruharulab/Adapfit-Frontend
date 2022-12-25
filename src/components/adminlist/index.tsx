@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
 import { AiFillSetting } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
 import { Admin } from "../../types/user.type";
 import { DropdownMenu, DropdownMenuOption } from "../common/dropdownMenu";
 import * as S from "./style";
@@ -12,12 +11,12 @@ interface AdminItemProps {
   openModal: (key: string, closeable?: boolean) => void
 }
 
-export function AdminItem({
+const AdminItem = ({
   admin,
   deleteAdmin,
   setSelectAdmin,
   openModal
-}: AdminItemProps) {
+}: AdminItemProps) => {
   const dropdownMenus: DropdownMenuOption[] = [
     {text: '정보 수정', callback: () => {setSelectAdmin(admin);openModal('updateAdmin')}},
     {text: '비밀번호 변경', callback: () => {setSelectAdmin(admin);openModal('updateAdminPw')}},
@@ -26,11 +25,17 @@ export function AdminItem({
 
   return (
     <S.Contain>
-      <S.Name>{admin.nickname}</S.Name>
-      <S.Info>{admin.email}</S.Info>
-      <S.Info>{admin.authority}</S.Info>
-      <S.Info>{admin.phoneNumber}</S.Info>
-      <DropdownMenu title={<AiFillSetting size={24} />} menus={dropdownMenus} />
+      <S.InfoWrap>
+        <span>{admin.authId}</span>
+        <span>{admin.nickname}</span>
+      </S.InfoWrap>
+      <S.DetailInfoWrap>
+        <S.Email href={`mailto:${admin.email}`}>{admin.email}</S.Email>
+        <span>{admin.phoneNumber}</span>
+      </S.DetailInfoWrap>
+      <DropdownMenu title={<AiFillSetting size={24} color='white' />} menus={dropdownMenus} />
     </S.Contain>
   );
 }
+
+export default AdminItem;

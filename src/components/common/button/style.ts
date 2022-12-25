@@ -3,8 +3,8 @@ import { Shadow } from "../shadow/style";
 
 export const ButtonStyle = css`
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 11px 20px;
+  font-size: 15px;
   border: none;
   border-radius: 5px;
   background-color: white;
@@ -12,9 +12,9 @@ export const ButtonStyle = css`
   cursor: pointer;
   transition: all .25s;
   &:hover {
-    background-color: #DDD;
+    background-color: #DDD !important;
   }
-  `;
+`;
 
 export const Button = styled.button`
   ${Shadow}

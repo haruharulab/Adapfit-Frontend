@@ -1,47 +1,27 @@
 import styled from "styled-components";
-import { AccentButton } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
 import { Input } from "../../../components/common/input/style";
 
 export const Header = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  h2 {
-    font-size: 36px;
-    font-weight: bold;
-  }
-  div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-`;
-
-export const Search = styled(Input)`
-  max-width: 300px;
-  background-color: white;
-`;
-
-export const Create = styled(AccentButton)`
-  white-space: nowrap;
+  font-weight: 700;
+  font-size: 30px;
 `;
 
 export const MenuWrap = styled.div`
+  margin: 20px 0;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
-  div {
-    text-align: center;
-    cursor: pointer;
-    padding: 5px 20px;
-    border-radius: 10px;
-    background-color: white;
-    color: black;
-  }
+  width: 100%;
+`;
+
+export const SearchBox = styled(Input)`
+  flex: auto;
+  width: auto;
+  background-color: white;
+  padding: 11px 15px;
 `;
 
 export const Info = styled.div`

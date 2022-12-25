@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { AccentButton } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
+import { Input } from "../../../components/common/input/style";
 import { Main } from "../../../components/common/main/style";
 import { ScrollBar } from "../../../components/common/scrollBar/style";
 
@@ -11,6 +13,14 @@ export const AdminPageWrap = styled.div`
     flex: auto;
     padding: 0;
     ${ScrollBar}
+  }
+  ${AccentButton} {
+    background-color: #353455;
+  }
+  ${Input} {
+    &:focus {
+      box-shadow: 0 0 0 2.5px #353455 inset;
+    }
   }
 `;
 

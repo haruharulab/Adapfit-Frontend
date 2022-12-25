@@ -60,9 +60,7 @@ const Employment = () => {
 
   return (
     <S.Contain>
-      <S.Header>
-        <S.Title>지금 채용 중인 포지션이에요!</S.Title>
-      </S.Header>
+      <S.Header>지금 채용 중인 포지션이에요!</S.Header>
       <S.MenuWrap>
         <S.SearchBox placeholder="검색" />
         <DropdownMenu
