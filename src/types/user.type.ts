@@ -14,7 +14,7 @@ export interface Admin {
   userId: number;
   authId: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
   nickname: string;
   authority: Authority.ADMIN;
   plans: Plan[];

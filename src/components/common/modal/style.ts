@@ -73,7 +73,6 @@ export const ModalCloseButton = styled.button`
 
 export const ModalContent = styled.div`
   margin-top: 10px;
-  text-align: center;
   max-height: calc(100vh - 150px);
   ${ScrollBar}
   overflow-y: auto;
@@ -82,5 +81,8 @@ export const ModalContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    span {
+      padding: 0 5px;
+    }
   }
 `;

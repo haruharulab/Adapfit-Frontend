@@ -9,6 +9,7 @@ import { useModal } from "../../../utils/modal";
 export default function AdminList() {
   const {ajax} = useAjax();
   const {openModal} = useModal();
+  const [selectAdmin, setSelectAdmin] = useState<Admin | null>(null);
   const [adminList, setAdminList] = useState<Admin[]>([]);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function AdminList() {
 
   return (
     <S.Contain>
-      <AdminManageModal loadAdminList={loadAdminList} />
+      <AdminManageModal selectAdmin={selectAdmin} loadAdminList={loadAdminList} />
       <S.Header>
         <h2>관리자 정보</h2>
         <div>
@@ -53,7 +54,12 @@ export default function AdminList() {
           </div>
       </S.MenuWrap>
       {adminList.map(admin => (
-        <AdminItem {...admin} deleteAdmin={deleteAdmin} />
+        <AdminItem
+          admin={admin}
+          deleteAdmin={deleteAdmin}
+          setSelectAdmin={setSelectAdmin}
+          openModal={openModal}
+        />
       ))}
     </S.Contain>
   );

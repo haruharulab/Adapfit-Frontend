@@ -1,35 +1,36 @@
+import { Dispatch, SetStateAction } from 'react';
 import { AiFillSetting } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Admin } from "../../types/user.type";
 import { DropdownMenu, DropdownMenuOption } from "../common/dropdownMenu";
 import * as S from "./style";
 
-interface AdminItemProps extends Admin {
-  deleteAdmin: (id: number) => void;
+interface AdminItemProps {
+  admin: Admin,
+  deleteAdmin: (id: number) => void,
+  setSelectAdmin: Dispatch<SetStateAction<Admin | null>>,
+  openModal: (key: string, closeable?: boolean) => void
 }
 
 export function AdminItem({
-  userId,
-  authId,
-  nickname,
-  email,
-  phoneNumber,
-  authority,
+  admin,
   deleteAdmin,
+  setSelectAdmin,
+  openModal
 }: AdminItemProps) {
   const navigate = useNavigate();
   const dropdownMenus: DropdownMenuOption[] = [
-    {text: '정보 수정', callback: () => navigate(`/superadmin/admin/${userId}`)},
-    {text: '비밀번호 변경', callback: () => navigate(`/superadmin/admin/${userId}`)},
-    {text: '삭제', callback: () => deleteAdmin(userId)}
+    {text: '정보 수정', callback: () => {setSelectAdmin(admin);openModal('updateAdmin')}},
+    {text: '비밀번호 변경', callback: () => {setSelectAdmin(admin);openModal('updatePwAdmin')}},
+    {text: '삭제', callback: () => deleteAdmin(admin.userId)}
   ];
 
   return (
     <S.Contain>
-      <S.Name>{nickname}</S.Name>
-      <S.Info>{email}</S.Info>
-      <S.Info>{authority}</S.Info>
-      <S.Info>{phoneNumber}</S.Info>
+      <S.Name>{admin.nickname}</S.Name>
+      <S.Info>{admin.email}</S.Info>
+      <S.Info>{admin.authority}</S.Info>
+      <S.Info>{admin.phoneNumber}</S.Info>
       <DropdownMenu title={<AiFillSetting size={24} />} menus={dropdownMenus} />
     </S.Contain>
   );
