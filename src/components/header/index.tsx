@@ -10,7 +10,7 @@ export const Header = () => (
       <S.Nav>
         <NavLink to="/plan">플랜 목록</NavLink>
         <a target='_blank' href="https://pf.kakao.com/_xisniK/chat">상담</a>
-        <NavLink to="/employment">인재영입</NavLink>
+        <NavLink to="/recruitment">인재영입</NavLink>
       </S.Nav>
     </S.HeaderContainer>
   </S.Header>

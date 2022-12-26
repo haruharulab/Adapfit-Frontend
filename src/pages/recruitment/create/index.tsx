@@ -2,18 +2,17 @@ import * as S from './style'
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { DropdownMenu } from "../../../components/common/dropdownMenu";
-import RecruitmentItem from "../../../components/employment";
 import { userState } from "../../../store/user.store";
-import { Recruitment, RecruitmentInfo } from "../../../types/recruitment.type";
+import { RecruitmentInfo } from "../../../types/recruitment.type";
 import { Authority } from "../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { useModal } from "../../../utils/modal";
-import { AccentButton, FormSubmitButton } from '../../../components/common/button/style';
+import { FormSubmitButton } from '../../../components/common/button/style';
 import { Editor } from '@tinymce/tinymce-react';
 import { Input } from '../../../components/common/input/style';
 import { useNavigate } from 'react-router-dom';
 
-const CreateEmployment = () => {
+const CreateRecruitment = () => {
   const user = useRecoilValue(userState);
   const {openModal} = useModal();
   const {ajax} = useAjax();
@@ -64,7 +63,7 @@ const CreateEmployment = () => {
       }
     });
     if (error) return;
-    navigate('/admin/employment');
+    navigate('/admin/recruitment');
   }
 
   const imagesUploadHandler = async (blobInfo: any): Promise<string> => {
@@ -163,4 +162,4 @@ const CreateEmployment = () => {
   );
 }
 
-export default CreateEmployment;
+export default CreateRecruitment;

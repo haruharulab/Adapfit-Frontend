@@ -6,13 +6,14 @@ import BannerManage from "../pages/banner/manage";
 import PlanEdit from "../pages/plan/edit/edit";
 import NoticeDetail from "../components/noticedetail";
 import CreatePlan from "../pages/plan/create/create";
-import ManageEmployment from "../pages/employment/manage";
 import { Main } from "../components/common/main/style";
 import AdminSideBar from "../components/common/sidebar/adminSideBar";
 import { AdminPageWrap } from "../pages/admin/dashboard/style";
 import AdminList from "../pages/superAdmin/adminlist";
 import AdminIndex from "../pages/admin";
-import CreateEmployment from "../pages/employment/create";
+import CreateRecruitment from "../pages/recruitment/create";
+import ManageRecruitment from "../pages/recruitment/manage";
+import EditRecruitment from "../pages/recruitment/edit";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
@@ -27,8 +28,9 @@ const AdminPageRoute = () => (
         <Route path="/plan/create" element={<CreatePlan />} />
         <Route path="/plan" element={<PlanHome />} />
         <Route path="/banner" element={<BannerManage />} />
-        <Route path="/employment" element={<ManageEmployment />} />
-        <Route path="/employment/create" element={<CreateEmployment />} />
+        <Route path="/recruitment" element={<ManageRecruitment />} />
+        <Route path="/recruitment/create" element={<CreateRecruitment />} />
+        <Route path="/recruitment/:id" element={<EditRecruitment />} />
         <Route path="/adminlist" element={<AdminList />} />
       </Routes>
     </Main>

@@ -10,7 +10,7 @@ const RecruitmentItem = ({
 }: RecruitmentItemProps) => (
   <S.Wrap to={`/employment/${recruitment.id}`}>
     <S.Name>{recruitment.title}</S.Name>
-    <span>{recruitment.jobGroup}</span>
+    <span>{recruitment.position}</span>
     <span>{recruitment.career}</span>
   </S.Wrap>
 );

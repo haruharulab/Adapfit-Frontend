@@ -98,11 +98,11 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>공지사항 관리</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/employment')}>
+    <S.SideBarItem onClick={() => navigate('/admin/recruitment')}>
       <S.SideBarItemIcon>
-        <FaUsers size={22} color='white' />
+        <FaUsers size={28} color='white' />
       </S.SideBarItemIcon>
-      <S.SideBarItemContent>채용 관리</S.SideBarItemContent>
+      <S.SideBarItemContent>채용공고 관리</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={() => openModal('adminLogin')}>
       <S.SideBarItemIcon>

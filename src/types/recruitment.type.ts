@@ -2,8 +2,8 @@ export interface Recruitment {
     id: number,
     title: string,
     content: string,
-    jobGroup: string,
-    career: number,
+    position: string,
+    career: string,
     employmentPattern: string,
     workingArea: string
 }

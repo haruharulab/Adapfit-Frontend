@@ -38,6 +38,7 @@ const PlanEdit = () => {
       const planInfo = await getPlan(planId);
       setPlan(planInfo);
       setTitle(planInfo.title);
+      setSubTitle(planInfo.subTitle);
       setContent(planInfo.content);
       setCategory(planInfo.category);
     })();

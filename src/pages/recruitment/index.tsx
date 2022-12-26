@@ -1,19 +1,13 @@
-import * as S from './style'
+import * as S from "./style";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { DropdownMenu } from "../../../components/common/dropdownMenu";
-import RecruitmentItem from "../../../components/employment";
-import { userState } from "../../../store/user.store";
-import { Recruitment, RecruitmentInfo } from "../../../types/recruitment.type";
-import { Authority } from "../../../types/user.type";
-import { HttpMethod, useAjax } from "../../../utils/ajax";
-import { useModal } from "../../../utils/modal";
+import { Recruitment, RecruitmentInfo } from "../../types/recruitment.type";
+import { HttpMethod, useAjax } from "../../utils/ajax";
+import RecruitmentItem from "../../components/employment";
+import { DropdownMenu } from "../../components/common/dropdownMenu";
 
-const ManageEmployment = () => {
-  const user = useRecoilValue(userState);
-  const {openModal} = useModal();
+const RecruitmentList = () => {
   const {ajax} = useAjax();
-  const [position, setPosition] = useState('모든 직군');
+  const [position, setPosttion] = useState('모든 직군');
   const [career, setCareer] = useState('모든 경력');
   const [pattern, setPattern] = useState('모든 채용패턴');
   const [recruitmentList, setRecruitmentList] = useState<Recruitment[]>([]);
@@ -64,14 +58,9 @@ const ManageEmployment = () => {
     setRecruitmentInfo(data);
   }
 
-  useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
-  }, [user]);
-  
   return (
     <S.Contain>
-      <S.Header>채용 관리</S.Header>
+      <S.Header>지금 채용 중인 포지션이에요!</S.Header>
       <S.MenuWrap>
         <S.SearchBox placeholder="검색" />
         <DropdownMenu
@@ -79,7 +68,7 @@ const ManageEmployment = () => {
           menus={
             recruitmentInfo.positionList.map(position => ({
               text: position,
-              callback: () => setPosition(position)
+              callback: () => setPosttion(position)
             }))
           }
         />
@@ -101,13 +90,10 @@ const ManageEmployment = () => {
             }))
           }
         />
-        <S.CreateButton to='/admin/employment/create'>
-          채용공고 만들기
-        </S.CreateButton>
       </S.MenuWrap>
       {recruitmentList.map(recruitment => <RecruitmentItem recruitment={recruitment} />)}
     </S.Contain>
   );
 }
 
-export default ManageEmployment;
+export default RecruitmentList;
