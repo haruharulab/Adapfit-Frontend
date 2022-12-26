@@ -1,74 +1,47 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FiArrowLeft } from "react-icons/fi";
+import { ButtonStyle } from "../../../components/common/button/style";
+import { Container } from "../../../components/common/container/style";
+import { Input } from "../../../components/common/input/style";
 
-export const Arrow = styled(FiArrowLeft)`
-  height: 40px;
-`;
 export const Contain = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 10px;
-  width: 60%;
-`;
-export const NoticeConatiner = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 20px;
-  height: 90px;
-  align-items: center;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-  width: calc(100%-50px);
-  background-color: #fff;
-  border: 0;
-  border-radius: 10px;
-`;
-export const StyledSpan = styled.span`
-  font-size: 17px;
-  margin-right: 20px;
-`;
-export const Writer = styled(StyledSpan)`
-  font-weight: 500;
-  margin-right: 20px;
-`;
-export const WriterAndDate = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 10px;
-  height: 70px;
-  align-items: center;
-  width: calc(100%-50px);
-  div {
-    display: flex;
-    justify-content: space-between;
-    width: 200px;
-    height: 35px;
-    text-align: center;
-    justify-content: center;
+  ${Container}
+  margin-top: 70px;
+  max-width: 1100px;
+  padding: 0 20px;
+  @media screen and (max-width: 600px) {
+    margin-top: 40px;
   }
 `;
-export const Img = styled.img`
-  width: 30px;
-`;
 
-export const Title = styled.div`
+export const Header = styled.div`
   font-weight: 700;
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 30px;
+  padding: 0 10px;
 `;
 
-export const Info = styled.div`
-  font-size: 1rem;
-  width: 200px;
-  height: 100%;
-  background-color: #f2f2f2;
-  color: #494949;
-  border: 0;
+export const MenuWrap = styled.div`
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  border-radius: 5px;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+`;
+
+export const SearchBox = styled(Input)`
+  flex: auto;
+  width: auto;
+  background-color: white;
+  padding: 11px 15px;
+  @media screen and (max-width: 600px) {
+    flex: 100%;
+  }
+`;
+
+export const CreateButton = styled(Link)`
+  ${ButtonStyle}
+  color: white;
+  background-color: #353455;
 `;

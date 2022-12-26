@@ -21,9 +21,9 @@ export const DropdownMenu = ({
         <S.DropdownTitle>{title}{mark && <S.DropdownMark />}</S.DropdownTitle>
         <S.DropdownContent>
             {menus.map(menu => (
-                <S.Option key={menu.text} onClick={menu.callback}>
+                <S.DropdownOption key={menu.text} onClick={menu.callback}>
                     {menu.text}
-                </S.Option>
+                </S.DropdownOption>
             ))}
         </S.DropdownContent>
     </S.DropdownMenu>

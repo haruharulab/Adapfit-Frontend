@@ -29,7 +29,8 @@ export const DropdownTitle = styled.span`
   align-items: center;
   gap: 5px;
   position: relative;
-  padding: 10px 16px;
+  padding: 11px 16px;
+  font-size: 15px;
   background-color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -51,7 +52,7 @@ export const DropdownContent = styled.ul`
   opacity: 0;
   pointer-events: none;
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   word-break: keep-all;
   border-radius: 5px;
@@ -61,13 +62,13 @@ export const DropdownContent = styled.ul`
   ${Shadow}
 `;
 
-export const Option = styled.li`
+export const DropdownOption = styled.li`
   width: 100%;
   cursor: pointer;
   transition: .25s;
   background-color: white;
   &:hover {
-    background-color: #CCC;
+    background-color: #CCC !important;
   }
   &:first-child {
     border-radius: 5px 5px 0 0;

@@ -7,7 +7,7 @@ export const SideBar = styled.div<{isOpen: boolean}>`
   @media screen and (max-width: 850px) {
     position: fixed;
   }
-  z-index: 2;
+  z-index: 1000;
   transform: translateX(${({isOpen}) => isOpen? '0%': '-100%'});
   height: 100%;
   display: flex;

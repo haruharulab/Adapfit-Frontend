@@ -15,9 +15,11 @@ export const Contain = styled.div`
 export const Header = styled.div`
   font-weight: 700;
   font-size: 30px;
+  padding: 0 10px;
 `;
 
 export const MenuWrap = styled.div`
+  margin: 20px 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;

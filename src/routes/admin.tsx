@@ -12,6 +12,7 @@ import AdminSideBar from "../components/common/sidebar/adminSideBar";
 import { AdminPageWrap } from "../pages/admin/dashboard/style";
 import AdminList from "../pages/superAdmin/adminlist";
 import AdminIndex from "../pages/admin";
+import CreateEmployment from "../pages/employment/create";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
@@ -27,6 +28,7 @@ const AdminPageRoute = () => (
         <Route path="/plan" element={<PlanHome />} />
         <Route path="/banner" element={<BannerManage />} />
         <Route path="/employment" element={<ManageEmployment />} />
+        <Route path="/employment/create" element={<CreateEmployment />} />
         <Route path="/adminlist" element={<AdminList />} />
       </Routes>
     </Main>
