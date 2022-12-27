@@ -9,6 +9,16 @@ import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { Notice } from "../../../types/notice.type";
 import { DateToShortStr } from "../../../utils/date";
 import { FiArrowLeft } from "react-icons/fi";
+import { escapeAttrValue, FilterXSS } from "xss";
+
+const xssFilter = new FilterXSS({
+  onIgnoreTagAttr: (tag, name, value) => {
+      if (name === 'style') return `${name}="${escapeAttrValue(value)}"`;
+  },
+  onIgnoreTag: (tag, html) => {
+      if (tag === 'iframe') return html;
+  }
+});
 
 const NoticeDetail = () => {
   const user = useRecoilValue(userState);
@@ -47,7 +57,7 @@ const NoticeDetail = () => {
           <span>{DateToShortStr(new Date(notice.updatedAt))}</span>
         </div>
       </S.Header>
-      <S.Content dangerouslySetInnerHTML={{__html: notice.content}} />
+      <S.Content dangerouslySetInnerHTML={{__html: xssFilter.process(notice.content)}} />
     </S.NoticeWrap>
   }</>);
 }

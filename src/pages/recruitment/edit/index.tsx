@@ -80,7 +80,7 @@ const EditRecruitment = () => {
       }
     });
     if (error) return;
-    navigate('/admin/employment');
+    navigate('/admin/recruitment');
   }
 
   const imagesUploadHandler = async (blobInfo: any): Promise<string> => {

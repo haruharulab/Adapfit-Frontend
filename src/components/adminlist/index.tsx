@@ -31,7 +31,7 @@ const AdminItem = ({
         <S.Email href={`mailto:${admin.email}`}>{admin.email}</S.Email>
         <span>{admin.phoneNumber}</span>
       </S.InfoWrap>
-      <DropdownMenu title={<AiFillSetting size={24} color='white' />} menus={dropdownMenus} />
+      <DropdownMenu title={<AiFillSetting size={22} color='white' />} menus={dropdownMenus} />
     </S.Item>
   );
 }

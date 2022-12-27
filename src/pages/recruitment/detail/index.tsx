@@ -5,6 +5,16 @@ import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { FiArrowLeft } from "react-icons/fi";
 import { Recruitment } from "../../../types/recruitment.type";
 import { AccentButtonLink } from "../../../components/common/button/style";
+import { escapeAttrValue, FilterXSS } from "xss";
+
+const xssFilter = new FilterXSS({
+  onIgnoreTagAttr: (tag, name, value) => {
+      if (name === 'style') return `${name}="${escapeAttrValue(value)}"`;
+  },
+  onIgnoreTag: (tag, html) => {
+      if (tag === 'iframe') return html;
+  }
+});
 
 const RecruitmentDetail = () => {
   const {ajax} = useAjax();
@@ -19,7 +29,8 @@ const RecruitmentDetail = () => {
   const getRecruitment = async () => {
     const [data, error] = await ajax<Recruitment>({
       url: `recruitment/${recruitmentId}`,
-      method: HttpMethod.GET
+      method: HttpMethod.GET,
+      noToken: true
     });
     if (error) return;
     setRecruitment(data);
@@ -46,7 +57,7 @@ const RecruitmentDetail = () => {
           </p>
         </div>
       </S.Header>
-      <S.Content dangerouslySetInnerHTML={{__html: recruitment.content}} />
+      <S.Content dangerouslySetInnerHTML={{__html: xssFilter.process(recruitment.content)}} />
       <AccentButtonLink to={`/resume/${recruitment.id}`}>지원하기</AccentButtonLink>
     </S.RecruitmentWrap>
   }</>);

@@ -4,6 +4,16 @@ import { getPlan } from "../../../apis/plan.api";
 import { useParams } from "react-router-dom";
 import * as S from "./style";
 import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { escapeAttrValue, FilterXSS } from "xss";
+
+const xssFilter = new FilterXSS({
+  onIgnoreTagAttr: (tag, name, value) => {
+      if (name === 'style') return `${name}="${escapeAttrValue(value)}"`;
+  },
+  onIgnoreTag: (tag, html) => {
+      if (tag === 'iframe') return html;
+  }
+});
 
 const PlanDetail = () => {
   const param = useParams();
@@ -33,7 +43,7 @@ const PlanDetail = () => {
           <hr />
         </S.PlanInfo>
         <S.PlanContent>
-          <div dangerouslySetInnerHTML={{__html: plan.content}}></div>
+          <div dangerouslySetInnerHTML={{__html: xssFilter.process(plan.content)}}></div>
           <hr />
         </S.PlanContent>
         <S.PlanBottomWrap>

@@ -30,7 +30,7 @@ const RecruitmentManageItem = ({
         <span>{recruitment.career}</span>
         <span>{recruitment.employmentPattern === 'PERMANENT_EMPLOYEE'? '정규직': '비정규직'}</span>
       </S.InfoWrap>
-      <DropdownMenu title={<AiFillSetting size={24} color='white' />} menus={dropdownMenus} />
+      <DropdownMenu title={<AiFillSetting size={22} color='white' />} menus={dropdownMenus} />
     </S.Item>
   );
 }
