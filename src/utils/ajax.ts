@@ -108,7 +108,9 @@ export const useAjax = () => {
             ...headers,
             Authorization: newToken.accessToken
           },
-          noToken: true
+          config,
+          noToken: true,
+          errorCallback
         });
       }
 

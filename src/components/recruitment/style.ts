@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { DropdownMenu, DropdownTitle } from "../common/dropdownMenu/style";
 
-export const Item = styled.div`
+export const Item = styled(Link)`
   display: flex;
   align-items: center;
   border-radius: 5px;
@@ -39,15 +40,9 @@ export const InfoWrap = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    min-width: 75px;
   }
-`;
-
-export const Email = styled.a`
-  flex: 1;
-  color: white;
-  text-decoration: underline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
+  span:first-child {
+    flex: 4;
+  }
 `;

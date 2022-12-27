@@ -51,7 +51,7 @@ const EditRecruitment = () => {
     setContent(data.content);
     setPosition(data.position);
     setCareer(data.career);
-    setEmploymentPattern(data.employmentPattern);
+    setEmploymentPattern(data.employmentPattern === 'PERMANENT_EMPLOYEE'? '정규직': '비정규직');
   }
 
   useEffect(() => {
@@ -75,8 +75,8 @@ const EditRecruitment = () => {
         content,
         position,
         career,
-        employmentPattern,
-        workingArea: ''
+        employmentPattern: employmentPattern === '정규직'? 'PERMANENT_EMPLOYEE': 'NON_REGULAR_WALKER',
+        workingArea: '.'
       }
     });
     if (error) return;

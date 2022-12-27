@@ -58,8 +58,8 @@ const CreateRecruitment = () => {
         content,
         position,
         career,
-        employmentPattern,
-        workingArea: ''
+        employmentPattern: employmentPattern === '정규직'? 'PERMANENT_EMPLOYEE': 'NON_REGULAR_WALKER',
+        workingArea: '.'
       }
     });
     if (error) return;

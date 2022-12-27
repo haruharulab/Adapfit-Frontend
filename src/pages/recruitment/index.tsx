@@ -2,8 +2,9 @@ import * as S from "./style";
 import { useEffect, useState } from "react";
 import { Recruitment, RecruitmentInfo } from "../../types/recruitment.type";
 import { HttpMethod, useAjax } from "../../utils/ajax";
-import RecruitmentItem from "../../components/employment";
 import { DropdownMenu } from "../../components/common/dropdownMenu";
+import RecruitmentItem from "../../components/recruitment/item";
+import RecruitmentInfoHeader from "../../components/recruitment/header";
 
 const RecruitmentList = () => {
   const {ajax} = useAjax();
@@ -36,7 +37,7 @@ const RecruitmentList = () => {
         params: {
           position: position === '모든 직군'? '': position,
           career: career === '모든 경력'? '': career,
-          employmentPattern: pattern === '모든 채용패턴'? '': pattern
+          employmentPattern: pattern === '모든 채용패턴'? '': pattern === '정규직'? 'PERMANENT_EMPLOYEE': 'NON_REGULAR_WALKER'
         }
       },
       noToken: true
@@ -91,7 +92,11 @@ const RecruitmentList = () => {
           }
         />
       </S.MenuWrap>
-      {recruitmentList.map(recruitment => <RecruitmentItem recruitment={recruitment} />)}
+      <S.ItemWrap>
+        <RecruitmentInfoHeader />
+        <hr />
+        {recruitmentList.map(recruitment => <RecruitmentItem recruitment={recruitment} />)}
+      </S.ItemWrap>
     </S.Contain>
   );
 }

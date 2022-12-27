@@ -2,17 +2,20 @@ import * as S from './style'
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { DropdownMenu } from "../../../components/common/dropdownMenu";
-import RecruitmentItem from "../../../components/employment";
 import { userState } from "../../../store/user.store";
 import { Recruitment, RecruitmentInfo } from "../../../types/recruitment.type";
 import { Authority } from "../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { useModal } from "../../../utils/modal";
+import RecruitmentManageItem from '../../../components/recruitment/manageItem';
+import { useNavigate } from 'react-router-dom';
+import RecruitmentInfoHeader from '../../../components/recruitment/header';
 
 const ManageRecruitment = () => {
   const user = useRecoilValue(userState);
   const {openModal} = useModal();
   const {ajax} = useAjax();
+  const navigate = useNavigate();
   const [position, setPosition] = useState('모든 직군');
   const [career, setCareer] = useState('모든 경력');
   const [pattern, setPattern] = useState('모든 채용패턴');
@@ -27,10 +30,6 @@ const ManageRecruitment = () => {
     getRecruitmentInfo();
   }, []);
 
-  useEffect(() => {
-    getRecruitmentList();
-  }, [position, career, pattern]);
-
   const getRecruitmentList = async () => {
     const [data, error] = await ajax<{
       count: number,
@@ -42,7 +41,7 @@ const ManageRecruitment = () => {
         params: {
           position: position === '모든 직군'? '': position,
           career: career === '모든 경력'? '': career,
-          employmentPattern: pattern === '모든 채용패턴'? '': pattern
+          employmentPattern: pattern === '모든 채용패턴'? '': pattern === '정규직'? 'PERMANENT_EMPLOYEE': 'NON_REGULAR_WALKER'
         }
       },
       noToken: true
@@ -67,7 +66,8 @@ const ManageRecruitment = () => {
   useEffect(() => {
     if (user.authority === Authority.LOADING) return;
     if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
-  }, [user]);
+    getRecruitmentList();
+  }, [user, position, career, pattern]);
   
   return (
     <S.Contain>
@@ -105,7 +105,17 @@ const ManageRecruitment = () => {
           채용공고 만들기
         </S.CreateButton>
       </S.MenuWrap>
-      {recruitmentList.map(recruitment => <RecruitmentItem recruitment={recruitment} />)}
+      <S.ItemWrap>
+        <RecruitmentInfoHeader />
+        <hr />
+        {recruitmentList.map(recruitment => (
+          <RecruitmentManageItem
+            recruitment={recruitment}
+            navigate={navigate}
+            deleteRecruitment={() => {}}
+          />
+        ))}
+      </S.ItemWrap>
     </S.Contain>
   );
 }

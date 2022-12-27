@@ -6,7 +6,7 @@ export const Contain = styled.div`
   ${Container}
   margin-top: 70px;
   max-width: 1100px;
-  padding: 0 20px;
+  padding: 0 10px;
   @media screen and (max-width: 600px) {
     margin-top: 40px;
   }
@@ -36,4 +36,10 @@ export const SearchBox = styled(Input)`
   @media screen and (max-width: 600px) {
     flex: 100%;
   }
+`;
+
+export const ItemWrap = styled.div`
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
 `;
