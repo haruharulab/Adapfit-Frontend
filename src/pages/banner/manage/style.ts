@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { AccentButton } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
+import { Input } from "../../../components/common/input/style";
 import { HorizontalScrollBar } from "../../../components/common/scrollBar/style";
 
 export const BannerPageWrap = styled.div`
@@ -85,32 +87,20 @@ export const BannerDeleteButton = styled.button`
   }
 `;
 
-export const BannerLinkInput = styled.input`
+export const BannerLinkInput = styled(Input)`
   position: absolute;
   top: calc(50% - 25px);
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 16px;
   width: 230px;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
   background-color: #ffffff88;
   backdrop-filter: blur(10px);
 `
 
-export const BannerAddButton = styled.button`
+export const BannerAddButton = styled(AccentButton)`
   position: absolute;
   top: calc(50% + 25px);
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 250px;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 17px;
-  color: white;
-  background-color: #f2640b;
-  cursor: pointer;
+  width: 230px;
 `

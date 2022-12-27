@@ -65,12 +65,6 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>플랜 관리</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/banner')}>
-      <S.SideBarItemIcon>
-        <MdViewCarousel size={30} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>배너 관리</S.SideBarItemContent>
-    </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/notice')}>
       <S.SideBarItemIcon>  
         <FaBullhorn size={22} color='white' />
@@ -103,6 +97,12 @@ const AdminSideBar = () => {
         <FaUsers size={28} color='white' />
       </S.SideBarItemIcon>
       <S.SideBarItemContent>채용공고 관리</S.SideBarItemContent>
+    </S.SideBarItem>
+    <S.SideBarItem onClick={() => navigate('/admin/banner')}>
+      <S.SideBarItemIcon>
+        <MdViewCarousel size={30} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>배너 관리</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={() => openModal('adminLogin')}>
       <S.SideBarItemIcon>

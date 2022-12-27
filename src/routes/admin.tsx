@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import AdminDashboard from "../pages/admin/dashboard";
 import { PlanHome } from "../pages/admin/plan";
-import BannerManage from "../pages/banner/manage";
+import ManageBanner from "../pages/banner/manage";
 import PlanEdit from "../pages/plan/edit/edit";
 import NoticeDetail from "../components/notice/detail";
 import CreatePlan from "../pages/plan/create/create";
@@ -30,7 +30,7 @@ const AdminPageRoute = () => (
         <Route path="/plan/:id" element={<PlanEdit />} />
         <Route path="/plan/create" element={<CreatePlan />} />
         <Route path="/plan" element={<PlanHome />} />
-        <Route path="/banner" element={<BannerManage />} />
+        <Route path="/banner" element={<ManageBanner />} />
         <Route path="/recruitment" element={<ManageRecruitment />} />
         <Route path="/recruitment/create" element={<CreateRecruitment />} />
         <Route path="/recruitment/:id" element={<EditRecruitment />} />

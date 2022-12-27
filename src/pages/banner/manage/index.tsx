@@ -7,7 +7,7 @@ import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { useModal } from "../../../utils/modal";
 import * as S from "./style";
 
-const BannerManage = () => {
+const ManageBanner = () => {
   const user = useRecoilValue(userState);
   const {openModal} = useModal();
   const {ajax} = useAjax();
@@ -17,7 +17,7 @@ const BannerManage = () => {
   
   useEffect(() => {
     if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
     getBannerList();
   }, [user]);
 
@@ -109,4 +109,4 @@ const BannerManage = () => {
   );
 };
 
-export default BannerManage;
+export default ManageBanner;
