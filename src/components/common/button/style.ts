@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { Shadow } from "../shadow/style";
 
@@ -5,6 +6,7 @@ export const ButtonStyle = css`
   display: inline-block;
   padding: 11px 20px;
   font-size: 15px;
+  text-align: center;
   border: none;
   border-radius: 5px;
   background-color: white;
@@ -22,6 +24,13 @@ export const Button = styled.button`
 `;
 
 export const AccentButton = styled(Button)`
+  ${Shadow}
+  background-color: #f2640b;
+  color: white;
+`;
+
+export const AccentButtonLink = styled(Link)`
+  ${ButtonStyle}
   ${Shadow}
   background-color: #f2640b;
   color: white;

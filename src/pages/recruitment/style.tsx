@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { Container } from "../../components/common/container/style";
 import { Input } from "../../components/common/input/style";
+import { Shadow } from "../../components/common/shadow/style";
+import { Item } from "../../components/recruitment/style";
 
 export const Contain = styled.div`
   ${Container}
+  ${Shadow}
   margin-top: 70px;
   max-width: 1100px;
   padding: 0 10px;
@@ -42,4 +45,11 @@ export const ItemWrap = styled.div`
   padding: 10px;
   background-color: white;
   border-radius: 5px;
+  ${Item} {
+    background-color: #f5f5f5;
+    color: black;
+    &:hover {
+      background-color: #f49e4b;
+    }
+  }
 `;

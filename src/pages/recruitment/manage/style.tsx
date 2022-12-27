@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { ButtonStyle } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
 import { Input } from "../../../components/common/input/style";
+import { Shadow } from "../../../components/common/shadow/style";
 
 export const Contain = styled.div`
   ${Container}
+  ${Shadow}
   margin-top: 70px;
-  max-width: 1100px;
   padding: 0 10px;
   @media screen and (max-width: 600px) {
     margin-top: 40px;

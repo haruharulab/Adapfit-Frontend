@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Container } from "../../../components/common/container/style";
 import { Input } from "../../../components/common/input/style";
+import { Shadow } from "../../../components/common/shadow/style";
 
 export const Header = styled.div`
   font-weight: 700;
@@ -39,7 +40,8 @@ export const Info = styled.div`
 
 export const Contain = styled.div`
   ${Container}
-  margin: 30px auto;
+  ${Shadow}
+  margin: 70px auto;
   padding: 0 10px;
 `;
 
