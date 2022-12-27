@@ -92,7 +92,7 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>관리자계정 관리</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/notice')}>
+    <S.SideBarItem onClick={() => navigate('/admin/notice/manage')}>
       <S.SideBarItemIcon>  
         <FaBullhorn size={22} color='white' />
       </S.SideBarItemIcon>

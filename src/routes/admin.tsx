@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import Notice from "../components/notice";
 import AdminDashboard from "../pages/admin/dashboard";
 import { PlanHome } from "../pages/admin/plan";
 import BannerManage from "../pages/banner/manage";
@@ -14,6 +13,8 @@ import AdminIndex from "../pages/admin";
 import CreateRecruitment from "../pages/recruitment/create";
 import ManageRecruitment from "../pages/recruitment/manage";
 import EditRecruitment from "../pages/recruitment/edit";
+import NoticeList from "../pages/notice";
+import ManageNotice from "../pages/notice/manage";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
@@ -22,7 +23,8 @@ const AdminPageRoute = () => (
       <Routes>
         <Route path="/*" element={<AdminIndex />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
-        <Route path="/notice" element={<Notice />} />
+        <Route path="/notice" element={<NoticeList />} />
+        <Route path="/notice/manage" element={<ManageNotice />} />
         <Route path="/notice/create" element={<NoticeDetail />} />
         <Route path="/notice/:id" element={<NoticeDetail />} />
         <Route path="/plan/:id" element={<PlanEdit />} />

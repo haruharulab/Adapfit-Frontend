@@ -1,8 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
 import { AiFillSetting } from "react-icons/ai";
 import { NavigateFunction } from 'react-router-dom';
 import { Recruitment } from '../../types/recruitment.type';
-import { Admin } from "../../types/user.type";
 import { DropdownMenu, DropdownMenuOption } from "../common/dropdownMenu";
 import * as S from "./style";
 

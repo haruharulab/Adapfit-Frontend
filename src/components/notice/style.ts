@@ -1,53 +1,48 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FiArrowLeft } from "react-icons/fi";
+import { DropdownMenu, DropdownTitle } from "../common/dropdownMenu/style";
 
-export const Arrow = styled(FiArrowLeft)`
-  height: 40px;
-`;
-export const Contain = styled.div`
+export const Item = styled(Link)`
   display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 10px;
-  width: 60%;
-`;
-export const NoticeConatiner = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 20px;
-  height: 90px;
   align-items: center;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-  width: calc(100%-50px);
-  background-color: #fff;
-  border: 0;
-  border-radius: 10px;
+  border-radius: 5px;
+  padding: 15px 10px 15px 30px;
+  margin: 5px 0;
+  color: white;
+  background-color: #4f4e6b;
+  transition: .25s;
+  ${DropdownTitle} {
+    background: none;
+    padding: 0 10px;
+  }
+  ${DropdownMenu} {
+    margin-left: auto;
+  }
+  &:hover {
+    background-color: #353455;
+  }
 `;
-export const StyledSpan = styled.span`
-  font-size: 17px;
+
+export const ItemHeader = styled(Item)`
+  color: black;
+  background-color: white !important;
+  padding: 0 10px 10px 30px;
 `;
-export const Writer = styled(StyledSpan)`
-  font-weight: 500;
-`;
-export const WriterAndDate = styled.div`
+
+export const InfoWrap = styled.div`
+  flex: 1;
+  max-width: calc(100% - 44px);
   display: flex;
+  align-items: center;
   gap: 10px;
-`;
-export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 10px;
-  height: 70px;
-  align-items: center;
-  width: calc(100%-50px);
-`;
-export const Img = styled.img`
-  width: 30px;
-`;
-
-export const Title = styled.div`
-  font-weight: 700;
-  font-size: 24px;
-  margin-bottom: 10px;
+  span {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 75px;
+  }
+  span:first-child {
+    flex: 4;
+  }
 `;
