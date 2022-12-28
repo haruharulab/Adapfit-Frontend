@@ -8,27 +8,41 @@ import { useModal } from "../../../utils/modal";
 import { FormSubmitButton } from '../../../components/common/button/style';
 import { Editor } from '@tinymce/tinymce-react';
 import { Input } from '../../../components/common/input/style';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Notice } from '../../../types/notice.type';
 
-const CreateNotice = () => {
+const EditNotice = () => {
   const user = useRecoilValue(userState);
   const {openModal} = useModal();
   const {ajax} = useAjax();
   const navigate = useNavigate();
+  const params = useParams();
+  const noticeId = Number(params.id);
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
 
   useEffect(() => {
     if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
+    if (user.authority !== Authority.ROOT && user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    getNotice();
   }, [user]);
 
-  const createNotice = async () => {
+  const getNotice = async () => {
+    const [data, error] = await ajax<Notice>({
+      url: `notice/${noticeId}`,
+      method: HttpMethod.GET
+    });
+    if (error) return;
+    setTitle(data.title);
+    setContent(data.content);
+  }
+
+  const editNotice = async () => {
     if (!content) return alert('내용을 입력해주세요');
 
     const [, error] = await ajax({
-      url: 'notice',
-      method: HttpMethod.POST,
+      url: `notice/${noticeId}`,
+      method: HttpMethod.PUT,
       payload: {
         title,
         content
@@ -65,7 +79,7 @@ const CreateNotice = () => {
       <S.Header>공지사항 작성</S.Header>
       <form onSubmit={event => {
         event.preventDefault();
-        createNotice();
+        editNotice();
       }}>
         <Input
           placeholder='제목'
@@ -99,10 +113,10 @@ const CreateNotice = () => {
           value={content}
           onEditorChange={setContent}
         />
-        <FormSubmitButton type='submit'>공지사항 작성</FormSubmitButton>
+        <FormSubmitButton type='submit'>공지사항 수정</FormSubmitButton>
       </form>
     </S.Contain>
   );
 }
 
-export default CreateNotice;
+export default EditNotice;
