@@ -6,7 +6,7 @@ import { useModal } from '../../../utils/modal';
 import { userState } from '../../../store/user.store';
 import LoginModal from '../login';
 import { FaBullhorn, FaThList, FaUserAlt, FaUsers } from 'react-icons/fa';
-import { MdSpaceDashboard, MdViewCarousel } from 'react-icons/md';
+import { MdViewCarousel } from 'react-icons/md';
 import { Admin, Authority, SuperAdmin } from '../../../types/user.type';
 import { useNavigate } from 'react-router-dom';
 
@@ -53,12 +53,6 @@ const AdminSideBar = () => {
   );
 
   const AdminMenu = () => (<>
-    <S.SideBarItem onClick={() => navigate('/admin/dashboard')}>
-      <S.SideBarItemIcon>        
-        <MdSpaceDashboard size={26} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>대시보드</S.SideBarItemContent>
-    </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/plan')}>
       <S.SideBarItemIcon>
         <FaThList size={20} color='white' />
