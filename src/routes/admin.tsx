@@ -3,7 +3,7 @@ import AdminDashboard from "../pages/admin/dashboard";
 import { PlanHome } from "../pages/admin/plan";
 import ManageBanner from "../pages/banner/manage";
 import PlanEdit from "../pages/plan/edit/edit";
-import NoticeDetail from "../components/notice/detail";
+import NoticeDetail from "../pages/notice/detail";
 import CreatePlan from "../pages/plan/create/create";
 import { Main } from "../components/common/main/style";
 import AdminSideBar from "../components/common/sidebar/adminSideBar";
@@ -15,6 +15,7 @@ import ManageRecruitment from "../pages/recruitment/manage";
 import EditRecruitment from "../pages/recruitment/edit";
 import NoticeList from "../pages/notice";
 import ManageNotice from "../pages/notice/manage";
+import CreateNotice from "../pages/notice/create";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
@@ -25,7 +26,7 @@ const AdminPageRoute = () => (
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/notice" element={<NoticeList />} />
         <Route path="/notice/manage" element={<ManageNotice />} />
-        <Route path="/notice/create" element={<NoticeDetail />} />
+        <Route path="/notice/create" element={<CreateNotice />} />
         <Route path="/notice/:id" element={<NoticeDetail />} />
         <Route path="/plan/:id" element={<PlanEdit />} />
         <Route path="/plan/create" element={<CreatePlan />} />

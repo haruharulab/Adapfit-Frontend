@@ -22,7 +22,7 @@ const NoticeManageItem = ({
   ];
 
   return (
-    <S.Item to={`/admin/notice/${notice.id}`}>
+    <S.Item as='div'>
       <S.InfoWrap>
         <span>{notice.title}</span>
         <span>{dateToShortStr(new Date(notice.createdAt))}</span>

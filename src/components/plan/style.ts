@@ -15,7 +15,7 @@ export const CardContain = styled(Link)`
   flex-direction: column;
   width: 500px;
   height: 425px;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 30px;
   ${Shadow}
   @media screen and (max-width: 550px) {
@@ -32,18 +32,19 @@ export const Img = styled.div<{
 }>`
   width: 100%;
   height: 100%;
-  border-radius: 20px 20px 0 0;
-  background-image: url(${({ img }) => img});
+  border-radius: 10px 10px 0 0;
+  background-image: url(${({img}) => img});
   background-size: cover;
   background-position: center;
 `;
+
 export const Content = styled.div`
   width: 100%;
   height: 40%;
   bottom: 0;
   color: black;
   background-color: white;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 10px 10px;
   text-align: left;
   display: flex;
   flex-direction: column;

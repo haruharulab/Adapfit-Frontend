@@ -1,6 +1,7 @@
 import { createRef, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { footerHeightState } from "../../store/common.store";
+import { AccentButtonLink } from "../common/button/style";
 import * as S from "./style";
 
 const Footer = () => {
@@ -51,7 +52,7 @@ const Footer = () => {
               <img src="/image/youtube_logo.png" />
             </a>
           </S.Sns>
-          <S.AdminLink to='/admin'>관리자 페이지</S.AdminLink>
+          <AccentButtonLink to='/admin'>관리자 페이지</AccentButtonLink>
         </S.Wrap>
       </S.ContentWrap>
     </S.Contain>

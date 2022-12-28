@@ -36,7 +36,6 @@ export const InfoWrap = styled.div`
   align-items: center;
   gap: 10px;
   span {
-    flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -21,7 +21,7 @@ const RecruitmentManageItem = ({
   ];
 
   return (
-    <S.Item to={`/admin/recruitment/${recruitment.id}`}>
+    <S.Item as='div'>
       <S.InfoWrap>
         <span>{recruitment.title}</span>
         <span>{recruitment.position}</span>
