@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { changeAdminState } from "../../../store/common.store";
 import { TokenRes, tokenState, userState } from "../../../store/user.store";
 import { Admin, SuperAdmin } from "../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
@@ -23,6 +24,7 @@ const SuperAdminLoginModal = () => {
   const navigate = useNavigate();
   const setToken = useSetRecoilState(tokenState);
   const setUser = useSetRecoilState(userState);
+  const [changeAdmin, setChangeAdmin] = useRecoilState(changeAdminState);
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -48,7 +50,10 @@ const SuperAdminLoginModal = () => {
       noToken: true,
     });
     if (userError) return;
-    navigate('/admin');
+    if (changeAdmin) {
+      navigate('/admin');
+      setChangeAdmin(false);
+    }
     setUser(user);
     closeModal('superAdminLogin');
   };
@@ -94,6 +99,7 @@ const AdminLoginModal = () => {
   const navigate = useNavigate();
   const setToken = useSetRecoilState(tokenState);
   const setUser = useSetRecoilState(userState);
+  const [changeAdmin, setChangeAdmin] = useRecoilState(changeAdminState);
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -119,7 +125,10 @@ const AdminLoginModal = () => {
       noToken: true,
     });
     if (userError) return;
-    navigate('/admin');
+    if (changeAdmin) {
+      navigate('/admin');
+      setChangeAdmin(false);
+    }
     setUser(user);
     closeModal('adminLogin');
   };

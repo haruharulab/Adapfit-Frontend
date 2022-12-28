@@ -69,7 +69,7 @@ const ManageBanner = () => {
 
   return (
     <S.BannerPageWrap>
-      <h2>배너 관리</h2>
+      <S.Header>배너 관리</S.Header>
       <S.BannerListWrap>
         <S.BannerImgWrap>
           <label htmlFor='banner_upload'>{

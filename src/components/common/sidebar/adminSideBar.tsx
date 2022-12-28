@@ -1,6 +1,6 @@
 import * as S from './style';
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { HttpMethod, useAjax } from '../../../utils/ajax';
 import { useModal } from '../../../utils/modal';
 import { userState } from '../../../store/user.store';
@@ -9,11 +9,13 @@ import { FaBullhorn, FaThList, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { MdViewCarousel } from 'react-icons/md';
 import { Admin, Authority, SuperAdmin } from '../../../types/user.type';
 import { useNavigate } from 'react-router-dom';
+import { changeAdminState } from '../../../store/common.store';
 
 const AdminSideBar = () => {
   const navigate = useNavigate();
   const {ajax} = useAjax();
   const {openModal} = useModal();
+  const setChangeAdmin = useSetRecoilState(changeAdminState);
   const [user, setUser] = useRecoilState(userState);
   const [isOpen, setIsOpen] = useState(true);
   
@@ -65,7 +67,7 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>공지사항</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => openModal('superAdminLogin')}>
+    <S.SideBarItem onClick={() => {setChangeAdmin(true);openModal('superAdminLogin');}}>
       <S.SideBarItemIcon>  
         <FaUserAlt size={22} color='white' />
       </S.SideBarItemIcon>
@@ -98,7 +100,7 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>배너 관리</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => openModal('adminLogin')}>
+    <S.SideBarItem onClick={() => {setChangeAdmin(true);openModal('adminLogin');}}>
       <S.SideBarItemIcon>
         <FaUserAlt size={22} color='white' />
       </S.SideBarItemIcon>

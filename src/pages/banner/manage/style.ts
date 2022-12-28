@@ -3,27 +3,31 @@ import { AccentButton } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
 import { Input } from "../../../components/common/input/style";
 import { HorizontalScrollBar } from "../../../components/common/scrollBar/style";
+import { Shadow } from "../../../components/common/shadow/style";
 
 export const BannerPageWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 50px;
-  padding: 10px;
-  margin-top: 100px;
   ${Container}
-  h2 {
-    margin-top: 50px;
-    align-self: flex-start;
-    font-size: 36px;
-    font-weight: bold;
+  ${Shadow}
+  margin-top: 70px;
+  padding: 0 10px;
+  @media screen and (max-width: 600px) {
+    margin-top: 40px;
+  }
+`;
+
+export const Header = styled.div`
+  font-weight: 700;
+  font-size: 34px;
+  padding: 0 10px;
+  @media screen and (max-width: 600px) {
+    font-size: 30px;
   }
 `;
 
 export const BannerListWrap = styled.div`
   width: 100%;
   display: flex;
+  margin-top: 50px;
   gap: 20px;
   padding: 20px;
   background-color: white;
@@ -31,6 +35,7 @@ export const BannerListWrap = styled.div`
   white-space: nowrap;
   ${HorizontalScrollBar}
 `;
+
 
 export const BannerImgWrap = styled.div`
   position: relative;

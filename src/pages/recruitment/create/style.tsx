@@ -29,9 +29,12 @@ export const Contain = styled.div`
 
 export const Header = styled.div`
   font-weight: 700;
-  font-size: 30px;
+  font-size: 34px;
   padding: 0 10px;
   margin: 30px 0;
+  @media screen and (max-width: 600px) {
+    font-size: 30px;
+  }
 `;
 
 export const SelectBoxWrap = styled.div`

@@ -94,7 +94,7 @@ export const Remove = styled.div`
   background-color: #00000066;
   color: white;
   font-size: 24px;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all .25s;
   &:hover {
@@ -114,7 +114,7 @@ export const Edit = styled(Link)`
   align-items: center;
   color: white;
   font-size: 24px;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all .25s;
   &:hover {

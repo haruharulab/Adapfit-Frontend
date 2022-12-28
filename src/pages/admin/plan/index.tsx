@@ -70,29 +70,27 @@ export const PlanHome = () => {
 
   return (
     <S.Contain>
-      <S.Header>
-        <h2>플랜 관리</h2>
-        <S.MenuWrap>
-          <Button onClick={() => setRemoveMode(!removeMode)}>
-            {removeMode ? "확인" : "삭제"}
-          </Button>
-          <Link to='/admin/plan/create'>
-              <Button>추가</Button>
-          </Link>
-          <DropdownMenu
-            title={currentCategory.name}
-            mark={true}
-            menus={[
-              ...categoryList.map(category => ({
-                text: category.name,
-                callback() {
-                  setCurrentCategory(category)
-                }
-              }))
-            ]}
-          />
-        </S.MenuWrap>
-      </S.Header>
+      <S.Header>플랜 관리</S.Header>
+      <S.MenuWrap>
+        <Button onClick={() => setRemoveMode(!removeMode)}>
+          {removeMode ? "확인" : "삭제"}
+        </Button>
+        <Link to='/admin/plan/create'>
+            <Button>추가</Button>
+        </Link>
+        <DropdownMenu
+          title={currentCategory.name}
+          mark={true}
+          menus={[
+            ...categoryList.map(category => ({
+              text: category.name,
+              callback() {
+                setCurrentCategory(category)
+              }
+            }))
+          ]}
+        />
+      </S.MenuWrap>
       <S.Plan>
         {showedPlanlist.map((plan) => (
           <ManagePlanCard

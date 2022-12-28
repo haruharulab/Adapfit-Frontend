@@ -21,12 +21,15 @@ export const NavigateHeader = styled(Link)`
 
 export const Header = styled.div`
   font-weight: 700;
-  font-size: 30px;
+  font-size: 34px;
   padding: 0 10px;
   margin: 30px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  @media screen and (max-width: 600px) {
+    font-size: 30px;
+  }
   h2 {
     font-weight: bold;
     font-size: 30px;
