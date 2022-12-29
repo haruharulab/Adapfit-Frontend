@@ -48,6 +48,9 @@ export const LogoWrap = styled(Link)`
 export const Logo = styled.img`
   cursor: pointer;
   display: flex;
-  height: 40px;
+  height: 35px;
   align-self: center;
+  @media screen and (max-width: 600px) {
+    height: 27px;
+  }
 `;

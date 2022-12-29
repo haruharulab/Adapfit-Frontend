@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { DropdownMenu, DropdownTitle } from "../common/dropdownMenu/style";
+import { DropdownMenu, DropdownOption, DropdownTitle } from "../common/dropdownMenu/style";
 
 export const Item = styled(Link)`
   display: flex;
@@ -12,8 +12,12 @@ export const Item = styled(Link)`
   background-color: #4f4e6b;
   transition: .25s;
   ${DropdownTitle} {
-    background: none;
+    background-color: transparent;
     padding: 0 10px;
+  }
+  ${DropdownOption} {
+    color: white;
+    background-color: #353455;
   }
   ${DropdownMenu} {
     margin-left: auto;

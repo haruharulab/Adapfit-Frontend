@@ -11,8 +11,9 @@ export const RecruitmentWrap = styled.div`
   ${AccentButtonLink} {
     display: block;
     width: 100%;
-    max-width: 200px;
-    margin: 10px 0 10px auto;
+    max-width: 400px;
+    margin: 30px auto;
+    font-size: 16px;
   }
 `;
 

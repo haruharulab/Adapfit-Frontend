@@ -6,7 +6,7 @@ import { getCategoryList } from "../../../apis/category.api";
 import ManagePlanCard from "../../../components/plan/adminPlanCard";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components/common/button/style";
+import { AccentButton } from "../../../components/common/button/style";
 import { DropdownMenu } from "../../../components/common/dropdownMenu";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../store/user.store";
@@ -72,12 +72,6 @@ export const PlanHome = () => {
     <S.Contain>
       <S.Header>플랜 관리</S.Header>
       <S.MenuWrap>
-        <Button onClick={() => setRemoveMode(!removeMode)}>
-          {removeMode ? "확인" : "삭제"}
-        </Button>
-        <Link to='/admin/plan/create'>
-            <Button>추가</Button>
-        </Link>
         <DropdownMenu
           title={currentCategory.name}
           mark={true}
@@ -90,6 +84,12 @@ export const PlanHome = () => {
             }))
           ]}
         />
+        <AccentButton onClick={() => setRemoveMode(!removeMode)}>
+          {removeMode ? "확인" : "삭제"}
+        </AccentButton>
+        <Link to='/admin/plan/create'>
+            <AccentButton>추가</AccentButton>
+        </Link>
       </S.MenuWrap>
       <S.Plan>
         {showedPlanlist.map((plan) => (

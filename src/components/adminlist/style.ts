@@ -11,7 +11,7 @@ export const Item = styled.div`
   background-color: #4f4e6b;
   transition: .25s;
   ${DropdownTitle} {
-    background: none;
+    background-color: transparent;
     padding: 0 10px;
   }
   ${DropdownMenu} {

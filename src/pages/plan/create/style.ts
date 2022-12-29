@@ -45,24 +45,24 @@ export const PlanCategorySelect = styled.select`
 `;
 
 export const PlanTitleInput = styled(Input)`
-  width: auto;
+  width: 100%;
+  max-width: 500px;
   background-color: white;
   font-weight: bold;
   font-size: 30px;
   text-align: center;
   border: none;
-  border-radius: 10px;
   padding: 5px;
 `;
 
 export const PlanSubTitleInput = styled(Input)`
-  width: auto;
+  width: 100%;
+  max-width: 300px;
   background-color: white;
   font-weight: bold;
   font-size: 18px;
   text-align: center;
   border: none;
-  border-radius: 10px;
   padding: 5px;
 `;
 
@@ -139,8 +139,8 @@ export const CreatePlanButton = styled(AccentButton)`
   width: 100%;
   max-width: 225px;
   align-self: center;
-  padding: 8px;
-  font-size: 19px;
+  padding: 10px;
+  font-size: 17px;
 `
 
 export const PlanImageList = styled.ul`

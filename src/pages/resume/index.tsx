@@ -1,121 +1,125 @@
 import * as S from "./style";
-import React, { useEffect, useRef } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useEffect } from "react";
 import { useState } from "react";
-import axios from "axios";
 import { AiFillFileZip } from "react-icons/ai";
-import { useParams } from "react-router-dom";
-export default function Resume() {
-  const [Name, setName] = useState("");
-  const [Email, setEmail] = useState("");
-  const [PhoneNumber, setPhoneNumber] = useState("");
-  const [File1, setFile1] = useState<File | null>(null);
-  const [File2, setFile2] = useState<File | null>(null);
-  const [File3, setFile3] = useState<File | null>(null);
-  const fileInputRef1 = useRef<HTMLInputElement>(null);
-  const fileInputRef2 = useRef<HTMLInputElement>(null);
-  const fileInputRef3 = useRef<HTMLInputElement>(null);
-  const [IsFilled, setIsFilled] = useState(false);
-  const { id }: any = useParams();
+import { useNavigate, useParams } from "react-router-dom";
+import { HttpMethod, useAjax } from "../../utils/ajax";
+import { Input } from "../../components/common/input/style";
+
+const Resume = () => {
+  const {ajax} = useAjax();
+  const navigate = useNavigate();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [portfolioFile, setPortfolioFile] = useState<File | null>(null);
+  const [etcFile, setEtcFile] = useState<File | null>(null);
+  const [isFilled, setisFilled] = useState(false);
+  const params = useParams();
+  const recruitmentId = Number(params.id);
+
   const check = () => {
-    if (Name == "") return false;
-    if (Email == "") return false;
-    if (PhoneNumber == "") return false;
-    if (File1 == null) return false;
+    if (!name || !email || !phoneNumber || !resumeFile) return false;
     return true;
   };
+
   useEffect(() => {
-    setIsFilled(check());
-  }, [Name, Email, PhoneNumber, File1, File2, File3]);
-  const Submit = () => {
-    if (!IsFilled) {
+    setisFilled(check());
+  }, [name, email, phoneNumber, resumeFile]);
+
+  const fileHandler = (event: ChangeEvent<HTMLInputElement>, set: Dispatch<SetStateAction<File | null>>) => {
+    const file = event.target.files?.[0]
+    if (!file) return;
+    set(file);
+  }
+
+  const submit = async () => {
+    if (!isFilled) {
       alert("전부 입력 해주세요");
       return false;
     }
-    let formData = new FormData();
-    formData.append("name", Name);
-    formData.append("email", Email);
-    formData.append("phoneNumber", PhoneNumber);
-    formData.append("recruitmentId", id);
-    if (File1 != null) formData.append("resume", File1);
-    if (File2 != null) formData.append("portfolio", File2);
-    if (File3 != null) formData.append("etc", File3);
-    axios
-      .post("http://13.209.36.143/resume:8080", formData)
-      .then(() => alert("fa"))
-      .catch((error) => alert(error));
+    const payload = new FormData();
+    payload.append('req', new Blob([JSON.stringify({
+      recruitmentId,
+      name,
+      email,
+      phoneNumber
+    })], {
+      type: 'application/json'
+    }));
+    if (resumeFile) payload.append("resume", resumeFile);
+    if (portfolioFile) payload.append("portfolio", portfolioFile);
+    if (etcFile) payload.append("etcFile", etcFile);
+    
+    const [, error] = await ajax({
+      url: 'resume',
+      method: HttpMethod.POST,
+      payload,
+      noToken: true
+    });
+    if (error) return;
+
+    alert('지원서 제출에 성공하였습니다.');
+    navigate('/recruitment');
   };
+
   return (
     <S.Contain>
-      <h1>지원서 작성</h1>
-      <span>지원자 정보</span>
-      이름
-      <S.TextArea
-        placeholder={"이름을 입력해주세요"}
+      <S.Header>지원서 작성</S.Header>
+      <h3>지원자 정보</h3>
+      <p>이름</p>
+      <Input
+        placeholder='이름을 입력해주세요'
         onChange={(e) => setName(e.target.value)}
       />
-      이메일
-      <S.TextArea
-        placeholder={"이메일을 입력해주세요"}
+      <p>이메일</p>
+      <Input
+        placeholder='이메일을 입력해주세요'
         onChange={(e) => setEmail(e.target.value)}
       />
-      전화번호
-      <S.TextArea
-        placeholder={"전화번호를 입력해주세요"}
+      <p>전화번호</p>
+      <Input
+        placeholder='전화번호를 입력해주세요'
         onChange={(e) => setPhoneNumber(e.target.value)}
       />
-      <span>제출 서류</span>
-      이력서
-      <S.FileInput onClick={() => fileInputRef1.current?.click()}>
-        <AiFillFileZip className="file" />
-        {File1 != null ? "이력서 첨부 완료!" : "이력서를 첨부해주세요"}
+      <h3>제출 서류</h3>
+      <p>이력서</p>
+      <S.FileInput as='label' htmlFor='resume-input'>
+        <AiFillFileZip />
+        <span>{resumeFile? '이력서 첨부 완료' : '이력서를 첨부해주세요'}</span>
+        <input
+          type='file'
+          id='resume-input'
+          onChange={event => fileHandler(event, setResumeFile)}
+          style={{display: 'none'}}
+        />
       </S.FileInput>
-      포트폴리오
-      <S.FileInput onClick={() => fileInputRef2.current?.click()}>
-        <AiFillFileZip className="file" />
-        {File2 != null
-          ? "포트폴리오 첨부 완료!"
-          : "자신의 포트폴리오를 첨부해주세요\n"}
+      <p>포트폴리오</p>
+      <S.FileInput as='label' htmlFor='portfolio-input'>
+        <AiFillFileZip />
+        {portfolioFile? '포트폴리오 첨부 완료': '포트폴리오가 있으면 첨부해주세요'}
+        <input
+          type='file'
+          id='portfolio-input'
+          onChange={event => fileHandler(event, setPortfolioFile)}
+          style={{display: 'none'}}
+        />
       </S.FileInput>
-      기타
-      <S.FileInput onClick={() => fileInputRef3.current?.click()}>
-        <AiFillFileZip className="file" />
-        {File3 != null
-          ? "기타 제출사항 첨부 완료!"
-          : "기타 제출사항이 있으면 첨부해주세요"}
+      <p>기타</p>
+      <S.FileInput as='label' htmlFor='etc-input'>
+        <AiFillFileZip />
+        {etcFile? '기타 제출파일 첨부 완료': '기타 제출파일이 있으면 첨부해주세요'}
+        <input
+          type='file'
+          id='etc-input'
+          onChange={event => fileHandler(event, setEtcFile)}
+          style={{display: 'none'}}
+        />
       </S.FileInput>
-      <input
-        ref={fileInputRef1}
-        type="file"
-        style={{ display: "none" }}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          const file = e.target.files?.[0];
-          if (!file) return;
-          setFile1(file);
-        }}
-      />
-      <input
-        ref={fileInputRef2}
-        type="file"
-        style={{ display: "none" }}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          const file = e.target.files?.[0];
-          if (!file) return;
-          setFile2(file);
-        }}
-      />
-      <input
-        ref={fileInputRef3}
-        type="file"
-        style={{ display: "none" }}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          const file = e.target.files?.[0];
-          if (!file) return;
-          setFile3(file);
-        }}
-      />
-      <S.SubmitBtn isFilled={IsFilled} onClick={() => Submit()}>
-        제출하기
-      </S.SubmitBtn>
+      <S.SubmitBtn isFilled={isFilled} onClick={submit}>제출하기</S.SubmitBtn>
     </S.Contain>
   );
 }
+
+export default Resume;

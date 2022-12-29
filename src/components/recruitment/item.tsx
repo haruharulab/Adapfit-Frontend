@@ -1,6 +1,4 @@
-import { AiFillSetting } from "react-icons/ai";
 import { Recruitment } from '../../types/recruitment.type';
-import { DropdownMenu } from "../common/dropdownMenu";
 import * as S from "./style";
 
 interface RecruitmentItemProps {
