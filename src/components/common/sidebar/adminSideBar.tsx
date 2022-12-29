@@ -61,6 +61,12 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>플랜 관리</S.SideBarItemContent>
     </S.SideBarItem>
+    <S.SideBarItem onClick={() => navigate('/admin/plan/category')}>
+      <S.SideBarItemIcon>
+        <FaThList size={20} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>플랜 카테고리 관리</S.SideBarItemContent>
+    </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/notice')}>
       <S.SideBarItemIcon>  
         <FaBullhorn size={22} color='white' />

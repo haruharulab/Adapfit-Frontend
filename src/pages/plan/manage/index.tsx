@@ -13,7 +13,7 @@ import { userState } from "../../../store/user.store";
 import { useModal } from "../../../utils/modal";
 import { Authority } from "../../../types/user.type";
 
-export const PlanHome = () => {
+const ManagePlan = () => {
   const user = useRecoilValue(userState);
   const {openModal} = useModal();
   const { ajax } = useAjax();
@@ -103,3 +103,5 @@ export const PlanHome = () => {
     </S.Contain>
   );
 };
+
+export default ManagePlan;
