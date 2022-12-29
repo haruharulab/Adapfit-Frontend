@@ -21,7 +21,6 @@ export default function Resume() {
     if (Email == "") return false;
     if (PhoneNumber == "") return false;
     if (File1 == null) return false;
-    if (File2 == null) return false;
     return true;
   };
   useEffect(() => {
