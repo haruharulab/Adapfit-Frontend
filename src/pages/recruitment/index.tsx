@@ -17,6 +17,8 @@ const RecruitmentList = () => {
     careerList: ['모든 경력'],
     patternList: ['모든 채용패턴']
   });
+  const [showRecruitmentList, setShowRecruitmentList] = useState<Recruitment[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
     getRecruitmentInfo();
@@ -25,6 +27,8 @@ const RecruitmentList = () => {
   useEffect(() => {
     getRecruitmentList();
   }, [position, career, pattern]);
+
+  useEffect(() => filterRecruitmentList(), [searchQuery, recruitmentList]);
 
   const getRecruitmentList = async () => {
     const [data, error] = await ajax<{
@@ -59,11 +63,19 @@ const RecruitmentList = () => {
     setRecruitmentInfo(data);
   }
 
+  const filterRecruitmentList = () => {
+    if (!searchQuery) return setShowRecruitmentList(recruitmentList);
+    const showRecruitmentList = recruitmentList.filter(recruitment => filterRecruitmentByTitle(recruitment, searchQuery));
+    setShowRecruitmentList(showRecruitmentList);
+  }
+
+  const filterRecruitmentByTitle = (recruitment: Recruitment, query: string) => recruitment.title.includes(query);
+
   return (
     <S.Contain>
       <S.Header>지금 채용 중인 포지션이에요!</S.Header>
       <S.MenuWrap>
-        <S.SearchBox placeholder="검색" />
+        <S.SearchBox placeholder="채용공고 검색" onChange={event => setSearchQuery(event.target.value)} />
         <DropdownMenu
           title={position}
           menus={
@@ -95,7 +107,7 @@ const RecruitmentList = () => {
       <S.ItemWrap>
         <RecruitmentInfoHeader />
         <hr />
-        {recruitmentList.map(recruitment => <RecruitmentItem recruitment={recruitment} />)}
+        {showRecruitmentList.map(recruitment => <RecruitmentItem recruitment={recruitment} />)}
       </S.ItemWrap>
     </S.Contain>
   );

@@ -1,4 +1,4 @@
-import { createRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { footerHeightState } from "../../store/common.store";
 import { AccentButtonLink } from "../common/button/style";
@@ -6,7 +6,7 @@ import * as S from "./style";
 
 const Footer = () => {
   const setFooterHeight = useSetRecoilState(footerHeightState);
-  const ref = createRef<HTMLElement>();
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     updateFooterHeight();
@@ -14,6 +14,7 @@ const Footer = () => {
   }, []);
 
   const updateFooterHeight = () => {
+    console.log(ref.current?.clientHeight)
     const height = ref.current?.clientHeight ?? 0;
     if (height < 1) return;
     setFooterHeight(height);

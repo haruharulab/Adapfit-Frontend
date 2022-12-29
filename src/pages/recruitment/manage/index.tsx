@@ -25,6 +25,8 @@ const ManageRecruitment = () => {
     careerList: ['모든 경력'],
     patternList: ['모든 채용패턴']
   });
+  const [showRecruitmentList, setShowRecruitmentList] = useState<Recruitment[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
     getRecruitmentInfo();
@@ -68,12 +70,22 @@ const ManageRecruitment = () => {
     if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
     getRecruitmentList();
   }, [user, position, career, pattern]);
+
+  useEffect(() => filterRecruitmentList(), [searchQuery, recruitmentList]);
+
+  const filterRecruitmentList = () => {
+    if (!searchQuery) return setShowRecruitmentList(recruitmentList);
+    const showRecruitmentList = recruitmentList.filter(recruitment => filterRecruitmentByTitle(recruitment, searchQuery));
+    setShowRecruitmentList(showRecruitmentList);
+  }
+
+  const filterRecruitmentByTitle = (recruitment: Recruitment, query: string) => recruitment.title.includes(query);
   
   return (
     <S.Contain>
       <S.Header>채용공고 관리</S.Header>
       <S.MenuWrap>
-        <S.SearchBox placeholder="검색" />
+        <S.SearchBox placeholder="채용공고 검색" onChange={event => setSearchQuery(event.target.value)} />
         <DropdownMenu
           title={position}
           menus={
@@ -108,7 +120,7 @@ const ManageRecruitment = () => {
       <S.ItemWrap>
         <RecruitmentInfoHeader />
         <hr />
-        {recruitmentList.map(recruitment => (
+        {showRecruitmentList.map(recruitment => (
           <RecruitmentManageItem
             recruitment={recruitment}
             navigate={navigate}

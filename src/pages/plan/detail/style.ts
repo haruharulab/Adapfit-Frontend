@@ -53,6 +53,7 @@ export const PlanConsultButton = styled(AccentButton)`
 export const PlanContent = styled.ul`
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 10px;
   img {
     max-width: 100%;
     height: auto;
