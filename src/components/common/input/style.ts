@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Shadow } from "../shadow/style";
 
-export const Input = styled.input`
+export const InputStyle = css`
   width: 100%;
   padding: 11px 13px;
   transition: box-shadow .25s;
@@ -14,4 +14,8 @@ export const Input = styled.input`
     box-shadow: 0 0 0 2.5px #f2640b inset;
   }
   ${Shadow}
+`;
+
+export const Input = styled.input`
+  ${InputStyle}
 `;

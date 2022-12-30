@@ -48,9 +48,9 @@ const Resume = () => {
     })], {
       type: 'application/json'
     }));
-    if (resumeFile) payload.append("resume", resumeFile);
-    if (portfolioFile) payload.append("portfolio", portfolioFile);
-    if (etcFile) payload.append("etcFile", etcFile);
+    payload.append("resume", resumeFile ?? new Blob());
+    payload.append("portfolio", portfolioFile?? new Blob());
+    payload.append("etcFile", etcFile?? new Blob());
     
     const [, error] = await ajax({
       url: 'resume',

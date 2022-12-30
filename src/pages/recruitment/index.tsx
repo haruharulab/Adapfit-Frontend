@@ -73,7 +73,7 @@ const RecruitmentList = () => {
 
   return (
     <S.Contain>
-      <S.Header>지금 채용 중인 포지션이에요!</S.Header>
+      <S.Header>지금까지 올라온 채용공고예요!</S.Header>
       <S.MenuWrap>
         <S.SearchBox placeholder="채용공고 검색" onChange={event => setSearchQuery(event.target.value)} />
         <DropdownMenu

@@ -2,14 +2,17 @@ import { Recruitment } from "./recruitment.type"
 
 export interface Resume {
     resumeId: number,
-    recruitmentId: number,
     position: string,
     name: string,
     createdAt: string,
     saw: boolean
 }
 
-export interface DetailResume extends Resume {
+export interface DetailResumeType extends Resume {
     email: string,
-    recruitment: Recruitment;
+    phoneNumber: number,
+    recruitment: Recruitment,
+    resume: string,
+    portFolio: string,
+    etcFile: string
 }

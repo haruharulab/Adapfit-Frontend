@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Item = styled(Link)`
+  display: block;
   border-radius: 5px;
   padding: 15px 30px;
   margin: 5px 0;
@@ -20,7 +21,7 @@ export const Item = styled(Link)`
 export const ItemHeader = styled(Item)`
   color: black;
   background-color: white !important;
-  padding: 0 10px 10px 30px;
+  padding: 0 30px 10px 30px;
   @media screen and (max-width: 600px) {
     padding: 0 15px 10px 15px;
   }

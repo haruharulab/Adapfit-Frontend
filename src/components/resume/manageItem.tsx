@@ -9,7 +9,7 @@ interface ManageResumeItemProps {
 const ResumeManageItem = ({
   resume
 }: ManageResumeItemProps) =>  (
-  <S.Item as='div'>
+  <S.Item to={`/admin/resume/${resume.resumeId}`}>
     <S.InfoWrap>
       <span>{resume.position}</span>
       <span>{resume.name}</span>
