@@ -41,7 +41,11 @@ export const Home = () => {
         >
           {bannerList.map((banner) => (
             <SwiperSlide>
-              <S.BannerImgLink target={banner.link? '_blank': ''} href={banner.link || '#'}>
+              <S.BannerImgLink
+                target={banner.link? '_blank': ''}
+                href={banner.link?.includes('://')? banner.link: '//'+banner.link}
+                as={banner.link? 'a': 'div'}
+              >
                 <S.BannerImg src={banner.fileUrl} className="slider" />
               </S.BannerImgLink>
             </SwiperSlide>
