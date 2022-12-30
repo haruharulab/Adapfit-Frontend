@@ -5,7 +5,7 @@ export const Item = styled.div`
   display: flex;
   align-items: center;
   border-radius: 5px;
-  padding: 15px 10px 15px 30px;
+  padding: 15px 30px;
   margin: 5px 0;
   color: white;
   background-color: #4f4e6b;
@@ -20,12 +20,19 @@ export const Item = styled.div`
   &:hover {
     background-color: #353455;
   }
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+    padding: 15px;
+  }
 `;
 
 export const ItemHeader = styled(Item)`
   color: black;
   background-color: white !important;
   padding: 0 10px 10px 30px;
+  @media screen and (max-width: 600px) {
+    padding: 0 15px 10px 15px;
+  }
 `;
 
 export const InfoWrap = styled.div`

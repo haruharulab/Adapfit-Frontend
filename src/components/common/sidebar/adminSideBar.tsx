@@ -100,6 +100,12 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>채용공고 관리</S.SideBarItemContent>
     </S.SideBarItem>
+    <S.SideBarItem onClick={() => navigate('/admin/resume')}>
+      <S.SideBarItemIcon>
+        <FaUsers size={28} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>채용 지원목록</S.SideBarItemContent>
+    </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/banner')}>
       <S.SideBarItemIcon>
         <MdViewCarousel size={30} color='white' />

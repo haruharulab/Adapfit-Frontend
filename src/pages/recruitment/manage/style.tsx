@@ -3,13 +3,10 @@ import styled from "styled-components";
 import { ButtonStyle } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
 import { Input } from "../../../components/common/input/style";
-import { Shadow } from "../../../components/common/shadow/style";
 
 export const Contain = styled.div`
   ${Container}
-  ${Shadow}
   margin-top: 70px;
-  padding: 0 10px;
   @media screen and (max-width: 600px) {
     margin-top: 40px;
   }
@@ -18,13 +15,14 @@ export const Contain = styled.div`
 export const Header = styled.div`
   font-weight: 700;
   font-size: 34px;
-  padding: 0 10px;
+  padding: 0 20px;
   @media screen and (max-width: 600px) {
     font-size: 30px;
   }
 `;
 
 export const MenuWrap = styled.div`
+  padding: 0 10px;
   margin: 20px 0;
   display: flex;
   justify-content: flex-end;

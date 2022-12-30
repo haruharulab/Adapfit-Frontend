@@ -5,7 +5,8 @@ export interface Resume {
     recruitmentId: number,
     position: string,
     name: string,
-    createdAt: string
+    createdAt: string,
+    saw: boolean
 }
 
 export interface DetailResume extends Resume {

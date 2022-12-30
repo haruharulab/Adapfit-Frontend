@@ -17,6 +17,7 @@ import EditNotice from "../pages/notice/edit";
 import { AdminPageWrap } from "../pages/admin/style";
 import ManagePlan from "../pages/plan/manage";
 import ManagePlanCategory from "../pages/plan/category";
+import ManageResume from "../pages/resume/manage";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
@@ -37,6 +38,7 @@ const AdminPageRoute = () => (
         <Route path="/recruitment" element={<ManageRecruitment />} />
         <Route path="/recruitment/create" element={<CreateRecruitment />} />
         <Route path="/recruitment/:id" element={<EditRecruitment />} />
+        <Route path="/resume" element={<ManageResume />} />
         <Route path="/adminlist" element={<AdminList />} />
       </Routes>
     </Main>
