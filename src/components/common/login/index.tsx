@@ -55,6 +55,7 @@ const SuperAdminLoginModal = () => {
       setChangeAdmin(false);
     }
     setUser(user);
+    closeModal('adminLogin');
     closeModal('superAdminLogin');
   };
 
@@ -131,6 +132,7 @@ const AdminLoginModal = () => {
     }
     setUser(user);
     closeModal('adminLogin');
+    closeModal('superAdminLogin');
   };
 
   return (

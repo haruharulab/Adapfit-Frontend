@@ -31,16 +31,20 @@ interface Ajax {
 
 const showLoginBox = (
   user: UserType,
-  openModal: (key: string, closeable?: boolean) => void
+  openModal: (key: string, closeable?: boolean) => void,
+  closeModal: (key: string) => void
 ) => {
   if (user.authority === Authority.ROOT) {
-    return openModal('superAdminLogin')
+    closeModal('adminLogin');
+    openModal('superAdminLogin');
+    return;
   }
+  closeModal('superAdminLogin');
   openModal('adminLogin');
 }
 
 export const useAjax = () => {
-  const {openModal} = useModal();
+  const {openModal, closeModal} = useModal();
   const [token, setToken] = useRecoilState(tokenState);
   const user = useRecoilValue(userState);
   const resetUser = useResetRecoilState(userState);
@@ -77,7 +81,7 @@ export const useAjax = () => {
       if (err.response?.status === 401) {
         if (!(token?.refreshToken)) {
           resetUser();
-          showLoginBox(user, openModal);
+          showLoginBox(user, openModal, closeModal);
           return [, err];
         }
         const [newToken, newTokenError] = await ajax<TokenRes>({
@@ -93,7 +97,7 @@ export const useAjax = () => {
         });
         if (newTokenError) {
           resetUser();
-          showLoginBox(user, openModal);
+          showLoginBox(user, openModal, closeModal);
           return [, newTokenError];
         }
         setToken(prev => ({

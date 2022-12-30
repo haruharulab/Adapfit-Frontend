@@ -19,6 +19,13 @@ export const SideBar = styled.div<{isOpen: boolean}>`
   ${AccentShadow};
 `;
 
+export const VersionSign = styled.span`
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  font-size: 11px;
+`;
+
 export const SideBarOnOff = styled.button`
   display: flex;
   justify-content: center;
@@ -92,6 +99,7 @@ export const SideBarContentWrap = styled.ul`
   gap: .75rem;
   padding: .75rem;
   height: 100%;
+  margin-bottom: 30px;
   ${ScrollBar}
 `;
 

@@ -1,22 +1,20 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Item = styled(Link)<{saw?: boolean}>`
-  display: block;
+export const Item = styled.div`
   border-radius: 5px;
   padding: 15px 30px;
   margin: 5px 0;
   color: white;
-  background-color: ${({saw}) => saw? 'gray': '#4f4e6b'};
+  background-color: #4f4e6b;
   transition: .25s;
   &:hover {
-    background-color: ${({saw}) => saw? 'gray': '#353455'};
+    background-color: #353455;
   }
   @media screen and (max-width: 600px) {
     font-size: 14px;
     padding: 15px;
   }
-  `;
+`;
 
 export const ItemHeader = styled(Item)`
   color: black;
@@ -30,16 +28,17 @@ export const ItemHeader = styled(Item)`
 export const InfoWrap = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   span {
-    flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    min-width: 70px;
+    min-width: 75px;
+  }
+  span:first-child {
+    flex: auto;
   }
   span:last-child {
-    min-width: 190px;
-    flex: none;
+    min-width: 170px;
   }
 `;

@@ -112,6 +112,12 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>배너 관리</S.SideBarItemContent>
     </S.SideBarItem>
+    <S.SideBarItem onClick={() => navigate('/admin/log')}>
+      <S.SideBarItemIcon>
+        <MdViewCarousel size={30} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>로그목록</S.SideBarItemContent>
+    </S.SideBarItem>
     <S.SideBarItem onClick={() => {setChangeAdmin(true);openModal('adminLogin');}}>
       <S.SideBarItemIcon>
         <FaUserAlt size={22} color='white' />
@@ -122,6 +128,7 @@ const AdminSideBar = () => {
 
   return (
     <S.SideBar isOpen={isOpen}>
+      <S.VersionSign>{process.env.REACT_APP_VERSION} {process.env.REACT_APP_BUILD_DATE} Build</S.VersionSign>
       <S.SideBarOnOff onClick={() => setIsOpen(prev => !prev)}>
         {isOpen? '<': '>'}
       </S.SideBarOnOff>

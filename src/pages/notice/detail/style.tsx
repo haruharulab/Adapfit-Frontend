@@ -5,7 +5,7 @@ import { Container } from "../../../components/common/container/style";
 export const NoticeWrap = styled.div`
   ${Container}
   padding: 0 10px;
-  `;
+`;
 
 export const NavigateHeader = styled(Link)`
   font-size: 30px;

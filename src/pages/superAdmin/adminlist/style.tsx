@@ -4,7 +4,7 @@ import { Input } from "../../../components/common/input/style";
 
 export const Contain = styled.div`
   ${Container}
-  margin-top: 70px;
+  margin: 70px auto;
   @media screen and (max-width: 600px) {
     margin-top: 40px;
   }

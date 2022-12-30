@@ -38,6 +38,7 @@ const ManageResume = () => {
       <S.Header>채용 지원목록</S.Header>
       <S.ItemWrap>
         <ResumeInfoHeader />
+        <hr />
         {resumeList.map(resume => <ResumeManageItem resume={resume} />)}
       </S.ItemWrap>
     </S.Contain>

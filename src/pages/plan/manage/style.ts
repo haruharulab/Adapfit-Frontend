@@ -5,7 +5,7 @@ import { Shadow } from "../../../components/common/shadow/style";
 export const Contain = styled.div`
   ${Container}
   ${Shadow}
-  margin-top: 70px;
+  margin: 70px auto;
   padding: 0 10px;
   @media screen and (max-width: 600px) {
     margin-top: 40px;
