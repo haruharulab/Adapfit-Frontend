@@ -8,6 +8,7 @@ import { useModal } from "../../../utils/modal";
 import NoticeManageItem from '../../../components/notice/manageItem';
 import { useNavigate } from 'react-router-dom';
 import { Notice } from '../../../types/notice.type';
+import NoticeInfoHeader from '../../../components/notice/header';
 
 const ManageNotice = () => {
   const user = useRecoilValue(userState);
@@ -43,6 +44,8 @@ const ManageNotice = () => {
         </S.CreateButton>
       </S.MenuWrap>
       <S.ItemWrap>
+        <NoticeInfoHeader />
+        <hr />
         {noticeList.map(notice => (
           <NoticeManageItem
             notice={notice}

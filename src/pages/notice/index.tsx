@@ -7,6 +7,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "../../store/user.store";
 import { Authority } from "../../types/user.type";
 import { useModal } from "../../utils/modal";
+import NoticeInfoHeader from "../../components/notice/header";
 
 const NoticeList = () => {
   const user = useRecoilValue(userState);
@@ -37,6 +38,8 @@ const NoticeList = () => {
     <S.Contain>
       <S.Header>공지사항</S.Header>
       <S.ItemWrap>
+        <NoticeInfoHeader />
+        <hr />
         {noticeList.map(notice => <NoticeItem notice={notice} />)}
       </S.ItemWrap>
     </S.Contain>

@@ -1,5 +1,5 @@
 import { AiFillSetting } from "react-icons/ai";
-import { NavigateFunction } from 'react-router-dom';
+import { Link, NavigateFunction } from 'react-router-dom';
 import { Notice } from '../../types/notice.type';
 import { dateToShortStr } from '../../utils/date';
 import { DropdownMenu, DropdownMenuOption } from "../common/dropdownMenu";
@@ -24,7 +24,7 @@ const NoticeManageItem = ({
   return (
     <S.Item as='div'>
       <S.InfoWrap>
-        <span>{notice.title}</span>
+        <span><Link to={`/admin/notice/${notice.id}`}>{notice.title}</Link></span>
         <span>{dateToShortStr(new Date(notice.createdAt))}</span>
       </S.InfoWrap>
       <DropdownMenu title={<AiFillSetting size={22} color='white' />} menus={dropdownMenus} />

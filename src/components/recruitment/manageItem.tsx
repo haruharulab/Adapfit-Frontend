@@ -1,5 +1,5 @@
 import { AiFillSetting } from "react-icons/ai";
-import { NavigateFunction } from 'react-router-dom';
+import { Link, NavigateFunction } from 'react-router-dom';
 import { Recruitment } from '../../types/recruitment.type';
 import { DropdownMenu, DropdownMenuOption } from "../common/dropdownMenu";
 import * as S from "./style";
@@ -23,7 +23,7 @@ const RecruitmentManageItem = ({
   return (
     <S.Item as='div'>
       <S.InfoWrap>
-        <span>{recruitment.title}</span>
+        <span><Link to={`/recruitment/${recruitment.id}`}>{recruitment.title}</Link></span>
         <span>{recruitment.position}</span>
         <span>{recruitment.career}</span>
         <span>{recruitment.employmentPattern === 'PERMANENT_EMPLOYEE'? '정규직': '비정규직'}</span>
