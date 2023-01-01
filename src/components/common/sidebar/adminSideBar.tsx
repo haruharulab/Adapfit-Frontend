@@ -114,7 +114,7 @@ const AdminSideBar = () => {
     </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/log')}>
       <S.SideBarItemIcon>
-        <MdViewCarousel size={30} color='white' />
+        <FaThList size={20} color='white' />
       </S.SideBarItemIcon>
       <S.SideBarItemContent>로그목록</S.SideBarItemContent>
     </S.SideBarItem>

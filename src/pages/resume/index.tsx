@@ -65,26 +65,35 @@ const Resume = () => {
   };
 
   return (
-    <S.Contain>
+    <S.Contain
+      onSubmit={event => {
+        event.preventDefault();
+        submit();
+      }}
+    >
       <S.Header>지원서 작성</S.Header>
       <h3>지원자 정보</h3>
-      <p>이름</p>
+      <p>이름<S.Required>*</S.Required></p>
       <Input
         placeholder='이름을 입력해주세요'
         onChange={(e) => setName(e.target.value)}
+        required
       />
-      <p>이메일</p>
+      <p>이메일<S.Required>*</S.Required></p>
       <Input
         placeholder='이메일을 입력해주세요'
         onChange={(e) => setEmail(e.target.value)}
+        required
+        type='email'
       />
-      <p>전화번호</p>
+      <p>전화번호<S.Required>*</S.Required></p>
       <Input
         placeholder='전화번호를 입력해주세요'
         onChange={(e) => setPhoneNumber(e.target.value)}
+        required
       />
       <h3>제출 서류</h3>
-      <p>이력서</p>
+      <p>이력서<S.Required>*</S.Required></p>
       <S.FileInput as='label' htmlFor='resume-input'>
         <AiFillFileZip />
         <span>{resumeFile? '이력서 첨부 완료' : '이력서를 첨부해주세요'}</span>
@@ -117,7 +126,7 @@ const Resume = () => {
           style={{display: 'none'}}
         />
       </S.FileInput>
-      <S.SubmitBtn isFilled={isFilled} onClick={submit}>제출하기</S.SubmitBtn>
+      <S.SubmitBtn isFilled={isFilled} type='submit'>제출하기</S.SubmitBtn>
     </S.Contain>
   );
 }

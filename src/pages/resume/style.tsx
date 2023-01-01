@@ -3,7 +3,7 @@ import { FormSubmitButton } from "../../components/common/button/style";
 import { Container } from "../../components/common/container/style";
 import { Input } from "../../components/common/input/style";
 
-export const Contain = styled.div`
+export const Contain = styled.form`
   ${Container}
   margin-top: 70px;
   max-width: 700px;
@@ -19,6 +19,8 @@ export const Contain = styled.div`
   }
   p {
     margin: 10px 0;
+    display: flex;
+    gap: 3px;
   }
   ${Input} {
     background-color: white;
@@ -52,3 +54,9 @@ export const SubmitBtn = styled(FormSubmitButton)<{isFilled: boolean}>`
   background-color: ${({isFilled}) => isFilled? '#F2640B': '#d9d9d9'};
   cursor: ${({isFilled}) => isFilled? 'pointer': ''};
 `;
+
+export const Required = styled.span`
+  color: #f49e4b;
+  font-size: 16px;
+  font-weight: bold;
+`
