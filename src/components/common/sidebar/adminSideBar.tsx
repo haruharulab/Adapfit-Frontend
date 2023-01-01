@@ -1,15 +1,16 @@
 import * as S from './style';
 import { useEffect, useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { HttpMethod, useAjax } from '../../../utils/ajax';
 import { useModal } from '../../../utils/modal';
-import { userState } from '../../../store/user.store';
+import { tokenState, userState } from '../../../store/user.store';
 import LoginModal from '../login';
 import { FaBullhorn, FaThList, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { MdViewCarousel } from 'react-icons/md';
 import { Admin, Authority, SuperAdmin } from '../../../types/user.type';
 import { useNavigate } from 'react-router-dom';
 import { changeAdminState } from '../../../store/common.store';
+import { FiLogOut } from 'react-icons/fi';
 
 const AdminSideBar = () => {
   const navigate = useNavigate();
@@ -17,6 +18,8 @@ const AdminSideBar = () => {
   const {openModal} = useModal();
   const setChangeAdmin = useSetRecoilState(changeAdminState);
   const [user, setUser] = useRecoilState(userState);
+  const resetUser = useResetRecoilState(userState);
+  const resetToken = useResetRecoilState(tokenState);
   const [isOpen, setIsOpen] = useState(true);
   
   useEffect(() => {
@@ -43,6 +46,12 @@ const AdminSideBar = () => {
       return setUser(superAdmin);
     }
     setUser(admin);
+  }
+
+  const logout = () => {
+    resetToken();
+    resetUser();
+    navigate('/admin');
   }
 
   const LoginMenu = () => (
@@ -78,6 +87,12 @@ const AdminSideBar = () => {
         <FaUserAlt size={22} color='white' />
       </S.SideBarItemIcon>
       <S.SideBarItemContent>슈퍼관리자로 전환</S.SideBarItemContent>
+    </S.SideBarItem>
+    <S.SideBarItem onClick={logout}>
+      <S.SideBarItemIcon>
+        <FiLogOut size={26} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>로그아웃</S.SideBarItemContent>
     </S.SideBarItem>
   </>);
 
@@ -123,6 +138,12 @@ const AdminSideBar = () => {
         <FaUserAlt size={22} color='white' />
       </S.SideBarItemIcon>
       <S.SideBarItemContent>일반관리자로 전환</S.SideBarItemContent>
+    </S.SideBarItem>
+    <S.SideBarItem onClick={logout}>
+      <S.SideBarItemIcon>
+        <FiLogOut size={26} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>로그아웃</S.SideBarItemContent>
     </S.SideBarItem>
   </>);
 
