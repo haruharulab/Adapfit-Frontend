@@ -20,7 +20,7 @@ const ManagePosition = () => {
 
   useEffect(() => {
     if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
+    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
     loadPositionList();
   }, [user]);
 
@@ -43,8 +43,7 @@ const ManagePosition = () => {
     loadPositionList();
   };
 
-  return (<>{
-    user.authority === Authority.ROOT &&
+  return (
     <S.Contain>
       <ManagePositionModal selectPosition={selectPosition} loadPositionList={loadPositionList} />
       <S.Header>채용 포지션 관리</S.Header>
@@ -64,7 +63,7 @@ const ManagePosition = () => {
         ))}
       </S.ItemWrap>
     </S.Contain>
-  }</>);
+  );
 }
 
 export default ManagePosition;

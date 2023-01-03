@@ -11,8 +11,8 @@ import NoticeInfoHeader from "../../components/notice/header";
 
 const NoticeList = () => {
   const user = useRecoilValue(userState);
-  const {ajax} = useAjax();
-  const {openModal} = useModal();
+  const { ajax } = useAjax();
+  const { openModal } = useModal();
   const [noticeList, setNoticeList] = useState<Notice[]>([]);
 
 

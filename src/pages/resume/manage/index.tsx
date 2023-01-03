@@ -11,13 +11,13 @@ import ResumeInfoHeader from '../../../components/resume/header';
 
 const ManageResume = () => {
   const user = useRecoilValue(userState);
-  const {openModal} = useModal();
-  const {ajax} = useAjax();
+  const { openModal } = useModal();
+  const { ajax } = useAjax();
   const [resumeList, setResumeList] = useState<Resume[]>([]);
 
   useEffect(() => {
     if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
+    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
     getResumeList();
   }, [user]);
 
@@ -32,7 +32,7 @@ const ManageResume = () => {
     if (error) return;
     setResumeList(data.data);
   }
-  
+
   return (
     <S.Contain>
       <S.Header>채용 지원목록</S.Header>

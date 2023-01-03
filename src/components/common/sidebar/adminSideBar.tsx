@@ -64,6 +64,12 @@ const AdminSideBar = () => {
   );
 
   const AdminMenu = () => (<>
+    <S.SideBarItem onClick={() => navigate('/admin/notice')}>
+      <S.SideBarItemIcon>
+        <FaBullhorn size={22} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>공지사항</S.SideBarItemContent>
+    </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/plan')}>
       <S.SideBarItemIcon>
         <FaThList size={20} color='white' />
@@ -76,11 +82,23 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>플랜 카테고리 관리</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/notice')}>
+    <S.SideBarItem onClick={() => navigate('/admin/recruitment')}>
       <S.SideBarItemIcon>
-        <FaBullhorn size={22} color='white' />
+        <FaUsers size={28} color='white' />
       </S.SideBarItemIcon>
-      <S.SideBarItemContent>공지사항</S.SideBarItemContent>
+      <S.SideBarItemContent>채용공고 관리</S.SideBarItemContent>
+    </S.SideBarItem>
+    <S.SideBarItem onClick={() => navigate('/admin/recruitment/position')}>
+      <S.SideBarItemIcon>
+        <FaUsers size={28} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>채용 포지션 관리</S.SideBarItemContent>
+    </S.SideBarItem>
+    <S.SideBarItem onClick={() => navigate('/admin/resume')}>
+      <S.SideBarItemIcon>
+        <FaUsers size={28} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>채용 지원목록</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={() => { setChangeAdmin(true); openModal('superAdminLogin'); }}>
       <S.SideBarItemIcon>
@@ -108,24 +126,6 @@ const AdminSideBar = () => {
         <FaBullhorn size={22} color='white' />
       </S.SideBarItemIcon>
       <S.SideBarItemContent>공지사항 관리</S.SideBarItemContent>
-    </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/recruitment')}>
-      <S.SideBarItemIcon>
-        <FaUsers size={28} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>채용공고 관리</S.SideBarItemContent>
-    </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/recruitment/position')}>
-      <S.SideBarItemIcon>
-        <FaUsers size={28} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>채용 포지션 관리</S.SideBarItemContent>
-    </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/resume')}>
-      <S.SideBarItemIcon>
-        <FaUsers size={28} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>채용 지원목록</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/banner')}>
       <S.SideBarItemIcon>

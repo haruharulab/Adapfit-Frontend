@@ -16,8 +16,8 @@ const EditRecruitment = () => {
   const param = useParams();
   const recruitmentId = Number(param.id);
   const user = useRecoilValue(userState);
-  const {openModal} = useModal();
-  const {ajax} = useAjax();
+  const { openModal } = useModal();
+  const { ajax } = useAjax();
   const navigate = useNavigate();
   const [recruitmentInfo, setRecruitmentInfo] = useState<RecruitmentInfo>({
     positionList: [],
@@ -51,12 +51,12 @@ const EditRecruitment = () => {
     setContent(data.content);
     setPosition(data.position);
     setCareer(data.career);
-    setEmploymentPattern(data.employmentPattern === 'PERMANENT_EMPLOYEE'? '정규직': '비정규직');
+    setEmploymentPattern(data.employmentPattern === 'PERMANENT_EMPLOYEE' ? '정규직' : '비정규직');
   }
 
   useEffect(() => {
     if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
+    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
     getRecruitmentInfo();
     getRecruitment();
   }, [user, recruitmentId]);
@@ -75,7 +75,7 @@ const EditRecruitment = () => {
         content,
         position,
         career,
-        employmentPattern: employmentPattern === '정규직'? 'PERMANENT_EMPLOYEE': 'NON_REGULAR_WALKER',
+        employmentPattern: employmentPattern === '정규직' ? 'PERMANENT_EMPLOYEE' : 'NON_REGULAR_WALKER',
         workingArea: '.'
       }
     });
@@ -87,24 +87,24 @@ const EditRecruitment = () => {
     return new Promise(async (resolve, reject) => {
       let payload = new FormData();
       payload.append('image', blobInfo.blob());
-      
+
       const [imageUrl, uploadError] = await ajax<string>({
         method: HttpMethod.POST,
         payload,
         url: 'image',
-        config:{
-            timeout: 0
+        config: {
+          timeout: 0
         },
-        errorCallback:(data) => {
-            if (!data) return reject({message: '알 수 없는 에러가 발생하였습니다', remove: true});
-            reject({message: data.message, remove: true});
+        errorCallback: (data) => {
+          if (!data) return reject({ message: '알 수 없는 에러가 발생하였습니다', remove: true });
+          reject({ message: data.message, remove: true });
         }
       });
       if (uploadError) return;
       resolve(imageUrl);
     });
   }
-  
+
   return (
     <S.Contain>
       <S.Header>채용공고 수정</S.Header>
@@ -148,7 +148,7 @@ const EditRecruitment = () => {
           required
         />
         <Editor
-          tinymceScriptSrc={process.env.NODE_ENV === 'development'? undefined: '/lib/tinymce/tinymce.min.js'}
+          tinymceScriptSrc={process.env.NODE_ENV === 'development' ? undefined : '/lib/tinymce/tinymce.min.js'}
           init={{
             promotion: false,
             language: 'ko_KR',
@@ -158,7 +158,7 @@ const EditRecruitment = () => {
               menubar: true,
             },
             plugins: [
-              'code','autolink','lists','link','image','charmap','preview','anchor','searchreplace','visualblocks','media','table','wordcount','autoresize'
+              'code', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks', 'media', 'table', 'wordcount', 'autoresize'
             ],
             toolbar: 'undo redo codesample | bold italic | alignleft alignright aligncenter alignjustify | emoticon image media | preview code',
             relative_urls: false,

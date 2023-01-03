@@ -67,7 +67,7 @@ const ManageRecruitment = () => {
 
   useEffect(() => {
     if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ROOT) return openModal('superAdminLogin');
+    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
     getRecruitmentList();
   }, [user, position, career, pattern]);
 

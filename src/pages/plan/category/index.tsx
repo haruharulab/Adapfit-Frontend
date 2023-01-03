@@ -14,8 +14,8 @@ import CategoryInfoHeader from "../../../components/plan/category/header";
 
 const ManagePlanCategory = () => {
   const user = useRecoilValue(userState);
-  const {ajax} = useAjax();
-  const {openModal} = useModal();
+  const { ajax } = useAjax();
+  const { openModal } = useModal();
   const [selectCategory, setSelectCategory] = useState<PlanCategory | null>(null);
   const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
 
@@ -47,8 +47,7 @@ const ManagePlanCategory = () => {
     loadCategoryList();
   };
 
-  return (<>{
-    user.authority === Authority.ADMIN &&
+  return (
     <S.Contain>
       <ManageCategoryModal selectCategory={selectCategory} loadCategoryList={loadCategoryList} />
       <S.Header>플랜 카테고리 관리</S.Header>
@@ -68,7 +67,7 @@ const ManagePlanCategory = () => {
         ))}
       </S.ItemWrap>
     </S.Contain>
-  }</>);
+  );
 }
 
 export default ManagePlanCategory;
