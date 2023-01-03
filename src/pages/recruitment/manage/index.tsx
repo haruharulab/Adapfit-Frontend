@@ -13,8 +13,8 @@ import RecruitmentInfoHeader from '../../../components/recruitment/header';
 
 const ManageRecruitment = () => {
   const user = useRecoilValue(userState);
-  const {openModal} = useModal();
-  const {ajax} = useAjax();
+  const { openModal } = useModal();
+  const { ajax } = useAjax();
   const navigate = useNavigate();
   const [position, setPosition] = useState('모든 직군');
   const [career, setCareer] = useState('모든 경력');
@@ -41,9 +41,9 @@ const ManageRecruitment = () => {
       method: HttpMethod.GET,
       config: {
         params: {
-          position: position === '모든 직군'? '': position,
-          career: career === '모든 경력'? '': career,
-          employmentPattern: pattern === '모든 채용패턴'? '': pattern === '정규직'? 'PERMANENT_EMPLOYEE': 'NON_REGULAR_WALKER'
+          position: position === '모든 직군' ? '' : position,
+          career: career === '모든 경력' ? '' : career,
+          employmentPattern: pattern === '모든 채용패턴' ? '' : pattern === '정규직' ? 'PERMANENT_EMPLOYEE' : 'NON_REGULAR_WALKER'
         }
       },
       noToken: true
@@ -51,7 +51,7 @@ const ManageRecruitment = () => {
     if (error) return;
     setRecruitmentList(data.data);
   }
-  
+
   const getRecruitmentInfo = async () => {
     const [data, error] = await ajax<RecruitmentInfo>({
       url: 'recruitment/info',
@@ -80,7 +80,18 @@ const ManageRecruitment = () => {
   }
 
   const filterRecruitmentByTitle = (recruitment: Recruitment, query: string) => recruitment.title.includes(query);
-  
+
+  const deleteRecruitment = async (id: number) => {
+    if (!window.confirm("정말 삭제하시겠습니까?")) return;
+    const [, error] = await ajax({
+      url: `recruitment/${id}`,
+      method: HttpMethod.DELETE,
+    });
+    if (error) return;
+
+    getRecruitmentList();
+  };
+
   return (
     <S.Contain>
       <S.Header>채용공고 관리</S.Header>
@@ -124,7 +135,7 @@ const ManageRecruitment = () => {
           <RecruitmentManageItem
             recruitment={recruitment}
             navigate={navigate}
-            deleteRecruitment={() => {}}
+            deleteRecruitment={deleteRecruitment}
           />
         ))}
       </S.ItemWrap>

@@ -12,8 +12,8 @@ import NoticeInfoHeader from '../../../components/notice/header';
 
 const ManageNotice = () => {
   const user = useRecoilValue(userState);
-  const {openModal} = useModal();
-  const {ajax} = useAjax();
+  const { openModal } = useModal();
+  const { ajax } = useAjax();
   const navigate = useNavigate();
   const [noticeList, setNoticeList] = useState<Notice[]>([]);
 
@@ -34,7 +34,18 @@ const ManageNotice = () => {
     if (error) return;
     setNoticeList(data.data);
   }
-  
+
+  const deleteNotice = async (id: number) => {
+    if (!window.confirm("정말 삭제하시겠습니까?")) return;
+    const [, error] = await ajax({
+      url: `notice/${id}`,
+      method: HttpMethod.DELETE,
+    });
+    if (error) return;
+
+    getNoticeList();
+  };
+
   return (
     <S.Contain>
       <S.Header>공지사항 관리</S.Header>
@@ -50,7 +61,7 @@ const ManageNotice = () => {
           <NoticeManageItem
             notice={notice}
             navigate={navigate}
-            deleteNotice={() => {}}
+            deleteNotice={deleteNotice}
           />
         ))}
       </S.ItemWrap>
