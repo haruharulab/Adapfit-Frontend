@@ -85,5 +85,8 @@ export const ModalContent = styled.div`
     span {
       padding: 0 5px;
     }
+    div {
+      width: 100%;
+    }
   }
 `;

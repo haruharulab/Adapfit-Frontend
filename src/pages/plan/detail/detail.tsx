@@ -51,7 +51,7 @@ const PlanDetail = () => {
             <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(document.URL)}`} target='_blank'>
               <BsFacebook size={20} />
             </a>
-            <a href={`https://twitter.com/share?url=${encodeURIComponent(document.URL)}`} target='_blank'>
+            <a href={`https://www.linkedin.com/cws/share?url=${encodeURIComponent(document.URL)}`} target='_blank'>
               <BsLinkedin size={20} />
             </a>
             <a href={`https://twitter.com/share?url=${encodeURIComponent(document.URL)}`} target='_blank'>

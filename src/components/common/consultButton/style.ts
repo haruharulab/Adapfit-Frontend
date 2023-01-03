@@ -23,4 +23,8 @@ export const ConsultLink = styled.a`
   &:hover {
     transform: scale(1.1);
   }
+  @media screen and (max-width: 700px) {
+    right: 20px;
+    bottom: 20px;
+  }
 `;

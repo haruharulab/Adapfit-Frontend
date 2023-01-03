@@ -20,6 +20,7 @@ import ManagePlanCategory from "../pages/plan/category";
 import ManageResume from "../pages/resume/manage";
 import ResumeDetail from "../pages/resume/detail";
 import LogList from "../pages/admin/log";
+import ManagePosition from "../pages/recruitment/position";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
@@ -40,6 +41,7 @@ const AdminPageRoute = () => (
         <Route path="/recruitment" element={<ManageRecruitment />} />
         <Route path="/recruitment/create" element={<CreateRecruitment />} />
         <Route path="/recruitment/:id" element={<EditRecruitment />} />
+        <Route path="/recruitment/position" element={<ManagePosition />} />
         <Route path="/resume" element={<ManageResume />} />
         <Route path="/resume/:id" element={<ResumeDetail />} />
         <Route path="/adminlist" element={<AdminList />} />
