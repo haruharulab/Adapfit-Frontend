@@ -80,6 +80,7 @@ export const ModalContent = styled.div`
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
     span {
       padding: 0 5px;
