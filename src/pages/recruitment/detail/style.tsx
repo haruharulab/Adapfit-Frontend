@@ -7,6 +7,7 @@ import { Shadow } from "../../../components/common/shadow/style";
 export const RecruitmentWrap = styled.div`
   ${Container}
   ${Shadow}
+  max-width: 1000px;
   padding: 0 10px;
   ${AccentButtonLink} {
     display: block;
@@ -60,5 +61,36 @@ export const Content = styled.div`
   img {
     max-width: 100%;
     height: auto;
+  }
+`;
+
+export const BottomWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin: 20px 5px;
+  @media screen and (max-width: 760px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  ${AccentButtonLink} {
+    margin: 0;
+  }
+`;
+
+export const ShareWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #565656;
+  a {
+    display: flex;
+  }
+  svg {
+    color: #565656;
+  }
+  & > * {
+    cursor: pointer;
   }
 `;

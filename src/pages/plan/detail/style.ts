@@ -95,8 +95,14 @@ export const PlanShareWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  color: #565656;
+  a {
+    display: flex;
+  }
   svg {
-    width: 30px;
-    height: 30px;
+    color: #565656;
+  }
+  & > * {
+    cursor: pointer;
   }
 `;
