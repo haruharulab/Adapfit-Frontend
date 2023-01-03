@@ -25,13 +25,6 @@ const PlanDetail = () => {
     (async () => setPlan(await getPlan(planId)))();
   }, [planId]);
 
-  const startConsult = () => {
-    const channelIO = (window as any).ChannelIO;
-    if (!channelIO) return alert('채널톡 서비스를 불러오는데 실패하였습니다');
-    if (!plan) return alert('플랜 정보가 없습니다');
-    channelIO('openChat', null, `${plan.title} 플랜에 대해 상담하고 싶어요.`);
-  }
-
   return (
     plan && (
       <S.Wrap>
@@ -52,7 +45,7 @@ const PlanDetail = () => {
             <BsLinkedin />
             <BsTwitter />
           </S.PlanShareWrap>
-          <S.PlanConsultButton onClick={startConsult}>상담하러 가기</S.PlanConsultButton>
+          <S.PlanConsultLink href="https://pf.kakao.com/_xisniK/chat" target='_blank'>상담하러 가기</S.PlanConsultLink>
         </S.PlanBottomWrap>
       </S.Wrap>
     )

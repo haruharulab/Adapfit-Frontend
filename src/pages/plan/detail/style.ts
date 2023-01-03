@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { AccentButton } from "../../../components/common/button/style";
+import { AccentButton, ButtonStyle } from "../../../components/common/button/style";
 import { Container } from "../../../components/common/container/style";
-import { ScrollBar } from "../../../components/common/scrollBar/style";
 import { AccentText } from "../../../components/common/text/style";
 
 export const Wrap = styled.div`
@@ -41,7 +40,10 @@ export const PlanSubTitle = styled.div`
   padding-top: 10px;
 `
 
-export const PlanConsultButton = styled(AccentButton)`
+export const PlanConsultLink = styled.a`
+  ${ButtonStyle}
+  background-color: #f2640b;
+  color: white;
   margin-top: 50px;
   width: 100%;
   max-width: 225px;
@@ -84,7 +86,7 @@ export const PlanBottomWrap = styled.div`
     flex-direction: column-reverse;
     align-items: center;
   }
-  ${PlanConsultButton} {
+  ${PlanConsultLink} {
     margin: 0;
   }
 `;

@@ -85,7 +85,7 @@ const CreateAdminModal = ({
           required
         />
         <Input
-          type="text"
+          type="email"
           onChange={e => setEmail(e.target.value)}
           placeholder='이메일'
           required
@@ -174,7 +174,7 @@ const UpdateAdminModal = ({
         <div>
           <span>이메일</span>
           <Input
-            type="text"
+            type="email"
             onChange={e => setEmail(e.target.value)}
             value={email}
             placeholder='이메일'

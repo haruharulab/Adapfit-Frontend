@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import channelService from "../components/channel/channelService";
 import { Main } from "../components/common/main/style";
 import Footer from "../components/footer";
 import { Header } from "../components/header";
@@ -13,23 +11,16 @@ import Resume from "../pages/resume";
 import { footerHeightState } from "../store/common.store";
 import useAnalytics from "../utils/useAnalytics";
 import RecruitmentDetail from "../pages/recruitment/detail";
+import ConsultLink from "../components/common/consultButton";
 
 const AppPageRoute = () => {
   const footerHeight = useRecoilValue(footerHeightState);
   useAnalytics();
-  
-  useEffect(() => {
-    channelService.boot({
-      pluginKey: process.env.REACT_APP_CHANNEL_SERVICE_PLUGIN_KEY,
-    });
-    return () => {
-      channelService.shutdown();
-    }
-  }, []);
 
   return (
     <>
       <Header />
+      <ConsultLink />
       <Main height={footerHeight}>
         <Routes>
           <Route path="*" element={<Home />} />
