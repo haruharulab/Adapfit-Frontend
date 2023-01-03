@@ -1,4 +1,6 @@
 import { useRef, useEffect } from "react";
+import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
+import { FaFacebookF, FaStore } from "react-icons/fa";
 import { useSetRecoilState } from "recoil";
 import { footerHeightState } from "../../store/common.store";
 import { AccentButtonLink } from "../common/button/style";
@@ -14,7 +16,6 @@ const Footer = () => {
   }, []);
 
   const updateFooterHeight = () => {
-    console.log(ref.current?.clientHeight)
     const height = ref.current?.clientHeight ?? 0;
     if (height < 1) return;
     setFooterHeight(height);
@@ -44,13 +45,16 @@ const Footer = () => {
         <S.Wrap>
           <S.Sns>
             <a target='_blank' href="https://www.instagram.com/adapfit_official/">
-              <img src="/image/instargram_logo.png" />
+              <AiFillInstagram size={24} />
             </a>
             <a target='_blank' href="https://www.facebook.com/adapfit.kr">
-              <img src="/image/facebook_logo.png" />
+              <FaFacebookF size={22} />
             </a>
             <a target='_blank' href="https://www.youtube.com/@adapfit">
-              <img src="/image/youtube_logo.png" />
+              <AiFillYoutube size={24} />
+            </a>
+            <a target='_blank' href="https://smartstore.naver.com/adapfitstore">
+              <FaStore size={24} />
             </a>
           </S.Sns>
           <AccentButtonLink to='/admin'>관리자 페이지</AccentButtonLink>

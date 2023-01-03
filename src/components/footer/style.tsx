@@ -27,7 +27,7 @@ export const ContentWrap = styled.div`
 
 export const Footer_logo = styled.img`
   margin-top: 10px;
-  width: 150px;
+  width: 110px;
   height: 50px;
 `;
 
@@ -35,7 +35,7 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   color: #464646;
-  font-size: 100%;
+  font-size: 14px;
   letter-spacing: -0.6px;
   p {
     margin-top: 10px;
@@ -54,9 +54,16 @@ export const Sns = styled.div`
   display: flex;
   justify-content: end;
   align-items: end;
-  img {
-    width: 33px;
-    height: 33px;
+  gap: 10px;
+  a {
+    color: #464646;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
   }
 `;
 
