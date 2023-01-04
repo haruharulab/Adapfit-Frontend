@@ -106,6 +106,12 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>슈퍼관리자로 전환</S.SideBarItemContent>
     </S.SideBarItem>
+    <S.SideBarItem onClick={() => openModal('updateAdmin')}>
+      <S.SideBarItemIcon>
+        <FaUserAlt size={22} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>관리자 정보 수정</S.SideBarItemContent>
+    </S.SideBarItem>
     <S.SideBarItem onClick={logout}>
       <S.SideBarItemIcon>
         <FiLogOut size={26} color='white' />

@@ -6,7 +6,6 @@ import { useModal } from "../../../utils/modal";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../store/user.store";
 import { AccentButton } from "../../../components/common/button/style";
-import AdminInfoHeader from "../../../components/adminlist/header";
 import { PlanCategory } from "../../../types/plan.type";
 import ManageCategoryItem from "../../../components/plan/category/manageItem";
 import ManageCategoryModal from "./modal";

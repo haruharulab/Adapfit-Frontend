@@ -24,8 +24,7 @@ export interface Admin {
   phoneNumber: string;
   nickname: string;
   authority: Authority.ADMIN;
-  plans: Plan[];
-  centerInfo: string;
+  center: string;
 }
 
 export interface SuperAdmin {

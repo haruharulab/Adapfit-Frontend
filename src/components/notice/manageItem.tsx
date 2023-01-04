@@ -17,8 +17,8 @@ const NoticeManageItem = ({
   deleteNotice
 }: NoticeManageItemProps) => {
   const dropdownMenus: DropdownMenuOption[] = [
-    {text: '수정', callback: () => navigate(`/admin/notice/manage/${notice.id}`)},
-    {text: '삭제', callback: () => deleteNotice(notice.id)}
+    { text: '수정', callback: () => navigate(`/admin/notice/edit/${notice.id}`) },
+    { text: '삭제', callback: () => deleteNotice(notice.id) }
   ];
 
   return (

@@ -79,8 +79,10 @@ const UpdatePositionModal = ({
     const [, error] = await ajax({
       url: `position/${selectPosition.id}`,
       method: HttpMethod.PUT,
-      payload: {
-        position
+      config: {
+        params: {
+          position
+        }
       }
     });
     if (error) return;

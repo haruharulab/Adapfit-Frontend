@@ -19,6 +19,7 @@ export const Header = styled.div`
   font-weight: 700;
   font-size: 34px;
   padding: 0 10px;
+  margin: 40px 0;
   @media screen and (max-width: 600px) {
     font-size: 30px;
   }

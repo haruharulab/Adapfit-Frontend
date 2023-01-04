@@ -12,8 +12,8 @@ import AdminInfoHeader from "../../../components/adminlist/header";
 
 const AdminList = () => {
   const user = useRecoilValue(userState);
-  const {ajax} = useAjax();
-  const {openModal} = useModal();
+  const { ajax } = useAjax();
+  const { openModal } = useModal();
   const [selectAdmin, setSelectAdmin] = useState<Admin | null>(null);
   const [adminList, setAdminList] = useState<Admin[]>([]);
   const [showAdminList, setShowAdminList] = useState<Admin[]>([]);

@@ -11,8 +11,8 @@ import LogInfoHeader from "../../../components/log/header";
 
 const LogList = () => {
   const user = useRecoilValue(userState);
-  const {ajax} = useAjax();
-  const {openModal} = useModal();
+  const { ajax } = useAjax();
+  const { openModal } = useModal();
   const [logList, setLogList] = useState<Log[]>([]);
 
   useEffect(() => {

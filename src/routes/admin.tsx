@@ -10,8 +10,6 @@ import AdminIndex from "../pages/admin";
 import CreateRecruitment from "../pages/recruitment/create";
 import ManageRecruitment from "../pages/recruitment/manage";
 import EditRecruitment from "../pages/recruitment/edit";
-import NoticeList from "../pages/notice";
-import ManageNotice from "../pages/notice/manage";
 import CreateNotice from "../pages/notice/create";
 import EditNotice from "../pages/notice/edit";
 import { AdminPageWrap } from "../pages/admin/style";
@@ -21,17 +19,21 @@ import ManageResume from "../pages/resume/manage";
 import ResumeDetail from "../pages/resume/detail";
 import LogList from "../pages/admin/log";
 import ManagePosition from "../pages/recruitment/position";
+import NoticePage from "../pages/notice/manage/admin";
+import ManageNotice from "../pages/notice/manage/superAdmin";
+import UpdateAdminModal from "../components/admin/modal";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
     <AdminSideBar />
+    <UpdateAdminModal />
     <Main>
       <Routes>
         <Route path="/*" element={<AdminIndex />} />
-        <Route path="/notice" element={<NoticeList />} />
+        <Route path="/notice" element={<NoticePage />} />
+        <Route path="/notice/edit/:id" element={<EditNotice />} />
         <Route path="/notice/create" element={<CreateNotice />} />
         <Route path="/notice/manage" element={<ManageNotice />} />
-        <Route path="/notice/manage/:id" element={<EditNotice />} />
         <Route path="/notice/:id" element={<NoticeDetail />} />
         <Route path="/plan/:id" element={<PlanEdit />} />
         <Route path="/plan/create" element={<CreatePlan />} />
