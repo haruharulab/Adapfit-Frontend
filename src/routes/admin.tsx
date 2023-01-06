@@ -22,10 +22,12 @@ import ManagePosition from "../pages/recruitment/position";
 import NoticePage from "../pages/notice/manage/admin";
 import ManageNotice from "../pages/notice/manage/superAdmin";
 import UpdateAdminModal from "../components/admin/modal";
+import SuperAdminManageModal from "../components/superAdmin/modal";
 
 const AdminPageRoute = () => (
   <AdminPageWrap>
     <AdminSideBar />
+    <SuperAdminManageModal />
     <UpdateAdminModal />
     <Main>
       <Routes>

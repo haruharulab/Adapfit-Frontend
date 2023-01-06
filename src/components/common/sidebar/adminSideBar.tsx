@@ -106,7 +106,7 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>슈퍼관리자로 전환</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => openModal('updateAdmin')}>
+    <S.SideBarItem onClick={() => openModal('updateMyInfo')}>
       <S.SideBarItemIcon>
         <FaUserAlt size={22} color='white' />
       </S.SideBarItemIcon>
@@ -121,6 +121,12 @@ const AdminSideBar = () => {
   </>);
 
   const SuperAdminMenu = () => (<>
+    <S.SideBarItem onClick={() => openModal('manageSuperAdmin')}>
+      <S.SideBarItemIcon>
+        <FaUserAlt size={22} color='white' />
+      </S.SideBarItemIcon>
+      <S.SideBarItemContent>슈퍼관리자 계정 관리</S.SideBarItemContent>
+    </S.SideBarItem>
     <S.SideBarItem onClick={() => navigate('/admin/adminlist')}>
       <S.SideBarItemIcon>
         <FaUserAlt size={22} color='white' />

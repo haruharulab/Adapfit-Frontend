@@ -38,12 +38,12 @@ const UpdateAdminModal = () => {
     if (loadError) return;
 
     setUser(admin);
-    closeModal('updateAdmin');
+    closeModal('updateMyInfo');
   }
 
   return (
     <Modal
-      id='updateAdmin'
+      id='updateMyInfo'
       title="정보 수정"
       callback={() => {
         if (user.authority !== Authority.ADMIN) return;
