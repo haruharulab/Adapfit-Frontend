@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { ScrollBar } from "../scrollBar/style";
 import { AccentShadow } from "../shadow/style";
 
-export const SideBar = styled.div<{isOpen: boolean}>`
-  position: ${({isOpen}) => isOpen? 'relative': 'fixed'};
+export const SideBar = styled.div<{ isOpen: boolean }>`
+  position: ${({ isOpen }) => isOpen ? 'relative' : 'fixed'};
   @media screen and (max-width: 850px) {
     position: fixed;
   }
   z-index: 1000;
-  transform: translateX(${({isOpen}) => isOpen? '0%': '-100%'});
+  transform: translateX(${({ isOpen }) => isOpen ? '0%' : '-100%'});
   height: 100%;
   display: flex;
   flex-direction: column;

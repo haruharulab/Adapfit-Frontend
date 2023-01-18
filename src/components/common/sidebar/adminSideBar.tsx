@@ -110,7 +110,7 @@ const AdminSideBar = () => {
       <S.SideBarItemIcon>
         <FaUserAlt size={22} color='white' />
       </S.SideBarItemIcon>
-      <S.SideBarItemContent>관리자 정보 수정</S.SideBarItemContent>
+      <S.SideBarItemContent>프로필 편집</S.SideBarItemContent>
     </S.SideBarItem>
     <S.SideBarItem onClick={logout}>
       <S.SideBarItemIcon>

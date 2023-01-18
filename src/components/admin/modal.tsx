@@ -44,7 +44,7 @@ const UpdateAdminModal = () => {
   return (
     <Modal
       id='updateMyInfo'
-      title="정보 수정"
+      title="프로필 편집"
       callback={() => {
         if (user.authority !== Authority.ADMIN) return;
         setAuthId(user.authId);
@@ -108,7 +108,7 @@ const UpdateAdminModal = () => {
             required
           />
         </div>
-        <FormSubmitButton>정보 수정</FormSubmitButton>
+        <FormSubmitButton>프로필 편집</FormSubmitButton>
       </form>
     </Modal>
   );
