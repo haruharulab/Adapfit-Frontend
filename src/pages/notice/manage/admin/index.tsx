@@ -5,10 +5,10 @@ import { userState } from "../../../../store/user.store";
 import { Authority } from "../../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../../utils/ajax";
 import { useModal } from "../../../../utils/modal";
-import NoticeManageItem from '../../../../components/notice/manageItem';
 import { useNavigate } from 'react-router-dom';
 import { Notice } from '../../../../types/notice.type';
 import NoticeInfoHeader from '../../../../components/notice/header';
+import NoticeItem from '../../../../components/notice/item';
 
 const NoticePage = () => {
   const user = useRecoilValue(userState);
@@ -58,7 +58,7 @@ const NoticePage = () => {
         <NoticeInfoHeader />
         <hr />
         {noticeList.map(notice => (
-          <NoticeManageItem
+          <NoticeItem
             notice={notice}
             navigate={navigate}
             deleteNotice={deleteNotice}

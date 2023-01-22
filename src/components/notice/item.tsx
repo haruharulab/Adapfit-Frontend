@@ -1,20 +1,39 @@
+import { AiFillSetting } from 'react-icons/ai';
+import { Link, NavigateFunction } from 'react-router-dom';
 import { Notice } from '../../types/notice.type';
 import { dateToShortStr } from "../../utils/date";
+import { DropdownMenu, DropdownMenuOption } from '../common/dropdownMenu';
 import * as S from "./style";
 
 interface NoticeItemProps {
   notice: Notice
 }
 
+interface NoticeManageItemProps {
+  notice: Notice,
+  navigate: NavigateFunction,
+  deleteNotice: (id: number) => void;
+}
+
 const NoticeItem = ({
-  notice
-}: NoticeItemProps) => (
-  <S.Item to={`/admin/notice/${notice.id}`}>
-    <S.InfoWrap>
-      <span>{notice.title}</span>
-      <span>{dateToShortStr(new Date(notice.createdAt))}</span>
-    </S.InfoWrap>
-  </S.Item>
-);
+  notice,
+  navigate,
+  deleteNotice
+}: NoticeManageItemProps) => {
+  const dropdownMenus: DropdownMenuOption[] = [
+    { text: '수정', callback: () => navigate(`/admin/notice/edit/${notice.id}`) },
+    { text: '삭제', callback: () => deleteNotice(notice.id) }
+  ];
+
+  return (
+    <S.Item as='div'>
+      <S.InfoWrap>
+        <span><Link to={`/admin/notice/${notice.id}`}>{notice.title}</Link></span>
+        <span>{dateToShortStr(new Date(notice.createdAt))}</span>
+      </S.InfoWrap>
+      <DropdownMenu title={<AiFillSetting size={22} color='white' />} menus={dropdownMenus} />
+    </S.Item>
+  );
+}
 
 export default NoticeItem;

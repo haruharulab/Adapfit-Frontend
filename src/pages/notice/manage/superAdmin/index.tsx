@@ -55,7 +55,6 @@ const ManageNotice = () => {
         {noticeList.map(notice => (
           <NoticeManageItem
             notice={notice}
-            navigate={navigate}
             deleteNotice={deleteNotice}
           />
         ))}

@@ -35,7 +35,7 @@ const CreateNotice = () => {
       }
     });
     if (error) return;
-    navigate('/admin/notice/manage');
+    navigate('/admin/notice');
   }
 
   const imagesUploadHandler = async (blobInfo: any): Promise<string> => {

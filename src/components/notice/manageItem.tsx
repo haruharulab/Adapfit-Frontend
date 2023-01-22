@@ -7,17 +7,14 @@ import * as S from "./style";
 
 interface NoticeManageItemProps {
   notice: Notice,
-  navigate: NavigateFunction,
   deleteNotice: (id: number) => void;
 }
 
 const NoticeManageItem = ({
   notice,
-  navigate,
   deleteNotice
 }: NoticeManageItemProps) => {
   const dropdownMenus: DropdownMenuOption[] = [
-    { text: '수정', callback: () => navigate(`/admin/notice/edit/${notice.id}`) },
     { text: '삭제', callback: () => deleteNotice(notice.id) }
   ];
 
