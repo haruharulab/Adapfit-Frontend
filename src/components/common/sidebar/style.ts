@@ -30,11 +30,11 @@ export const SideBarOnOff = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 24px;
   position: absolute;
   top: 50%;
   right: 0;
-  width: 30px;
+  width: 24px;
   height: 50px;
   background-color: #353455;
   color: white;

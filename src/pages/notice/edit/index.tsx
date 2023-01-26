@@ -10,6 +10,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { Input } from '../../../components/common/input/style';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Notice } from '../../../types/notice.type';
+import { levelCheck } from '../../../utils/levelCheck';
 
 const EditNotice = () => {
   const user = useRecoilValue(userState);
@@ -22,8 +23,7 @@ const EditNotice = () => {
   const [content, setContent] = useState<string>('');
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 3, user, openModal})) return;
     getNotice();
   }, [user]);
 

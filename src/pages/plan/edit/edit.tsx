@@ -10,6 +10,7 @@ import { Authority } from "../../../types/user.type";
 import { useRecoilValue } from "recoil";
 import { useModal } from "../../../utils/modal";
 import { userState } from "../../../store/user.store";
+import { levelCheck } from "../../../utils/levelCheck";
 
 const PlanEdit = () => {
   const user = useRecoilValue(userState);
@@ -30,8 +31,7 @@ const PlanEdit = () => {
   });
   
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 2, user, openModal})) return;
 
     if (!planId) return;
     (async () => {

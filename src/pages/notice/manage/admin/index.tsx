@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { Notice } from '../../../../types/notice.type';
 import NoticeInfoHeader from '../../../../components/notice/header';
 import NoticeItem from '../../../../components/notice/item';
+import { levelCheck } from '../../../../utils/levelCheck';
 
 const NoticePage = () => {
   const user = useRecoilValue(userState);
@@ -18,8 +19,7 @@ const NoticePage = () => {
   const [noticeList, setNoticeList] = useState<Notice[]>([]);
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 1, user, openModal})) return;
     getNoticeList();
   }, [user]);
 
@@ -50,15 +50,19 @@ const NoticePage = () => {
     <S.Contain>
       <S.Header>공지사항</S.Header>
       <S.MenuWrap>
-        <S.CreateButton to='/admin/notice/create'>
-          공지사항 작성
-        </S.CreateButton>
+        {
+          user.authority === Authority.ADAPFIT_ADMIN &&
+          <S.CreateButton to='/admin/notice/create'>
+            공지사항 작성
+          </S.CreateButton>
+        }
       </S.MenuWrap>
       <S.ItemWrap>
         <NoticeInfoHeader />
         <hr />
         {noticeList.map(notice => (
           <NoticeItem
+            user={user}
             notice={notice}
             navigate={navigate}
             deleteNotice={deleteNotice}

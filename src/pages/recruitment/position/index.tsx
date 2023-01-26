@@ -1,6 +1,5 @@
 import * as S from "./style";
 import { useEffect, useState } from "react";
-import { Authority } from "../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { useModal } from "../../../utils/modal";
 import { useRecoilValue } from "recoil";
@@ -10,6 +9,7 @@ import { Position } from "../../../types/position.type";
 import ManagePositionItem from "../../../components/recruitment/position/manageItem";
 import ManagePositionModal from "./modal";
 import PositionInfoHeader from "../../../components/recruitment/position/header";
+import { levelCheck } from "../../../utils/levelCheck";
 
 const ManagePosition = () => {
   const user = useRecoilValue(userState);
@@ -19,8 +19,7 @@ const ManagePosition = () => {
   const [positionList, setPositionList] = useState<Position[]>([]);
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 1, user, openModal})) return;
     loadPositionList();
   }, [user]);
 

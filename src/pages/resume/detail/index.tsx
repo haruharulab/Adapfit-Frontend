@@ -2,14 +2,14 @@ import * as S from "./style";
 import { useEffect } from "react";
 import { useState } from "react";
 import { AiFillFileZip } from "react-icons/ai";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { Input } from "../../../components/common/input/style";
-import { DetailResumeType, Resume } from "../../../types/resume.type";
+import { DetailResumeType } from "../../../types/resume.type";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../store/user.store";
 import { useModal } from "../../../utils/modal";
-import { Authority } from "../../../types/user.type";
+import { levelCheck } from "../../../utils/levelCheck";
 
 const ResumeDetail = () => {
   const user = useRecoilValue(userState);
@@ -29,8 +29,7 @@ const ResumeDetail = () => {
   }
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 1, user, openModal})) return;
     loadResume();
   }, [resumeId, user]);
 

@@ -2,12 +2,12 @@ import * as S from './style'
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../store/user.store";
-import { Authority } from "../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { useModal } from "../../../utils/modal";
 import ResumeManageItem from '../../../components/resume/manageItem';
 import { Resume } from '../../../types/resume.type';
 import ResumeInfoHeader from '../../../components/resume/header';
+import { levelCheck } from '../../../utils/levelCheck';
 
 const ManageResume = () => {
   const user = useRecoilValue(userState);
@@ -16,8 +16,7 @@ const ManageResume = () => {
   const [resumeList, setResumeList] = useState<Resume[]>([]);
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 1, user, openModal})) return;
     getResumeList();
   }, [user]);
 

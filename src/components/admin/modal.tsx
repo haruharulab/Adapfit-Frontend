@@ -46,7 +46,11 @@ const UpdateAdminModal = () => {
       id='updateMyInfo'
       title="프로필 편집"
       callback={() => {
-        if (user.authority !== Authority.ADMIN) return;
+        if (
+          user.authority === Authority.LOADING ||
+          user.authority === Authority.NO_LOGIN ||
+          user.authority === Authority.ROOT
+        ) return;
         setAuthId(user.authId);
         setNickname(user.nickname);
         setEmail(user.email);

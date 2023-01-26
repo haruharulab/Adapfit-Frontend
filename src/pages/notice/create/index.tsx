@@ -9,6 +9,7 @@ import { FormSubmitButton } from '../../../components/common/button/style';
 import { Editor } from '@tinymce/tinymce-react';
 import { Input } from '../../../components/common/input/style';
 import { useNavigate } from 'react-router-dom';
+import { levelCheck } from '../../../utils/levelCheck';
 
 const CreateNotice = () => {
   const user = useRecoilValue(userState);
@@ -19,8 +20,7 @@ const CreateNotice = () => {
   const [content, setContent] = useState<string>('');
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 3, user, openModal})) return;
   }, [user]);
 
   const createNotice = async () => {

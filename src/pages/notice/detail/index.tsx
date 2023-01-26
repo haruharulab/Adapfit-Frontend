@@ -10,6 +10,7 @@ import { Notice } from "../../../types/notice.type";
 import { dateToShortStr } from "../../../utils/date";
 import { FiArrowLeft } from "react-icons/fi";
 import { escapeAttrValue, FilterXSS } from "xss";
+import { levelCheck } from "../../../utils/levelCheck";
 
 const xssFilter = new FilterXSS({
   onIgnoreTagAttr: (tag, name, value) => {
@@ -29,8 +30,7 @@ const NoticeDetail = () => {
   const [notice, setNotice] = useState<Notice | null>(null);
   
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ROOT && user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 1, user, openModal})) return;
     getNotice();
   }, [user]);
 

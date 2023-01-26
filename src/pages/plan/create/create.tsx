@@ -10,6 +10,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "../../../store/user.store";
 import { useModal } from "../../../utils/modal";
 import { Authority } from "../../../types/user.type";
+import { levelCheck } from "../../../utils/levelCheck";
 
 const CreatePlan = () => {
   const user = useRecoilValue(userState);
@@ -27,8 +28,7 @@ const CreatePlan = () => {
   });
   
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 2, user, openModal})) return;
 
     (async () => setCategoryList(await getPlanCategoryList()))();
   }, [user]);

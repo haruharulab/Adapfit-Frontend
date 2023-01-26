@@ -7,7 +7,7 @@ import { tokenState, userState } from '../../../store/user.store';
 import LoginModal from '../login';
 import { FaBullhorn, FaThList, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { MdViewCarousel } from 'react-icons/md';
-import { Admin, Authority, SuperAdmin } from '../../../types/user.type';
+import { Admin, AdminLevel, AdminName, Authority, SuperAdmin } from '../../../types/user.type';
 import { useNavigate } from 'react-router-dom';
 import { changeAdminState } from '../../../store/common.store';
 import { FiLogOut } from 'react-icons/fi';
@@ -63,43 +63,52 @@ const AdminSideBar = () => {
     </S.SideBarItem>
   );
 
-  const AdminMenu = () => (<>
+  const AdminMenu = () => 
+  (
+    user.authority !== Authority.LOADING &&
+    user.authority !== Authority.NO_LOGIN
+  )
+  ? (<>
     <S.SideBarItem onClick={() => navigate('/admin/notice')}>
       <S.SideBarItemIcon>
         <FaBullhorn size={22} color='white' />
       </S.SideBarItemIcon>
       <S.SideBarItemContent>공지사항</S.SideBarItemContent>
     </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/plan')}>
-      <S.SideBarItemIcon>
-        <FaThList size={20} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>플랜 관리</S.SideBarItemContent>
-    </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/plan/category')}>
-      <S.SideBarItemIcon>
-        <FaThList size={20} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>플랜 카테고리 관리</S.SideBarItemContent>
-    </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/recruitment')}>
-      <S.SideBarItemIcon>
-        <FaUsers size={28} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>채용공고 관리</S.SideBarItemContent>
-    </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/recruitment/position')}>
-      <S.SideBarItemIcon>
-        <FaUsers size={28} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>채용 포지션 관리</S.SideBarItemContent>
-    </S.SideBarItem>
-    <S.SideBarItem onClick={() => navigate('/admin/resume')}>
-      <S.SideBarItemIcon>
-        <FaUsers size={28} color='white' />
-      </S.SideBarItemIcon>
-      <S.SideBarItemContent>채용 지원목록</S.SideBarItemContent>
-    </S.SideBarItem>
+    {AdminLevel[user.authority] >= AdminLevel.CENTER_ADMIN && <>
+      <S.SideBarItem onClick={() => navigate('/admin/plan')}>
+        <S.SideBarItemIcon>
+          <FaThList size={20} color='white' />
+        </S.SideBarItemIcon>
+        <S.SideBarItemContent>플랜 관리</S.SideBarItemContent>
+      </S.SideBarItem>
+      <S.SideBarItem onClick={() => navigate('/admin/plan/category')}>
+        <S.SideBarItemIcon>
+          <FaThList size={20} color='white' />
+        </S.SideBarItemIcon>
+        <S.SideBarItemContent>플랜 카테고리 관리</S.SideBarItemContent>
+      </S.SideBarItem>
+    </>}
+    {AdminLevel[user.authority] >= AdminLevel.HUMAN_RESOURCES_ADMIN && <>
+      <S.SideBarItem onClick={() => navigate('/admin/recruitment')}>
+        <S.SideBarItemIcon>
+          <FaUsers size={28} color='white' />
+        </S.SideBarItemIcon>
+        <S.SideBarItemContent>채용공고 관리</S.SideBarItemContent>
+      </S.SideBarItem>
+      <S.SideBarItem onClick={() => navigate('/admin/recruitment/position')}>
+        <S.SideBarItemIcon>
+          <FaUsers size={28} color='white' />
+        </S.SideBarItemIcon>
+        <S.SideBarItemContent>채용 포지션 관리</S.SideBarItemContent>
+      </S.SideBarItem>
+      <S.SideBarItem onClick={() => navigate('/admin/resume')}>
+        <S.SideBarItemIcon>
+          <FaUsers size={28} color='white' />
+        </S.SideBarItemIcon>
+        <S.SideBarItemContent>채용 지원목록</S.SideBarItemContent>
+      </S.SideBarItem>
+    </>}
     <S.SideBarItem onClick={() => { setChangeAdmin(true); openModal('superAdminLogin'); }}>
       <S.SideBarItemIcon>
         <FaUserAlt size={22} color='white' />
@@ -118,7 +127,8 @@ const AdminSideBar = () => {
       </S.SideBarItemIcon>
       <S.SideBarItemContent>로그아웃</S.SideBarItemContent>
     </S.SideBarItem>
-  </>);
+  </>)
+  : <></>;
 
   const SuperAdminMenu = () => (<>
     <S.SideBarItem onClick={() => openModal('manageSuperAdmin')}>
@@ -178,18 +188,18 @@ const AdminSideBar = () => {
           onClick={() => navigate('/')}
         />
         <p>{
-          user.authority === Authority.ROOT || user.authority === Authority.ADMIN
-            ? `${user.nickname}님 반갑습니다.`
+          user.authority !== Authority.LOADING && user.authority !== Authority.NO_LOGIN
+            ? `[${AdminName[user.authority]}] ${user.nickname}님 반갑습니다.`
             : '로그인해주세요.'
         }</p>
         <hr />
       </S.SideBarHeader>
       <S.SideBarContentWrap>{
-        user.authority === Authority.ADMIN
-          ? <AdminMenu />
-          : user.authority === Authority.ROOT
-            ? <SuperAdminMenu />
-            : <LoginMenu />
+        (user.authority === Authority.LOADING || user.authority === Authority.NO_LOGIN)
+        ? <LoginMenu />
+        : user.authority === Authority.ROOT
+          ? <SuperAdminMenu />
+          : <AdminMenu />
       }</S.SideBarContentWrap>
       <LoginModal />
     </S.SideBar>

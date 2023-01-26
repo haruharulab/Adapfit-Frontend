@@ -1,21 +1,20 @@
 import { AiFillSetting } from 'react-icons/ai';
 import { Link, NavigateFunction } from 'react-router-dom';
 import { Notice } from '../../types/notice.type';
+import { Authority, UserType } from '../../types/user.type';
 import { dateToShortStr } from "../../utils/date";
 import { DropdownMenu, DropdownMenuOption } from '../common/dropdownMenu';
 import * as S from "./style";
 
-interface NoticeItemProps {
-  notice: Notice
-}
-
 interface NoticeManageItemProps {
+  user: UserType,
   notice: Notice,
   navigate: NavigateFunction,
   deleteNotice: (id: number) => void;
 }
 
 const NoticeItem = ({
+  user,
   notice,
   navigate,
   deleteNotice
@@ -31,7 +30,10 @@ const NoticeItem = ({
         <span><Link to={`/admin/notice/${notice.id}`}>{notice.title}</Link></span>
         <span>{dateToShortStr(new Date(notice.createdAt))}</span>
       </S.InfoWrap>
-      <DropdownMenu title={<AiFillSetting size={22} color='white' />} menus={dropdownMenus} />
+      {
+        user.authority === Authority.ADAPFIT_ADMIN &&
+        <DropdownMenu title={<AiFillSetting size={22} color='white' />} menus={dropdownMenus} />
+      }
     </S.Item>
   );
 }

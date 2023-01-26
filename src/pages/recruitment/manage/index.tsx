@@ -4,12 +4,12 @@ import { useRecoilValue } from "recoil";
 import { DropdownMenu } from "../../../components/common/dropdownMenu";
 import { userState } from "../../../store/user.store";
 import { Recruitment, RecruitmentInfo } from "../../../types/recruitment.type";
-import { Authority } from "../../../types/user.type";
 import { HttpMethod, useAjax } from "../../../utils/ajax";
 import { useModal } from "../../../utils/modal";
 import RecruitmentManageItem from '../../../components/recruitment/manageItem';
 import { useNavigate } from 'react-router-dom';
 import RecruitmentInfoHeader from '../../../components/recruitment/header';
+import { levelCheck } from '../../../utils/levelCheck';
 
 const ManageRecruitment = () => {
   const user = useRecoilValue(userState);
@@ -66,8 +66,7 @@ const ManageRecruitment = () => {
   }
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 1, user, openModal})) return;
     getRecruitmentList();
   }, [user, position, career, pattern]);
 

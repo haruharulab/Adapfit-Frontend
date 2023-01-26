@@ -11,6 +11,7 @@ import { FormSubmitButton } from '../../../components/common/button/style';
 import { Editor } from '@tinymce/tinymce-react';
 import { Input } from '../../../components/common/input/style';
 import { useNavigate } from 'react-router-dom';
+import { levelCheck } from '../../../utils/levelCheck';
 
 const CreateRecruitment = () => {
   const user = useRecoilValue(userState);
@@ -39,8 +40,7 @@ const CreateRecruitment = () => {
   }
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 1, user, openModal})) return;
     getRecruitmentInfo();
   }, [user]);
 

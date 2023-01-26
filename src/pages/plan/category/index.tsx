@@ -10,6 +10,7 @@ import { PlanCategory } from "../../../types/plan.type";
 import ManageCategoryItem from "../../../components/plan/category/manageItem";
 import ManageCategoryModal from "./modal";
 import CategoryInfoHeader from "../../../components/plan/category/header";
+import { levelCheck } from "../../../utils/levelCheck";
 
 const ManagePlanCategory = () => {
   const user = useRecoilValue(userState);
@@ -19,8 +20,7 @@ const ManagePlanCategory = () => {
   const [categoryList, setCategoryList] = useState<PlanCategory[]>([]);
 
   useEffect(() => {
-    if (user.authority === Authority.LOADING) return;
-    if (user.authority !== Authority.ADMIN) return openModal('adminLogin');
+    if (!levelCheck({requireLevel: 2, user, openModal})) return;
     loadCategoryList();
   }, [user]);
 
